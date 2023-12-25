@@ -59,6 +59,9 @@ class ProfileController extends Controller
     public function setDeliveryPhone ($userPhone): JsonResponse
     {
         try {
+            if (! in_array($userPhone, ['primary', 'secondary']))
+                return $this->returnError('Invalid type');
+
             $selectedPhone = match ($userPhone) {
                 'secondary' => auth()->user()['sec_phone'],
                 default => auth()->user()['phone'],

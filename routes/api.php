@@ -74,7 +74,7 @@ Route::prefix('my')->middleware('auth.guard:api')->group(function () {
         Route::delete('delete/{id}', [OrdersController::class, 'deleteOrder']);
     });
 
-    Route::prefix('favorites/{type}')->group(function () { // vendors || products
+    Route::prefix('favorites/{type}')->group(function () { // vendor || product
         Route::get('/', [FavoritesController::class, 'favorites']);
         Route::post('toggle/{id}', [FavoritesController::class, 'toggleFavorite']);
         Route::post('rate/{id}', [FavoritesController::class, 'rate']);

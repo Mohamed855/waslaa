@@ -156,6 +156,9 @@ class AppController extends Controller
 
     public function search (Request $request): JsonResponse
     {
+        if (! in_array($request['type'], ['vendors', 'categories', 'subcategories', 'products']))
+            return $this->returnError('Invalid type');
+
         return $this->returnData('Search View', [
             'results' => $this->getSearchOutput($request['type'], $request['key']),
         ]);
@@ -163,6 +166,9 @@ class AppController extends Controller
 
     public function filter (Request $request): JsonResponse
     {
+        if (! in_array($request['method'], ['offers', 'rates', 'price']))
+            return $this->returnError('Invalid method');
+
         $filteredProducts = $this->filterAccordingTo($request['method'], ProductResource::collection($request['products']) , $request['desc']);
         return $this->returnData('Filtered by ' . $request['method'], $filteredProducts);
     }

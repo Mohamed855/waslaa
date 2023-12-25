@@ -5,14 +5,16 @@ namespace App\Http\Controllers\API\User;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Product\ProductResource;
 use App\Http\Resources\Vendor\VendorResource;
+use App\Traits\ErrorTrait;
 use App\Traits\QueriesTrait;
 use App\Traits\ResponseTrait;
+use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class FavoritesController extends Controller
 {
-    use QueriesTrait, ResponseTrait;
+    use QueriesTrait, ResponseTrait, ErrorTrait;
     private function getFavoriteProducts (): AnonymousResourceCollection
     {
         $myFavoriteProducts = $this->activeProduct()
@@ -41,17 +43,42 @@ class FavoritesController extends Controller
 
     public function favorites ($type): JsonResponse
     {
-        $myFavorites = $type == 'products' ? $this->getFavoriteProducts() : $this->getFavoriteVendors();
+        if (! in_array($type, ['product', 'vendor']))
+            return $this->returnError('Invalid type');
+
+        $myFavorites = $type == 'product' ? $this->getFavoriteProducts() : $this->getFavoriteVendors();
         return $this->returnData('Favorites View', [
             'myFavorites' => $myFavorites,
         ]);
     }
 
-    public function toggleFavorite ($id, $type) {
-        //
+    public function toggleFavorite ($type, $id): JsonResponse
+    {
+        try {
+            if (! in_array($type, ['product', 'vendor']))
+                return $this->returnError('Invalid type');
+
+            $selected = $type == 'product' ? $this->activeProduct()->find($id, ['name_' . app()->getLocale() . ' as name']) :
+                $this->activeVendor()->find($id, ['name']);
+
+            $favorite = $type == 'product' ? $this->favoriteProducts() : $this->favoriteVendors();
+
+            $exist = $favorite->where('user', auth()->id())->where('favorite_id', $id)->first();
+
+            if ($exist) {
+                $exist->delete();
+                return $this->returnSuccess($selected['name'] . ' removed from favorites');
+            }
+
+            $favorite->create([ 'type' => $type, 'favorite_id' => $id, 'user' => auth()->id() ]);
+            return $this->returnSuccess($selected['name'] . ' added to favorites');
+        } catch (Exception $e) {
+            return $this->exceptionError($e);
+        }
     }
 
-    public function rate ($id, $type) {
-        //
+    public function rate ($type, $id) {
+        if (! in_array($type, ['product', 'vendor']))
+            return $this->returnError('Invalid type');
     }
 }
