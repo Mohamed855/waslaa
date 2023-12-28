@@ -58,10 +58,13 @@ class FavoritesController extends Controller
             if (! in_array($type, ['product', 'vendor']))
                 return $this->returnError('Invalid type');
 
-            $selected = $type == 'product' ? $this->activeProduct()->find($id, ['name_' . app()->getLocale() . ' as name']) :
-                $this->activeVendor()->find($id, ['name']);
-
-            $favorite = $type == 'product' ? $this->favoriteProducts() : $this->favoriteVendors();
+            if ($type == 'product') {
+                $selected = $this->activeProduct()->find($id, ['name_' . app()->getLocale() . ' as name']);
+                $favorite = $this->favoriteProducts();
+            } else {
+                $selected = $this->activeVendor()->find($id, ['name']);
+                $favorite = $this->favoriteVendors();
+            }
 
             $exist = $favorite->where('user', auth()->id())->where('favorite_id', $id)->first();
 
@@ -78,7 +81,7 @@ class FavoritesController extends Controller
     }
 
     public function rate ($type, $id) {
-        if (! in_array($type, ['product', 'vendor']))
-            return $this->returnError('Invalid type');
+        //if (! in_array($type, ['product', 'vendor']))
+        //    return $this->returnError('Invalid type');
     }
 }
