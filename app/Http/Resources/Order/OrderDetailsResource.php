@@ -23,10 +23,10 @@ class OrderDetailsResource extends JsonResource
             'address' => $this['address'],
             'phone' => $this['phone'],
             'products' => $this['products'],
-            'totalCost' => $this['total_cost'],
-            'paymentMethod' => $this['pay_method'],
+            'totalCost' => $this['totalCost'],
+            'paymentMethod' => $this['payMethod'],
             'deliveryTime' => $this['status']  == 'delivered' ? ($deliveryTime->h . ':' . $deliveryTime->i) : null,
-            'deliveryNote' => $this['delivery_note'],
+            'deliveryNote' => $this['deliveryNote'],
         ];
     }
 }

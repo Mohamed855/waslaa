@@ -15,6 +15,5 @@ class Order extends Model
     protected $casts = [
         'vendor' => 'array',
         'products' => 'array',
-        'address' => 'array',
     ];
 }

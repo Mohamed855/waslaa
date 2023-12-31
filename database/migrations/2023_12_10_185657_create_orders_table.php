@@ -18,13 +18,13 @@ return new class extends Migration
             $table->foreignIdFor(User::class, 'user');
             $table->json('vendor');
             $table->json('products');
-            $table->json('address');
+            $table->text('address');
             $table->string('deliveryPhone');
-            $table->enum('pay_method', ['cash', 'card']);
-            $table->enum('deliver_method', ['delivery', 'pickup']);
-            $table->double('total_cost')->default(0);
-            $table->text('delivery_note')->nullable();
-            $table->enum('status', ['sent', 'viewed', 'outed', 'canceled', 'delivered']);
+            $table->enum('payMethod', ['cash', 'card']);
+            $table->enum('deliveryMethod', ['delivery', 'pickup']);
+            $table->double('totalCost')->default(0);
+            $table->text('deliveryNote')->nullable();
+            $table->enum('status', ['ordered', 'delivered', 'canceled'])->default('ordered');
             $table->timestamps();
         });
     }

@@ -45,11 +45,13 @@ Route::prefix('my')->middleware('auth.guard:api')->group(function () {
     Route::prefix('profile')->group(function () {
         Route::get('/', [ProfileController::class, 'profile']);
         Route::post('update', [ProfileController::class, 'updateProfile']);
+        Route::post('password/change', [ProfileController::class, 'changePassword']);
         Route::post('set-delivery-phone/{userPhone}', [ProfileController::class, 'setDeliveryPhone']); // primary || secondary
         Route::prefix('image')->group(function () {
             Route::post('update', [ProfileController::class, 'updateProfileImage']);
             Route::delete('remove', [ProfileController::class, 'removeProfileImage']);
         });
+        Route::delete('delete', [ProfileController::class, 'deleteAccount']);
     });
 
     Route::prefix('addresses')->group(function () {
@@ -71,6 +73,7 @@ Route::prefix('my')->middleware('auth.guard:api')->group(function () {
         Route::get('{id}', [OrdersController::class, 'orderDetails']);
         Route::post('confirm', [OrdersController::class, 'confirmOrder']);
         Route::post('reorder/{id}', [OrdersController::class, 'reorder']);
+        Route::post('cancel/{id}', [OrdersController::class, 'cancelOrder']);
         Route::delete('delete/{id}', [OrdersController::class, 'deleteOrder']);
     });
 

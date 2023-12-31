@@ -12,6 +12,7 @@ use App\Traits\Rules\ActionsRules;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -51,6 +52,32 @@ class ProfileController extends Controller
             $this->updateCurrUserDetails($details);
 
             return $this->returnSuccess('Details updated successfully');
+        } catch (Exception $e) {
+            return $this->exceptionError($e);
+        }
+    }
+
+    public function changePassword (Request $request): JsonResponse
+    {
+        try {
+            $passwords = $request->only('old_password', 'new_password', 'new_password_confirmation');
+            $validator = Validator::make($passwords, $this->changePasswordRules());
+            if ($validator->fails())
+                return $this->notValidError($validator);
+
+            $currUser = $this->user()->find(auth()->id());
+
+            $credentials =  [
+                'phone' => $currUser['phone'],
+                'password' => $passwords['old_password'],
+            ];
+
+            if (! Auth::attempt($credentials))
+                return $this->returnError('Old password isn\'t valid');
+
+            $this->updateCurrUserDetails(['password' => $passwords['new_password'] ]);
+
+            return $this->returnSuccess('Password changed successfully');
         } catch (Exception $e) {
             return $this->exceptionError($e);
         }
@@ -112,6 +139,21 @@ class ProfileController extends Controller
             return $this->returnSuccess('Profile Image removed successfully');
         } catch (Exception $e) {
             return $this->exceptionError($e);
+        }
+    }
+
+    public function deleteAccount (): JsonResponse
+    {
+        try {
+            $currUser = auth()->user();
+
+            Helper::deleteImage($currUser['avatar']);
+
+            $currUser->delete();
+
+            return $this->returnSuccess('your account has deleted successfully');
+        } catch (Exception) {
+            return $this->returnError('something went wrong');
         }
     }
 

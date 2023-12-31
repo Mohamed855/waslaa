@@ -45,7 +45,7 @@ class AuthController extends Controller
 
             $credentials = ['phone' => $user['phone'], 'password' => $request['password'] ];
 
-            $token = Auth::guard('api')->attempt($credentials);
+            $token = Auth::attempt($credentials);
 
             if (! $token) return $this->checkCredentialsError();
 
@@ -70,7 +70,7 @@ class AuthController extends Controller
 
             $credentials['phone'] = Helper::correctPhoneStyle($credentials['phone']);
 
-            $token = Auth::guard('api')->attempt($credentials);
+            $token = Auth::attempt($credentials);
 
             if (! $token) return $this->checkCredentialsError();
 
@@ -105,7 +105,7 @@ class AuthController extends Controller
                 'created_at' => now(),
             ]);
 
-            return $this->returnData('Valid phone number', $temporaryToken);
+            return $this->returnData('This token will expire after 10 minuets', $temporaryToken);
         } catch (Exception $e) {
             return $this->exceptionError($e);
         }
@@ -127,7 +127,7 @@ class AuthController extends Controller
             DB::table('password_reset_tokens')->where('created_at', '<', now()->subHour())->delete();
             $target->delete();
 
-            return $this->returnSuccess('Password changed successfully');
+            return $this->returnSuccess('Password updated successfully');
         } catch (Exception $e) {
             return $this->exceptionError($e);
         }
