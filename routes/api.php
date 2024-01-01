@@ -7,6 +7,7 @@ use App\Http\Controllers\API\User\CartController;
 use App\Http\Controllers\API\User\FavoritesController;
 use App\Http\Controllers\API\User\OrdersController;
 use App\Http\Controllers\API\User\ProfileController;
+use App\Http\Controllers\API\User\RatesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -80,6 +81,10 @@ Route::prefix('my')->middleware('auth.guard:api')->group(function () {
     Route::prefix('favorites/{type}')->group(function () { // vendor || product
         Route::get('/', [FavoritesController::class, 'favorites']);
         Route::post('toggle/{id}', [FavoritesController::class, 'toggleFavorite']);
-        Route::post('rate/{id}', [FavoritesController::class, 'rate']);
+    });
+
+    Route::prefix('rates/{type}')->group(function () { // vendor || product
+        Route::post('{id}', [RatesController::class, 'rate']);
+        Route::delete('delete/{id}', [RatesController::class, 'deleteRate']);
     });
 });

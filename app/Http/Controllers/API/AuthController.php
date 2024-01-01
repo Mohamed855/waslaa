@@ -53,7 +53,7 @@ class AuthController extends Controller
                 check phone number is the same in the device form application
             */
 
-            return $this->returnData('User created successfully', [ 'token' => $token ]);
+            return $this->returnData('Your account has created successfully', [ 'token' => $token ]);
         } catch (Exception $e) {
             return $this->exceptionError($e);
         }

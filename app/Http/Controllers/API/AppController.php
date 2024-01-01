@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Ad\AdResource;
 use App\Http\Resources\Category\CategoryResource;
@@ -52,11 +53,18 @@ class AppController extends Controller
 
         return VendorResource::collection($vendors);
     }
-    private function getSubCategoriesWithProducts (): AnonymousResourceCollection
+    private function getSubCategoriesWithProducts ($vendor_id): AnonymousResourceCollection
     {
-        $subCategoriesWithProduct = $this->activeSubcategory()->with('_products', function ($productQuery) {
-            $productQuery->where('active', 1)->with('_components', '_types');
-        })->paginate(10);
+        $subCategoriesWithProduct = $this->activeSubcategory()
+            ->join('vendor_subcategories as VSC', 'subcategories.id', '=', 'VSC.subcategory')
+            ->where('VSC.vendor', $vendor_id)
+            ->select([
+                'subcategories.id',
+                'subcategories.' . Helper::getColumnOnLang('name'),
+                'subcategories.avatar',
+            ])->with('_products', function ($productQuery) {
+                $productQuery->where('active', 1)->with('_components', '_types');
+            })->paginate(10);
         return SubCategoryWithProductResource::collection($subCategoriesWithProduct);
     }
     private function getOfferedProducts (): AnonymousResourceCollection
@@ -129,7 +137,7 @@ class AppController extends Controller
         return $this->returnData('Vendor View', [
             'countOfFavorites' => count($favoritesUser),
             'selectedVendor' => new VendorResource($selectedVendor),
-            'subCategoriesWithProduct' => $this->getSubCategoriesWithProducts(),
+            'subCategoriesWithProduct' => $this->getSubCategoriesWithProducts($id),
         ]);
     }
     public function productPage ($id): JsonResponse

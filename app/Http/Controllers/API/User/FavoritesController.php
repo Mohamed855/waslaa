@@ -26,6 +26,7 @@ class FavoritesController extends Controller
             ->paginate(10);
         return ProductResource::collection($myFavoriteProducts);
     }
+
     private function getFavoriteVendors (): AnonymousResourceCollection
     {
         $myFavoriteVendors = $this->activeVendor()
@@ -74,14 +75,10 @@ class FavoritesController extends Controller
             }
 
             $favorite->create([ 'type' => $type, 'favorite_id' => $id, 'user' => auth()->id() ]);
+
             return $this->returnSuccess($selected['name'] . ' added to favorites');
         } catch (Exception $e) {
             return $this->exceptionError($e);
         }
-    }
-
-    public function rate ($type, $id) {
-        //if (! in_array($type, ['product', 'vendor']))
-        //    return $this->returnError('Invalid type');
     }
 }

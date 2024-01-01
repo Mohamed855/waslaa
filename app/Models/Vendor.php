@@ -11,7 +11,7 @@ class Vendor extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $guarded = [];
 
     protected $hidden = [
         'password',

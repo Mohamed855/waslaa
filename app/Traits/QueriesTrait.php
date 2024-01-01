@@ -7,6 +7,7 @@ use App\Models\Component;
 use App\Models\OrderProduct;
 use App\Models\ProductComponent;
 use App\Models\ProductType;
+use App\Models\Rate;
 use App\Models\Type;
 use App\Models\VendorCategory;
 use App\Models\VendorSubcategory;
@@ -59,7 +60,9 @@ trait QueriesTrait {
 
     public function productComponent(): Builder { return ProductComponent::query(); }
 
-    public function ProductType(): Builder { return ProductType::query(); }
+    public function productType(): Builder { return ProductType::query(); }
+
+    public function rates(): Builder { return Rate::query(); }
 
     public function siteOption(): Builder { return SiteOption::query(); }
 

@@ -36,6 +36,6 @@ trait ErrorTrait {
     {
         $inputsHasError = array_keys($validator->errors()->toArray());
         $error = $inputsHasError[0] . ' has failed';
-        return $this->returnError($validator->errors()->first());
+        return $this->returnError(/* $error */ $validator->errors()->first());
     }
 }

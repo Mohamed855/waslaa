@@ -19,7 +19,7 @@ trait ActionsRules {
     protected function updateProfileRules(): array
     {
         return [
-            'name' => ['required', function ($attribute, $value, $fail) {
+            'name' => ['required', 'min:5', 'max:60', function ($attribute, $value, $fail) {
                 $names = explode(' ', $value);
                 if (count($names) < 2)
                     $fail('You must enter your first and last name at least.');
