@@ -4,7 +4,6 @@ namespace App\Http\Controllers\API;
 
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
-use App\Traits\AuthTrait;
 use App\Traits\ErrorTrait;
 use App\Traits\QueriesTrait;
 use App\Traits\ResponseTrait;
@@ -19,7 +18,8 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    use AuthTrait, ErrorTrait, QueriesTrait, ResponseTrait, AuthRules;
+    use ErrorTrait, QueriesTrait, ResponseTrait;
+    use AuthRules;
 
     public function signup (Request $request): JsonResponse
     {

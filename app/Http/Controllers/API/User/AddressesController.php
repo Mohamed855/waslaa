@@ -2,35 +2,34 @@
 
 namespace App\Http\Controllers\API\User;
 
+use App\Helpers\User\AddressHelper;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\User\AddressesRecourse;
 use App\Traits\ErrorTrait;
 use App\Traits\QueriesTrait;
 use App\Traits\ResponseTrait;
-use App\Traits\Rules\ActionsRules;
+use App\Traits\Rules\AddressRules;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Validator;
 
 class AddressesController extends Controller
 {
-    use QueriesTrait, ResponseTrait, ActionsRules, ErrorTrait;
+    use QueriesTrait, ResponseTrait, ErrorTrait;
+    use AddressRules;
 
+    private AddressHelper $address;
 
-    private function getAddresses (): AnonymousResourceCollection
+    public function __construct()
     {
-        $myAddress = $this->address()->with('_city')->where('type', 'user')
-            ->where('user_id', auth()->id())->get();
-        return AddressesRecourse::collection($myAddress);
+        $this->address = new AddressHelper();
     }
 
     public function addresses (): JsonResponse
     {
         $myPhone = $this->user()->find(auth()->id(), ['phone', 'sec_phone']);
         return $this->returnData('Addresses View', [
-            'myAddresses' => $this->getAddresses(),
+            'myAddresses' => $this->address->getAddresses(),
             'myPhone' => [
                 $myPhone['phone'],
                 $myPhone['sec_phone'],
@@ -90,7 +89,7 @@ class AddressesController extends Controller
                 if ($selectedAddress['main'] == 1)
                     return $this->returnError('You can\'t delete the main address');
                 $selectedAddress->delete();
-                return $this->returnSuccess('Address has deleted successfully');
+                return $this->returnSuccess('Address has been deleted');
             }
         } catch (Exception $e) {
             return $this->exceptionError($e);

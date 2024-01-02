@@ -8,7 +8,7 @@ use App\Http\Resources\Cart\CartResource;
 use App\Traits\ErrorTrait;
 use App\Traits\QueriesTrait;
 use App\Traits\ResponseTrait;
-use App\Traits\Rules\ActionsRules;
+use App\Traits\Rules\CartRules;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -16,7 +16,8 @@ use Illuminate\Support\Facades\Validator;
 
 class CartController extends Controller
 {
-    use QueriesTrait, ActionsRules, ResponseTrait, ErrorTrait;
+    use QueriesTrait, ResponseTrait, ErrorTrait;
+    use CartRules;
 
     public function myCart (): JsonResponse
     {

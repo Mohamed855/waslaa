@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\API\User;
 
 use App\Helpers\Helper;
+use App\Helpers\User\ProfileHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\User\UserResource;
 use App\Traits\ErrorTrait;
 use App\Traits\QueriesTrait;
 use App\Traits\ResponseTrait;
-use App\Traits\Rules\ActionsRules;
+use App\Traits\Rules\ProfileRules;
 use Exception;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -18,7 +19,15 @@ use Illuminate\Support\Facades\Validator;
 
 class ProfileController extends Controller
 {
-    use QueriesTrait, ActionsRules, ErrorTrait, ResponseTrait;
+    use QueriesTrait, ErrorTrait, ResponseTrait;
+    use ProfileRules;
+    
+    private ProfileHelper $profile;
+
+    public function __construct()
+    {
+        $this->profile = new ProfileHelper();
+    }
 
     public function profile (): JsonResponse
     {
@@ -49,7 +58,7 @@ class ProfileController extends Controller
             else
                 $details['delivery_phone'] = $details['phone'];
 
-            $this->updateCurrUserDetails($details);
+            $this->profile->updateCurrUserDetails($details);
 
             return $this->returnSuccess('Details updated successfully');
         } catch (Exception $e) {
@@ -75,7 +84,7 @@ class ProfileController extends Controller
             if (! Auth::attempt($credentials))
                 return $this->returnError('Old password isn\'t valid');
 
-            $this->updateCurrUserDetails(['password' => $passwords['new_password'] ]);
+            $this->profile->updateCurrUserDetails(['password' => $passwords['new_password'] ]);
 
             return $this->returnSuccess('Password changed successfully');
         } catch (Exception $e) {
@@ -94,7 +103,7 @@ class ProfileController extends Controller
                 default => auth()->user()['phone'],
             };
 
-            $this->updateCurrUserDetails([ 'delivery_phone' => $selectedPhone ]);
+            $this->profile->updateCurrUserDetails([ 'delivery_phone' => $selectedPhone ]);
 
             return $this->returnSuccess('Delivery phone has set successfully');
         } catch (Exception $e) {
@@ -118,10 +127,10 @@ class ProfileController extends Controller
 
                 Helper::deleteImage($currUser['avatar']);
 
-                $this->updateCurrUserDetails([ 'avatar' => Storage::url($imagePath) ]);
+                $this->profile->updateCurrUserDetails([ 'avatar' => Storage::url($imagePath) ]);
             }
 
-            return $this->returnSuccess('Profile Image updated successfully');
+            return $this->returnSuccess('Profile image updated successfully');
         } catch (Exception $e) {
             return $this->exceptionError($e);
         }
@@ -134,9 +143,9 @@ class ProfileController extends Controller
 
             Helper::deleteImage($currUser['avatar']);
 
-            $this->updateCurrUserDetails([ 'avatar' => null ]);
+            $this->profile->updateCurrUserDetails([ 'avatar' => null ]);
 
-            return $this->returnSuccess('Profile Image removed successfully');
+            return $this->returnSuccess('Profile image has been removed');
         } catch (Exception $e) {
             return $this->exceptionError($e);
         }
@@ -151,14 +160,9 @@ class ProfileController extends Controller
 
             $currUser->delete();
 
-            return $this->returnSuccess('your account has deleted successfully');
-        } catch (Exception) {
-            return $this->returnError('something went wrong');
+            return $this->returnSuccess('Your account has been deleted');
+        } catch (Exception $e) {
+            return $this->returnError($e);
         }
-    }
-
-    private function updateCurrUserDetails (array $request): void
-    {
-        $this->user()->find(auth()->id())->update($request);
     }
 }

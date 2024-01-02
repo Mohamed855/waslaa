@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Traits\AuthTrait;
+use App\Helpers\AuthHelper;
 use App\Traits\ResponseTrait;
 use Closure;
 use Illuminate\Http\Request;
@@ -10,7 +10,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AssignGuard
 {
-    use AuthTrait;
     use ResponseTrait;
 
     /**
@@ -22,7 +21,7 @@ class AssignGuard
     {
         if($guard != null) {
             auth()->shouldUse($guard);
-            if ($this->checkToken($request))
+            if (AuthHelper::checkToken($request))
                 return $next($request);
         }
         return $this->returnError('Sign in first');
