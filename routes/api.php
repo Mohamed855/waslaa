@@ -31,7 +31,7 @@ Route::prefix('auth')->group(function () {
     Route::post('logout', [AuthController::class, 'logout'])->middleware('auth.guard:api');
 });
 
-Route::prefix('app')->group(function () {
+Route::prefix('app')->middleware('auth.check:api')->group(function () {
     Route::get('/', [AppController::class, 'mainPage']);
     Route::get('category/{catId}/{subCatId?}', [AppController::class, 'categoryPage']);
     Route::get('vendor/{id}', [AppController::class, 'vendorPage']);
