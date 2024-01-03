@@ -43,7 +43,7 @@ class AppController extends Controller
         $selectedVendor = $this->app->vendor()->find($id);
         return $this->returnData('Selected Vendor View', [
             'countOfFavorites' => $this->app->countOfVendorFavorites($id),
-            'myRate' => $this->app->getUserRate('vendor', $id),
+            'myRate' => (int) $this->app->getUserRate('vendor', $id),
             'selectedVendor' => new VendorResource($selectedVendor),
             'subCategoriesWithProduct' => $this->app->getSubCategoriesWithProducts($id),
         ]);
@@ -53,7 +53,7 @@ class AppController extends Controller
     {
         $selectedProduct = $this->app->product()->with(['_subcategory', '_components', '_types'])->find($id);
         return $this->returnData('Selected Product View', [
-            'myRate' => $this->app->getUserRate('product', $id),
+            'myRate' => (int) $this->app->getUserRate('product', $id),
             'selectedProduct' => new ProductResource($selectedProduct),
         ]);
     }
