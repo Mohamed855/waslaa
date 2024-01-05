@@ -28,7 +28,7 @@
                                                         <h4 class="mt-0 mb-0">Balance</h4>
                                                         <a class="avatar-xs bg-white rounded font-18 d-flex text-black align-items-center justify-content-center"
                                                            href="#">
-                                                            <i class="mdi mdi-arrow-top-right"></i>
+                                                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                                         </a>
                                                     </div>
                                                     <h2 class="mb-0">$90,000</h2>
@@ -43,7 +43,7 @@
                                                         <h4 class="mt-0 mb-0">Spending</h4>
                                                         <a class="avatar-xs bg-white rounded font-18 d-flex text-black align-items-center justify-content-center"
                                                            href="#">
-                                                            <i class="mdi mdi-arrow-top-right"></i>
+                                                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                                         </a>
                                                     </div>
                                                     <h2 class="mb-0">1,21,020</h2>
@@ -74,7 +74,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="my-0">Total Profit</h4>
-                                <i class="mdi mdi-chevron-right text-primary font-20"></i>
+                                <i class="fa-solid fa-chevron-right"></i>
                             </div>
                             <div class="row">
                                 <div class="col-6">
@@ -95,7 +95,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="my-0">New Customers</h4>
-                                <i class="mdi mdi-chevron-right text-primary font-20"></i>
+                                <i class="fa-solid fa-chevron-right"></i>
                             </div>
                             <div class="row">
                                 <div class="col-6">
@@ -118,7 +118,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="my-0">Running Project</h4>
-                                <i class="mdi mdi-chevron-right text-primary font-20"></i>
+                                <i class="fa-solid fa-chevron-right"></i>
                             </div>
                             <div class="row">
                                 <div class="col-6">
@@ -139,7 +139,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="my-0">Expense Total</h4>
-                                <i class="mdi mdi-chevron-right text-primary font-20"></i>
+                                <i class="fa-solid fa-chevron-right"></i>
                             </div>
 
                             <div class="row">
@@ -171,7 +171,7 @@
                         <div class="dropdown z-3">
                             <a aria-expanded="false" class="dropdown-toggle arrow-none card-drop"
                                data-bs-toggle="dropdown" href="#">
-                                <i class="mdi mdi-dots-vertical lh-sm"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end">
                                 <!-- item-->
@@ -236,7 +236,7 @@
                         <div class="dropdown z-3">
                             <a aria-expanded="false" class="dropdown-toggle arrow-none card-drop"
                                data-bs-toggle="dropdown" href="#">
-                                <i class="mdi mdi-dots-vertical lh-sm"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end">
                                 <!-- item-->
@@ -346,7 +346,7 @@
                         <div class="dropdown z-3">
                             <a aria-expanded="false" class="dropdown-toggle arrow-none card-drop"
                                data-bs-toggle="dropdown" href="#">
-                                <i class="mdi mdi-dots-vertical lh-sm"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end">
                                 <!-- item-->
@@ -394,7 +394,7 @@
                         <div class="dropdown z-3">
                             <a aria-expanded="false" class="dropdown-toggle arrow-none card-drop"
                                data-bs-toggle="dropdown" href="#">
-                                <i class="mdi mdi-dots-vertical lh-sm"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end">
                                 <!-- item-->

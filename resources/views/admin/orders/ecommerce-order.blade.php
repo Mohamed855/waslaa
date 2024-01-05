@@ -36,12 +36,10 @@
                         </div>
                         <div class="col-xl-4">
                             <div class="d-flex justify-content-end align-items-center mt-xl-0 mt-2">
-                                <button type="button" class="btn btn-danger me-2"><i
-                                        class="mdi mdi-basket me-1"></i> Add New Order
+                                <button type="button" class="btn btn-danger me-2"><i class="fa-solid fa-basket-shopping"></i> Add New Order
                                 </button>
                                 <div>
-                                    <button type="button" class="btn btn-white border"><i
-                                            class="mdi mdi-filter-outline me-1"></i>Filter
+                                    <button type="button" class="btn btn-white border"><i class="fa-light fa-filter"></i>Filter
                                     </button>
                                 </div>
                             </div>
@@ -105,12 +103,9 @@
                                     class="badge bg-info-subtle text-info fs-6 fw-semibold">Shiped</span>
                             </td>
                             <td>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-eye"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-square-edit-outline"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-delete"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-eye"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-regular fa-pen-to-square"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
 
@@ -147,12 +142,9 @@
                                 <span class="badge bg-primary-subtle text-primary fs-6 fw-semibold">Processing</span>
                             </td>
                             <td>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-eye"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-square-edit-outline"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-delete"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-eye"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-regular fa-pen-to-square"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -189,12 +181,9 @@
                                 <span class="badge bg-primary-subtle text-primary fs-6 fw-semibold">Processing</span>
                             </td>
                             <td>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-eye"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-square-edit-outline"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-delete"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-eye"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-regular fa-pen-to-square"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -230,12 +219,9 @@
                                     class="badge bg-info-subtle text-info fs-6 fw-semibold">Shiped</span>
                             </td>
                             <td>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-eye"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-square-edit-outline"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-delete"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-eye"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-regular fa-pen-to-square"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -271,12 +257,9 @@
                                     class="badge bg-info-subtle text-info fs-6 fw-semibold">Shiped</span>
                             </td>
                             <td>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-eye"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-square-edit-outline"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-delete"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-eye"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-regular fa-pen-to-square"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -311,12 +294,9 @@
                                 <span class="badge bg-success-subtle text-success fs-6 fw-semibold">Delivered</span>
                             </td>
                             <td>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-eye"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-square-edit-outline"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-delete"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-eye"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-regular fa-pen-to-square"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
 
@@ -354,12 +334,9 @@
                             </td>
 
                             <td>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-eye"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-square-edit-outline"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-delete"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-eye"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-regular fa-pen-to-square"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
 
@@ -395,12 +372,9 @@
                                 <span class="badge bg-success-subtle text-success fs-6 fw-semibold">Delivered</span>
                             </td>
                             <td>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-eye"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-square-edit-outline"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-delete"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-eye"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-regular fa-pen-to-square"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -435,12 +409,9 @@
                                 <span class="badge bg-danger-subtle text-danger fs-6 fw-semibold">Cancelled</span>
                             </td>
                             <td>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-eye"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-square-edit-outline"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i
-                                        class="mdi mdi-delete"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-eye"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-regular fa-pen-to-square"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
 

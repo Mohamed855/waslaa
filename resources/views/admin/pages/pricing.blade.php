@@ -29,12 +29,12 @@
 
                     <hr>
                     <ul class="list-unstyled d-grid gap-2">
-                        <li class="fs-15"><i class="mdi mdi-check-all text-success me-2"></i>10 GB Storage</li>
-                        <li class="fs-15"><i class="mdi mdi-check-all text-success me-2"></i>500 GB Bandwidth</li>
-                        <li class="fs-15"><i class="mdi mdi-check-all text-success me-2"></i>No Domain</li>
-                        <li class="fs-15"><i class="mdi mdi-check-all text-success me-2"></i>1 User</li>
-                        <li class="fs-15"><i class="mdi mdi-check-all text-success me-2"></i>Email Support</li>
-                        <li class="fs-15"><i class="mdi mdi-check-all text-success me-2"></i>24x7 Support</li>
+                        <li class="fs-15"><i class="fa-solid fa-check-double"></i>10 GB Storage</li>
+                        <li class="fs-15"><i class="fa-solid fa-check-double"></i>500 GB Bandwidth</li>
+                        <li class="fs-15"><i class="fa-solid fa-check-double"></i>No Domain</li>
+                        <li class="fs-15"><i class="fa-solid fa-check-double"></i>1 User</li>
+                        <li class="fs-15"><i class="fa-solid fa-check-double"></i>Email Support</li>
+                        <li class="fs-15"><i class="fa-solid fa-check-double"></i>24x7 Support</li>
                     </ul>
 
                     <button class="btn btn-success text-white text-start fw-semibold w-100">Get Started<i
@@ -59,17 +59,17 @@
 
                     <hr>
                     <ul class="list-unstyled d-grid gap-2">
-                        <li class="fs-15"><i class="mdi mdi-check-all text-primary font-16 lh-sm me-2"></i>50 GB Storage
+                        <li class="fs-15"><i class="fa-solid fa-check-double"></i>50 GB Storage
                         </li>
-                        <li class="fs-15"><i class="mdi mdi-check-all text-primary font-16 lh-sm me-2"></i>500 GB
+                        <li class="fs-15"><i class="fa-solid fa-check-double"></i>500 GB
                             Bandwidth
                         </li>
-                        <li class="fs-15"><i class="mdi mdi-check-all text-primary font-16 lh-sm me-2"></i>No Domain
+                        <li class="fs-15"><i class="fa-solid fa-check-double"></i>No Domain
                         </li>
-                        <li class="fs-15"><i class="mdi mdi-check-all text-primary font-16 lh-sm me-2"></i>1 User</li>
-                        <li class="fs-15"><i class="mdi mdi-check-all text-primary font-16 lh-sm me-2"></i>Email Support
+                        <li class="fs-15"><i class="fa-solid fa-check-double"></i>1 User</li>
+                        <li class="fs-15"><i class="fa-solid fa-check-double"></i>Email Support
                         </li>
-                        <li class="fs-15"><i class="mdi mdi-check-all text-primary font-16 lh-sm me-2"></i>24x7 Support
+                        <li class="fs-15"><i class="fa-solid fa-check-double"></i>24x7 Support
                         </li>
                     </ul>
 
@@ -93,16 +93,16 @@
 
                     <hr>
                     <ul class="list-unstyled d-grid gap-2">
-                        <li class="fs-15"><i class="mdi mdi-check-all text-success me-2"></i>10 GB Storage</li>
-                        <li class="fs-15"><i class="mdi mdi-check-all text-success me-2"></i>500 GB Bandwidth</li>
-                        <li class="fs-15"><i class="mdi mdi-check-all text-success me-2"></i>No Domain</li>
-                        <li class="fs-15"><i class="mdi mdi-check-all text-success me-2"></i>1 User</li>
-                        <li class="fs-15"><i class="mdi mdi-check-all text-success me-2"></i>Email Support</li>
-                        <li class="fs-15"><i class="mdi mdi-check-all text-success me-2"></i>24x7 Support</li>
+                        <li class="fs-15"><i class="fa-solid fa-check-double"></i>10 GB Storage</li>
+                        <li class="fs-15"><i class="fa-solid fa-check-double"></i>500 GB Bandwidth</li>
+                        <li class="fs-15"><i class="fa-solid fa-check-double"></i>No Domain</li>
+                        <li class="fs-15"><i class="fa-solid fa-check-double"></i>1 User</li>
+                        <li class="fs-15"><i class="fa-solid fa-check-double"></i>Email Support</li>
+                        <li class="fs-15"><i class="fa-solid fa-check-double"></i>24x7 Support</li>
                     </ul>
 
                     <button class="btn btn-success text-white text-start fw-semibold w-100">Get Started
-                        <i class="mdi mdi-arrow-right float-end"></i></button>
+                        <i class="fa-solid fa-arrow-right"></i></button>
 
                 </div>
             </div> <!-- end Pricing_card -->

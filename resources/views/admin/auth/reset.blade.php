@@ -14,7 +14,7 @@
         </div>
 
         <div class="mb-0 text-start">
-            <button class="btn btn-soft-primary w-100" type="submit"><i class="mdi mdi-refresh font-18 lh-sm me-1 fw-bold"></i> <span class="fw-bold">@lang('auth.resetPass')</span></button>
+            <button class="btn btn-soft-primary w-100" type="submit"><i class="fa-solid fa-rotate-right"></i> <span class="fw-bold">@lang('auth.resetPass')</span></button>
         </div>
     </form>
     <!-- end form-->

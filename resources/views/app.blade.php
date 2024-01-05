@@ -10,6 +10,8 @@
         <link rel="shortcut icon" href="{{ asset('storage/assets/images/favicon.ico') }}">
         <!-- Theme Config Js -->
         <script src="{{ asset('storage/assets/js/head.js') }}" type="module"></script>
+        <!-- Fontawesome Js -->
+        <script src="https://kit.fontawesome.com/557767f6d5.js" crossorigin="anonymous"></script>
         <!-- Font Family -->
         <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" rel="stylesheet">
         <!-- Css styles -->

@@ -14,7 +14,7 @@
                         <div class="col-xl-6">
                             <div class="mb-3">
                                 <label for="projectname" class="form-label">Project Name</label>
-                                <input type="text" id="projectname" class="form-control"
+                                <i class="far fa-comment-alt"></i>nput type="text" id="projectname" class="form-control"
                                        placeholder="Enter project name">
                             </div>
 
@@ -92,7 +92,7 @@
                                     </div>
 
                                     <div class="dz-message needsclick">
-                                        <i class="h3 text-muted dripicons-cloud-upload"></i>
+                                        <i class="fas fa-cloud-upload-alt"></i>
                                         <h4>Drop files here or click to upload.</h4>
                                     </div>
                                 </form>
@@ -117,7 +117,7 @@
                                                 <div class="col-auto">
                                                     <!-- Button -->
                                                     <a href="" class="btn btn-link btn-lg text-muted" data-dz-remove>
-                                                        <i class="mdi mdi-close"></i>
+                                                        <i class="fas fa-times"></i>
                                                     </a>
                                                 </div>
                                             </div>
@@ -187,11 +187,9 @@
 
                     <div class="row mt-3">
                         <div class="col-12 text-center">
-                            <button type="button" class="btn btn-success waves-effect waves-light m-1"><i
-                                    class="fe-check-circle me-1"></i> Create
+                            <button type="button" class="btn btn-success waves-effect waves-light m-1"><i class="fas fa-check-circle"></i> Create
                             </button>
-                            <button type="button" class="btn btn-light waves-effect waves-light m-1"><i
-                                    class="fe-x me-1"></i> Cancel
+                            <button type="button" class="btn btn-light waves-effect waves-light m-1"><i class="fas fa-times"></i> Cancel
                             </button>
                         </div>
                     </div>

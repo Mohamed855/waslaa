@@ -7,8 +7,7 @@
 @section('dashboard-content')
     <div class="row mb-2">
         <div class="col-sm-4">
-            <a href="project-create.html" class="btn btn-danger rounded-pill waves-effect waves-light mb-3"><i
-                    class="mdi mdi-plus"></i> Create Project</a>
+            <a href="project-create.html" class="btn btn-danger rounded-pill waves-effect waves-light mb-3"><i class="far fa-comment-alt"></i> class="fa-solid fa-plus"></i> Create Project</a>
         </div>
         <div class="col-sm-8">
             <div class="text-sm-end">
@@ -20,11 +19,10 @@
                     <button type="button" class="btn btn-light">Finished</button>
                 </div>
                 <div class="btn-group mb-3 ms-2 d-none d-sm-inline-block">
-                    <button type="button" class="btn btn-dark"><i class="mdi mdi-apps"></i></button>
+                    <button type="button" class="btn btn-dark"><i class="far fa-comment-alt"></i> class="fas fa-th"></i></button>
                 </div>
                 <div class="btn-group mb-3 d-none d-sm-inline-block">
-                    <button type="button" class="btn btn-link text-dark"><i
-                            class="mdi mdi-format-list-bulleted-type"></i></button>
+                    <button type="button" class="btn btn-link text-dark"><i class="fas fa-list-ul"></i></button>
                 </div>
             </div>
         </div><!-- end col-->
@@ -38,7 +36,7 @@
                     <div class="dropdown float-end">
                         <a href="#" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="mdi mdi-dots-horizontal m-0 text-muted h3"></i>
+                            <i class="fas fa-ellipsis-v"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="#">Edit</a>
@@ -49,7 +47,7 @@
                     </div> <!-- end dropdown -->
                     <!-- Title-->
                     <h4 class="mt-0"><a href="project-detail.html" class="text-dark">New Admin Design</a></h4>
-                    <p class="text-muted text-uppercase"><i class="mdi mdi-account-circle"></i> <small>Orange
+                    <p class="text-muted text-uppercase"><i class="fas fa-user-circle"></i> <small>Orange
                             Limited</small></p>
                     <div class="badge bg-soft-success text-success mb-3">Finished</div>
                     <!-- Desc-->
@@ -60,11 +58,11 @@
                     <!-- Task info-->
                     <p class="mb-1">
                         <span class="pe-2 text-nowrap mb-2 d-inline-block">
-                            <i class="mdi mdi-format-list-bulleted-type text-muted"></i>
+                            <i class="fas fa-list-ul"></i>
                             <b>78</b> Tasks
                         </span>
                         <span class="text-nowrap mb-2 d-inline-block">
-                            <i class="mdi mdi-comment-multiple-outline text-muted"></i>
+                            <i class="far fa-comment-alt"></i>
                             <b>214</b> Comments
                         </span>
                     </p>
@@ -118,7 +116,7 @@
                     <div class="dropdown float-end">
                         <a href="#" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="mdi mdi-dots-horizontal m-0 text-muted h3"></i>
+                            <i class="fas fa-ellipsis-h"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="#">Edit</a>
@@ -129,7 +127,7 @@
                     </div> <!-- end dropdown -->
                     <!-- Title-->
                     <h4 class="mt-0"><a href="project-detail.html" class="text-dark">App Design and Development</a></h4>
-                    <p class="text-muted text-uppercase"><i class="mdi mdi-account-circle"></i> <small>Moondust
+                    <p class="text-muted text-uppercase"><i class="fas fa-user-circle"></i> <small>Moondust
                             Softwares</small></p>
                     <div class="badge bg-soft-secondary text-secondary mb-3">Ongoing</div>
                     <!-- Desc-->
@@ -140,11 +138,11 @@
                     <!-- Task info-->
                     <p class="mb-1">
                         <span class="pe-2 text-nowrap mb-2 d-inline-block">
-                            <i class="mdi mdi-format-list-bulleted-type text-muted"></i>
+                            <i class="fas fa-list-ul"></i>
                             <b>81</b> Tasks
                         </span>
                         <span class="text-nowrap mb-2 d-inline-block">
-                            <i class="mdi mdi-comment-multiple-outline text-muted"></i>
+                            <i class="far fa-comment-alt"></i></i>
                             <b>103</b> Comments
                         </span>
                     </p>
@@ -186,7 +184,7 @@
                     <div class="dropdown float-end">
                         <a href="#" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="mdi mdi-dots-horizontal m-0 text-muted h3"></i>
+                            <i class="fas fa-ellipsis-h"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="#">Edit</a>
@@ -197,7 +195,7 @@
                     </div> <!-- end dropdown -->
                     <!-- Title-->
                     <h4 class="mt-0"><a href="project-detail.html" class="text-dark">Landing page Design</a></h4>
-                    <p class="text-muted text-uppercase"><i class="mdi mdi-account-circle"></i> <small>Rose
+                    <p class="text-muted text-uppercase"><i class="fas fa-user-circle"></i> <small>Rose
                             Technologies</small></p>
                     <div class="badge bg-soft-success text-success mb-3">Finished</div>
                     <!-- Desc-->
@@ -208,11 +206,11 @@
                     <!-- Task info-->
                     <p class="mb-1">
                         <span class="pe-2 text-nowrap mb-2 d-inline-block">
-                            <i class="mdi mdi-format-list-bulleted-type text-muted"></i>
+                            <i class="fas fa-list-ul"></i>
                             <b>42</b> Tasks
                         </span>
                         <span class="text-nowrap mb-2 d-inline-block">
-                            <i class="mdi mdi-comment-multiple-outline text-muted"></i>
+                            <i class="far fa-comment-alt"></i></i>
                             <b>65</b> Comments
                         </span>
                     </p>
@@ -263,7 +261,7 @@
                     <div class="dropdown float-end">
                         <a href="#" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="mdi mdi-dots-horizontal m-0 text-muted h3"></i>
+                            <i class="fas fa-ellipsis-h"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="#">Edit</a>
@@ -275,7 +273,7 @@
                     <!-- Title-->
                     <h4 class="mt-0"><a href="project-detail.html" class="text-dark">Custom Software Development</a>
                     </h4>
-                    <p class="text-muted text-uppercase"><i class="mdi mdi-account-circle"></i> <small>Apple
+                    <p class="text-muted text-uppercase"><i class="fas fa-user-circle"></i> <small>Apple
                             Navigations</small></p>
                     <div class="badge bg-soft-secondary text-secondary mb-3">Ongoing</div>
                     <!-- Desc-->
@@ -286,11 +284,11 @@
                     <!-- Task info-->
                     <p class="mb-1">
                         <span class="pe-2 text-nowrap mb-2 d-inline-block">
-                            <i class="mdi mdi-format-list-bulleted-type text-muted"></i>
+                            <i class="fas fa-list-ul"></i>
                             <b>95</b> Tasks
                         </span>
                         <span class="text-nowrap mb-2 d-inline-block">
-                            <i class="mdi mdi-comment-multiple-outline text-muted"></i>
+                            <i class="far fa-comment-alt"></i></i>
                             <b>1.3k</b> Comments
                         </span>
                     </p>
@@ -332,7 +330,7 @@
                     <div class="dropdown float-end">
                         <a href="#" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="mdi mdi-dots-horizontal m-0 text-muted h3"></i>
+                            <i class="fas fa-ellipsis-h"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="#">Edit</a>
@@ -343,7 +341,7 @@
                     </div> <!-- end dropdown -->
                     <!-- Title-->
                     <h4 class="mt-0"><a href="project-detail.html" class="text-dark">Website Redesign</a></h4>
-                    <p class="text-muted text-uppercase"><i class="mdi mdi-account-circle"></i> <small>Enigma
+                    <p class="text-muted text-uppercase"><i class="fas fa-user-circle"></i> <small>Enigma
                             Navigations</small></p>
                     <div class="badge bg-soft-secondary text-secondary mb-3">Ongoing</div>
                     <!-- Desc-->
@@ -354,11 +352,11 @@
                     <!-- Task info-->
                     <p class="mb-1">
                         <span class="pe-2 text-nowrap mb-2 d-inline-block">
-                            <i class="mdi mdi-format-list-bulleted-type text-muted"></i>
+                            <i class="fas fa-list-ul"></i>
                             <b>36</b> Tasks
                         </span>
                         <span class="text-nowrap mb-2 d-inline-block">
-                            <i class="mdi mdi-comment-multiple-outline text-muted"></i>
+                            <i class="far fa-comment-alt"></i></i>
                             <b>78</b> Comments
                         </span>
                     </p>
@@ -406,7 +404,7 @@
                     <div class="dropdown float-end">
                         <a href="#" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="mdi mdi-dots-horizontal m-0 text-muted h3"></i>
+                            <i class="fas fa-ellipsis-h"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="#">Edit</a>
@@ -418,7 +416,7 @@
                     <!-- Title-->
                     <h4 class="mt-0"><a href="project-detail.html" class="text-dark">Multipurpose Landing Template</a>
                     </h4>
-                    <p class="text-muted text-uppercase"><i class="mdi mdi-account-circle"></i> <small>Pride
+                    <p class="text-muted text-uppercase"><i class="fas fa-user-circle"></i> <small>Pride
                             Softwares</small></p>
                     <div class="badge bg-soft-success text-success mb-3">Finished</div>
                     <!-- Desc-->
@@ -429,11 +427,11 @@
                     <!-- Task info-->
                     <p class="mb-1">
                         <span class="pe-2 text-nowrap mb-2 d-inline-block">
-                            <i class="mdi mdi-format-list-bulleted-type text-muted"></i>
+                            <i class="fas fa-list-ul"></i>
                             <b>30</b> Tasks
                         </span>
                         <span class="text-nowrap mb-2 d-inline-block">
-                            <i class="mdi mdi-comment-multiple-outline text-muted"></i>
+                            <i class="far fa-comment-alt"></i></i>
                             <b>148</b> Comments
                         </span>
                     </p>
@@ -474,7 +472,7 @@
     <div class="row">
         <div class="col-12">
             <div class="text-center mb-3">
-                <a href="javascript:void(0);" class="text-danger"><i class="mdi mdi-spin mdi-loading me-1"></i> Load
+                <a href="javascript:void(0);" class="text-danger"><i class="fas fa-spinner"></i> Load
                     more </a>
             </div>
         </div> <!-- end col-->

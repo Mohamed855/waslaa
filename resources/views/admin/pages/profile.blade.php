@@ -40,22 +40,22 @@
                                     <li class="list-inline-item">
                                         <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2 "
                                            title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                                           data-bs-title="Facebook"><i class="mdi mdi-facebook"></i></a>
+                                           data-bs-title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                                     </li>
                                     <li class="list-inline-item">
                                         <a class="social-list-item border border-2 border-info btn btn-soft-info font-16 rounded-2"
                                            title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                                           data-bs-title="Twitter"><i class="mdi mdi-twitter"></i></a>
+                                           data-bs-title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
                                     </li>
                                     <li class="list-inline-item">
                                         <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2"
                                            title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                                           data-bs-title="LinkedIn"><i class="mdi mdi-linkedin"></i></a>
+                                           data-bs-title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                                     </li>
                                     <li class="list-inline-item">
                                         <a class="social-list-item border border-2 border-danger btn btn-soft-danger font-16 rounded-2"
                                            title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                                           data-bs-title="Message"><i class="mdi mdi-email-open-outline"></i></a>
+                                           data-bs-title="Message"><i class="fa-regular fa-envelope"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -292,8 +292,7 @@
                                                 <textarea style="height: 125px;" id="AboutMe" class="form-control">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</textarea>
                                             </div>
                                         </div>
-                                        <button class="btn btn-primary" type="submit"><i
-                                                class="ri-save-line me-1 fs-16 lh-1"></i> Save
+                                        <button class="btn btn-primary" type="submit"><i class="fa-regular fa-floppy-disk"></i> Save
                                         </button>
                                     </form>
                                 </div>

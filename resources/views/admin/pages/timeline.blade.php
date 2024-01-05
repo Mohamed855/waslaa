@@ -22,7 +22,7 @@
                                 <div class="panel">
                                     <div class="timeline-box">
                                         <span class="arrow-alt"></span>
-                                        <span class="timeline-icon"><i class="mdi mdi-record-circle-outline"></i></span>
+                                        <span class="timeline-icon"><i class="fa-solid fa-record-vinyl"></i></span>
                                         <h4 class="fs-16 fw-semibold ">1 hour ago</h4>
                                         <p class="timeline-date text-muted"><small>08:25 am</small></p>
                                         <p>Dolorum provident rerum aut hic quasi placeat iure tempora laudantium ipsa ad
@@ -175,7 +175,7 @@
                                 <div class="panel">
                                     <div class="timeline-box">
                                         <span class="arrow-alt"></span>
-                                        <span class="timeline-icon"><i class="mdi mdi-record-circle-outline"></i></span>
+                                        <span class="timeline-icon"><i class="fa-solid fa-record-vinyl"></i></span>
                                         <h4 class="fs-16 fw-semibold text-muted">31 December 2015</h4>
                                         <p class="timeline-date text-muted"><small>08:25 am</small></p>
                                         <p>Download the new updates of TechUI admin dashboard</p>

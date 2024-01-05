@@ -17,10 +17,10 @@
                             questions (FAQ).
                         </p>
 
-                        <button type="button" class="btn btn-success mt-2"><i class="mdi mdi-email-outline me-1"></i>
+                        <button type="button" class="btn btn-success mt-2"><i class="fa-regular fa-envelope"></i>
                             Email us your question
                         </button>
-                        <button type="button" class="btn btn-info mt-2 ms-1"><i class="mdi mdi-twitter me-1"></i> Send
+                        <button type="button" class="btn btn-info mt-2 ms-1"><i class="fa-brands fa-x-twitter"></i> Send
                             us a tweet
                         </button>
                     </div>

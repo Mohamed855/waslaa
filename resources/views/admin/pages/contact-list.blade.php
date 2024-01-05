@@ -15,16 +15,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i
-                                    class="mdi mdi-dots-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-pencil me-1 text-muted"></i>Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-account-circle me-1 text-muted"></i>Action</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-delete me-1 text-muted"></i>Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -35,22 +31,22 @@
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2 "
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Facebook"><i class="mdi mdi-facebook"></i></a>
+                               data-bs-title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-info btn btn-soft-info font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Twitter"><i class="mdi mdi-twitter"></i></a>
+                               data-bs-title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="LinkedIn"><i class="mdi mdi-linkedin"></i></a>
+                               data-bs-title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-danger btn btn-soft-danger font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Message"><i class="mdi mdi-email-open-outline"></i></a>
+                               data-bs-title="Message"><i class="fa-regular fa-envelope"></i></a>
                         </li>
                     </ul>
                     <div class="d-flex">
@@ -74,16 +70,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i
-                                    class="mdi mdi-dots-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-pencil me-1 text-muted"></i>Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-account-circle me-1 text-muted"></i>Action</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-delete me-1 text-muted"></i>Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -94,22 +86,22 @@
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2 "
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Facebook"><i class="mdi mdi-facebook"></i></a>
+                               data-bs-title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-info btn btn-soft-info font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Twitter"><i class="mdi mdi-twitter"></i></a>
+                               data-bs-title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="LinkedIn"><i class="mdi mdi-linkedin"></i></a>
+                               data-bs-title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-danger btn btn-soft-danger font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Message"><i class="mdi mdi-email-open-outline"></i></a>
+                               data-bs-title="Message"><i class="fa-regular fa-envelope"></i></a>
                         </li>
                     </ul>
                     <div class="d-flex">
@@ -133,16 +125,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i
-                                    class="mdi mdi-dots-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-pencil me-1 text-muted"></i>Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-account-circle me-1 text-muted"></i>Action</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-delete me-1 text-muted"></i>Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -153,22 +141,22 @@
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2 "
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Facebook"><i class="mdi mdi-facebook"></i></a>
+                               data-bs-title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-info btn btn-soft-info font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Twitter"><i class="mdi mdi-twitter"></i></a>
+                               data-bs-title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="LinkedIn"><i class="mdi mdi-linkedin"></i></a>
+                               data-bs-title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-danger btn btn-soft-danger font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Message"><i class="mdi mdi-email-open-outline"></i></a>
+                               data-bs-title="Message"><i class="fa-regular fa-envelope"></i></a>
                         </li>
                     </ul>
                     <div class="d-flex">
@@ -192,16 +180,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i
-                                    class="mdi mdi-dots-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-pencil me-1 text-muted"></i>Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-account-circle me-1 text-muted"></i>Action</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-delete me-1 text-muted"></i>Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -212,22 +196,22 @@
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2 "
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Facebook"><i class="mdi mdi-facebook"></i></a>
+                               data-bs-title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-info btn btn-soft-info font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Twitter"><i class="mdi mdi-twitter"></i></a>
+                               data-bs-title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="LinkedIn"><i class="mdi mdi-linkedin"></i></a>
+                               data-bs-title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-danger btn btn-soft-danger font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Message"><i class="mdi mdi-email-open-outline"></i></a>
+                               data-bs-title="Message"><i class="fa-regular fa-envelope"></i></a>
                         </li>
                     </ul>
                     <div class="d-flex">
@@ -248,16 +232,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i
-                                    class="mdi mdi-dots-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-pencil me-1 text-muted"></i>Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-account-circle me-1 text-muted"></i>Action</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-delete me-1 text-muted"></i>Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -268,22 +248,22 @@
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2 "
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Facebook"><i class="mdi mdi-facebook"></i></a>
+                               data-bs-title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-info btn btn-soft-info font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Twitter"><i class="mdi mdi-twitter"></i></a>
+                               data-bs-title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="LinkedIn"><i class="mdi mdi-linkedin"></i></a>
+                               data-bs-title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-danger btn btn-soft-danger font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Message"><i class="mdi mdi-email-open-outline"></i></a>
+                               data-bs-title="Message"><i class="fa-regular fa-envelope"></i></a>
                         </li>
                     </ul>
                     <div class="d-flex">
@@ -304,16 +284,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i
-                                    class="mdi mdi-dots-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-pencil me-1 text-muted"></i>Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-account-circle me-1 text-muted"></i>Action</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-delete me-1 text-muted"></i>Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -324,22 +300,22 @@
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2 "
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Facebook"><i class="mdi mdi-facebook"></i></a>
+                               data-bs-title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-info btn btn-soft-info font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Twitter"><i class="mdi mdi-twitter"></i></a>
+                               data-bs-title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="LinkedIn"><i class="mdi mdi-linkedin"></i></a>
+                               data-bs-title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-danger btn btn-soft-danger font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Message"><i class="mdi mdi-email-open-outline"></i></a>
+                               data-bs-title="Message"><i class="fa-regular fa-envelope"></i></a>
                         </li>
                     </ul>
                     <div class="d-flex">
@@ -360,16 +336,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i
-                                    class="mdi mdi-dots-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-pencil me-1 text-muted"></i>Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-account-circle me-1 text-muted"></i>Action</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-delete me-1 text-muted"></i>Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -380,22 +352,22 @@
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2 "
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Facebook"><i class="mdi mdi-facebook"></i></a>
+                               data-bs-title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-info btn btn-soft-info font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Twitter"><i class="mdi mdi-twitter"></i></a>
+                               data-bs-title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="LinkedIn"><i class="mdi mdi-linkedin"></i></a>
+                               data-bs-title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-danger btn btn-soft-danger font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Message"><i class="mdi mdi-email-open-outline"></i></a>
+                               data-bs-title="Message"><i class="fa-regular fa-envelope"></i></a>
                         </li>
                     </ul>
                     <div class="d-flex">
@@ -416,16 +388,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i
-                                    class="mdi mdi-dots-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-pencil me-1 text-muted"></i>Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-account-circle me-1 text-muted"></i>Action</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-delete me-1 text-muted"></i>Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -436,22 +404,22 @@
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2 "
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Facebook"><i class="mdi mdi-facebook"></i></a>
+                               data-bs-title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-info btn btn-soft-info font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Twitter"><i class="mdi mdi-twitter"></i></a>
+                               data-bs-title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="LinkedIn"><i class="mdi mdi-linkedin"></i></a>
+                               data-bs-title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-danger btn btn-soft-danger font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Message"><i class="mdi mdi-email-open-outline"></i></a>
+                               data-bs-title="Message"><i class="fa-regular fa-envelope"></i></a>
                         </li>
                     </ul>
                     <div class="d-flex">
@@ -472,16 +440,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i
-                                    class="mdi mdi-dots-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-pencil me-1 text-muted"></i>Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-account-circle me-1 text-muted"></i>Action</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-delete me-1 text-muted"></i>Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -492,22 +456,22 @@
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2 "
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Facebook"><i class="mdi mdi-facebook"></i></a>
+                               data-bs-title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-info btn btn-soft-info font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Twitter"><i class="mdi mdi-twitter"></i></a>
+                               data-bs-title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="LinkedIn"><i class="mdi mdi-linkedin"></i></a>
+                               data-bs-title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-danger btn btn-soft-danger font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Message"><i class="mdi mdi-email-open-outline"></i></a>
+                               data-bs-title="Message"><i class="fa-regular fa-envelope"></i></a>
                         </li>
                     </ul>
                     <div class="d-flex">
@@ -528,16 +492,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i
-                                    class="mdi mdi-dots-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-pencil me-1 text-muted"></i>Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-account-circle me-1 text-muted"></i>Action</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-delete me-1 text-muted"></i>Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -548,22 +508,22 @@
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2 "
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Facebook"><i class="mdi mdi-facebook"></i></a>
+                               data-bs-title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-info btn btn-soft-info font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Twitter"><i class="mdi mdi-twitter"></i></a>
+                               data-bs-title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="LinkedIn"><i class="mdi mdi-linkedin"></i></a>
+                               data-bs-title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-danger btn btn-soft-danger font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Message"><i class="mdi mdi-email-open-outline"></i></a>
+                               data-bs-title="Message"><i class="fa-regular fa-envelope"></i></a>
                         </li>
                     </ul>
                     <div class="d-flex">
@@ -584,16 +544,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i
-                                    class="mdi mdi-dots-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-pencil me-1 text-muted"></i>Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-account-circle me-1 text-muted"></i>Action</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-delete me-1 text-muted"></i>Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -604,22 +560,22 @@
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2 "
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Facebook"><i class="mdi mdi-facebook"></i></a>
+                               data-bs-title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-info btn btn-soft-info font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Twitter"><i class="mdi mdi-twitter"></i></a>
+                               data-bs-title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="LinkedIn"><i class="mdi mdi-linkedin"></i></a>
+                               data-bs-title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-danger btn btn-soft-danger font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Message"><i class="mdi mdi-email-open-outline"></i></a>
+                               data-bs-title="Message"><i class="fa-regular fa-envelope"></i></a>
                         </li>
                     </ul>
                     <div class="d-flex">
@@ -641,16 +597,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i
-                                    class="mdi mdi-dots-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-pencil me-1 text-muted"></i>Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-account-circle me-1 text-muted"></i>Action</a>
-                                <a class="dropdown-item" href="#"><i
-                                        class="mdi mdi-delete me-1 text-muted"></i>Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -661,22 +613,22 @@
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2 "
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Facebook"><i class="mdi mdi-facebook"></i></a>
+                               data-bs-title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-info btn btn-soft-info font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Twitter"><i class="mdi mdi-twitter"></i></a>
+                               data-bs-title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-primary btn btn-soft-primary font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="LinkedIn"><i class="mdi mdi-linkedin"></i></a>
+                               data-bs-title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                         </li>
                         <li class="list-inline-item">
                             <a class="social-list-item border border-2 border-danger btn btn-soft-danger font-16 rounded-2"
                                title="" data-bs-toggle="tooltip" data-bs-placement="top" href=""
-                               data-bs-title="Message"><i class="mdi mdi-email-open-outline"></i></a>
+                               data-bs-title="Message"><i class="fa-regular fa-envelope"></i></a>
                         </li>
                     </ul>
                     <div class="d-flex">

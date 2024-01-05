@@ -20,7 +20,7 @@
 
             <!-- Sidebar Menu Toggle Button -->
             <button class="button-toggle-menu">
-                <i class="mdi mdi-menu"></i>
+                <i class="fa-solid fa-bars"></i>
             </button>
 
             <!-- Topbar Search Form -->
@@ -36,13 +36,13 @@
 
             <li class="d-none d-md-inline-block">
                 <a class="nav-link" href="" data-toggle="fullscreen">
-                    <i class="fe-maximize font-22"></i>
+                    <i class="fa-solid fa-expand"></i>
                 </a>
             </li>
 
             <li class="dropdown d-lg-none">
                 <a class="nav-link dropdown-toggle waves-effect waves-light arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <i class="ri-search-line font-22"></i>
+                    <i class="fa-solid fa-magnifying-glass"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
                     <form class="p-3">
@@ -83,13 +83,13 @@
 
             <li class="d-inline-flex">
                 <div class="nav-link" id="light-dark-mode">
-                    <i class="fe-moon font-22"></i>
+                    <i class="fa-solid fa-moon"></i>
                 </div>
             </li>
 
             <li>
                 <a class="nav-link waves-effect waves-light" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
-                    <i class="fe-settings font-22"></i>
+                    <i class="fa-solid fa-gear"></i>
                 </a>
             </li>
 
@@ -97,7 +97,7 @@
                 <a class="nav-link dropdown-toggle nav-user me-0 waves-effect waves-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                     <img src="{{ asset('storage/assets/images/users/avatar-1.jpg') }}" alt="user-image" class="rounded-circle">
                     <span class="ms-1 d-none d-md-inline-block">
-                        Daniel <i class="mdi mdi-chevron-down"></i>
+                        Daniel <i class="fa-solid fa-chevron-down"></i>
                     </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end profile-dropdown ">
@@ -108,19 +108,19 @@
 
                     <!-- item-->
                     <a href="pages-profile.html" class="dropdown-item notify-item">
-                        <i class="fe-user me-1"></i>
+                        <i class="fa-solid fa-user"></i>
                         <span>My Account</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fe-settings me-1"></i>
+                        <i class="fa-solid fa-user-gear"></i>
                         <span>Settings</span>
                     </a>
 
                     <!-- item-->
                     <a href="auth-lock-screen.html" class="dropdown-item notify-item">
-                        <i class="fe-lock me-1"></i>
+                        <i class="fa-regular fa-lock"></i>
                         <span>Lock Screen</span>
                     </a>
 
@@ -128,7 +128,7 @@
 
                     <!-- item-->
                     <a href="auth-logout.html" class="dropdown-item notify-item">
-                        <i class="fe-log-out me-1"></i>
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
                         <span>Logout</span>
                     </a>
 

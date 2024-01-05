@@ -35,7 +35,7 @@
                                                         <h4 class="mt-0 mb-0">Balance</h4>
                                                         <a href="#"
                                                            class="avatar-xs bg-white rounded font-18 d-flex text-black align-items-center justify-content-center">
-                                                            <i class="mdi mdi-arrow-top-right"></i>
+                                                            <i class="fa-solid fa-up-right-from-square"></i>
                                                         </a>
                                                     </div>
                                                     <h2 class="mb-0">$90,000</h2>
@@ -49,7 +49,7 @@
                                                         <h4 class="mt-0 mb-0">Spending</h4>
                                                         <a href="#"
                                                            class="avatar-xs bg-white rounded font-18 d-flex text-black align-items-center justify-content-center">
-                                                            <i class="mdi mdi-arrow-top-right"></i>
+                                                            <i class="fa-solid fa-up-right-from-square"></i>
                                                         </a>
                                                     </div>
                                                     <h2 class="mb-0">1,21,020</h2>
@@ -79,7 +79,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="my-0">Total Profit</h4>
-                                <i class="mdi mdi-chevron-right text-primary font-20"></i>
+                                <i class="fa-solid fa-chevron-right"></i>
                             </div>
                             <div class="row">
                                 <div class="col-6">
@@ -100,7 +100,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="my-0">New Customers</h4>
-                                <i class="mdi mdi-chevron-right text-primary font-20"></i>
+                                <i class="fa-solid fa-chevron-right"></i>
                             </div>
                             <div class="row">
                                 <div class="col-6">
@@ -123,7 +123,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="my-0">Running Project</h4>
-                                <i class="mdi mdi-chevron-right text-primary font-20"></i>
+                                <i class="fa-solid fa-chevron-right"></i>
                             </div>
                             <div class="row">
                                 <div class="col-6">
@@ -143,7 +143,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center mb-3">
                                 <h4 class="my-0">Expense Total</h4>
-                                <i class="mdi mdi-chevron-right text-primary font-20"></i>
+                                <i class="fa-solid fa-chevron-right"></i>
                             </div>
 
                             <div class="row">
@@ -175,7 +175,7 @@
                         <div class="dropdown z-3">
                             <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
                                aria-expanded="false">
-                                <i class="mdi mdi-dots-vertical lh-sm"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end">
                                 <!-- item-->
@@ -196,31 +196,31 @@
                     <div class="bg-soft-primary rounded">
                         <div class="row text-center">
                             <div class="col-12 col-sm-6 col-md-3">
-                                <p class="text-muted font-16 text-dark mt-3"><i class="mdi mdi-circle-double"></i>
+                                <p class="text-muted font-16 text-dark mt-3"><i class="fa-regular fa-circle-dot"></i>
                                     Current Week</p>
                                 <h3 class="mb-3 mt-2">
                                     <span>$1705.54</span>
                                 </h3>
                             </div>
                             <div class="col-12 col-sm-6 col-md-3">
-                                <p class="text-muted font-16 text-dark mt-3"><i class="mdi mdi-circle-double"></i>
+                                <p class="text-muted font-16 text-dark mt-3"><i class="fa-regular fa-circle-dot"></i>
                                     Previous Week</p>
                                 <h3 class="mb-3 mt-2">
-                                    <span>$6,523.25 <i class="ri-corner-right-up-fill text-success"></i></span>
+                                    <span>$6,523.25 <i class="fa-solid fa-turn-up"></i></span>
                                 </h3>
                             </div>
                             <div class="col-12 col-sm-6 col-md-3">
-                                <p class="text-muted font-16 text-dark mt-3"><i class="mdi mdi-circle-double"></i>
+                                <p class="text-muted font-16 text-dark mt-3"><i class="fa-regular fa-circle-dot"></i>
                                     Conversation</p>
                                 <h3 class="mb-3 mt-2">
                                     <span>8.27%</span>
                                 </h3>
                             </div>
                             <div class="col-12 col-sm-6 col-md-3">
-                                <p class="text-muted font-16 text-dark mt-3"><i class="mdi mdi-circle-double"></i>
+                                <p class="text-muted font-16 text-dark mt-3"><i class="fa-regular fa-circle-dot"></i>
                                     Customers</p>
                                 <h3 class="mb-3 mt-2">
-                                    <span>69k <i class="ri-corner-right-down-line text-danger"></i></span>
+                                    <span>69k <i class="fa-solid fa-turn-down"></i></span>
                                 </h3>
                             </div>
                         </div>
@@ -237,7 +237,7 @@
                         <div class="dropdown z-3">
                             <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
                                aria-expanded="false">
-                                <i class="mdi mdi-dots-vertical lh-sm"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end">
                                 <!-- item-->
@@ -338,7 +338,7 @@
                         <div class="dropdown z-3">
                             <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
                                aria-expanded="false">
-                                <i class="mdi mdi-dots-vertical lh-sm"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end">
                                 <!-- item-->
@@ -386,7 +386,7 @@
                         <div class="dropdown z-3">
                             <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
                                aria-expanded="false">
-                                <i class="mdi mdi-dots-vertical lh-sm"></i>
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
                             </a>
                             <div class="dropdown-menu dropdown-menu-animated dropdown-menu-end">
                                 <!-- item-->
@@ -445,12 +445,12 @@
                                 <div class="btn-group dropdown">
                                     <a href="javascript: void(0);"
                                        class="dropdown-toggle arrow-none btn btn-light btn-sm" data-bs-toggle="dropdown"
-                                       aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
+                                       aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-pencil me-1 text-muted"></i>Edit
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
                                             Contact</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-delete me-1 text-muted"></i>Remove</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-email me-1 text-muted"></i>Send
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-envelope"></i> Send
                                             Email</a>
                                     </div>
                                 </div>
@@ -484,12 +484,12 @@
                                 <div class="btn-group dropdown">
                                     <a href="javascript: void(0);"
                                        class="dropdown-toggle arrow-none btn btn-light btn-sm" data-bs-toggle="dropdown"
-                                       aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
+                                       aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-pencil me-1 text-muted"></i>Edit
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
                                             Contact</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-delete me-1 text-muted"></i>Remove</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-email me-1 text-muted"></i>Send
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-envelope"></i> Send
                                             Email</a>
                                     </div>
                                 </div>
@@ -523,12 +523,12 @@
                                 <div class="btn-group dropdown">
                                     <a href="javascript: void(0);"
                                        class="dropdown-toggle arrow-none btn btn-light btn-sm" data-bs-toggle="dropdown"
-                                       aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
+                                       aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-pencil me-1 text-muted"></i>Edit
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
                                             Contact</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-delete me-1 text-muted"></i>Remove</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-email me-1 text-muted"></i>Send
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-envelope"></i> Send
                                             Email</a>
                                     </div>
                                 </div>
@@ -562,12 +562,12 @@
                                 <div class="btn-group dropdown">
                                     <a href="javascript: void(0);"
                                        class="dropdown-toggle arrow-none btn btn-light btn-sm" data-bs-toggle="dropdown"
-                                       aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
+                                       aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-pencil me-1 text-muted"></i>Edit
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
                                             Contact</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-delete me-1 text-muted"></i>Remove</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-email me-1 text-muted"></i>Send
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-envelope"></i> Send
                                             Email</a>
                                     </div>
                                 </div>
@@ -601,12 +601,12 @@
                                 <div class="btn-group dropdown">
                                     <a href="javascript: void(0);"
                                        class="dropdown-toggle arrow-none btn btn-light btn-sm" data-bs-toggle="dropdown"
-                                       aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
+                                       aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-pencil me-1 text-muted"></i>Edit
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
                                             Contact</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-delete me-1 text-muted"></i>Remove</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-email me-1 text-muted"></i>Send
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-envelope"></i> Send
                                             Email</a>
                                     </div>
                                 </div>
@@ -640,12 +640,12 @@
                                 <div class="btn-group dropdown">
                                     <a href="javascript: void(0);"
                                        class="dropdown-toggle arrow-none btn btn-light btn-sm" data-bs-toggle="dropdown"
-                                       aria-expanded="false"><i class="mdi mdi-dots-horizontal"></i></a>
+                                       aria-expanded="false"><i class="fa-solid fa-ellipsis"></i></a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-pencil me-1 text-muted"></i>Edit
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
                                             Contact</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-delete me-1 text-muted"></i>Remove</a>
-                                        <a class="dropdown-item" href="#"><i class="mdi mdi-email me-1 text-muted"></i>Send
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
+                                        <a class="dropdown-item" href="#"><i class="fa-solid fa-envelope"></i> Send
                                             Email</a>
                                     </div>
                                 </div>

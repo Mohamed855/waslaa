@@ -181,7 +181,7 @@
             <div class="row justify-content-center align-items-center g-2 mt-4">
                 <div class="col-xl-3 col-md-4">
                     <div class="text-center">
-                        <i class="mdi mdi-check-decagram fs-3 text-success"></i>
+                        <i class="fa-solid fa-circle-check"></i>
                         <h5 class="mb-1">100% Original</h5>
                         <p class="text-muted fs-5 fw-semibold">Chocolate bar candy canes ice <br>
                             toffee cookie halvah.</p>
@@ -190,7 +190,7 @@
 
                 <div class="col-xl-3 col-md-4">
                     <div class="text-center">
-                        <i class="mdi mdi-check-decagram fs-3 text-success"></i>
+                        <i class="fa-solid fa-circle-check"></i>
                         <h5 class="mb-1">10 Day Replacement</h5>
                         <p class="text-muted fs-5 fw-semibold">Chocolate bar candy canes ice cream
                             <br> toffee cookie halvah.
@@ -199,7 +199,7 @@
                 </div><!-- end col -->
                 <div class="col-xl-3 col-md-4">
                     <div class="text-center">
-                        <i class="mdi mdi-check-decagram fs-3 text-success"></i>
+                        <i class="fa-solid fa-circle-check"></i>
                         <h5 class="mb-1">Year Warranty</h5>
                         <p class="text-muted fs-5 fw-semibold">Chocolate bar candy canes ice cream
                             <br> toffee cookie halvah.

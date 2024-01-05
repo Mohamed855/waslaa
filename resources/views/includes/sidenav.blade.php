@@ -23,7 +23,7 @@
 
             <li class="menu-item">
                 <a href="#" class="menu-link">
-                    <span class="menu-icon"><i data-feather="home"></i></span>
+                    <span class="menu-icon"><i class="fa-solid fa-house"></i></span>
                     <span class="menu-text"> Dashboard </span>
                     <span class="badge bg-success rounded ms-auto">01</span>
                 </a>
@@ -33,16 +33,16 @@
 
             <li class="menu-item">
                 <a href="apps-calendar.html" class="menu-link">
-                    <span class="menu-icon"><i data-feather="calendar"></i></span>
+                    <span class="menu-icon"><i class="fa-solid fa-calendar"></i></span>
                     <span class="menu-text"> Calendar </span>
                 </a>
             </li>
 
             <li class="menu-item">
                 <a href="#ecommerce" data-bs-toggle="collapse" class="menu-link">
-                    <span class="menu-icon"><i data-feather="shopping-cart"></i></span>
+                    <span class="menu-icon"><i class="fa-solid fa-cart-shopping"></i></span>
                     <span class="menu-text"> Ecommerce </span>
-                    <span class="menu-arrow"></span>
+                    <span class="menu-arrow"><i class="fa-solid fa-caret-down"></i></span>
                 </a>
                 <div class="collapse" id="ecommerce">
                     <ul class="sub-menu">
@@ -82,9 +82,9 @@
 
             <li class="menu-item">
                 <a href="#invoice" data-bs-toggle="collapse" class="menu-link">
-                    <span class="menu-icon"><i data-feather="file-text"></i></span>
+                    <span class="menu-icon"><i class="fa-solid fa-file-lines"></i></span>
                     <span class="menu-text"> Invoice </span>
-                    <span class="menu-arrow"></span>
+                    <span class="menu-arrow"><i class="fa-solid fa-caret-down"></i></span>
                 </a>
                 <div class="collapse" id="invoice">
                     <ul class="sub-menu">
@@ -107,9 +107,9 @@
 
             <li class="menu-item">
                 <a href="#menuExpages" data-bs-toggle="collapse" class="menu-link">
-                    <span class="menu-icon"><i data-feather="book"></i></span>
+                    <span class="menu-icon"><i class="fa-solid fa-book-open"></i></span>
                     <span class="menu-text"> Extra Pages </span>
-                    <span class="menu-arrow"></span>
+                    <span class="menu-arrow"><i class="fa-solid fa-caret-down"></i></span>
                 </a>
                 <div class="collapse" id="menuExpages">
                     <ul class="sub-menu">
@@ -167,9 +167,9 @@
 
             <li class="menu-item">
                 <a href="#authPages" data-bs-toggle="collapse" class="menu-link">
-                    <span class="menu-icon"><i data-feather="users"></i></span>
+                    <span class="menu-icon"><i class="fa-solid fa-users"></i></span>
                     <span class="menu-text"> Auth Pages </span>
-                    <span class="menu-arrow"></span>
+                    <span class="menu-arrow"><i class="fa-solid fa-caret-down"></i></span>
                 </a>
                 <div class="collapse" id="authPages">
                     <ul class="sub-menu">
@@ -204,7 +204,7 @@
 
             <li class="menu-item">
                 <a href="#menuLayouts" data-bs-toggle="collapse" class="menu-link">
-                    <span class="menu-icon"><i data-feather="layers"></i></span>
+                    <span class="menu-icon"><i class="fa-solid fa-layer-group"></i></span>
                     <span class="menu-text"> Layouts </span>
                     <span class="badge bg-blue ms-auto">New</span>
                 </a>
@@ -248,9 +248,9 @@
 
             <li class="menu-item">
                 <a href="#menuUIElements" data-bs-toggle="collapse" class="menu-link">
-                    <span class="menu-icon"><i data-feather="target"></i></span>
+                    <span class="menu-icon"><i class="fa-solid fa-circle-dot"></i></span>
                     <span class="menu-text"> UI Elements</span>
-                    <span class="menu-arrow"></span>
+                    <span class="menu-arrow"><i class="fa-solid fa-caret-down"></i></span>
                 </a>
                 <div class="collapse" id="menuUIElements">
                     <ul class="sub-menu">
@@ -380,7 +380,7 @@
 
             <li class="menu-item">
                 <a href="#menuComponentsui" data-bs-toggle="collapse" class="menu-link">
-                    <span class="menu-icon"><i data-feather="life-buoy"></i></span>
+                    <span class="menu-icon"><i class="fa-regular fa-life-ring"></i></span>
                     <span class="menu-text"> Components </span>
                     <span class="badge bg-info ms-auto">Hot</span>
                 </a>
@@ -413,9 +413,9 @@
 
             <li class="menu-item">
                 <a href="#menuIcons" data-bs-toggle="collapse" class="menu-link">
-                    <span class="menu-icon"><i data-feather="hexagon"></i></span>
+                    <span class="menu-icon"><i class="fa-solid fa-icons"></i></span>
                     <span class="menu-text"> Icons </span>
-                    <span class="menu-arrow"></span>
+                    <span class="menu-arrow"><i class="fa-solid fa-caret-down"></i></span>
                 </a>
                 <div class="collapse" id="menuIcons">
                     <ul class="sub-menu">
@@ -440,9 +440,9 @@
 
             <li class="menu-item">
                 <a href="#menuForms" data-bs-toggle="collapse" class="menu-link">
-                    <span class="menu-icon"><i data-feather="edit-2"></i></span>
+                    <span class="menu-icon"><i class="fa-regular fa-rectangle-list"></i></span>
                     <span class="menu-text"> Forms </span>
-                    <span class="menu-arrow"></span>
+                    <span class="menu-arrow"><i class="fa-solid fa-caret-down"></i></span>
                 </a>
                 <div class="collapse" id="menuForms">
                     <ul class="sub-menu">
@@ -477,9 +477,9 @@
 
             <li class="menu-item">
                 <a href="#menuTables" data-bs-toggle="collapse" class="menu-link">
-                    <span class="menu-icon"><i data-feather="table"></i></span>
+                    <span class="menu-icon"><i class="fa-solid fa-table-cells"></i></span>
                     <span class="menu-text"> Tables </span>
-                    <span class="menu-arrow"></span>
+                    <span class="menu-arrow"><i class="fa-solid fa-caret-down"></i></span>
                 </a>
                 <div class="collapse" id="menuTables">
                     <ul class="sub-menu">
@@ -499,9 +499,9 @@
 
             <li class="menu-item">
                 <a href="#menuCharts" data-bs-toggle="collapse" class="menu-link">
-                    <span class="menu-icon"><i data-feather="bar-chart-2"></i></span>
+                    <span class="menu-icon"><i class="fa-solid fa-chart-bar"></i></span>
                     <span class="menu-text"> Charts </span>
-                    <span class="menu-arrow"></span>
+                    <span class="menu-arrow"><i class="fa-solid fa-caret-down"></i></span>
                 </a>
                 <div class="collapse" id="menuCharts">
                     <ul class="sub-menu">
@@ -521,9 +521,9 @@
 
             <li class="menu-item">
                 <a href="#menuMaps" data-bs-toggle="collapse" class="menu-link">
-                    <span class="menu-icon"><i data-feather="map"></i></span>
+                    <span class="menu-icon"><i class="fa-solid fa-map"></i></span>
                     <span class="menu-text"> Maps </span>
-                    <span class="menu-arrow"></span>
+                    <span class="menu-arrow"><i class="fa-solid fa-caret-down"></i></span>
                 </a>
                 <div class="collapse" id="menuMaps">
                     <ul class="sub-menu">
@@ -543,16 +543,16 @@
 
             <li class="menu-item">
                 <a href="#menuMultilevel" data-bs-toggle="collapse" class="menu-link">
-                    <span class="menu-icon"><i data-feather="share-2"></i></span>
+                    <span class="menu-icon"><i class="fa-solid fa-square-share-nodes"></i></span>
                     <span class="menu-text"> Multi Level </span>
-                    <span class="menu-arrow"></span>
+                    <span class="menu-arrow"><i class="fa-solid fa-caret-down"></i></span>
                 </a>
                 <div class="collapse" id="menuMultilevel">
                     <ul class="sub-menu">
                         <li class="menu-item">
                             <a href="#menuMultilevel2" data-bs-toggle="collapse" class="menu-link">
                                 <span class="menu-text"> Second Level </span>
-                                <span class="menu-arrow"></span>
+                                <span class="menu-arrow"><i class="fa-solid fa-caret-down"></i></span>
                             </a>
                             <div class="collapse" id="menuMultilevel2">
                                 <ul class="sub-menu">
@@ -573,7 +573,7 @@
                         <li class="menu-item">
                             <a href="#menuMultilevel3" data-bs-toggle="collapse" class="menu-link">
                                 <span class="menu-text">Third Level</span>
-                                <span class="menu-arrow"></span>
+                                <span class="menu-arrow"><i class="fa-solid fa-caret-down"></i></span>
                             </a>
                             <div class="collapse" id="menuMultilevel3">
                                 <ul class="sub-menu">
@@ -585,7 +585,7 @@
                                     <li class="menu-item">
                                         <a href="#menuMultilevel4" data-bs-toggle="collapse" class="menu-link">
                                             <span class="menu-text">Item 2</span>
-                                            <span class="menu-arrow"></span>
+                                            <span class="menu-arrow"><i class="fa-solid fa-caret-down"></i></span>
                                         </a>
                                         <div class="collapse" id="menuMultilevel4">
                                             <ul class="sub-menu">

@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="dz-message needsclick">
-                            <i class="h1 text-muted dripicons-cloud-upload"></i>
+                            <i class="fa-solid fa-cloud-arrow-up"></i>
                             <h3>Drop files here or click to upload.</h3>
                             <span class="text-muted font-13">(This is just a demo dropzone. Selected files are
                                 <strong>not</strong> actually uploaded.)</span>
@@ -55,7 +55,7 @@
                     <div class="col-auto">
                         <!-- Button -->
                         <a href="" class="btn btn-link btn-lg text-muted" data-dz-remove>
-                            <i class="dripicons-cross"></i>
+                            <i class="fa-solid fa-xmark"></i>
                         </a>
                     </div>
                 </div>

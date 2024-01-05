@@ -20,7 +20,7 @@
             <div class="input-group input-group-merge">
                 <input type="password" id="password" class="form-control" placeholder="@lang('auth.passwordPlaceholder')">
                 <div class="input-group-text" data-password="false">
-                    <span class="password-eye"></span>
+                    <i class="fa-regular fa-eye"></i> {{-- <i class="fa-regular fa-eye-slash"></i> --}}
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
         </div>
 
         <div class="form-group mb-0 text-center">
-            <button class="btn btn-blue w-100" type="submit"><i class="mdi mdi-login me-1"></i>@lang('auth.signIn')</button>
+            <button class="btn btn-blue w-100" type="submit"><i class="fa-solid fa-right-to-bracket"></i> @lang('auth.signIn')</button>
         </div>
 
     </form>
@@ -41,10 +41,10 @@
     <div class="text-center mt-4">
         <p class="text-muted font-18">@lang('auth.signInWith')</p>
         <div class="d-flex gap-2 justify-content-center mt-3">
-            <a href="javascript: void(0);" class="btn btn-sm btn-soft-primary font-16"><i class="mdi mdi-facebook"></i></a>
-            <a href="javascript: void(0);" class="btn btn-sm btn-soft-danger font-16"><i class="mdi mdi-instagram"></i></a>
-            <a href="javascript: void(0);" class="btn btn-sm btn-soft-info font-16"><i class="mdi mdi-twitter"></i></a>
-            <a href="javascript: void(0);" class="btn btn-sm btn-soft-dark font-16"><i class="mdi mdi-github"></i></a>
+            <a href="javascript: void(0);" class="btn btn-sm btn-soft-primary font-16"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="javascript: void(0);" class="btn btn-sm btn-soft-danger font-16"><i class="fa-brands fa-instagram"></i></a>
+            <a href="javascript: void(0);" class="btn btn-sm btn-soft-info font-16"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="javascript: void(0);" class="btn btn-sm btn-soft-dark font-16"><i class="fa-brands fa-github"></i></a>
         </div>
     </div>
 @endsection

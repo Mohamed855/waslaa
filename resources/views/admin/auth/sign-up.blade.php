@@ -35,10 +35,10 @@
     <div class="text-center mt-4">
         <p class="text-muted font-18">@lang('auth.signUpWith')</p>
         <div class="d-flex gap-2 justify-content-center mt-3">
-            <a href="javascript: void(0);" class="btn btn-sm btn-soft-primary font-16"><i class="mdi mdi-facebook"></i></a>
-            <a href="javascript: void(0);" class="btn btn-sm btn-soft-danger font-16"><i class="mdi mdi-instagram"></i></a>
-            <a href="javascript: void(0);" class="btn btn-sm btn-soft-info font-16"><i class="mdi mdi-twitter"></i></a>
-            <a href="javascript: void(0);" class="btn btn-sm btn-soft-dark font-16"><i class="mdi mdi-github"></i></a>
+            <a href="javascript: void(0);" class="btn btn-sm btn-soft-primary font-16"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="javascript: void(0);" class="btn btn-sm btn-soft-danger font-16"><i class="fa-brands fa-instagram"></i></a>
+            <a href="javascript: void(0);" class="btn btn-sm btn-soft-info font-16"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="javascript: void(0);" class="btn btn-sm btn-soft-dark font-16"><i class="fa-brands fa-github"></i></a>
         </div>
     </div>
 @endsection

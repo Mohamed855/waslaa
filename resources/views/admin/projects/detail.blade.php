@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="avatar-lg rounded-circle bg-light">
-                                <i class="fe-list font-26 avatar-title text-primary"></i>
+                                <i class="fas fa-list-ul"></i>
                             </div>
                         </div>
                         <div class="col-6">
@@ -32,7 +32,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="avatar-lg rounded-circle bg-light">
-                                <i class="fe-check-square font-26 avatar-title text-success"></i>
+                                <i class="fas fa-check-square"></i>
                             </div>
                         </div>
                         <div class="col-6">
@@ -52,7 +52,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="avatar-lg rounded-circle bg-light">
-                                <i class="fe-users font-26 avatar-title text-info"></i>
+                                <i class="fas fa-users"></i>
                             </div>
                         </div>
                         <div class="col-6">
@@ -72,7 +72,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="avatar-lg rounded-circle bg-light">
-                                <i class="fe-clock font-26 avatar-title text-warning"></i>
+                                <i class="far fa-clock"></i>
                             </div>
                         </div>
                         <div class="col-6">
@@ -96,18 +96,17 @@
                     <div class="dropdown float-end">
                         <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="dripicons-dots-3"></i>
+                            <i class="fas fa-ellipsis-v"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
+                            <a href="javascript:void(0);" class="dropdown-item"><i class="fas fa-pen"></i>Edit</a>
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>Delete</a>
+                            <a href="javascript:void(0);" class="dropdown-item"><i class="fas fa-trash"></i>Delete</a>
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item"><i
-                                    class="mdi mdi-email-outline me-1"></i>Invite</a>
+                            <a href="javascript:void(0);" class="dropdown-item"><i class="far fa-envelope"></i>Invite</a>
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-exit-to-app me-1"></i>Leave</a>
+                            <a href="javascript:void(0);" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>Leave</a>
                         </div>
                     </div>
                     <!-- project title-->
@@ -213,7 +212,7 @@
                     <div class="dropdown float-end">
                         <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="dripicons-dots-3"></i>
+                            <i class="fas fa-ellipsis-v"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <!-- item-->
@@ -229,8 +228,7 @@
                               id="example-textarea" rows="3"></textarea>
                     <div class="text-end">
                         <div class="btn-group mb-2">
-                            <button type="button" class="btn btn-link btn-sm text-muted font-18"><i
-                                    class="dripicons-paperclip"></i></button>
+                            <button type="button" class="btn btn-link btn-sm text-muted font-18"><i class="fas fa-link"></i></button>
                         </div>
                         <div class="btn-group mb-2 ms-2">
                             <button type="button" class="btn btn-primary btn-sm">Submit</button>
@@ -248,8 +246,7 @@
                                 Nice work, makes me think of The Money Pit.
 
                                 <br/>
-                                <a href="javascript: void(0);" class="text-muted font-13 d-inline-block mt-2"><i
-                                        class="mdi mdi-reply"></i> Reply</a>
+                                <a href="javascript: void(0);" class="text-muted font-13 d-inline-block mt-2"><i class="fas fa-reply"></i> Reply</a>
 
                                 <div class="d-flex align-items-start mt-3">
                                     <a class="pe-2" href="#">
@@ -276,8 +273,7 @@
                                 The parallax is a little odd but O.o that house build is awesome!!
 
                                 <br/>
-                                <a href="javascript: void(0);" class="text-muted font-13 d-inline-block mt-2"><i
-                                        class="mdi mdi-reply"></i> Reply</a>
+                                <a href="javascript: void(0);" class="text-muted font-13 d-inline-block mt-2"><i class="fas fa-reply"></i> Reply</a>
 
                             </div>
                         </div>
@@ -297,8 +293,7 @@
                     </div>
 
                     <div class="text-center mt-2">
-                        <a href="javascript:void(0);" class="text-danger"><i
-                                class="mdi mdi-spin mdi-loading me-1 font-16"></i> Load more </a>
+                        <a href="javascript:void(0);" class="text-danger"><i class="fas fa-spinner"></i> Load more </a>
                     </div>
                 </div> <!-- end card-body-->
             </div>
@@ -338,7 +333,7 @@
                                 <div class="col-auto">
                                     <!-- Button -->
                                     <a href="javascript:void(0);" class="btn btn-link btn-lg text-muted">
-                                        <i class="dripicons-download"></i>
+                                        <i class="fas fa-download"></i>
                                     </a>
                                 </div>
                             </div>
@@ -362,7 +357,7 @@
                                 <div class="col-auto">
                                     <!-- Button -->
                                     <a href="javascript:void(0);" class="btn btn-link btn-lg text-muted">
-                                        <i class="dripicons-download"></i>
+                                        <i class="fas fa-download"></i>
                                     </a>
                                 </div>
                             </div>
@@ -386,7 +381,7 @@
                                 <div class="col-auto">
                                     <!-- Button -->
                                     <a href="javascript:void(0);" class="btn btn-link btn-lg text-muted">
-                                        <i class="dripicons-download"></i>
+                                        <i class="fas fa-download"></i>
                                     </a>
                                 </div>
                             </div>

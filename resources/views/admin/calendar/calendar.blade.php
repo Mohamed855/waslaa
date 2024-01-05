@@ -25,19 +25,19 @@
                                 <p class="text-muted">Drag and drop your event or click in the
                                     calendar</p>
                                 <div class="external-event bg-success" data-class="bg-success">
-                                    <i class="mdi mdi-checkbox-blank-circle me-2 vertical-middle"></i>New
+                                    <i class="fa-solid fa-square-check"></i> New
                                     Theme Release
                                 </div>
                                 <div class="external-event bg-info" data-class="bg-info">
-                                    <i class="mdi mdi-checkbox-blank-circle me-2 vertical-middle"></i>My
+                                    <i class="fa-solid fa-square-check"></i> My
                                     Event
                                 </div>
                                 <div class="external-event bg-warning" data-class="bg-warning">
-                                    <i class="mdi mdi-checkbox-blank-circle me-2 vertical-middle"></i>Meet
+                                    <i class="fa-solid fa-square-check"></i> Meet
                                     manager
                                 </div>
                                 <div class="external-event bg-danger" data-class="bg-danger">
-                                    <i class="mdi mdi-checkbox-blank-circle me-2 vertical-middle"></i>Create
+                                    <i class="fa-solid fa-square-check"></i> Create
                                     New theme
                                 </div>
                             </div>
