@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="avatar-lg rounded-circle bg-light">
-                                <i class="fas fa-list-ul"></i>
+                                <i class="fas fa-list-ul font-26 avatar-title text-primary"></i>
                             </div>
                         </div>
                         <div class="col-6">
@@ -32,7 +32,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="avatar-lg rounded-circle bg-light">
-                                <i class="fas fa-check-square"></i>
+                                <i class="fas fa-check-square font-26 avatar-title text-success"></i>
                             </div>
                         </div>
                         <div class="col-6">
@@ -52,7 +52,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="avatar-lg rounded-circle bg-light">
-                                <i class="fas fa-users"></i>
+                                <i class="fas fa-users font-26 avatar-title text-info"></i>
                             </div>
                         </div>
                         <div class="col-6">
@@ -72,7 +72,7 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="avatar-lg rounded-circle bg-light">
-                                <i class="far fa-clock"></i>
+                                <i class="far fa-clock font-26 avatar-title text-warning"></i>
                             </div>
                         </div>
                         <div class="col-6">
@@ -100,13 +100,13 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item"><i class="fas fa-pen"></i>Edit</a>
+                            <a href="javascript:void(0);" class="dropdown-item"><i class="fas fa-pen me-1"></i>Edit</a>
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item"><i class="fas fa-trash"></i>Delete</a>
+                            <a href="javascript:void(0);" class="dropdown-item"><i class="fas fa-trash me-1"></i>Delete</a>
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item"><i class="far fa-envelope"></i>Invite</a>
+                            <a href="javascript:void(0);" class="dropdown-item"><i class="far fa-envelope me-1"></i>Invite</a>
                             <!-- item-->
-                            <a href="javascript:void(0);" class="dropdown-item"><i class="fas fa-sign-out-alt"></i>Leave</a>
+                            <a href="javascript:void(0);" class="dropdown-item"><i class="fas fa-sign-out-alt me-1"></i>Leave</a>
                         </div>
                     </div>
                     <!-- project title-->
@@ -293,7 +293,7 @@
                     </div>
 
                     <div class="text-center mt-2">
-                        <a href="javascript:void(0);" class="text-danger"><i class="fas fa-spinner"></i> Load more </a>
+                        <a href="javascript:void(0);" class="text-danger"><i class="fas fa-spinner me-1 font-16"></i> Load more </a>
                     </div>
                 </div> <!-- end card-body-->
             </div>

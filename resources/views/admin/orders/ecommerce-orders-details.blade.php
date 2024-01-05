@@ -154,7 +154,7 @@
                     <div class="p-3 border-bottom">
                         <div class="d-flex align-items-center justify-content-between">
                             <h4 class="mt-0">Customer Info</h4>
-                            <button type="button" class="badge border-0 bg-secondary"><i class="fa-solid fa-pen"></i></button>
+                            <button type="button" class="badge border-0 bg-secondary"><i class="fa-solid fa-pen fs-5"></i></button>
                         </div>
 
                         <div class="d-flex  justify-content-start gap-3">
@@ -167,7 +167,7 @@
                                         class="fw-normal">234.654.543</span></p>
 
                                 <button type="button" class="btn btn-outline-danger fw-semibold">
-                                    <i class="fa-solid fa-plus"></i> Add to Blacklist
+                                    <i class="fa-solid fa-plus me-1"></i> Add to Blacklist
                                 </button>
                             </div>
 
@@ -178,7 +178,7 @@
                     <div class="p-3 border-bottom">
                         <div class="d-flex align-items-center justify-content-between">
                             <h4 class="mt-0">Delivery</h4>
-                            <button type="button" class="badge border-0 bg-secondary"><i class="fa-solid fa-pen"></i></button>
+                            <button type="button" class="badge border-0 bg-secondary"><i class="fa-solid fa-pen fs-5"></i></button>
                         </div>
                         <p class="mb-2 fs-5"><span class="fw-semibold me-2">Ship by :</span>DHL</p>
                         <p class="mb-2 fs-5"><span class="fw-semibold  me-2">Speedy :</span>Standard</p>
@@ -191,7 +191,7 @@
                     <div class="p-3 border-bottom">
                         <div class="d-flex align-items-center justify-content-between">
                             <h4>Shipping</h4>
-                            <button type="button" class="badge border-0 bg-secondary"><i class="fa-solid fa-pen"></i></button>
+                            <button type="button" class="badge border-0 bg-secondary"><i class="fa-solid fa-pen fs-5"></i></button>
                         </div>
                         <p class="mb-2 fs-5"><span class="fw-semibold fs-5 me-2">Address :</span>19034
                             Verna Unions Apt. 164 - Honolulu, RI / 87535</p>
@@ -204,7 +204,7 @@
                     <div class="p-3">
                         <div class="d-flex align-items-center justify-content-between">
                             <h4>Payment</h4>
-                            <button type="button" class="badge border-0 bg-secondary"><i class="fa-solid fa-pen"></i></button>
+                            <button type="button" class="badge border-0 bg-secondary"><i class="fa-solid fa-pen fs-5"></i></button>
                         </div>
 
                         <p class="mb-2 fs-5"><span class="fw-semibold  me-2">Payment Type:</span> Credit

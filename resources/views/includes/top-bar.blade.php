@@ -27,7 +27,7 @@
             <li class="app-search dropdown d-none d-lg-block">
                 <form>
                     <input type="search" class="form-control" placeholder="Search...">
-                    <span class="mdi mdi-magnify search-icon font-22"></span>
+                    <span class="search-icon font-22"><i class="far fa-search"></i></span>
                 </form>
             </li>
         </div>
@@ -36,13 +36,13 @@
 
             <li class="d-none d-md-inline-block">
                 <a class="nav-link" href="" data-toggle="fullscreen">
-                    <i class="fa-solid fa-expand"></i>
+                    <i class="fa-solid fa-expand font-22"></i>
                 </a>
             </li>
 
             <li class="dropdown d-lg-none">
                 <a class="nav-link dropdown-toggle waves-effect waves-light arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-magnifying-glass font-22"></i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
                     <form class="p-3">
@@ -83,13 +83,13 @@
 
             <li class="d-inline-flex">
                 <div class="nav-link" id="light-dark-mode">
-                    <i class="fa-solid fa-moon"></i>
+                    <i class="fa-solid fa-moon font-22"></i>
                 </div>
             </li>
 
             <li>
                 <a class="nav-link waves-effect waves-light" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
-                    <i class="fa-solid fa-gear"></i>
+                    <i class="fa-solid fa-gear font-22"></i>
                 </a>
             </li>
 
@@ -108,19 +108,19 @@
 
                     <!-- item-->
                     <a href="pages-profile.html" class="dropdown-item notify-item">
-                        <i class="fa-solid fa-user"></i>
+                        <i class="fa-solid fa-user me-1"></i>
                         <span>My Account</span>
                     </a>
 
                     <!-- item-->
                     <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <i class="fa-solid fa-user-gear"></i>
+                        <i class="fa-solid fa-user-gear me-1"></i>
                         <span>Settings</span>
                     </a>
 
                     <!-- item-->
                     <a href="auth-lock-screen.html" class="dropdown-item notify-item">
-                        <i class="fa-regular fa-lock"></i>
+                        <i class="fa-regular fa-lock me-1"></i>
                         <span>Lock Screen</span>
                     </a>
 
@@ -128,7 +128,7 @@
 
                     <!-- item-->
                     <a href="auth-logout.html" class="dropdown-item notify-item">
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        <i class="fa-solid fa-arrow-right-from-bracket me-1"></i>
                         <span>Logout</span>
                     </a>
 

@@ -33,7 +33,7 @@
         </div>
 
         <div class="form-group mb-0 text-center">
-            <button class="btn btn-blue w-100" type="submit"><i class="fa-solid fa-right-to-bracket"></i> @lang('auth.signIn')</button>
+            <button class="btn btn-blue w-100" type="submit"><i class="fa-solid fa-right-to-bracket me-1"></i> @lang('auth.signIn')</button>
         </div>
 
     </form>

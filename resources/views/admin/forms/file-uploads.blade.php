@@ -24,7 +24,7 @@
                         </div>
 
                         <div class="dz-message needsclick">
-                            <i class="fa-solid fa-cloud-arrow-up"></i>
+                            <i class="h1 text-muted fa-solid fa-cloud-arrow-up"></i>
                             <h3>Drop files here or click to upload.</h3>
                             <span class="text-muted font-13">(This is just a demo dropzone. Selected files are
                                 <strong>not</strong> actually uploaded.)</span>

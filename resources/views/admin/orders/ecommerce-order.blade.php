@@ -36,10 +36,10 @@
                         </div>
                         <div class="col-xl-4">
                             <div class="d-flex justify-content-end align-items-center mt-xl-0 mt-2">
-                                <button type="button" class="btn btn-danger me-2"><i class="fa-solid fa-basket-shopping"></i> Add New Order
+                                <button type="button" class="btn btn-danger me-2"><i class="fa-solid fa-basket-shopping me-1"></i> Add New Order
                                 </button>
                                 <div>
-                                    <button type="button" class="btn btn-white border"><i class="fa-light fa-filter"></i>Filter
+                                    <button type="button" class="btn btn-white border"><i class="fa-light fa-filter me-1"></i>Filter
                                     </button>
                                 </div>
                             </div>
@@ -105,7 +105,7 @@
                             <td>
                                 <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-eye"></i></a>
                                 <a href="javascript:void(0);" class="action-icon"> <i class="fa-regular fa-pen-to-square"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash me-1 text-muted"></i></a>
                             </td>
                         </tr>
 
@@ -144,7 +144,7 @@
                             <td>
                                 <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-eye"></i></a>
                                 <a href="javascript:void(0);" class="action-icon"> <i class="fa-regular fa-pen-to-square"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash me-1 text-muted"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -183,7 +183,7 @@
                             <td>
                                 <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-eye"></i></a>
                                 <a href="javascript:void(0);" class="action-icon"> <i class="fa-regular fa-pen-to-square"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash me-1 text-muted"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -221,7 +221,7 @@
                             <td>
                                 <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-eye"></i></a>
                                 <a href="javascript:void(0);" class="action-icon"> <i class="fa-regular fa-pen-to-square"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash me-1 text-muted"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -259,7 +259,7 @@
                             <td>
                                 <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-eye"></i></a>
                                 <a href="javascript:void(0);" class="action-icon"> <i class="fa-regular fa-pen-to-square"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash me-1 text-muted"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -296,7 +296,7 @@
                             <td>
                                 <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-eye"></i></a>
                                 <a href="javascript:void(0);" class="action-icon"> <i class="fa-regular fa-pen-to-square"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash me-1 text-muted"></i></a>
                             </td>
                         </tr>
 
@@ -336,7 +336,7 @@
                             <td>
                                 <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-eye"></i></a>
                                 <a href="javascript:void(0);" class="action-icon"> <i class="fa-regular fa-pen-to-square"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash me-1 text-muted"></i></a>
                             </td>
                         </tr>
 
@@ -374,7 +374,7 @@
                             <td>
                                 <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-eye"></i></a>
                                 <a href="javascript:void(0);" class="action-icon"> <i class="fa-regular fa-pen-to-square"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash me-1 text-muted"></i></a>
                             </td>
                         </tr>
                         <tr>
@@ -411,7 +411,7 @@
                             <td>
                                 <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-eye"></i></a>
                                 <a href="javascript:void(0);" class="action-icon"> <i class="fa-regular fa-pen-to-square"></i></a>
-                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash"></i></a>
+                                <a href="javascript:void(0);" class="action-icon"> <i class="fa-solid fa-trash me-1 text-muted"></i></a>
                             </td>
                         </tr>
 

@@ -18,7 +18,7 @@
                                 happens to the best of us. Here's a
                                 little tip that might help you get back on track.</p>
 
-                            <a class="btn btn-soft-danger mt-3" href="#"><i class="fa-solid fa-house"></i> Back
+                            <a class="btn btn-soft-danger mt-3" href="#"><i class="fa-solid fa-house me-1"></i> Back
                                 to Home</a>
                         </div> <!-- end /.text-center-->
                     </div> <!-- end col-->

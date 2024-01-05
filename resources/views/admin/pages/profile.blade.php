@@ -292,7 +292,7 @@
                                                 <textarea style="height: 125px;" id="AboutMe" class="form-control">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.</textarea>
                                             </div>
                                         </div>
-                                        <button class="btn btn-primary" type="submit"><i class="fa-regular fa-floppy-disk"></i> Save
+                                        <button class="btn btn-primary" type="submit"><i class="fa-regular fa-floppy-disk me-1 fs-16 lh-1"></i> Save
                                         </button>
                                     </form>
                                 </div>

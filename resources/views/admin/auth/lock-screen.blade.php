@@ -17,7 +17,7 @@
         </div>
 
         <div class="mb-0 text-start">
-            <button class="btn btn-primary w-100" type="submit"><i class="fa-solid fa-right-to-bracket"></i> <span class="fw-bold">Log In</span> </button>
+            <button class="btn btn-primary w-100" type="submit"><i class="fa-solid fa-right-to-bracket me-1"></i> <span class="fw-bold">Log In</span> </button>
         </div>
     </form>
 

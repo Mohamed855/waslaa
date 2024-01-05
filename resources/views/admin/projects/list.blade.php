@@ -36,7 +36,7 @@
                     <div class="dropdown float-end">
                         <a href="#" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="fas fa-ellipsis-v"></i>
+                            <i class="fas fa-ellipsis-v m-0 text-muted h3"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="#">Edit</a>
@@ -58,11 +58,11 @@
                     <!-- Task info-->
                     <p class="mb-1">
                         <span class="pe-2 text-nowrap mb-2 d-inline-block">
-                            <i class="fas fa-list-ul"></i>
+                            <i class="fas fa-list-ul text-muted"></i>
                             <b>78</b> Tasks
                         </span>
                         <span class="text-nowrap mb-2 d-inline-block">
-                            <i class="far fa-comment-alt"></i>
+                            <i class="far fa-comment-alt text-muted"></i>
                             <b>214</b> Comments
                         </span>
                     </p>
@@ -116,7 +116,7 @@
                     <div class="dropdown float-end">
                         <a href="#" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="fas fa-ellipsis-h"></i>
+                            <i class="fas fa-ellipsis-h m-0 text-muted h3"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="#">Edit</a>
@@ -138,11 +138,11 @@
                     <!-- Task info-->
                     <p class="mb-1">
                         <span class="pe-2 text-nowrap mb-2 d-inline-block">
-                            <i class="fas fa-list-ul"></i>
+                            <i class="fas fa-list-ul text-muted"></i>
                             <b>81</b> Tasks
                         </span>
                         <span class="text-nowrap mb-2 d-inline-block">
-                            <i class="far fa-comment-alt"></i></i>
+                            <i class="far fa-comment-alt text-muted"></i></i>
                             <b>103</b> Comments
                         </span>
                     </p>
@@ -184,7 +184,7 @@
                     <div class="dropdown float-end">
                         <a href="#" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="fas fa-ellipsis-h"></i>
+                            <i class="fas fa-ellipsis-h m-0 text-muted h3"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="#">Edit</a>
@@ -206,11 +206,11 @@
                     <!-- Task info-->
                     <p class="mb-1">
                         <span class="pe-2 text-nowrap mb-2 d-inline-block">
-                            <i class="fas fa-list-ul"></i>
+                            <i class="fas fa-list-ul text-muted"></i>
                             <b>42</b> Tasks
                         </span>
                         <span class="text-nowrap mb-2 d-inline-block">
-                            <i class="far fa-comment-alt"></i></i>
+                            <i class="far fa-comment-alt text-muted"></i></i>
                             <b>65</b> Comments
                         </span>
                     </p>
@@ -261,7 +261,7 @@
                     <div class="dropdown float-end">
                         <a href="#" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="fas fa-ellipsis-h"></i>
+                            <i class="fas fa-ellipsis-h m-0 text-muted h3"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="#">Edit</a>
@@ -284,11 +284,11 @@
                     <!-- Task info-->
                     <p class="mb-1">
                         <span class="pe-2 text-nowrap mb-2 d-inline-block">
-                            <i class="fas fa-list-ul"></i>
+                            <i class="fas fa-list-ul text-muted"></i>
                             <b>95</b> Tasks
                         </span>
                         <span class="text-nowrap mb-2 d-inline-block">
-                            <i class="far fa-comment-alt"></i></i>
+                            <i class="far fa-comment-alt text-muted"></i></i>
                             <b>1.3k</b> Comments
                         </span>
                     </p>
@@ -330,7 +330,7 @@
                     <div class="dropdown float-end">
                         <a href="#" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="fas fa-ellipsis-h"></i>
+                            <i class="fas fa-ellipsis-h m-0 text-muted h3"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="#">Edit</a>
@@ -352,11 +352,11 @@
                     <!-- Task info-->
                     <p class="mb-1">
                         <span class="pe-2 text-nowrap mb-2 d-inline-block">
-                            <i class="fas fa-list-ul"></i>
+                            <i class="fas fa-list-ul text-muted"></i>
                             <b>36</b> Tasks
                         </span>
                         <span class="text-nowrap mb-2 d-inline-block">
-                            <i class="far fa-comment-alt"></i></i>
+                            <i class="far fa-comment-alt text-muted"></i></i>
                             <b>78</b> Comments
                         </span>
                     </p>
@@ -404,7 +404,7 @@
                     <div class="dropdown float-end">
                         <a href="#" class="dropdown-toggle card-drop arrow-none" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <i class="fas fa-ellipsis-h"></i>
+                            <i class="fas fa-ellipsis-h m-0 text-muted h3"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end">
                             <a class="dropdown-item" href="#">Edit</a>
@@ -427,11 +427,11 @@
                     <!-- Task info-->
                     <p class="mb-1">
                         <span class="pe-2 text-nowrap mb-2 d-inline-block">
-                            <i class="fas fa-list-ul"></i>
+                            <i class="fas fa-list-ul text-muted"></i>
                             <b>30</b> Tasks
                         </span>
                         <span class="text-nowrap mb-2 d-inline-block">
-                            <i class="far fa-comment-alt"></i></i>
+                            <i class="far fa-comment-alt text-muted"></i></i>
                             <b>148</b> Comments
                         </span>
                     </p>
@@ -472,7 +472,7 @@
     <div class="row">
         <div class="col-12">
             <div class="text-center mb-3">
-                <a href="javascript:void(0);" class="text-danger"><i class="fas fa-spinner"></i> Load
+                <a href="javascript:void(0);" class="text-danger"><i class="fas fa-spinner me-1"></i> Load
                     more </a>
             </div>
         </div> <!-- end col-->

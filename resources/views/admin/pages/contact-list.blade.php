@@ -15,12 +15,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical lh-sm"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen me-1 text-muted"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user me-1 text-muted"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash me-1 text-muted"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -70,12 +70,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical lh-sm"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen me-1 text-muted"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user me-1 text-muted"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash me-1 text-muted"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -125,12 +125,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical lh-sm"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen me-1 text-muted"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user me-1 text-muted"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash me-1 text-muted"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -180,12 +180,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical lh-sm"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen me-1 text-muted"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user me-1 text-muted"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash me-1 text-muted"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -232,12 +232,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical lh-sm"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen me-1 text-muted"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user me-1 text-muted"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash me-1 text-muted"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -284,12 +284,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical lh-sm"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen me-1 text-muted"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user me-1 text-muted"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash me-1 text-muted"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -336,12 +336,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical lh-sm"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen me-1 text-muted"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user me-1 text-muted"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash me-1 text-muted"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -388,12 +388,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical lh-sm"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen me-1 text-muted"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user me-1 text-muted"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash me-1 text-muted"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -440,12 +440,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical lh-sm"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen me-1 text-muted"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user me-1 text-muted"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash me-1 text-muted"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -492,12 +492,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical lh-sm"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen me-1 text-muted"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user me-1 text-muted"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash me-1 text-muted"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -544,12 +544,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical lh-sm"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen me-1 text-muted"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user me-1 text-muted"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash me-1 text-muted"></i> Remove</a>
                             </div>
                         </div>
                     </div>
@@ -597,12 +597,12 @@
                         <div class="dropdown">
                             <a href="javascript: void(0);"
                                class="dropdown-toggle arrow-none text-dark font-18"
-                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical"></i></a>
+                               data-bs-toggle="dropdown" aria-expanded="false"><i class="fa-solid fa-ellipsis-vertical lh-sm"></i></a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen"></i> Edit
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-pen me-1 text-muted"></i> Edit
                                     Contact</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Action</a>
-                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash"></i> Remove</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user me-1 text-muted"></i> Action</a>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-trash me-1 text-muted"></i> Remove</a>
                             </div>
                         </div>
                     </div>

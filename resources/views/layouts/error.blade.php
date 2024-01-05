@@ -29,7 +29,7 @@
                                             <h4 class="fs-20">@yield('err-title')</h4>
                                             <p class="text-muted mb-3">@yield('err-description')</p>
                                         </div>
-                                        <a href="#" class="btn btn-soft-primary w-100"><i class="fa-solid fa-house"></i> Back to Home</a>
+                                        <a href="#" class="btn btn-soft-primary w-100"><i class="fa-solid fa-house me-1"></i> Back to Home</a>
                                     </div>
                                 </div>
 
