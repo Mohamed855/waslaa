@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('avatar')->nullable();
             $table->foreignIdFor(City::class, 'city');
             $table->enum('gender', ['male', 'female']);
-            $table->enum('lang', ['en', 'ar']);
+            $table->enum('lang', ['en', 'ar'])->default('en');
             $table->boolean('active')->default(1);
             $table->rememberToken();
             $table->timestamps();

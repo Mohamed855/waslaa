@@ -1,0 +1,21 @@
+.chat-app-window .chats .chat-body .chat-content {
+    color: #FFFFFF !important;
+    background-image: -webkit-linear-gradient(170deg, #187DE4, #187DE4) !important;
+}
+
+.chat-application .sidebar-content .chat-user-list-wrapper li.active {
+    background-image: -webkit-linear-gradient(170deg, #187DE4, #187DE4) !important;
+}
+
+.chat-app-window .chats .chat-left .chat-body .chat-content {
+
+    color: #6E6B7B !important;
+    background-color: white !important;
+    background-image: -webkit-linear-gradient(170deg, #fff, #fff) !important;
+}
+.vertical-layout.vertical-menu-modern .main-menu .navigation li:nth-child(6) a {
+    background: #4084c4;
+    box-shadow: 0 0 10px 1px rgb(125 203 181 / 70%);
+    color: #fff;
+    border-radius: 4px;
+}

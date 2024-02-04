@@ -77,5 +77,15 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'conn.check' => \App\Http\Middleware\CheckConnection::class,
         'locale.set' => \App\Http\Middleware\SetLocale::class,
+
+        'not.auth' => \App\Http\Middleware\MustNotAuth::class,
+        'must.auth' => \App\Http\Middleware\MustBeAuth::class,
+        'guard' => \App\Http\Middleware\CheckGuard::class,
+
+        'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
+        'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
+        'localeSessionRedirect'   => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
+        'localeCookieRedirect'    => \Mcamara\LaravelLocalization\Middleware\LocaleCookieRedirect::class,
+        'localeViewPath'          => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class
     ];
 }

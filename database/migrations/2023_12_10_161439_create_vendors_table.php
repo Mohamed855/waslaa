@@ -20,12 +20,12 @@ return new class extends Migration
             $table->string('password');
             $table->string('avatar');
             $table->foreignIdFor(City::class, 'city');
-            $table->enum('status', ['open', 'busy', 'closed']);
-            $table->enum('lang', ['en', 'ar']);
+            $table->enum('status', ['open', 'busy', 'closed'])->default('open');
+            $table->enum('lang', ['en', 'ar'])->default('en');
             $table->smallInteger('delivery_time');
             $table->double('delivery_cost');
             $table->double('rate')->default(0);
-            $table->tinyInteger('priority')->default(0);
+            $table->tinyInteger('priority')->default(3);
             $table->foreignIdFor(Admin::class, 'added_by');
             $table->boolean('active')->default(1);
             $table->rememberToken();

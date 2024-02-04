@@ -20,7 +20,7 @@ class UserResource extends JsonResource
             'name' => $this['name'],
             'phone' => $this['phone'],
             'secPhone' => $this['sec_phone'],
-            'avatar' => $this['avatar'] ?? '/storage/assets/images/users/default.jpg',
+            'avatar' => $this['avatar'] ?? '/storage/images/global/profile.jpg',
             'gender' => $this['gender'],
             'lang' => $this['lang'],
             'city' => $this['_city'][Helper::getColumnOnLang('name')],

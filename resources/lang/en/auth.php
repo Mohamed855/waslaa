@@ -13,18 +13,22 @@ return [
     |
     */
 
-    'signIn' => 'Sign In',
-    'signInMessage' => 'Enter your email address and password to access account.',
+    'signIn' => 'Login',
+    'signInMessage' => 'Enter your email address and password to access account',
 
-    'signUp' => 'Sign Up',
-    'signUpMessage' => 'Enter your email address and password to create account.',
+    'recoverPassword' => 'Recover password',
 
-    'signOut' => 'See You Again !',
-    'signOutMessage' => 'You are now successfully sign out.',
+    'signOut' => 'Logout',
+    'signOutTitle' => 'Are you sure!',
+    'signOutMessage' => 'You are going to logout',
 
     'forgetPass' => 'Forgot your password?',
-    'forgetPassMessage' => 'Enter your email address and we\'ll send you an email to reset your password.',
+    'forgetPassMessage' => 'Enter your email address and we\'ll send you an email to reset your password',
+
     'resetPass' => 'Reset Password',
+    'resetPassMessage' => 'Enter the new password!',
+
+    'emailSent' => 'Email has sent',
 
     'email' => 'Email  address',
     'emailPlaceholder' => 'Enter your email',
@@ -32,17 +36,14 @@ return [
     'password' => 'Password',
     'passwordPlaceholder' => 'Enter your password',
 
+    'confirmPassword' => 'Confirm password',
+    'confirmPasswordPlaceholder' => 'Confirm your password',
+
     'fullName' => 'Full name',
     'fullNamePlaceholder' => 'Enter your name',
 
     'notHaveAcc' => 'Don\'t have an account?',
     'haveAcc' => 'Have an account?',
-    'backTo' => 'Back To',
 
     'rememberMe' => 'Remember me',
-    'accept' => 'I accept',
-    'termsCondition' => 'Terms and Conditions',
-
-    'signInWith' => 'Sign in with',
-    'signUpWith' => 'Sign up with',
 ];

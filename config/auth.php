@@ -118,30 +118,30 @@ return [
     'passwords' => [
         'admins' => [
             'provider' => 'admins',
-            'table' => 'password_reset_tokens',
-            'expire' => 60 * 24,
-            'throttle' => 60 * 24,
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
         ],
 
         'vendors' => [
             'provider' => 'vendors',
-            'table' => 'password_reset_tokens',
-            'expire' => 60 * 24,
-            'throttle' => 60 * 24,
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
         ],
 
         'managers' => [
             'provider' => 'managers',
-            'table' => 'password_reset_tokens',
-            'expire' => 60 * 24,
-            'throttle' => 60 * 24,
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
         ],
 
         'users' => [
             'provider' => 'users',
             'table' => 'password_reset_tokens',
-            'expire' => 60 * 24 * 7,
-            'throttle' => 60 * 24 * 7,
+            'expire' => 60,
+            'throttle' => 60,
         ],
     ],
 

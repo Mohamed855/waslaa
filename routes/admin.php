@@ -1,6 +1,16 @@
 <?php
 
+use App\Http\Controllers\Dashboard\Admin\AdminsController;
+use App\Http\Controllers\Dashboard\Admin\ADsController;
+use App\Http\Controllers\Dashboard\Admin\CategoriesController;
+use App\Http\Controllers\Dashboard\Admin\CitiesController;
+use App\Http\Controllers\Dashboard\Admin\CountriesController;
+use App\Http\Controllers\Dashboard\Admin\ManagersController;
+use App\Http\Controllers\Dashboard\Admin\ProductsController;
+use App\Http\Controllers\Dashboard\Admin\SubcategoriesController;
+use App\Http\Controllers\Dashboard\Admin\VendorsController;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,14 +23,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('admin')->group(function () {
-    Route::get('/', function () { return view('admin.auth.sign-in'); })->name('admin.signIn');
-    Route::get('/signup', function () { return view('admin.auth.sign-up'); })->name('admin.signUp');
-    Route::get('/reset', function () { return view('admin.auth.reset'); })->name('admin.reset');
-    // Route::get('/lock', function () { return view('admin.auth.lock-screen'); })->name('admin.lock');
-    Route::get('/sign-out', function () { return view('admin.auth.sign-out'); })->name('admin.signOut');
-
-    Route::prefix('panel')->group(function () {
-        Route::get('/', function () { return view('admin.pages.starter'); })->name('panel.starter');
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function() {
+    Route::group(['prefix' => 'admin', 'middleware' => 'guard:admin'], function () {
+        Route::get('/', function () { return view('admin.main.overview'); })->name('admin.overview');
+        Route::resource('ads', ADsController::class)->except(['create', 'edit', 'show']);
+        Route::resource('admins', AdminsController::class)->except(['show']);
+        Route::resource('vendors', VendorsController::class)->except([]);
+        Route::resource('managers', ManagersController::class)->except(['show']);
+        Route::resource('categories', CategoriesController::class)->except(['create', 'edit', 'show']);
+        Route::resource('subcategories', SubcategoriesController::class)->except(['create', 'edit', 'show']);
+        Route::resource('products', ProductsController::class)->except([]);
+        Route::resource('countries', CountriesController::class)->except(['create', 'edit', 'show']);
+        Route::resource('cities', CitiesController::class)->except(['create', 'edit', 'show']);
     });
 });

@@ -23,7 +23,7 @@ class VendorResource extends JsonResource
         return [
             'id' => $this['id'],
             'name' => $this['name'],
-            'avatar' => $this['avatar'] ?? '/storage/assets/images/vendors/default.jpg',
+            'avatar' => $this['avatar'] ?? '/storage/images/global/profile.jpg',
             'status' => $this['status'],
             'deliveryTime' => $this['delivery_time'],
             'deliveryCost' => $this['delivery_cost'],

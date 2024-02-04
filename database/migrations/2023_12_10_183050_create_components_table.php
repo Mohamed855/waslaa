@@ -16,7 +16,6 @@ return new class extends Migration
             $table->id();
             $table->string('name_en');
             $table->string('name_ar');
-            $table->foreignIdFor(Product::class, 'product');
             $table->boolean('active')->default(1);
             $table->timestamps();
         });

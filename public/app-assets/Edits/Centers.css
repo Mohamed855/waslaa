@@ -1,0 +1,6 @@
+.vertical-layout.vertical-menu-modern .main-menu .navigation li:nth-child(3) a {
+    background: #4084c4;
+    box-shadow: 0 0 10px 1px rgb(115 103 240 / 70%);
+    color: #fff;
+    border-radius: 4px;
+}

@@ -1,0 +1,9 @@
+.vertical-layout.vertical-menu-modern .main-menu .navigation li:nth-child(5) a {
+    background: #4084c4;
+    box-shadow: 0 0 10px 1px rgb(125 203 181 / 70%);
+    color: #fff;
+    border-radius: 4px;
+}
+.timeline .timeline-item .timeline-point.timeline-point-indicator {
+    background-color: #4084c4;
+}

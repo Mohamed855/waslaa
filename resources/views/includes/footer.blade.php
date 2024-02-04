@@ -1,18 +1,8 @@
 <!-- Footer Start -->
 <footer class="footer">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-6">
-                <div><script>document.write(new Date().getFullYear())</script> © TechUI - <a href="#">GetAppUI</a></div>
-            </div>
-            <div class="col-md-6">
-                <div class="d-none d-md-flex gap-4 align-item-center justify-content-md-end footer-links">
-                    <a href="javascript: void(0);">About</a>
-                    <a href="javascript: void(0);">Support</a>
-                    <a href="javascript: void(0);">Contact Us</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
 </footer>
-<!-- end Footer -->
+<!-- Footer end -->

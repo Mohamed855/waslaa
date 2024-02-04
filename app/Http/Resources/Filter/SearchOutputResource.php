@@ -18,7 +18,7 @@ class SearchOutputResource extends JsonResource
         return [
             'id' => $this['id'],
             'name' => $this['name'] ?? $this[Helper::getColumnOnLang('name')],
-            'avatar' => $this['avatar'] ?? '/storage/assets/images/vendors/default.jpg',
+            'avatar' => $this['avatar'] ?? '/storage/images/global/profile.jpg',
         ];
     }
 }

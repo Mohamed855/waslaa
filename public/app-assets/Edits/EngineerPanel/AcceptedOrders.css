@@ -1,0 +1,27 @@
+.vertical-layout.vertical-menu-modern .main-menu .navigation li:nth-child(2) a {
+    background: #4084c4;
+    box-shadow: 0 0 10px 1px rgb(125 203 181 / 70%);
+    color: #fff;
+    border-radius: 4px;
+}
+.btn-flat-primary{
+    border-radius: 0.358rem !important;
+    background-color: #009ef7!important;
+    color: #fff !important;
+}
+.btn-flat-primary:hover{
+    border-radius: 0.358rem !important;
+    background-color: #009ef7!important;
+    color: #fff !important;
+}
+.dropdown-item:hover, .dropdown-item:focus {
+    color: #fff !important;
+    background-color: #009ef7 !important;
+}
+.dropdown-item.active, .dropdown-item:active {
+    background-color: #009ef7 !important;
+    color: #fff !important;
+}
+.bootstrap-touchspin.input-group .form-control {
+    height: 60px !important;
+}

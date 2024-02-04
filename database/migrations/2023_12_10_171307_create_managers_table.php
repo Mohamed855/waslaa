@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('avatar')->nullable();
             $table->foreignIdFor(Vendor::class, 'added_by');
-            $table->enum('lang', ['en', 'ar']);
+            $table->enum('lang', ['en', 'ar'])->default('en');
             $table->boolean('active')->default(1);
             $table->rememberToken();
             $table->timestamps();

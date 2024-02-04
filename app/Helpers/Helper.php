@@ -39,7 +39,7 @@ class Helper
     public static function storeImage($image, $publicFolder): string
     {
         $imageName = time() . '.' . $image->getClientOriginalExtension();
-        return $image->storeAs('public/assets/images/' . $publicFolder, $imageName);
+        return $image->storeAs('public/images/' . $publicFolder, $imageName);
     }
 
     public static function deleteImage($image): void

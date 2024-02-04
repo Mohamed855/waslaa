@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('abbrev_en');
             $table->string('abbrev_ar');
             $table->double('price');
-            $table->foreignIdFor(Product::class, 'product');
             $table->boolean('active')->default(1);
             $table->timestamps();
         });

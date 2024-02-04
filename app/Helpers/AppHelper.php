@@ -43,7 +43,7 @@ class AppHelper
                 $cityQuery->with('_country');
             }, '_subcategories' => function ($subCategoriesQuery) {
                 $subCategoriesQuery->where('active', 1);
-            }])->orderBy('priority', 'desc')->paginate(10);
+            }])->orderBy('priority')->paginate(10);
 
         return VendorResource::collection($vendors);
     }

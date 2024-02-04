@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('avatar')->nullable();
-            $table->enum('lang', ['en', 'ar']);
+            $table->enum('lang', ['en', 'ar'])->default('en');
             $table->boolean('active')->default(1);
             $table->rememberToken();
             $table->timestamps();

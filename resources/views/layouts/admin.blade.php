@@ -1,31 +1,43 @@
 @extends('app')
 
-@section('body-content')
-    <!-- Begin page -->
-    <div class="app-wrapper">
-        @include('includes.sidenav')
-        <div class="content-page">
-            @include('includes.top-bar')
-            <div class="content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="d-flex justify-content-between align-items-center py-2">
-                                <h4>@yield('dashboard-title')</h4>
-                                <ol class="breadcrumb d-lg-flex d-none mb-0">
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">TechUI</a></li>
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">@yield('subtitle')</a>
-                                    </li>
-                                    <li class="breadcrumb-item"><a href="javascript: void(0);">@yield('title')</a></li>
-                                </ol>
+@section('main-content')
+    @include('includes.navbar')
+
+    @include('includes.sidebar')
+
+    <!-- BEGIN: Content-->
+    <div class="app-content content ecommerce-application"
+         style="padding: calc(0rem + 3.45rem* 2 + 1.3rem) 2rem 0 2rem;">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper container-xxl p-0">
+            <div class="content-body">
+                @if(! (request()->routeIs('users.show') || request()->routeIs('profile')) )
+                    <div class="col-lg-12 col-12">
+                        <div class="card card-statistics">
+                            <div class="card-header">
+                                <h3 class="card-title">@yield('title')</h3>
+                                <a href=""><img class="rounded" src="{{ asset('storage/images/global/logo-dark.jpg') }}" width="70px"></a>
                             </div>
                         </div>
                     </div>
-                    @yield('dashboard-content')
-                </div>
+                @endif
+                @include('includes.alerts')
+                @yield('content')
             </div>
-            @include('includes.footer')
         </div>
     </div>
-    @include('includes.right-sidebar')
+    <!-- END: Content-->
+
+    <div class="sidenav-overlay"></div>
+    <div class="drag-target"></div>
+
+    <button class="btn btn-primary btn-icon scroll-top" type="button"><i data-feather="arrow-up"></i></button>
+
+    @include('includes.footer')
+    <!-- END: Content-->
+@endsection
+
+@section('scripts')
+    @include('includes.scripts')
 @endsection
