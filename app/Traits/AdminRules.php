@@ -53,8 +53,9 @@ trait AdminRules {
             }],
             'email' => 'required|email|unique:admins,email|unique:vendors,email|unique:managers,email',
             'phone' => 'required|numeric|unique:users,phone|unique:admins,phone|unique:vendors,phone|unique:managers,phone',
-            'password' => 'required|string|min:8|max:16|confirmed' /*|regex:/^(?=.*[A-Z])(?=.*[0-9]).+$/' */,
+            'password' => 'required|string|min:8|max:16' /*|regex:/^(?=.*[A-Z])(?=.*[0-9]).+$/' */,
             'avatar' => 'nullable|max:20480|image',
+            'added_by' => 'required|exists:vendors,id,active,1',
         ];
     }
 
@@ -123,11 +124,11 @@ trait AdminRules {
             'name' => 'required|max:60|string',
             'email' => 'required|email|unique:admins,email|unique:managers,email|unique:vendors,email,' . $id,
             'phone' => 'required|numeric|unique:admins,phone|unique:users,phone|unique:managers,phone|unique:vendors,phone,' . $id,
-            'avatar' => 'nullable|max:20480|image',
             'city' => 'required|exists:cities,id,active,1',
             'delivery_time' => 'required|numeric|between:20,120',
             'delivery_cost' => 'required|numeric|between:5,50',
             'priority' => 'required|numeric|in:1,2,3',
+            'lang' => 'in:en,ar',
         ];
     }
 

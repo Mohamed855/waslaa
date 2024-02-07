@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.dashboard')
 @section('title',  __('translate.edit') . ' ' . __('translate.admin') . ' [ ' . ucfirst($selected->name) . ' ]' )
 @section('content')
     <section id="basic-horizontal-layouts">

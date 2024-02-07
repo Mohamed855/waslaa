@@ -44,7 +44,7 @@ class VendorsController extends BaseController
      */
     public function store(Request $request): RedirectResponse
     {
-        return parent::storeBase($this->table, $this->folder,$this->folder . '.index', $request, ['added_by', 'name', 'email', 'phone', 'password', 'city', 'delivery_time', 'delivery_cost', 'avatar'], $this->createVendorRules());
+        return parent::storeBase($this->table, $this->folder, $request, ['added_by', 'name', 'email', 'phone', 'password', 'city', 'delivery_time', 'delivery_cost', 'avatar'], $this->createVendorRules());
     }
 
     /**
@@ -52,17 +52,9 @@ class VendorsController extends BaseController
      */
     public function show(string $id): View
     {
-        return parent::showBase($this->table, 'admin.vendors.show', $id);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id): View
-    {
         $nameOnLang = Helper::getColumnOnLang('name');
         $cities = $this->activeCity()->get(['id', $nameOnLang . ' as name']);
-        return parent::editBase($this->table, 'admin.vendors.edit', $id, ['cities' => $cities]);
+        return parent::showBase($this->table, 'admin.vendors.show', $id, ['cities' => $cities], ['_managers']);
     }
 
     /**
@@ -70,7 +62,7 @@ class VendorsController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->folder,$this->folder . '.index', $request, ['name', 'email', 'phone', 'city', 'delivery_time', 'delivery_cost', 'priority', 'avatar'], $this->updateVendorRules($id), $id);
+        return parent::updateBase($this->table, $this->folder, $request, ['name', 'email', 'phone', 'city', 'delivery_time', 'delivery_cost', 'priority', 'lang'], $this->updateVendorRules($id), $id);
     }
 
     /**

@@ -81,53 +81,35 @@
                 <span style='font-size: 16px;'>@lang('translate.vendors')</span>
             </li>
 
-            @for($i = 1; $i <= 15; $i++)
-                <li class=" nav-item {{ request()->routeIs('vendors.show') ? 'active':'' }}">
-                    <a class="nav-link d-flex align-items-center" href="">
-                        <i>{{ $i }}</i>
-                        vendor-name
-                    </a>
-                </li>
-            @endfor
-
+            @if(auth('admin')->check())
+                @php($vendors = \App\Models\Vendor::query()->where('active', 1)->get(['id', 'name']))
+                @for($i = 1; $i <= count($vendors); $i++)
+                    <li class="nav-item {{ request()->routeIs('vendors.show', $vendors[$i - 1]->id) ? 'active':'' }}">
+                        <a class="nav-link d-flex align-items-center" href="{{ route('vendors.show', $vendors[$i - 1]->id) }}">
+                            <i>{{ $i }}</i>
+                            {{ ucfirst($vendors[$i - 1]->name) }}
+                        </a>
+                    </li>
+                @endfor
+            @endif
 
             <li class="navigation-header">
                 <span style='font-size: 16px;'>@lang('translate.orders')</span>
             </li>
             <li class=" nav-item {{ request()->routeIs('orders.ordered') ? 'active':'' }}">
-                <a class="nav-link d-flex align-items-center" href="">
-                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                         viewBox="0 0 294.842 294.842" style="enable-background:new 0 0 294.842 294.842;"
-                         xml:space="preserve">
-                            <g>
-                                <path
-                                    d="M292.128,214.846c-2.342-2.344-6.143-2.344-8.484,0l-59.512,59.511V6c0-3.313-2.687-6-6-6s-6,2.687-6,6v268.356
-                           l-59.513-59.512c-2.342-2.342-6.142-2.343-8.485,0.001c-2.343,2.343-2.343,6.142,0.001,8.485l69.755,69.754
-                           c1.171,1.171,2.707,1.757,4.242,1.757s3.071-0.586,4.242-1.758l69.754-69.754C294.472,220.987,294.472,217.188,292.128,214.846z" />
-                                <path
-                                    d="M6.956,12h180.137c3.313,0,6-2.687,6-6s-2.687-6-6-6H6.956c-3.313,0-6,2.687-6,6S3.643,12,6.956,12z" />
-                                <path
-                                    d="M6.956,82.228h180.137c3.313,0,6-2.687,6-6s-2.687-6-6-6H6.956c-3.313,0-6,2.687-6,6S3.643,82.228,6.956,82.228z" />
-                                <path
-                                    d="M6.956,152.456h180.137c3.313,0,6-2.687,6-6s-2.687-6-6-6H6.956c-3.313,0-6,2.687-6,6S3.643,152.456,6.956,152.456z" />
-                                <path
-                                    d="M124.438,210.685H6.956c-3.313,0-6,2.687-6,6s2.687,6,6,6h117.482c3.313,0,6-2.687,6-6S127.752,210.685,124.438,210.685z" />
-                                <path
-                                    d="M124.438,280.912H6.956c-3.313,0-6,2.687-6,6s2.687,6,6,6h117.482c3.313,0,6-2.687,6-6S127.752,280.912,124.438,280.912z" />
-                            </g>
-                        </svg>
+                <a class="nav-link d-flex align-items-center" href="{{ route('orders.ordered') }}">
+                    <i data-feather="list"></i>
                     @lang('translate.ordered')
                 </a>
             </li>
-            <li class=" nav-item {{ request()->routeIs('orders.delivered') ? 'active':'' }}">
-                <a class="nav-link d-flex align-items-center" href="">
+            <li class=" nav-item {{ request()->routeIs('orders.accepted') ? 'active':'' }}">
+                <a class="nav-link d-flex align-items-center" href="{{ route('orders.accepted') }}">
                     <i data-feather="check"></i>
-                    @lang('translate.delivered')
+                    @lang('translate.accepted')
                 </a>
             </li>
             <li class=" nav-item {{ request()->routeIs('orders.canceled') ? 'active':'' }}">
-                <a class="nav-link d-flex align-items-center" href="">
+                <a class="nav-link d-flex align-items-center" href="{{ route('orders.canceled') }}">
                     <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                          stroke-linejoin="round" class="feather feather-folder-minus">

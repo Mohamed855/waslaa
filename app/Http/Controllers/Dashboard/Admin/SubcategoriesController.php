@@ -36,7 +36,7 @@ class SubcategoriesController extends BaseController
      */
     public function store(Request $request): RedirectResponse
     {
-        return parent::storeBase($this->table, $this->folder,$this->folder . '.index', $request, ['name_en', 'name_ar', 'category', 'avatar'], $this->createSubcategoryRules());
+        return parent::storeBase($this->table, $this->folder, $request, ['name_en', 'name_ar', 'category', 'avatar'], $this->createSubcategoryRules());
     }
 
     /**
@@ -44,7 +44,7 @@ class SubcategoriesController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->folder,$this->folder . '.index', $request, ['name_en', 'name_ar', 'category', 'avatar'], $this->updateSubcategoryRules(), $id);
+        return parent::updateBase($this->table, $this->folder, $request, ['name_en', 'name_ar', 'category', 'avatar'], $this->updateSubcategoryRules(), $id);
     }
 
     /**

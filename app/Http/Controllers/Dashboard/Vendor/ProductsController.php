@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Admin;
+namespace App\Http\Controllers\Dashboard\Vendor;
 
 use App\Http\Controllers\Dashboard\BaseController;
 use App\Traits\AdminRules;
@@ -41,7 +41,7 @@ class ProductsController extends BaseController
      */
     public function store(Request $request): RedirectResponse
     {
-        return parent::storeBase($this->table, $this->folder,$this->folder . '.index', $request, ['name', 'email', 'phone', 'password', 'avatar'], $this->createProductRules());
+        return parent::storeBase($this->table, $this->folder, $request, ['name', 'email', 'phone', 'password', 'avatar'], $this->createProductRules());
     }
 
     /**
@@ -65,7 +65,7 @@ class ProductsController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->folder,$this->folder . '.index', $request, ['name', 'email', 'phone' ,'avatar'], $this->updateProductRules($id), $id);
+        return parent::updateBase($this->table, $this->folder, $request, ['name', 'email', 'phone' ,'avatar'], $this->updateProductRules($id), $id);
     }
 
     /**

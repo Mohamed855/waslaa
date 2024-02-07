@@ -35,7 +35,7 @@ class BaseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    protected function storeBase($table, $folder, $index, Request $request, array $storedData, array $rules): RedirectResponse
+    protected function storeBase($table, $folder, Request $request, array $storedData, array $rules): RedirectResponse
     {
         try {
             if ($request['phone']) {
@@ -62,7 +62,7 @@ class BaseController extends Controller
 
             $this->$table()->create($data);
 
-            return redirect()->route($index)->with('success', __('translate.' . $table) . ' ' . __('success.added'));
+            return back()->with('success', __('translate.' . $table) . ' ' . __('success.added'));
         } catch (Exception) {
             return back()->with('error', __('error.somethingWentWrong'));
         }
@@ -71,9 +71,9 @@ class BaseController extends Controller
     /**
      * Display the specified resource.
      */
-    public function showBase($table, $view, string $id, $vars = []): View
+    public function showBase($table, $view, string $id, $vars = [], $with = []): View
     {
-        $selected = $this->$table()->findOrFail($id);
+        $selected = $this->$table()->with($with)->findOrFail($id);
         return view($view, compact('selected'))->with($vars);
     }
 
@@ -90,7 +90,7 @@ class BaseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    protected function updateBase($table, $folder, $index, Request $request, array $storedData, array $rules, string $id): RedirectResponse
+    protected function updateBase($table, $folder, Request $request, array $storedData, array $rules, string $id): RedirectResponse
     {
         try {
             $selected = $this->$table()->find($id);
@@ -126,7 +126,7 @@ class BaseController extends Controller
 
             $selected->update($data);
 
-            return redirect()->route($index)->with('success', __('translate.' . $table) . ' ' . __('success.updated'));
+            return back()->with('success', __('translate.' . $table) . ' ' . __('success.updated'));
         } catch (Exception) {
             return back()->with('error', __('error.somethingWentWrong'));
         }
@@ -140,7 +140,6 @@ class BaseController extends Controller
         try {
             $selected = $this->$table()->find($id);
             if ($selected['is_primary']) return back()->with('error', __('error.cannotDeletePrimary'));
-            if ($selected['active']) return back()->with('error', __('error.cannotDeleteActive'));
 
             if ($selected['avatar'] != null) {
                 Storage::delete('public/images/' . $folder . '/' . $selected['avatar']);

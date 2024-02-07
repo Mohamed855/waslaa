@@ -1,10 +1,10 @@
-@extends('layouts.admin')
-@section('title', __('translate.admins'))
+@extends('layouts.dashboard')
+@section('title', __('translate.managers'))
 @section('content')
     <section>
         <div class="row d-flex">
             <div class="col-xl-12 mb-2">
-                <a href="{{ route('admins.create') }}">
+                <a href="{{ route('managers.create') }}">
                     <button class="btn btn-success ms-auto" data-bs-toggle="modal">
                         <i data-feather="plus"></i>
                         @lang('translate.add')
@@ -33,7 +33,7 @@
                                 <td>
                                     <a class="avatar avatar-xl">
                                         <img alt=""
-                                             src="{{ asset($single->avatar ? 'storage/images/admins/' . $single->avatar : 'storage/images/global/profile.jpg') }}"/>
+                                             src="{{ asset($single->avatar ? 'storage/images/managers/' . $single->avatar : 'storage/images/global/profile.jpg') }}"/>
                                     </a>
                                 </td>
                                 <td> {{ $single->name }} </td>
@@ -41,7 +41,7 @@
                                 <td> {{ $single->phone }} </td>
                                 <td>
                                     <form class="p-0 m-0"
-                                          action="{{ route('activation.toggle', ['table' => 'admin', 'id' => $single->id]) }}"
+                                          action="{{ route('activation.toggle', ['table' => 'manager', 'id' => $single->id]) }}"
                                           method="post">
                                         @csrf
                                         <label class="switch">
@@ -51,9 +51,9 @@
                                         </label>
                                     </form>
                                 </td>
-                                <td style="min-width: 260px">
+                                <td style="min-width: 320px">
                                     @if(!$single->is_primary)
-                                        <a href="{{ route('admins.edit', $single->id) }}">
+                                        <a href="{{ route('managers.edit', $single->id) }}">
                                             <button class="btn btn-primary ms-auto">
                                                 <i data-feather="edit"></i>
                                                 @lang('translate.edit')

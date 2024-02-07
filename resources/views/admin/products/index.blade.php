@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.dashboard')
 @section('title', __('translate.admins'))
 @section('content')
     <section>
@@ -51,7 +51,7 @@
                                         </label>
                                     </form>
                                 </td>
-                                <td style="min-width: 260px">
+                                <td style="min-width: 320px">
                                     @if(!$single->is_primary)
                                         <a href="{{ route('admins.edit', $single->id) }}">
                                             <button class="btn btn-primary ms-auto">

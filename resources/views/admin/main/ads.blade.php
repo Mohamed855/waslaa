@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.dashboard')
 @section('title', __('translate.ads'))
 @php
     $nameOnLang = \App\Helpers\Helper::getColumnOnLang('name');
@@ -15,8 +15,9 @@
 
 
             <!-- Modal -->
-            <div class="modal fade modal-secondary text-start" id="AddAd" tabindex="-1" aria-labelledby="myModalLabel1660"
-                aria-hidden="true">
+            <div class="modal fade modal-secondary text-start" id="AddAd" tabindex="-1"
+                 aria-labelledby="myModalLabel1660"
+                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -30,8 +31,9 @@
                                 <div class="row">
                                     <div class="col-md-12 col-12">
 
-                                        <form id="adsStore" class="form form-vertical" action="{{ route('ads.store') }} "
-                                            method="POST" enctype="multipart/form-data">
+                                        <form id="adsStore" class="form form-vertical"
+                                              action="{{ route('ads.store') }} "
+                                              method="POST" enctype="multipart/form-data">
                                             @csrf
 
                                             <div class="row">
@@ -39,12 +41,14 @@
                                                 {{-- select product --}}
                                                 <div class="col-12">
                                                     <div class="mb-1">
-                                                        <label class="form-label" for="product">@lang('translate.product')</label>
+                                                        <label class="form-label"
+                                                               for="product">@lang('translate.product')</label>
                                                         <select id="editSelectedUser"
                                                                 class="form-control" name="product"
                                                                 data-search="true"
                                                                 data-silent-initial-value-set="true">
-                                                            <option value="" selected disabled>@lang('translate.select')</option>
+                                                            <option value="" selected
+                                                                    disabled>@lang('translate.select')</option>
                                                             @foreach($products as $product)
                                                                 <option value="{{ $product->id }}">{{ $product->name }}</option>
                                                             @endforeach
@@ -60,28 +64,30 @@
                                                 {{-- add name --}}
                                                 <div class="col-12">
                                                     <div class="mb-1">
-                                                        <label class="form-label" for="name">@lang('translate.name')</label>
-                                                        <input type="text" id="name"
+                                                        <label class="form-label"
+                                                               for="name">@lang('translate.name')</label>
+                                                        <input type="text"
                                                                class="form-control"
-                                                               name="name" placeholder="@lang('translate.name')" />
+                                                               name="name" placeholder="@lang('translate.name')"/>
                                                     </div>
                                                 </div>
                                                 {{-- add image --}}
                                                 <div class="col-12">
                                                     <div class="mb-1">
-                                                        <label class="form-label" for="image">@lang('translate.image')</label>
-                                                        <input type="file" id="image"
+                                                        <label class="form-label"
+                                                               for="image">@lang('translate.image')</label>
+                                                        <input type="file"
                                                                class="form-control"
-                                                               name="image" placeholder="@lang('translate.image')" />
+                                                               name="image" placeholder="@lang('translate.image')"/>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-12">
                                                     <button type="submit"
-                                                        class="btn btn-success me-1">@lang('translate.create')</button>
+                                                            class="btn btn-success me-1">@lang('translate.create')</button>
                                                     <button type="button" class="btn btn-outline-secondary"
-                                                        data-bs-dismiss="modal"
-                                                        aria-label="Close">@lang('translate.cancel')</button>
+                                                            data-bs-dismiss="modal"
+                                                            aria-label="Close">@lang('translate.cancel')</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -104,140 +110,149 @@
             <div class="table-responsive">
                 <table id="example" class="table text-center table-bordered" style="width:100%">
                     <thead>
-                        <tr>
-                            <th>@lang('translate.image')</th>
-                            <th>@lang('translate.name')</th>
-                            <th>@lang('translate.product')</th>
-                            <th>@lang('translate.active')</th>
-                            <th>@lang('translate.actions')</th>
-                        </tr>
+                    <tr>
+                        <th>@lang('translate.image')</th>
+                        <th>@lang('translate.name')</th>
+                        <th>@lang('translate.product')</th>
+                        <th>@lang('translate.active')</th>
+                        <th>@lang('translate.actions')</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        @foreach($data as $single)
-                            <tr>
-                                <td>
-                                    <div class="avatar avatar-xl">
-                                        <img alt="" src="{{ asset('storage/images/ads/' . $single->image) }}"/>
-                                    </div>
-                                </td>
+                    @foreach($data as $single)
+                        <tr>
+                            <td>
+                                <div class="avatar avatar-xl">
+                                    <img alt="" src="{{ asset('storage/images/ads/' . $single->image) }}"/>
+                                </div>
+                            </td>
 
-                                <td>{{ $single->name }}</td>
+                            <td>{{ $single->name }}</td>
 
-                                @php
-                                    $product = \App\Models\Product::query()->find($single->product);
-                                @endphp
-                                <td>
-                                    @if($product)
-                                        <a href="{{ route('products.show', $single->product) }}">{{ $product->$nameOnLang }}</a>
-                                    @else
-                                        -
-                                    @endif
-                                </td>
+                            @php
+                                $product = \App\Models\Product::query()->find($single->product);
+                            @endphp
+                            <td>
+                                @if($product)
+                                    <a href="{{ route('products.show', $single->product) }}">{{ $product->$nameOnLang }}</a>
+                                @else
+                                    -
+                                @endif
+                            </td>
 
-                                <td>
-                                    <form class="p-0 m-0"
-                                          action="{{ route('activation.toggle', ['table' => 'ad', 'id' => $single->id]) }}"
-                                          method="post">
-                                        @csrf
-                                        <label class="switch">
-                                            <input type="checkbox" name="activated" onclick="this.form.submit()"
+                            <td>
+                                <form class="p-0 m-0"
+                                      action="{{ route('activation.toggle', ['table' => 'ad', 'id' => $single->id]) }}"
+                                      method="post">
+                                    @csrf
+                                    <label class="switch">
+                                        <input type="checkbox" name="activated" onclick="this.form.submit()"
                                                 {{ $single->active ? 'checked' : '' }}>
-                                            <span class="slider round"></span>
-                                        </label>
-                                    </form>
-                                </td>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </form>
+                            </td>
 
-                                <td style="min-width: 320px">
-                                    <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeBtn"
-                                            data-bs-toggle="modal" data-bs-target="#EditAd" data-="{{ $single }}">
-                                        <i data-feather="edit"></i>
-                                        @lang('translate.edit')
-                                    </button>
-                                    @include('includes.delete-modal', ['resource' => 'ad', 'resources' => 'ads'])
-                                </td>
+                            <td style="min-width: 320px">
+                                <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeBtn"
+                                        data-bs-toggle="modal" data-bs-target="#EditAd" data-="{{ $single }}">
+                                    <i data-feather="edit"></i>
+                                    @lang('translate.edit')
+                                </button>
+                                @include('includes.delete-modal', ['resource' => 'ad', 'resources' => 'ads'])
+                            </td>
 
-                                <div class="modal fade modal-secondary text-start" id="EditAd" tabindex="-1"
-                                     aria-labelledby="myModalLabel1660" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="myModalLabel1660">@lang('translate.edit')</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
+                            <div class="modal fade modal-secondary text-start" id="EditAd" tabindex="-1"
+                                 aria-labelledby="myModalLabel1660" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="myModalLabel1660">@lang('translate.edit')</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
 
-                                                <section id="basic-vertical-layouts">
-                                                    <div class="row">
-                                                        <div class="col-md-12 col-12">
+                                            <section id="basic-vertical-layouts">
+                                                <div class="row">
+                                                    <div class="col-md-12 col-12">
 
-                                                            <form id="updateForm" class="form form-vertical"
-                                                                  method="POST" enctype="multipart/form-data">
-                                                                @csrf @method('PUT')
-                                                                <div class="row">
-                                                                    <input type="hidden" id="selectedProduct" name="product" value="">
+                                                        <form id="updateForm" class="form form-vertical"
+                                                              method="POST" enctype="multipart/form-data">
+                                                            @csrf @method('PUT')
+                                                            <div class="row">
+                                                                <input type="hidden" id="selectedProduct" name="product"
+                                                                       value="">
 
-                                                                    {{-- select product --}}
-                                                                    <div class="col-12">
-                                                                        <div class="mb-1">
-                                                                            <label class="form-label" for="product">@lang('translate.product')</label>
-                                                                            <select id="editSelectedProduct"
-                                                                                    class="form-control" name="product"
-                                                                                    data-search="true"
-                                                                                    data-silent-initial-value-set="true">
-                                                                                <option value="" disabled>@lang('translate.select')</option>
+                                                                {{-- select product --}}
+                                                                <div class="col-12">
+                                                                    <div class="mb-1">
+                                                                        <label class="form-label"
+                                                                               for="product">@lang('translate.product')</label>
+                                                                        <select id="editSelectedProduct"
+                                                                                class="form-control" name="product"
+                                                                                data-search="true"
+                                                                                data-silent-initial-value-set="true">
+                                                                            <option value=""
+                                                                                    disabled>@lang('translate.select')</option>
 
                                                                             @foreach($products as $product)
-                                                                                    <option value="{{ $product->id }}" {{ $single->product == $product->id ? 'selected' : '' }}>{{ $product->name }}</option>
-                                                                                @endforeach
-                                                                            </select>
-                                                                        </div>
-                                                                        <script type="text/javascript">
-                                                                            VirtualSelect.init({
-                                                                                ele: '#editSelectedProduct'
-                                                                            });
-                                                                        </script>
+                                                                                <option value="{{ $product->id }}" {{ $single->product == $product->id ? 'selected' : '' }}>{{ $product->name }}</option>
+                                                                            @endforeach
+                                                                        </select>
                                                                     </div>
+                                                                    <script type="text/javascript">
+                                                                        VirtualSelect.init({
+                                                                            ele: '#editSelectedProduct'
+                                                                        });
+                                                                    </script>
+                                                                </div>
 
-                                                                    {{-- edit name --}}
-                                                                    <div class="col-12">
-                                                                        <div class="mb-1">
-                                                                            <label class="form-label" for="name">@lang('translate.name')</label>
-                                                                            <input type="text" id="name"
-                                                                                   class="form-control" value="{{ $single->name }}"
-                                                                                   name="name" placeholder="@lang('translate.name')" />
-                                                                        </div>
-                                                                    </div>
-
-                                                                    {{-- edit image --}}
-                                                                    <div class="col-12">
-                                                                        <div class="mb-1">
-                                                                            <label class="form-label" for="image">@lang('translate.image')</label>
-                                                                            <input type="file" id="image"
-                                                                                   class="form-control"
-                                                                                   name="image" placeholder="@lang('translate.image')" />
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div class="col-12">
-                                                                        <button type="submit"
-                                                                                class="btn btn-primary me-1">@lang('translate.save')</button>
-                                                                        <button type="button" class="btn btn-outline-secondary"
-                                                                                data-bs-dismiss="modal"
-                                                                                aria-label="Close">@lang('translate.cancel')</button>
+                                                                {{-- edit name --}}
+                                                                <div class="col-12">
+                                                                    <div class="mb-1">
+                                                                        <label class="form-label"
+                                                                               for="name">@lang('translate.name')</label>
+                                                                        <input type="text" id="name"
+                                                                               class="form-control"
+                                                                               value="{{ $single->name }}"
+                                                                               name="name"
+                                                                               placeholder="@lang('translate.name')"/>
                                                                     </div>
                                                                 </div>
-                                                            </form>
 
-                                                        </div>
+                                                                {{-- edit image --}}
+                                                                <div class="col-12">
+                                                                    <div class="mb-1">
+                                                                        <label class="form-label"
+                                                                               for="image">@lang('translate.image')</label>
+                                                                        <input type="file" id="image"
+                                                                               class="form-control"
+                                                                               name="image"
+                                                                               placeholder="@lang('translate.image')"/>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-12">
+                                                                    <button type="submit"
+                                                                            class="btn btn-primary me-1">@lang('translate.save')</button>
+                                                                    <button type="button"
+                                                                            class="btn btn-outline-secondary"
+                                                                            data-bs-dismiss="modal"
+                                                                            aria-label="Close">@lang('translate.cancel')</button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+
                                                     </div>
-                                                </section>
-                                            </div>
+                                                </div>
+                                            </section>
                                         </div>
                                     </div>
                                 </div>
-                            </tr>
-                        @endforeach
+                            </div>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
@@ -245,15 +260,16 @@
         @include('includes.paginate')
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+            integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script>
-        $(document).ready(function() {
-            $('.typeBtn').on('click', function() {
+        $(document).ready(function () {
+            $('.typeBtn').on('click', function () {
                 let id = $(this).attr('data-id');
                 let ad = JSON.parse($(this).attr('data-'));
                 let selectedProduct = ad.product;
 
-                $('#editSelectedProduct').on('change', function() {
+                $('#editSelectedProduct').on('change', function () {
                     let selectedValue = $(this).val();
                     $('#selectedProduct').val(selectedValue);
                 });

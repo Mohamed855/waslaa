@@ -62,6 +62,7 @@
             href="{{ asset('/public/../app-assets/css-rtl/plugins/extensions/ext-component-swiper.css') }}">
         <link rel="stylesheet" type="text/css"
             href="{{ asset('/public/../app-assets/css/plugins/maps/map-leaflet.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     @endif
 
     @if (app()->getLocale() == 'en')

@@ -1,8 +1,8 @@
-<button type="button" class="btn btn-danger ms-auto" data-bs-toggle="modal" data-bs-target="#deleteModal">
+<button type="button" class="btn btn-danger ms-auto" data-bs-toggle="modal" data-bs-target="{{ '#deleteModal' . $single->id }}">
     <i data-feather="trash-2"></i>
     @lang('translate.delete')
 </button>
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+<div class="modal fade" id="{{ 'deleteModal' . $single->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">

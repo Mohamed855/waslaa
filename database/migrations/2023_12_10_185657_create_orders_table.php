@@ -24,7 +24,7 @@ return new class extends Migration
             $table->enum('deliveryMethod', ['delivery', 'pickup']);
             $table->double('totalCost')->default(0);
             $table->text('deliveryNote')->nullable();
-            $table->enum('status', ['ordered', 'delivered', 'canceled'])->default('ordered');
+            $table->enum('status', ['ordered', 'accepted', 'canceled'])->default('ordered');
             $table->timestamps();
         });
     }

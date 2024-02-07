@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.dashboard')
 @section('title', __('translate.add') . ' ' . __('translate.vendor'))
 @section('content')
     <section id="basic-horizontal-layouts">
@@ -17,7 +17,7 @@
                                     <label class="form-label" for="name">@lang('translate.name')</label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i data-feather="type"></i></span>
-                                        <input type="text" id="text" class="form-control"
+                                        <input type="text" class="form-control"
                                                name="name" placeholder="@lang('translate.name')"/>
                                     </div>
                                 </div>
@@ -27,7 +27,7 @@
                                     <label class="form-label" for="email">@lang('translate.email')</label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i data-feather='at-sign'></i></span>
-                                        <input type="email" id="email" class="form-control" name="email"
+                                        <input type="email" class="form-control" name="email"
                                                placeholder="email@example.com"/>
                                     </div>
                                 </div>
@@ -37,7 +37,7 @@
                                     <label class="form-label" for="phone">@lang('translate.phone')</label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i data-feather='phone'></i></span>
-                                        <input type="text" id="Phone" class="form-control" name="phone"
+                                        <input type="text" class="form-control" name="phone"
                                                placeholder="@lang('translate.phone')"/>
                                     </div>
                                 </div>
@@ -47,7 +47,7 @@
                                     <label class="form-label" for="password">@lang('translate.password')</label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i data-feather='lock'></i></span>
-                                        <input type="password" id="ConfirmNewPassword" class="form-control"
+                                        <input type="password" class="form-control"
                                                name="password"
                                                placeholder="@lang('translate.password')"/>
                                     </div>
@@ -59,7 +59,7 @@
                                            for="password_confirmation">@lang('translate.passwordConfirmation')</label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i data-feather='lock'></i></span>
-                                        <input type="password" id="ConfirmNewPassword" class="form-control"
+                                        <input type="password" class="form-control"
                                                name="password_confirmation"
                                                placeholder="@lang('translate.passwordConfirmation')"/>
                                     </div>
@@ -89,7 +89,8 @@
 
                                 {{-- delivery time --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="delivery_time">@lang('translate.deliveryTime')</label>
+                                    <label class="form-label"
+                                           for="delivery_time">@lang('translate.deliveryTime')</label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i data-feather='clock'></i></span>
                                         <select class="form-control" name="delivery_time">
@@ -102,7 +103,8 @@
 
                                 {{-- delivery cost --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="delivery_cost">@lang('translate.deliveryCost')</label>
+                                    <label class="form-label"
+                                           for="delivery_cost">@lang('translate.deliveryCost')</label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i data-feather='dollar-sign'></i></span>
                                         <select class="form-control" name="delivery_cost">

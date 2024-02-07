@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.dashboard')
 @section('title', __('translate.users'))
 @section('content')
     <section>
@@ -53,7 +53,7 @@
                                         </label>
                                     </form>
                                 </td>
-                                <td style="min-width: 280px">
+                                <td style="min-width: 320px">
                                     <a href="{{ route('users.show', $single->id) }}">
                                         <button class="btn btn-info ms-auto">
                                             <i data-feather="eye"></i>

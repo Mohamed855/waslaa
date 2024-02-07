@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -43,6 +44,11 @@ class Vendor extends Authenticatable
     public function _city (): BelongsTo
     {
         return $this->belongsTo(City::class, 'city');
+    }
+
+    public function _managers (): HasMany
+    {
+        return $this->hasMany(Manager::class, 'added_by');
     }
 
     public function _categories (): BelongsToMany

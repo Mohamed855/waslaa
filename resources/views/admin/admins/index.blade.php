@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.dashboard')
 @section('title', __('translate.admins'))
 @section('content')
     <section>
@@ -50,7 +50,7 @@
                                             @csrf
                                             <label class="switch">
                                                 <input type="checkbox" name="activated" onclick="this.form.submit()"
-                                                        {{ $single->active ? 'checked' : '' }}>
+                                                    {{ $single->active ? 'checked' : '' }}>
                                                 <span class="slider round"></span>
                                             </label>
                                         </form>
@@ -61,13 +61,13 @@
                                             @csrf
                                             <label class="switch">
                                                 <input type="checkbox" name="activated" onclick="this.form.submit()"
-                                                        {{ $single->is_primary ? 'checked' : '' }}>
+                                                    {{ $single->is_primary ? 'checked' : '' }}>
                                                 <span class="slider round"></span>
                                             </label>
                                         </form>
                                     </td>
                                 @endif
-                                <td style="min-width: 260px">
+                                <td style="min-width: 320px">
                                     @if(!$single->is_primary)
                                         <a href="{{ route('admins.edit', $single->id) }}">
                                             <button class="btn btn-primary ms-auto">

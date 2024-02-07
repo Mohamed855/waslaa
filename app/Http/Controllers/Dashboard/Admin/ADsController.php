@@ -36,7 +36,7 @@ class ADsController extends BaseController
      */
     public function store(Request $request): RedirectResponse
     {
-        return parent::storeBase($this->table, $this->folder,$this->folder . '.index', $request, ['product', 'name', 'image'], $this->createAdRules());
+        return parent::storeBase($this->table, $this->folder, $request, ['product', 'name', 'image'], $this->createAdRules());
     }
 
     /**
@@ -44,7 +44,7 @@ class ADsController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->folder,$this->folder . '.index', $request, ['product', 'name', 'image'], $this->updateAdRules(), $id);
+        return parent::updateBase($this->table, $this->folder, $request, ['product', 'name', 'image'], $this->updateAdRules(), $id);
     }
 
     /**

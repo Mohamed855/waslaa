@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.dashboard')
 @section('title', __('translate.vendors'))
 @section('content')
     <section>
@@ -49,7 +49,8 @@
                                         @lang('translate.high')
                                     @elseif($single->priority == 2)
                                         @lang('translate.medium')
-                                    @else$single->priority == 1)
+                                    @else
+                                        $single->priority == 1)
                                         @lang('translate.low')
                                     @endif
                                 </td>
@@ -70,12 +71,12 @@
                                         </label>
                                     </form>
                                 </td>
-                                <td style="min-width: 260px">
+                                <td style="min-width: 370px">
                                     @if(!$single->is_primary)
-                                        <a href="{{ route('vendors.edit', $single->id) }}">
-                                            <button class="btn btn-primary ms-auto">
-                                                <i data-feather="edit"></i>
-                                                @lang('translate.edit')
+                                        <a href="{{ route('vendors.show', $single->id) }}">
+                                            <button class="btn btn-info ms-auto">
+                                                <i data-feather="eye"></i>
+                                                @lang('translate.show')
                                             </button>
                                         </a>
                                         @include('includes.delete-modal', ['resource' => 'vendor', 'resources' => 'vendors'])

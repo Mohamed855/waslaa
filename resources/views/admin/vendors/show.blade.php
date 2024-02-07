@@ -1,20 +1,16 @@
 @extends('layouts.dashboard')
-@php
-    $guard = \App\Helpers\DashboardHelper::getCurrentGuard();
-    $authUser = auth($guard)->user();
-@endphp
-@section('title', __('translate.welcome') . ' ' . $authUser['name'] )
+@section('title', ucfirst($selected['name']) )
 @section('content')
     <section id="basic-horizontal-layouts">
         <div class="row">
-            <div class="col-12 col-sm-5 col-lg-4">
+            <div class="col-12 col--5 col-lg-4">
                 <div class="card">
-                    <img src="{{ asset($authUser['avatar'] ? 'storage/images/' . $guard . 's/' . $authUser['avatar'] : 'storage/images/global/profile.jpg') }}"
+                    <img src="{{ asset($selected['avatar'] ? 'storage/images/vendors/' . $selected['avatar'] : 'storage/images/global/profile.jpg') }}"
                          class="card-img-top profile-image" alt="profile image">
                     <div class="card-body">
                         <div class="row">
-                            @if($authUser['avatar'] == null)
-                                <form action="{{ route('avatar.update', ['guard' => $guard, 'id' => auth($guard)->id()]) }}"
+                            @if($selected['avatar'] == 'default.jpg')
+                                <form action="{{ route('avatar.update', [ 'guard' => 'vendor', 'id' => $selected['id'] ]) }}"
                                       id="avatar_form"
                                       method="post" enctype="multipart/form-data" class="cursor-pointer">
                                     @csrf
@@ -25,7 +21,7 @@
                                 </form>
                             @else
                                 <div class="row justify-content-between m-auto">
-                                    <form action="{{ route('avatar.update', ['guard' => $guard, 'id' => auth($guard)->id()]) }}"
+                                    <form action="{{ route('avatar.update', [ 'guard' => 'vendor', 'id' => $selected['id'] ]) }}"
                                           id="avatar_form"
                                           method="post" enctype="multipart/form-data"
                                           class="d-inline cursor-pointer pb-1 col-12">
@@ -37,7 +33,7 @@
                                             @lang('translate.edit')
                                         </label>
                                     </form>
-                                    <form action="{{ route('avatar.remove', ['guard' => $guard, 'id' => auth($guard)->id()]) }}"
+                                    <form action="{{ route('avatar.remove', [ 'guard' => 'vendor', 'id' => $selected['id'] ]) }}"
                                           method="post"
                                           class="d-inline cursor-pointer col-12">
                                         @csrf
@@ -52,19 +48,22 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-sm-7 col-lg-8">
-                <div class="card  p-2">
+            <div class="col-12 col--7 col-lg-8">
+                <div class="card p-2">
                     <div class="card-body">
-                        <h5 class="card-title">{{ ucfirst($authUser['name']) }}</h5>
-                        <p class="card-text">@lang('translate.joinedAt')
-                            : {{ date_format($authUser['created_at'], 'd-m-Y') }}</p>
+                        <h5 class="card-title">{{ ucfirst($selected['name']) }}</h5>
+                        <p class="card-text">@lang('translate.createdAt')
+                            : {{ date_format($selected['created_at'], 'd-m-Y') }}</p>
+                        <div class="d-inline-block">
+                            <a href="#managers" class="pe-1">@lang('translate.managers')</a>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 col-12 m-auto">
                             <div class="card">
                                 <div class="card-body">
                                     <form method="POST"
-                                          action="{{ route('profile.update', ['guard' => $guard, 'id' => auth($guard)->id()]) }}"
+                                          action="{{ route('vendors.update', $selected->id) }}"
                                           class="form form-vertical" enctype="multipart/form-data">
                                         @csrf @method('PUT')
                                         <div class="row mb-2">
@@ -74,7 +73,7 @@
                                                 <div class="input-group input-group-merge">
                                                     <span class="input-group-text"><i data-feather="type"></i></span>
                                                     <input type="text" id="text" class="form-control"
-                                                           value="{{ $authUser['name'] }}"
+                                                           value="{{ $selected['name'] }}"
                                                            name="name" placeholder="@lang('translate.name')"/>
                                                 </div>
                                             </div>
@@ -85,7 +84,7 @@
                                                 <div class="input-group input-group-merge">
                                                     <span class="input-group-text"><i data-feather='at-sign'></i></span>
                                                     <input type="email" id="email" class="form-control" name="email"
-                                                           value="{{ $authUser['email'] }}"
+                                                           value="{{ $selected['email'] }}"
                                                            placeholder="email@example.com"/>
                                                 </div>
                                             </div>
@@ -96,8 +95,71 @@
                                                 <div class="input-group input-group-merge">
                                                     <span class="input-group-text"><i data-feather='phone'></i></span>
                                                     <input type="text" id="Phone" class="form-control" name="phone"
-                                                           value="{{ $authUser['phone'] }}"
+                                                           value="{{ $selected['phone'] }}"
                                                            placeholder="@lang('translate.phone')"/>
+                                                </div>
+                                            </div>
+
+                                            {{-- select city --}}
+                                            <div class="col-md-6 col-sm-12">
+                                                <div class="mb-1">
+                                                    <label class="form-label" for="city">@lang('translate.city')</label>
+                                                    <select id="editSelectedUser"
+                                                            class="form-control" name="city"
+                                                            data-search="true"
+                                                            data-silent-initial-value-set="true">
+                                                        <option value="" selected disabled>@lang('translate.select')</option>
+
+                                                        @foreach($cities as $city)
+                                                            <option value="{{ $city->id }}" {{ $selected->city == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <script type="text/javascript">
+                                                    VirtualSelect.init({
+                                                        ele: '#editSelectedUser'
+                                                    });
+                                                </script>
+                                            </div>
+
+                                            {{-- delivery time --}}
+                                            <div class="col-md-6 col-sm-12 mb-1">
+                                                <label class="form-label"
+                                                       for="delivery_time">@lang('translate.deliveryTime')</label>
+                                                <div class="input-group input-group-merge">
+                                                    <span class="input-group-text"><i data-feather='clock'></i></span>
+                                                    <select class="form-control" name="delivery_time">
+                                                        @for($i = 20; $i <= 120; $i += 10)
+                                                            <option value="{{ $i }}" {{ $selected->delivery_time == $i ? 'selected' : '' }}>{{ $i }}</option>
+                                                        @endfor
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            {{-- delivery cost --}}
+                                            <div class="col-md-6 col-sm-12 mb-1">
+                                                <label class="form-label"
+                                                       for="delivery_cost">@lang('translate.deliveryCost')</label>
+                                                <div class="input-group input-group-merge">
+                                                    <span class="input-group-text"><i data-feather='dollar-sign'></i></span>
+                                                    <select class="form-control" name="delivery_cost">
+                                                        @for($i = 5; $i <= 50; $i += 5)
+                                                            <option value="{{ $i }}" {{ $selected->delivery_cost == $i ? 'selected' : '' }}>{{ $i }}</option>
+                                                        @endfor
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            {{-- priority --}}
+                                            <div class="col-md-6 col-sm-12 mb-1">
+                                                <label class="form-label" for="priority">@lang('translate.priority')</label>
+                                                <div class="input-group input-group-merge">
+                                                    <span class="input-group-text"><i data-feather='dollar-sign'></i></span>
+                                                    <select class="form-control" name="priority">
+                                                        <option value="1" {{ $selected->priority == 1 ? 'selected' : '' }}>@lang('translate.high')</option>
+                                                        <option value="2" {{ $selected->priority == 2 ? 'selected' : '' }}>@lang('translate.medium')</option>
+                                                        <option value="3" {{ $selected->priority == 3 ? 'selected' : '' }}>@lang('translate.low')</option>
+                                                    </select>
                                                 </div>
                                             </div>
 
@@ -108,8 +170,8 @@
                                                 <div class="input-group input-group-merge">
                                                     <span class="input-group-text"><i data-feather='globe'></i></span>
                                                     <select class="form-control" name="lang">
-                                                        <option {{ $authUser['lang'] == 'en' ? 'selected' : '' }} value="en">@lang('translate.en')</option>
-                                                        <option {{ $authUser['lang'] == 'ar' ? 'selected' : '' }} value="ar">@lang('translate.ar')</option>
+                                                        <option {{ $selected['lang'] == 'en' ? 'selected' : '' }} value="en">@lang('translate.en')</option>
+                                                        <option {{ $selected['lang'] == 'ar' ? 'selected' : '' }} value="ar">@lang('translate.ar')</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -123,49 +185,15 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="card">
-                                <div class="card-body">
-                                    <form method="POST" action="{{ route('password.change') }}"
-                                          class="form form-vertical">
-                                        @csrf
-                                        <div class="row mb-2">
-                                            {{-- new password --}}
-                                            <div class="col-md-6 col-sm-12 mb-1">
-                                                <label class="form-label" for="password">@lang('auth.password')</label>
-                                                <div class="input-group input-group-merge">
-                                                    <span class="input-group-text"><i data-feather='lock'></i></span>
-                                                    <input type="password" id="ConfirmNewPassword" class="form-control"
-                                                           name="password"
-                                                           placeholder="@lang('auth.password')"/>
-                                                </div>
-                                            </div>
-
-                                            {{-- password confirmation --}}
-                                            <div class="col-md-6 col-sm-12 mb-1">
-                                                <label class="form-label"
-                                                       for="password_confirmation">@lang('auth.confirmPassword')</label>
-                                                <div class="input-group input-group-merge">
-                                                    <span class="input-group-text"><i data-feather='lock'></i></span>
-                                                    <input type="password" id="ConfirmNewPassword" class="form-control"
-                                                           name="password_confirmation"
-                                                           placeholder="@lang('auth.confirmPassword')"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 col-md-2 d-flex">
-                                                <button type="submit" class="btn btn-primary w-100"
-                                                        style="min-width: 180px">@lang('translate.changePassword')</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <section id="managers">
+        @include('admin.vendors.managers')
     </section>
 
     <script>

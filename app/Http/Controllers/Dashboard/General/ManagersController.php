@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Admin;
+namespace App\Http\Controllers\Dashboard\General;
 
 use App\Http\Controllers\Dashboard\BaseController;
 use App\Traits\AdminRules;
@@ -41,15 +41,7 @@ class ManagersController extends BaseController
      */
     public function store(Request $request): RedirectResponse
     {
-        return parent::storeBase($this->table, $this->folder,$this->folder . '.index', $request, ['name', 'email', 'phone', 'password', 'avatar'], $this->createManagerRules());
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id): View
-    {
-        return parent::editBase($this->table, 'admin.managers.edit', $id);
+        return parent::storeBase($this->table, $this->folder, $request, ['added_by', 'name', 'email', 'phone', 'password', 'avatar'], $this->createManagerRules());
     }
 
     /**
@@ -57,7 +49,7 @@ class ManagersController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->folder,$this->folder . '.index', $request, ['name', 'email', 'phone' ,'avatar'], $this->updateManagerRules($id), $id);
+        return parent::updateBase($this->table, $this->folder, $request, ['name', 'email', 'phone' ,'avatar'], $this->updateManagerRules($id), $id);
     }
 
     /**

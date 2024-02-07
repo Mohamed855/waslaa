@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Admin;
+namespace App\Http\Controllers\Dashboard\General;
 
 use App\Http\Controllers\Controller;
 use App\Traits\AdminRules;

@@ -1,11 +1,13 @@
 <?php
 
-use App\Http\Controllers\Dashboard\Admin\SettingsController;
 use App\Http\Controllers\Dashboard\Auth\LoginController;
 use App\Http\Controllers\Dashboard\Auth\Passwords\ForgetPasswordController;
 use App\Http\Controllers\Dashboard\Auth\Passwords\ResetPasswordController;
 use App\Http\Controllers\Dashboard\General\ActionsController;
+use App\Http\Controllers\Dashboard\General\ManagersController;
+use App\Http\Controllers\Dashboard\General\SettingsController;
 use App\Http\Controllers\Dashboard\General\UsersController;
+use App\Http\Controllers\Dashboard\Vendor\OrdersController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -45,6 +47,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::resource('users', UsersController::class)->except(['create', 'store', 'edit', 'update']);
         Route::get('profile', function () { return view('general.profile'); })->name('profile');
         Route::post('password/change', [ActionsController::class, 'changePassword'])->name('password.change');
+
+        Route::resource('managers', ManagersController::class)->except(['edit']);
+
+        Route::prefix('orders')->group(function () {
+            Route::get('ordered/{id?}', [OrdersController::class, 'ordered'])->name('orders.ordered');
+            Route::get('accepted/{id?}', [OrdersController::class, 'accepted'])->name('orders.accepted');
+            Route::get('canceled/{id?}', [OrdersController::class, 'canceled'])->name('orders.canceled');
+        });
 
         Route::prefix('{guard}/{id}')->group(function () {
             Route::post('profile/update', [ActionsController::class, 'updateProfile'])->name('profile.update');
