@@ -90,7 +90,7 @@
                         @php
                             $guard = \App\Helpers\DashboardHelper::getCurrentGuard();
                         @endphp
-                        <span class="user-name fw-bolder">{{ ucfirst(explode(' ', auth($guard)->name)[0]) }}</span>
+                        <span class="user-name fw-bolder">{{ ucfirst(explode(' ', auth($guard)->user()->name)[0]) }}</span>
                         <span class="user-status">{{ ucfirst($guard) }}</span>
                     </div>
                     <span class="avatar">
