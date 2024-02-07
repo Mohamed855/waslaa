@@ -77,11 +77,13 @@
             </li>
             {{-- ntf --}}
 
+            {{--
             <li class="nav-item me-25 FullScreenMode">
                 <a class="nav-link" href="#" data-bs-toggle="dropdown">
                     <i class="ficon" data-feather="airplay"></i>
                 </a>
             </li>
+            --}}
 
             <li class="nav-item dropdown dropdown-user">
                 <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user"
