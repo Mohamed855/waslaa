@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
@@ -25,5 +26,10 @@ class Order extends Model
     public function _user (): BelongsTo
     {
         return $this->belongsTo(User::class, 'user');
+    }
+
+    public function _invoices (): BelongsToMany
+    {
+        return $this->belongsToMany(Invoice::class, 'invoice_orders', 'order', 'invoice');
     }
 }

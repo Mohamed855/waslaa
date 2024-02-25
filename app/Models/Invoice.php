@@ -30,7 +30,7 @@ class Invoice extends Model
 
     public function _orders (): BelongsToMany
     {
-        return $this->belongsToMany(Order::class, 'invoice_orders');
+        return $this->belongsToMany(Order::class, 'invoice_orders', 'invoice', 'order');
     }
 
     public function getTotalPriceAttribute()
