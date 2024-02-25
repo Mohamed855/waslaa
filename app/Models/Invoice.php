@@ -17,8 +17,8 @@ class Invoice extends Model
     protected $dates = ['deleted_at'];
 
     protected $casts = [
-        'vendor' => 'array',
-        'products' => 'array',
+        'start' => 'date',
+        'end' => 'date',
     ];
 
     // relationships
@@ -33,7 +33,7 @@ class Invoice extends Model
         return $this->belongsToMany(Order::class, 'invoice_orders');
     }
 
-    public function getTotalTotalPriceAttribute()
+    public function getTotalPriceAttribute()
     {
         return $this->_orders->sum('totalCost');
     }

@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Vendor::class, 'vendor')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->date('start');
-            $table->date('end');
+            $table->date('end')->nullable();
             $table->enum('status', ['opened', 'closed', 'collected'])->default('opened');
             $table->timestamps();
             $table->softDeletes();

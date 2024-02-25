@@ -4,6 +4,8 @@ namespace App\Traits;
 
 use App\Models\Address;
 use App\Models\Component;
+use App\Models\Invoice;
+use App\Models\InvoiceOrder;
 use App\Models\OrderProduct;
 use App\Models\ProductComponent;
 use App\Models\ProductType;
@@ -53,6 +55,10 @@ trait QueriesTrait {
     public function order(): Builder { return Order::query(); }
 
     public function orderProduct(): Builder { return OrderProduct::query(); }
+
+    public function invoice(): Builder { return Invoice::query(); }
+
+    public function invoiceOrders(): Builder { return InvoiceOrder::query(); }
 
     public function product(): Builder { return Product::query(); }
 

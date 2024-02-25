@@ -84,6 +84,28 @@
             </li>
 
             <li class="navigation-header">
+                <span style='font-size: 16px;'>@lang('translate.invoices')</span>
+            </li>
+            <li class=" nav-item {{ request()->routeIs('opened') ? 'active':'' }}">
+                <a class="nav-link d-flex align-items-center" href="{{ route('opened') }}">
+                    <i data-feather="square"></i>
+                    @lang('translate.opened')
+                </a>
+            </li>
+            <li class=" nav-item {{ request()->routeIs('closed') ? 'active':'' }}">
+                <a class="nav-link d-flex align-items-center" href="{{ route('closed') }}">
+                    <i data-feather="minus-square"></i>
+                    @lang('translate.closed')
+                </a>
+            </li>
+            <li class=" nav-item {{ request()->routeIs('collected') ? 'active':'' }}">
+                <a class="nav-link d-flex align-items-center" href="{{ route('collected') }}">
+                    <i data-feather="copy"></i>
+                    @lang('translate.collected')
+                </a>
+            </li>
+
+            <li class="navigation-header">
                 <span style='font-size: 16px;'>@lang('translate.vendors')</span>
             </li>
 

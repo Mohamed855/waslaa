@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Vendor;
+namespace App\Http\Controllers\Dashboard\Admin;
 
 use App\Helpers\DashboardHelper;
 use App\Http\Controllers\Dashboard\BaseController;
@@ -8,45 +8,45 @@ use App\Traits\QueriesTrait;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
-class OrdersController extends BaseController
+class InvoicesController extends BaseController
 {
     use QueriesTrait;
 
     private string $table, $folder;
     public function __construct()
     {
-        $this->table = 'order';
-        $this->folder = 'orders';
+        $this->table = 'invoice';
+        $this->folder = 'invoices';
     }
 
     /**
-     * Display a listing of the ordered orders.
+     * Display a listing of the opened invoices.
      */
-    public function ordered(): View|RedirectResponse
+    public function opened(): View|RedirectResponse
     {
-        $data = $this->order()->where('status', 'ordered')->with(['_user'])->paginate(10);
+        $data = $this->invoice()->where('status', 'opened')->with(['_vendor'])->paginate(10);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
-        return view('general.orders.ordered', compact('data'));
+        return view('admin.invoices.opened', compact('data'));
     }
 
     /**
-     * Display a listing of the accepted orders.
+     * Display a listing of the closed invoices.
      */
-    public function accepted(): View|RedirectResponse
+    public function closed(): View|RedirectResponse
     {
-        $data = $this->order()->where('status', 'accepted')->with(['_user'])->paginate(10);
+        $data = $this->invoice()->where('status', 'closed')->with(['_vendor'])->paginate(10);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
-        return view('general.orders.accepted', compact('data'));
+        return view('admin.invoices.closed', compact('data'));
     }
 
     /**
-     * Display a listing of the canceled orders.
+     * Display a listing of the collected invoices.
      */
-    public function canceled(): View|RedirectResponse
+    public function collected(): View|RedirectResponse
     {
-        $data = $this->order()->where('status', 'canceled')->with(['_user'])->paginate(10);
+        $data = $this->invoice()->where('status', 'collected')->with(['_vendor'])->paginate(10);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
-        return view('general.orders.canceled', compact('data'));
+        return view('admin.invoices.collected', compact('data'));
     }
 
     /**
@@ -55,7 +55,7 @@ class OrdersController extends BaseController
     public function show(string $id): View
     {
         $guard = DashboardHelper::getCurrentGuard();
-        return parent::showBase($this->table, 'general.orders.show', $id, ['guard' => $guard]);
+        return parent::showBase($this->table, 'admin.invoices.show', $id, ['guard' => $guard]);
     }
 
     /**

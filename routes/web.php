@@ -5,6 +5,7 @@ use App\Http\Controllers\Dashboard\Admin\ADsController;
 use App\Http\Controllers\Dashboard\Admin\CategoriesController;
 use App\Http\Controllers\Dashboard\Admin\CitiesController;
 use App\Http\Controllers\Dashboard\Admin\CountriesController;
+use App\Http\Controllers\Dashboard\Admin\InvoicesController;
 use App\Http\Controllers\Dashboard\Admin\SubcategoriesController;
 use App\Http\Controllers\Dashboard\Admin\VendorsController;
 use App\Http\Controllers\Dashboard\Auth\LoginController;
@@ -58,7 +59,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::resource('managers', ManagersController::class)->except(['edit']);
 
         Route::resource('products', ProductsController::class)->except([]);
-        Route::resource('orders', OrdersController::class)->except('create', 'edit');
+        Route::resource('orders', OrdersController::class)->except('index', 'create', 'edit');
         Route::get('ordered', [OrdersController::class, 'ordered'])->name('ordered');
         Route::get('accepted', [OrdersController::class, 'accepted'])->name('accepted');
         Route::get('canceled', [OrdersController::class, 'canceled'])->name('canceled');
@@ -90,6 +91,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::resource('subcategories', SubcategoriesController::class)->except(['create', 'edit', 'show']);
         Route::resource('countries', CountriesController::class)->except(['create', 'edit', 'show']);
         Route::resource('cities', CitiesController::class)->except(['create', 'edit', 'show']);
+        Route::resource('invoices', InvoicesController::class)->except('index', 'create', 'edit');
+        Route::get('opened', [InvoicesController::class, 'opened'])->name('opened');
+        Route::get('closed', [InvoicesController::class, 'closed'])->name('closed');
+        Route::get('collected', [InvoicesController::class, 'collected'])->name('collected');
     });
 
     // Vendor Routes
