@@ -20,6 +20,7 @@ return new class extends Migration
             $table->foreignIdFor(Category::class, 'category');
             $table->boolean('active')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

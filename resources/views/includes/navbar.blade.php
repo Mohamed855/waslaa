@@ -1,3 +1,6 @@
+@php
+    $guard = \App\Helpers\DashboardHelper::getCurrentGuard();
+@endphp
 <nav
     class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-light navbar-shadow container-xxl">
     <div class="navbar-container d-flex content">
@@ -89,10 +92,7 @@
                 <a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user"
                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <div class="user-nav d-sm-flex d-none">
-                        @php
-                            $guard = \App\Helpers\DashboardHelper::getCurrentGuard();
-                        @endphp
-                        <span class="user-name fw-bolder">{{ ucfirst(explode(' ', auth($guard)->user()->name)[0]) }}</span>
+                        <span class="user-name fw-bolder">{{ ucfirst(auth($guard)->user()->username) }}</span>
                         <span class="user-status">{{ ucfirst($guard) }}</span>
                     </div>
                     <span class="avatar">

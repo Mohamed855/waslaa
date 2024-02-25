@@ -20,8 +20,12 @@
                         <tr>
                             <th>@lang('translate.avatar')</th>
                             <th>@lang('translate.name')</th>
+                            <th>@lang('translate.username')</th>
+                            <th>@lang('translate.CRN')</th>
                             <th>@lang('translate.email')</th>
                             <th>@lang('translate.phone')</th>
+                            <th>@lang('translate.city')</th>
+                            <th>@lang('translate.followers')</th>
                             <th>@lang('translate.status')</th>
                             <th>@lang('translate.priority')</th>
                             <th>@lang('translate.rate')</th>
@@ -41,8 +45,12 @@
                                     </a>
                                 </td>
                                 <td> {{ $single->name }} </td>
+                                <td> {{ $single->username }} </td>
+                                <td> {{ $single->crn }} </td>
                                 <td> {{ $single->email }} </td>
                                 <td> {{ $single->phone }} </td>
+                                <td> {{ $single->_city->$nameOnLang }} </td>
+                                <td> {{ count($single->_favorites) }} </td>
                                 <td> {{ $single->status }} </td>
                                 <td>
                                     @if($single->priority == 1)
@@ -55,10 +63,7 @@
                                     @endif
                                 </td>
                                 <td> {{ $single->rate }} </td>
-                                @php
-                                    $admin = \App\Models\Admin::query()->withTrashed()->find($single->added_by);
-                                @endphp
-                                <td> {{ ucfirst(explode(' ', $admin->name)[0]) }} </td>
+                                <td> {{ ucfirst($single->_admin->username) }} </td>
                                 <td>
                                     <form class="p-0 m-0"
                                           action="{{ route('activation.toggle', ['table' => 'vendor', 'id' => $single->id]) }}"

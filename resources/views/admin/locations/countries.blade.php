@@ -1,8 +1,5 @@
 @extends('layouts.dashboard')
 @section('title', __('translate.countries'))
-@php
-    $nameOnLang = \App\Helpers\Helper::getColumnOnLang('name');
-@endphp
 @section('content')
     <div class="row">
         <div class="col-xl-12 d-flex">

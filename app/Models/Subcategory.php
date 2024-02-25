@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -21,6 +22,11 @@ class Subcategory extends Model
     public function _vendors (): BelongsToMany
     {
         return $this->belongsToMany(Vendor::class, 'vendor_subcategories', 'subcategory', 'vendor');
+    }
+
+    public function _category (): BelongsTo
+    {
+        return $this->belongsTo(Category::class, 'category');
     }
 
     public function _products (): HasMany

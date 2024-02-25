@@ -20,6 +20,7 @@
                         <tr>
                             <th>@lang('translate.avatar')</th>
                             <th>@lang('translate.name')</th>
+                            <th>@lang('translate.username')</th>
                             <th>@lang('translate.email')</th>
                             <th>@lang('translate.phone')</th>
                             <th>@lang('translate.active')</th>
@@ -37,6 +38,7 @@
                                     </a>
                                 </td>
                                 <td> {{ $single->name }} </td>
+                                <td> {{ $single->username }} </td>
                                 <td> {{ $single->email }} </td>
                                 <td> {{ $single->phone }} </td>
                                 <td>

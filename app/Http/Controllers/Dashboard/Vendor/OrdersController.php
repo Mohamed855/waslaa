@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard\Vendor;
 
+use App\Helpers\DashboardHelper;
 use App\Http\Controllers\Dashboard\BaseController;
 use App\Traits\QueriesTrait;
 use Illuminate\Contracts\View\View;
@@ -31,7 +32,7 @@ class OrdersController extends BaseController
      */
     public function ordered(): View|RedirectResponse
     {
-        $data = $this->order()->where('status', 'ordered')->paginate(10);
+        $data = $this->order()->where('status', 'ordered')->with(['_user'])->paginate(10);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
         return view('general.orders.ordered', compact('data'));
     }
@@ -41,7 +42,7 @@ class OrdersController extends BaseController
      */
     public function accepted(): View|RedirectResponse
     {
-        $data = $this->order()->where('status', 'accepted')->paginate(10);
+        $data = $this->order()->where('status', 'accepted')->with(['_user'])->paginate(10);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
         return view('general.orders.accepted', compact('data'));
     }
@@ -51,7 +52,7 @@ class OrdersController extends BaseController
      */
     public function canceled(): View|RedirectResponse
     {
-        $data = $this->order()->where('status', 'canceled')->paginate(10);
+        $data = $this->order()->where('status', 'canceled')->with(['_user'])->paginate(10);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
         return view('general.orders.canceled', compact('data'));
     }
@@ -61,7 +62,8 @@ class OrdersController extends BaseController
      */
     public function show(string $id): View
     {
-        return parent::showBase($this->table, 'general.orders.show', $id);
+        $guard = DashboardHelper::getCurrentGuard();
+        return parent::showBase($this->table, 'general.orders.show', $id, ['guard' => $guard]);
     }
 
     /**

@@ -56,6 +56,49 @@
             </li>
 
             <li class="navigation-header">
+                <span style='font-size: 16px;'>@lang('translate.orders')</span>
+            </li>
+            <li class=" nav-item {{ request()->routeIs('ordered') ? 'active':'' }}">
+                <a class="nav-link d-flex align-items-center" href="{{ route('ordered') }}">
+                    <i data-feather="list"></i>
+                    @lang('translate.ordered')
+                </a>
+            </li>
+            <li class=" nav-item {{ request()->routeIs('accepted') ? 'active':'' }}">
+                <a class="nav-link d-flex align-items-center" href="{{ route('accepted') }}">
+                    <i data-feather="check"></i>
+                    @lang('translate.accepted')
+                </a>
+            </li>
+            <li class=" nav-item {{ request()->routeIs('canceled') ? 'active':'' }}">
+                <a class="nav-link d-flex align-items-center" href="{{ route('canceled') }}">
+                    <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                         stroke-linejoin="round" class="feather feather-folder-minus">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+                        </path>
+                        <line x1="9" y1="14" x2="15" y2="14"></line>
+                    </svg>
+                    @lang('translate.canceled')
+                </a>
+            </li>
+
+            <li class="navigation-header">
+                <span style='font-size: 16px;'>@lang('translate.vendors')</span>
+            </li>
+
+            @if(auth('admin')->check())
+                @php($vendors = \App\Models\Vendor::query()->where('active', 1)->get(['id', 'name']))
+                @foreach($vendors as $vendor)
+                        <li class="nav-item {{ request()->routeIs('vendors.show', $vendor->id) ? 'active':'' }}">
+                            <a class="nav-link d-flex align-items-center" href="{{ route('vendors.show', $vendor->id) }}">
+                                {{ ucfirst($vendor->name) }}
+                            </a>
+                        </li>
+                @endforeach
+            @endif
+
+            <li class="navigation-header">
                 <span style='font-size: 16px;'>@lang('translate.sections')</span>
             </li>
             <li class=" nav-item {{ request()->routeIs('categories.index') || request()->routeIs('categories.create') || request()->routeIs('categories.edit') ? 'active':'' }}">
@@ -77,49 +120,6 @@
                 </a>
             </li>
 
-            <li class="navigation-header">
-                <span style='font-size: 16px;'>@lang('translate.vendors')</span>
-            </li>
-
-            @if(auth('admin')->check())
-                @php($vendors = \App\Models\Vendor::query()->where('active', 1)->get(['id', 'name']))
-                @for($i = 1; $i <= count($vendors); $i++)
-                    <li class="nav-item {{ request()->routeIs('vendors.show', $vendors[$i - 1]->id) ? 'active':'' }}">
-                        <a class="nav-link d-flex align-items-center" href="{{ route('vendors.show', $vendors[$i - 1]->id) }}">
-                            <i>{{ $i }}</i>
-                            {{ ucfirst($vendors[$i - 1]->name) }}
-                        </a>
-                    </li>
-                @endfor
-            @endif
-
-            <li class="navigation-header">
-                <span style='font-size: 16px;'>@lang('translate.orders')</span>
-            </li>
-            <li class=" nav-item {{ request()->routeIs('orders.ordered') ? 'active':'' }}">
-                <a class="nav-link d-flex align-items-center" href="{{ route('orders.ordered') }}">
-                    <i data-feather="list"></i>
-                    @lang('translate.ordered')
-                </a>
-            </li>
-            <li class=" nav-item {{ request()->routeIs('orders.accepted') ? 'active':'' }}">
-                <a class="nav-link d-flex align-items-center" href="{{ route('orders.accepted') }}">
-                    <i data-feather="check"></i>
-                    @lang('translate.accepted')
-                </a>
-            </li>
-            <li class=" nav-item {{ request()->routeIs('orders.canceled') ? 'active':'' }}">
-                <a class="nav-link d-flex align-items-center" href="{{ route('orders.canceled') }}">
-                    <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                         stroke-linejoin="round" class="feather feather-folder-minus">
-                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
-                        </path>
-                        <line x1="9" y1="14" x2="15" y2="14"></line>
-                    </svg>
-                    @lang('translate.canceled')
-                </a>
-            </li>
             <li class="navigation-header">
                 <span style='font-size: 16px;'>@lang('translate.locations')</span>
             </li>

@@ -1,13 +1,21 @@
 <?php
 
+use App\Http\Controllers\Dashboard\Admin\AdminsController;
+use App\Http\Controllers\Dashboard\Admin\ADsController;
+use App\Http\Controllers\Dashboard\Admin\CategoriesController;
+use App\Http\Controllers\Dashboard\Admin\CitiesController;
+use App\Http\Controllers\Dashboard\Admin\CountriesController;
+use App\Http\Controllers\Dashboard\Admin\SubcategoriesController;
+use App\Http\Controllers\Dashboard\Admin\VendorsController;
 use App\Http\Controllers\Dashboard\Auth\LoginController;
 use App\Http\Controllers\Dashboard\Auth\Passwords\ForgetPasswordController;
 use App\Http\Controllers\Dashboard\Auth\Passwords\ResetPasswordController;
 use App\Http\Controllers\Dashboard\General\ActionsController;
 use App\Http\Controllers\Dashboard\General\ManagersController;
-use App\Http\Controllers\Dashboard\General\SettingsController;
+use App\Http\Controllers\Dashboard\General\GeneralController;
 use App\Http\Controllers\Dashboard\General\UsersController;
 use App\Http\Controllers\Dashboard\Vendor\OrdersController;
+use App\Http\Controllers\Dashboard\Vendor\ProductsController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -45,31 +53,53 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     // Any Auth User Routes
     Route::group(['middleware' => 'must.auth'], function () {
         Route::resource('users', UsersController::class)->except(['create', 'store', 'edit', 'update']);
-        Route::get('profile', function () { return view('general.profile'); })->name('profile');
-        Route::post('password/change', [ActionsController::class, 'changePassword'])->name('password.change');
+        Route::get('profile', [UsersController::class, 'profile'])->name('profile');
 
         Route::resource('managers', ManagersController::class)->except(['edit']);
 
-        Route::prefix('orders')->group(function () {
-            Route::get('ordered/{id?}', [OrdersController::class, 'ordered'])->name('orders.ordered');
-            Route::get('accepted/{id?}', [OrdersController::class, 'accepted'])->name('orders.accepted');
-            Route::get('canceled/{id?}', [OrdersController::class, 'canceled'])->name('orders.canceled');
-        });
+        Route::resource('products', ProductsController::class)->except([]);
+        Route::resource('orders', OrdersController::class)->except('create', 'edit');
+        Route::get('ordered', [OrdersController::class, 'ordered'])->name('ordered');
+        Route::get('accepted', [OrdersController::class, 'accepted'])->name('accepted');
+        Route::get('canceled', [OrdersController::class, 'canceled'])->name('canceled');
 
         Route::prefix('{guard}/{id}')->group(function () {
             Route::post('profile/update', [ActionsController::class, 'updateProfile'])->name('profile.update');
+            Route::post('password/change', [ActionsController::class, 'changePassword'])->name('password.change');
             Route::post('avatar/update', [ActionsController::class, 'updateAvatar'])->name('avatar.update');
             Route::post('avatar/remove', [ActionsController::class, 'removeAvatar'])->name('avatar.remove');
         });
 
-        Route::get('settings', [SettingsController::class, 'settings'])->name('settings');
-        Route::post('settings/update', [SettingsController::class, 'updateSettings'])->name('settings.update');
+        Route::get('settings', [GeneralController::class, 'settings'])->name('settings');
+        Route::post('settings/update', [GeneralController::class, 'updateSettings'])->name('settings.update');
 
         Route::post('primary/toggle/{id}', [ActionsController::class, 'togglePrimary'])->name('primary.toggle');
         Route::post('{table}/activation/toggle/{id}', [ActionsController::class, 'toggleActive'])->name('activation.toggle');
 
         Route::get('logout', [LoginController::class, 'logout'])->name('signOut');
         Route::post('end-session', [LoginController::class, 'endSession'])->name('endSession');
+    });
+
+    // Admin Routes
+    Route::group(['prefix' => 'admin', 'middleware' => 'guard:admin'], function () {
+        Route::get('/', [GeneralController::class, 'adminOverview'])->name('admin.overview');
+        Route::resource('ads', ADsController::class)->except(['create', 'edit', 'show']);
+        Route::resource('admins', AdminsController::class)->except(['show']);
+        Route::resource('vendors', VendorsController::class)->except(['edit']);
+        Route::resource('categories', CategoriesController::class)->except(['create', 'edit', 'show']);
+        Route::resource('subcategories', SubcategoriesController::class)->except(['create', 'edit', 'show']);
+        Route::resource('countries', CountriesController::class)->except(['create', 'edit', 'show']);
+        Route::resource('cities', CitiesController::class)->except(['create', 'edit', 'show']);
+    });
+
+    // Vendor Routes
+    Route::group(['prefix' => 'vendor', 'middleware' => 'guard:vendor'], function () {
+        Route::get('/', function () { return view('vendor.main.overview'); })->name('vendor.overview');
+    });
+
+    // Manager Routes
+    Route::group(['prefix' => 'manager', 'middleware' => 'guard:manager'], function () {
+        Route::get('/', function () { return view('manager.main.overview'); })->name('manager.overview');
     });
 });
 

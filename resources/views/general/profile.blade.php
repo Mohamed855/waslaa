@@ -1,9 +1,5 @@
 @extends('layouts.dashboard')
-@php
-    $guard = \App\Helpers\DashboardHelper::getCurrentGuard();
-    $authUser = auth($guard)->user();
-@endphp
-@section('title', __('translate.welcome') . ' ' . $authUser['name'] )
+@section('title', __('translate.welcome') . ' ' . $authUser['username'] )
 @section('content')
     <section id="basic-horizontal-layouts">
         <div class="row">
@@ -53,7 +49,7 @@
                 </div>
             </div>
             <div class="col-12 col-sm-7 col-lg-8">
-                <div class="card  p-2">
+                <div class="card p-2">
                     <div class="card-body">
                         <h5 class="card-title">{{ ucfirst($authUser['name']) }}</h5>
                         <p class="card-text">@lang('translate.joinedAt')
@@ -66,7 +62,7 @@
                                     <form method="POST"
                                           action="{{ route('profile.update', ['guard' => $guard, 'id' => auth($guard)->id()]) }}"
                                           class="form form-vertical" enctype="multipart/form-data">
-                                        @csrf @method('PUT')
+                                        @csrf
                                         <div class="row mb-2">
                                             {{-- name --}}
                                             <div class="col-md-6 col-sm-12 mb-1">
@@ -76,6 +72,17 @@
                                                     <input type="text" id="text" class="form-control"
                                                            value="{{ $authUser['name'] }}"
                                                            name="name" placeholder="@lang('translate.name')"/>
+                                                </div>
+                                            </div>
+
+                                            {{-- username --}}
+                                            <div class="col-md-6 col-sm-12 mb-1">
+                                                <label class="form-label" for="username">@lang('translate.username')</label>
+                                                <div class="input-group input-group-merge">
+                                                    <span class="input-group-text"><i data-feather="type"></i></span>
+                                                    <input type="text" id="text" class="form-control"
+                                                           value="{{ $authUser['username'] }}"
+                                                           name="username" placeholder="@lang('translate.username')"/>
                                                 </div>
                                             </div>
 
@@ -123,45 +130,45 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="card">
-                                <div class="card-body">
-                                    <form method="POST" action="{{ route('password.change') }}"
-                                          class="form form-vertical">
-                                        @csrf
-                                        <div class="row mb-2">
-                                            {{-- new password --}}
-                                            <div class="col-md-6 col-sm-12 mb-1">
-                                                <label class="form-label" for="password">@lang('auth.password')</label>
-                                                <div class="input-group input-group-merge">
-                                                    <span class="input-group-text"><i data-feather='lock'></i></span>
-                                                    <input type="password" id="ConfirmNewPassword" class="form-control"
-                                                           name="password"
-                                                           placeholder="@lang('auth.password')"/>
-                                                </div>
-                                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('password.change', ['guard' => $guard, 'id' => $authUser['id']]) }}"
+                              class="form form-vertical">
+                            @csrf
+                            <div class="row mb-2">
+                                {{-- new password --}}
+                                <div class="col-md-6 col-sm-12 mb-1">
+                                    <label class="form-label" for="password">@lang('auth.password')</label>
+                                    <div class="input-group input-group-merge">
+                                        <span class="input-group-text"><i data-feather='lock'></i></span>
+                                        <input type="password" id="ConfirmNewPassword" class="form-control"
+                                               name="password"
+                                               placeholder="@lang('auth.password')"/>
+                                    </div>
+                                </div>
 
-                                            {{-- password confirmation --}}
-                                            <div class="col-md-6 col-sm-12 mb-1">
-                                                <label class="form-label"
-                                                       for="password_confirmation">@lang('auth.confirmPassword')</label>
-                                                <div class="input-group input-group-merge">
-                                                    <span class="input-group-text"><i data-feather='lock'></i></span>
-                                                    <input type="password" id="ConfirmNewPassword" class="form-control"
-                                                           name="password_confirmation"
-                                                           placeholder="@lang('auth.confirmPassword')"/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 col-md-2 d-flex">
-                                                <button type="submit" class="btn btn-primary w-100"
-                                                        style="min-width: 180px">@lang('translate.changePassword')</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                {{-- password confirmation --}}
+                                <div class="col-md-6 col-sm-12 mb-1">
+                                    <label class="form-label"
+                                           for="password_confirmation">@lang('auth.confirmPassword')</label>
+                                    <div class="input-group input-group-merge">
+                                        <span class="input-group-text"><i data-feather='lock'></i></span>
+                                        <input type="password" id="ConfirmNewPassword" class="form-control"
+                                               name="password_confirmation"
+                                               placeholder="@lang('auth.confirmPassword')"/>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="row">
+                                <div class="col-12 col-md-2 d-flex">
+                                    <button type="submit" class="btn btn-primary w-100"
+                                            style="min-width: 180px">@lang('translate.changePassword')</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

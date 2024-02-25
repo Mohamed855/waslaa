@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('vendors', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->string('username')->unique();
+            $table->string('crn')->unique();
             $table->string('email')->unique();
             $table->string('password');
             $table->string('avatar');
@@ -30,6 +32,7 @@ return new class extends Migration
             $table->boolean('active')->default(1);
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

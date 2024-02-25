@@ -49,7 +49,7 @@ class ManagersController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->folder, $request, ['name', 'email', 'phone' ,'avatar'], $this->updateManagerRules($id), $id);
+        return parent::updateBase($this->table, $this->folder, $request, ['name', 'username', 'email', 'phone', 'avatar'], $this->updateManagerRules($id), $id);
     }
 
     /**

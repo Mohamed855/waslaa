@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name_ar')->unique();
             $table->boolean('active')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

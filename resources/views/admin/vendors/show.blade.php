@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', ucfirst($selected['name']) )
+@section('title', ucfirst($selected['username']) )
 @section('content')
     <section id="basic-horizontal-layouts">
         <div class="row">
@@ -52,8 +52,9 @@
                 <div class="card p-2">
                     <div class="card-body">
                         <h5 class="card-title">{{ ucfirst($selected['name']) }}</h5>
-                        <p class="card-text">@lang('translate.createdAt')
-                            : {{ date_format($selected['created_at'], 'd-m-Y') }}</p>
+                        <p class="card-text">@lang('translate.createdAt') : {{ date_format($selected['created_at'], 'd-m-Y') }}</p>
+                        <p class="card-text">@lang('translate.city') : {{ $selected['_city'][$nameOnLang] }}</p>
+                        <p class="card-text">@lang('translate.followers') : {{ count($selected['_favorites']) }}</p>
                         <div class="d-inline-block">
                             <a href="#managers" class="pe-1">@lang('translate.managers')</a>
                         </div>
@@ -75,6 +76,28 @@
                                                     <input type="text" id="text" class="form-control"
                                                            value="{{ $selected['name'] }}"
                                                            name="name" placeholder="@lang('translate.name')"/>
+                                                </div>
+                                            </div>
+
+                                            {{-- username --}}
+                                            <div class="col-md-6 col-sm-12 mb-1">
+                                                <label class="form-label" for="username">@lang('translate.username')</label>
+                                                <div class="input-group input-group-merge">
+                                                    <span class="input-group-text"><i data-feather="type"></i></span>
+                                                    <input type="text" id="text" class="form-control"
+                                                           value="{{ $selected['username'] }}"
+                                                           name="username" placeholder="@lang('translate.username')"/>
+                                                </div>
+                                            </div>
+
+                                            {{-- crn --}}
+                                            <div class="col-md-6 col-sm-12 mb-1">
+                                                <label class="form-label" for="crn">@lang('translate.crn')</label>
+                                                <div class="input-group input-group-merge">
+                                                    <span class="input-group-text"><i data-feather="hash"></i></span>
+                                                    <input type="text" id="text" class="form-control"
+                                                           value="{{ $selected['crn'] }}"
+                                                           name="crn" placeholder="@lang('translate.crn')"/>
                                                 </div>
                                             </div>
 
@@ -128,11 +151,8 @@
                                                        for="delivery_time">@lang('translate.deliveryTime')</label>
                                                 <div class="input-group input-group-merge">
                                                     <span class="input-group-text"><i data-feather='clock'></i></span>
-                                                    <select class="form-control" name="delivery_time">
-                                                        @for($i = 20; $i <= 120; $i += 10)
-                                                            <option value="{{ $i }}" {{ $selected->delivery_time == $i ? 'selected' : '' }}>{{ $i }}</option>
-                                                        @endfor
-                                                    </select>
+                                                    <input type="text" class="form-control" value="{{ $selected->delivery_time }}"
+                                                           name="delivery_time" placeholder="@lang('translate.deliveryTime')"/>
                                                 </div>
                                             </div>
 
@@ -142,11 +162,8 @@
                                                        for="delivery_cost">@lang('translate.deliveryCost')</label>
                                                 <div class="input-group input-group-merge">
                                                     <span class="input-group-text"><i data-feather='dollar-sign'></i></span>
-                                                    <select class="form-control" name="delivery_cost">
-                                                        @for($i = 5; $i <= 50; $i += 5)
-                                                            <option value="{{ $i }}" {{ $selected->delivery_cost == $i ? 'selected' : '' }}>{{ $i }}</option>
-                                                        @endfor
-                                                    </select>
+                                                    <input type="text" class="form-control" value="{{ $selected->delivery_cost }}"
+                                                           name="delivery_cost" placeholder="@lang('translate.deliveryCost')"/>
                                                 </div>
                                             </div>
 
@@ -186,6 +203,44 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('password.change', ['guard' => 'vendor', 'id' => $selected['id']]) }}"
+                              class="form form-vertical">
+                            @csrf
+                            <div class="row mb-2">
+                                {{-- new password --}}
+                                <div class="col-md-6 col-sm-12 mb-1">
+                                    <label class="form-label" for="password">@lang('auth.password')</label>
+                                    <div class="input-group input-group-merge">
+                                        <span class="input-group-text"><i data-feather='lock'></i></span>
+                                        <input type="password" id="ConfirmNewPassword" class="form-control"
+                                               name="password"
+                                               placeholder="@lang('auth.password')"/>
+                                    </div>
+                                </div>
+
+                                {{-- password confirmation --}}
+                                <div class="col-md-6 col-sm-12 mb-1">
+                                    <label class="form-label"
+                                           for="password_confirmation">@lang('auth.confirmPassword')</label>
+                                    <div class="input-group input-group-merge">
+                                        <span class="input-group-text"><i data-feather='lock'></i></span>
+                                        <input type="password" id="ConfirmNewPassword" class="form-control"
+                                               name="password_confirmation"
+                                               placeholder="@lang('auth.confirmPassword')"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-md-2 d-flex">
+                                    <button type="submit" class="btn btn-primary w-100"
+                                            style="min-width: 180px">@lang('translate.changePassword')</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

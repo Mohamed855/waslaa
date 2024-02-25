@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title',  __('translate.edit') . ' ' . __('translate.admin') . ' [ ' . ucfirst($selected->name) . ' ]' )
+@section('title',  __('translate.edit') . ' ' . __('translate.admin') . ' [ ' . ucfirst($selected->username) . ' ]' )
 @section('content')
     <section id="basic-horizontal-layouts">
         <div class="row">
@@ -17,6 +17,16 @@
                                         <span class="input-group-text"><i data-feather="type"></i></span>
                                         <input type="text" id="text" class="form-control" value="{{ $selected->name }}"
                                                name="name" placeholder="@lang('translate.name')"/>
+                                    </div>
+                                </div>
+
+                                {{-- username --}}
+                                <div class="col-md-6 col-sm-12 mb-1">
+                                    <label class="form-label" for="username">@lang('translate.username')</label>
+                                    <div class="input-group input-group-merge">
+                                        <span class="input-group-text"><i data-feather="type"></i></span>
+                                        <input type="text" id="text" class="form-control" value="{{ $selected->username }}"
+                                               name="username" placeholder="@lang('translate.username')"/>
                                     </div>
                                 </div>
 

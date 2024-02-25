@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Order extends Model
+class Invoice extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -22,8 +23,18 @@ class Order extends Model
 
     // relationships
 
-    public function _user (): BelongsTo
+    public function _vendor (): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user');
+        return $this->belongsTo(Vendor::class, 'vendor');
+    }
+
+    public function _orders (): BelongsToMany
+    {
+        return $this->belongsToMany(Order::class, 'invoice_orders');
+    }
+
+    public function getTotalTotalPriceAttribute()
+    {
+        return $this->_orders->sum('totalCost');
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Dashboard\Admin;
 
-use App\Helpers\Helper;
 use App\Http\Controllers\Dashboard\BaseController;
 use App\Traits\AdminRules;
 use App\Traits\QueriesTrait;
@@ -26,9 +25,7 @@ class ADsController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        $nameOnLang = Helper::getColumnOnLang('name');
-        $products = $this->activeProduct()->get(['id', $nameOnLang . ' as name']);
-        return parent::indexBase($this->table, 'admin.main.ads', ['products' => $products]);
+        return parent::indexBase($this->table, 'admin.main.ads');
     }
 
     /**
@@ -36,7 +33,7 @@ class ADsController extends BaseController
      */
     public function store(Request $request): RedirectResponse
     {
-        return parent::storeBase($this->table, $this->folder, $request, ['product', 'name', 'image'], $this->createAdRules());
+        return parent::storeBase($this->table, $this->folder, $request, ['name', 'image'], $this->createAdRules());
     }
 
     /**
@@ -44,7 +41,7 @@ class ADsController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->folder, $request, ['product', 'name', 'image'], $this->updateAdRules(), $id);
+        return parent::updateBase($this->table, $this->folder, $request, ['name', 'image'], $this->updateAdRules(), $id);
     }
 
     /**

@@ -23,10 +23,7 @@
                         @foreach ($data as $single)
                             <tr>
                                 <td>
-                                    @php
-                                        $user = \App\Models\User::query()->withTrashed()->find($single->user, ['name'])
-                                    @endphp
-                                    {{ $user['name'] }}
+                                    {{ $single->_user->username }}
                                 </td>
                                 <td>{{ $single->vendor['name'] }}</td>
                                 <td style="min-width: 320px">{{ $single->address }}</td>

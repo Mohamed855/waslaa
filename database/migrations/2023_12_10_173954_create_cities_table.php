@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignIdFor(Country::class, 'country');
             $table->boolean('active')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

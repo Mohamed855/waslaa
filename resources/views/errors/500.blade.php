@@ -6,8 +6,8 @@
 
 @section('err-code', '500')
 
-@section('err-title', __('translate.serverError'))
+@section('err-title', __('error.serverError'))
 
 @section('err-description')
-    @lang('translate.500-description') <br> @lang('translate.500-advice') <a href="" class="text-primary py-2"><b>@lang('translate.support')</b></a>
+    @lang('error.500-description') <br> @lang('error.500-advice') <a href="" class="text-primary py-2"><b>@lang('translate.support')</b></a>
 @endsection

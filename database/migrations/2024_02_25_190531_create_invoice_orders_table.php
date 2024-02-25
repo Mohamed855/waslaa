@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Invoice;
+use App\Models\Order;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,14 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('invoice_orders', function (Blueprint $table) {
             $table->id();
-            $table->string('name_en');
-            $table->string('name_ar');
-            $table->string('avatar');
-            $table->boolean('active')->default(1);
+            $table->foreignIdFor(Invoice::class, 'invoice')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(Order::class, 'order')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('invoice_orders');
     }
 };

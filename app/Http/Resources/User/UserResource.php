@@ -18,6 +18,7 @@ class UserResource extends JsonResource
         return [
             'id' => $this['id'],
             'name' => $this['name'],
+            'username' => $this['username'],
             'phone' => $this['phone'],
             'secPhone' => $this['sec_phone'],
             'avatar' => $this['avatar'] ?? '/storage/images/global/profile.jpg',

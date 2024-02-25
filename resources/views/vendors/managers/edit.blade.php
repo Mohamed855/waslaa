@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title',  __('translate.edit') . ' edit.blade.php' . __('translate.manager') . ' [ ' . ucfirst($selected->name) . ' ]' )
+@section('title',  __('translate.edit') . ' ' . __('translate.manager') . ' [ ' . ucfirst($selected->username) . ' ]' )
 @section('content')
     <section id="basic-horizontal-layouts">
         <div class="row">

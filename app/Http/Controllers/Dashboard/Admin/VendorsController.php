@@ -26,7 +26,7 @@ class VendorsController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::indexBase($this->table, 'admin.vendors.index');
+        return parent::indexBase($this->table, 'admin.vendors.index', ['_admin', '_favorites', '_city']);
     }
 
     /**
@@ -44,7 +44,7 @@ class VendorsController extends BaseController
      */
     public function store(Request $request): RedirectResponse
     {
-        return parent::storeBase($this->table, $this->folder, $request, ['added_by', 'name', 'email', 'phone', 'password', 'city', 'delivery_time', 'delivery_cost', 'avatar'], $this->createVendorRules());
+        return parent::storeBase($this->table, $this->folder, $request, ['added_by', 'name', 'crn', 'email', 'phone', 'password', 'city', 'delivery_time', 'delivery_cost', 'avatar'], $this->createVendorRules());
     }
 
     /**
@@ -54,7 +54,7 @@ class VendorsController extends BaseController
     {
         $nameOnLang = Helper::getColumnOnLang('name');
         $cities = $this->activeCity()->get(['id', $nameOnLang . ' as name']);
-        return parent::showBase($this->table, 'admin.vendors.show', $id, ['cities' => $cities], ['_managers']);
+        return parent::showBase($this->table, 'admin.vendors.show', $id, ['cities' => $cities], ['_managers', '_favorites', '_city']);
     }
 
     /**
@@ -62,7 +62,7 @@ class VendorsController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->folder, $request, ['name', 'email', 'phone', 'city', 'delivery_time', 'delivery_cost', 'priority', 'lang'], $this->updateVendorRules($id), $id);
+        return parent::updateBase($this->table, $this->folder, $request, ['name', 'username', 'crn', 'email', 'phone', 'city', 'delivery_time', 'delivery_cost', 'priority', 'lang'], $this->updateVendorRules($id), $id);
     }
 
     /**

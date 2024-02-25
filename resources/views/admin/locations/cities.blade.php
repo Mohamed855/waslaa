@@ -1,8 +1,5 @@
 @extends('layouts.dashboard')
 @section('title', __('translate.cities'))
-@php
-    $nameOnLang = \App\Helpers\Helper::getColumnOnLang('name');
-@endphp
 @section('content')
     <div class="row">
         <div class="col-xl-12 d-flex">
@@ -124,11 +121,8 @@
                         <tr>
                             <td>{{ $single->$nameOnLang }}</td>
 
-                            @php
-                                $country = \App\Models\Country::query()->find($single->country);
-                            @endphp
                             <td>
-                                {{ $country ? $country->$nameOnLang : '-' }}
+                                {{ $single->_country->$nameOnLang }}
                             </td>
 
                             <td>

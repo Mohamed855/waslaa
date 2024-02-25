@@ -1,8 +1,5 @@
 @extends('layouts.dashboard')
 @section('title', __('translate.subcategories'))
-@php
-    $nameOnLang = \App\Helpers\Helper::getColumnOnLang('name');
-@endphp
 @section('content')
     <div class="row">
         <div class="col-xl-12 d-flex">
@@ -141,11 +138,8 @@
 
                             <td>{{ $single->$nameOnLang }}</td>
 
-                            @php
-                                $category = \App\Models\category::query()->find($single->category);
-                            @endphp
                             <td>
-                                {{ $category ? $category->$nameOnLang : '-' }}
+                                {{ $single->_category->$nameOnLang }}
                             </td>
 
                             <td>

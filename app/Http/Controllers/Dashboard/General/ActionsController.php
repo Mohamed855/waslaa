@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Dashboard\General;
 
-use App\Helpers\DashboardHelper;
 use App\Http\Controllers\Controller;
 use App\Traits\AdminRules;
 use App\Traits\QueriesTrait;
@@ -16,27 +15,6 @@ use Illuminate\Support\Facades\Validator;
 class ActionsController extends Controller
 {
     use QueriesTrait, AdminRules;
-
-    public function changePassword (Request $request): RedirectResponse
-    {
-        try {
-            $passwords = $request->only('password', 'password_confirmation');
-            $validator = Validator::make($passwords, $this->changePasswordRules());
-
-            if ($validator->fails())
-                return back()->with('error', $validator->messages()->first());
-
-            $guard = DashboardHelper::getCurrentGuard();
-
-            auth($guard)->user()->update([
-                'password' => Hash::make($passwords['password']),
-            ]);
-
-            return redirect()->route('profile')->with('success', __('success.passwordChanged'));
-        } catch (Exception) {
-            return back()->with('error', __('error.somethingWentWrong'));
-        }
-    }
 
     public function updateProfile (Request $request, $guard, $id): RedirectResponse
     {
@@ -63,7 +41,27 @@ class ActionsController extends Controller
             }
 
             $selected->update($data);
-            return redirect()->route('profile')->with('success', __('success.passwordChanged'));
+            return back()->with('success', __('translate.details') . ' ' . __('success.updated'));
+        } catch (Exception) {
+            return back()->with('error', __('error.somethingWentWrong'));
+        }
+    }
+
+    public function changePassword (Request $request, $guard, $id): RedirectResponse
+    {
+        try {
+            $passwords = $request->only('password', 'password_confirmation');
+            $validator = Validator::make($passwords, $this->changePasswordRules());
+
+            if ($validator->fails())
+                return back()->with('error', $validator->messages()->first());
+
+            $selected = $this->$guard()->find($id);
+            $selected->update([
+                'password' => Hash::make($passwords['password']),
+            ]);
+
+            return back()->with('success', __('success.passwordChanged'));
         } catch (Exception) {
             return back()->with('error', __('error.somethingWentWrong'));
         }
@@ -154,5 +152,10 @@ class ActionsController extends Controller
         } catch (Exception) {
             return back()->with('error', __('error.somethingWentWrong'));
         }
+    }
+
+    public function updateSettings(Request $request)
+    {
+        //
     }
 }

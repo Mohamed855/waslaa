@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('option')->unique();
             $table->longText('value')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

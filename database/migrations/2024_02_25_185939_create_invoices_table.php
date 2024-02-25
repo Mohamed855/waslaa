@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Vendor;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,12 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->string('name_en');
-            $table->string('name_ar');
-            $table->string('avatar');
-            $table->boolean('active')->default(1);
+            $table->foreignIdFor(Vendor::class, 'vendor')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->date('start');
+            $table->date('end');
+            $table->enum('status', ['opened', 'closed', 'collected'])->default('opened');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('invoices');
     }
 };

@@ -10,6 +10,7 @@
                         <tr>
                             <th>@lang('translate.avatar')</th>
                             <th>@lang('translate.name')</th>
+                            <th>@lang('translate.username')</th>
                             <th>@lang('translate.phone')</th>
                             <th>@lang('translate.secPhone')</th>
                             <th>@lang('translate.gender')</th>
@@ -29,16 +30,13 @@
                                     </a>
                                 </td>
                                 <td> {{ $single->name }} </td>
+                                <td> {{ $single->username }} </td>
                                 <td> {{ $single->phone }} </td>
                                 <td> {{ $single->sec_phone ?? '-' }} </td>
                                 <td> @lang('translate.' . $single->gender) </td>
 
-                                @php
-                                    $nameOnLang = \App\Helpers\Helper::getColumnOnLang('name');
-                                    $city = \App\Models\City::query()->find($single->city);
-                                @endphp
                                 <td>
-                                    {{ $city ? $city->$nameOnLang : '-' }}
+                                    {{ $single->_city->$nameOnLang }}
                                 </td>
 
                                 <td>

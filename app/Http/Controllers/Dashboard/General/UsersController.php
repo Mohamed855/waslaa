@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Dashboard\General;
 
+use App\Helpers\DashboardHelper;
 use App\Http\Controllers\Dashboard\BaseController;
 use App\Traits\QueriesTrait;
 use Illuminate\Contracts\View\View;
@@ -23,7 +24,7 @@ class UsersController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::indexBase($this->table, 'general.users.index');
+        return parent::indexBase($this->table, 'general.users.index', ['_city']);
     }
 
     /**
@@ -31,7 +32,7 @@ class UsersController extends BaseController
      */
     public function show(string $id): View
     {
-        return parent::showBase($this->table, 'general.users.show', $id);
+        return parent::showBase($this->table, 'general.users.show', $id, with: ['_city']);
     }
 
     /**
@@ -40,5 +41,12 @@ class UsersController extends BaseController
     public function destroy(string $id): RedirectResponse
     {
         return parent::destroyBase($this->table, $this->folder, $id);
+    }
+
+    public function profile(): View
+    {
+        $guard = DashboardHelper::getCurrentGuard();
+        $authUser = auth($guard)->user();
+        return view('general.profile', compact(['guard', 'authUser']));
     }
 }

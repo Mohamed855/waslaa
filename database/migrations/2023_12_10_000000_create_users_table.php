@@ -15,6 +15,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('username')->unique();
             $table->string('phone')->unique();
             $table->string('sec_phone')->nullable();
             $table->string('delivery_phone');
@@ -26,6 +27,7 @@ return new class extends Migration
             $table->boolean('active')->default(1);
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

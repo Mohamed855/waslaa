@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', ucfirst($selected->name) . '\'s profile' )
+@section('title', ucfirst($selected->username) . '\'s profile' )
 @section('content')
     <section id="basic-horizontal-layouts">
         <div class="row">
@@ -10,11 +10,16 @@
                 </div>
             </div>
             <div class="col-md-8">
-                <div class="card  p-2">
+                <div class="card p-2">
                     <div class="card-body">
-                        <h5 class="card-title">{{ ucfirst($selected->name) }}</h5>
-                        <p class="card-text">@lang('translate.joinedAt')
-                            : {{ date_format($selected->created_at, 'd-m-Y') }}</p>
+                        <h5 class="card-title">{{ ucfirst($selected->name) . ' (' . $selected->username . ')' }}</h5>
+                        <p class="card-text">@lang('translate.joinedAt'): {{ date_format($selected->created_at, 'd-m-Y') }}</p>
+
+                        <h5 class="card-title">@lang('translate.details')</h5>
+                        <p class="card-text">@lang('translate.phone'): {{ $selected->phone }}</p>
+                        <p class="card-text">@lang('translate.secPhone'): {{ $selected->sec_phone ?? '-' }}</p>
+                        <p class="card-text">@lang('translate.gender'): {{ $selected->gender }}</p>
+                        <p class="card-text">@lang('translate.city'): {{ $selected->_city->$nameOnLang }}</p>
                     </div>
                 </div>
             </div>

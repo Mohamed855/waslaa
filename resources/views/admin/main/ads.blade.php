@@ -1,8 +1,5 @@
 @extends('layouts.dashboard')
 @section('title', __('translate.ads'))
-@php
-    $nameOnLang = \App\Helpers\Helper::getColumnOnLang('name');
-@endphp
 @section('content')
     <div class="row">
         <div class="col-xl-12 d-flex">
@@ -38,29 +35,6 @@
 
                                             <div class="row">
 
-                                                {{-- select product --}}
-                                                <div class="col-12">
-                                                    <div class="mb-1">
-                                                        <label class="form-label"
-                                                               for="product">@lang('translate.product')</label>
-                                                        <select id="editSelectedUser"
-                                                                class="form-control" name="product"
-                                                                data-search="true"
-                                                                data-silent-initial-value-set="true">
-                                                            <option value="" selected
-                                                                    disabled>@lang('translate.select')</option>
-                                                            @foreach($products as $product)
-                                                                <option value="{{ $product->id }}">{{ $product->name }}</option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                    <script type="text/javascript">
-                                                        VirtualSelect.init({
-                                                            ele: '#editSelectedUser'
-                                                        });
-                                                    </script>
-                                                </div>
-
                                                 {{-- add name --}}
                                                 <div class="col-12">
                                                     <div class="mb-1">
@@ -71,6 +45,7 @@
                                                                name="name" placeholder="@lang('translate.name')"/>
                                                     </div>
                                                 </div>
+
                                                 {{-- add image --}}
                                                 <div class="col-12">
                                                     <div class="mb-1">
@@ -113,7 +88,6 @@
                     <tr>
                         <th>@lang('translate.image')</th>
                         <th>@lang('translate.name')</th>
-                        <th>@lang('translate.product')</th>
                         <th>@lang('translate.active')</th>
                         <th>@lang('translate.actions')</th>
                     </tr>
@@ -128,17 +102,6 @@
                             </td>
 
                             <td>{{ $single->name }}</td>
-
-                            @php
-                                $product = \App\Models\Product::query()->find($single->product);
-                            @endphp
-                            <td>
-                                @if($product)
-                                    <a href="{{ route('products.show', $single->product) }}">{{ $product->$nameOnLang }}</a>
-                                @else
-                                    -
-                                @endif
-                            </td>
 
                             <td>
                                 <form class="p-0 m-0"
@@ -181,32 +144,6 @@
                                                               method="POST" enctype="multipart/form-data">
                                                             @csrf @method('PUT')
                                                             <div class="row">
-                                                                <input type="hidden" id="selectedProduct" name="product"
-                                                                       value="">
-
-                                                                {{-- select product --}}
-                                                                <div class="col-12">
-                                                                    <div class="mb-1">
-                                                                        <label class="form-label"
-                                                                               for="product">@lang('translate.product')</label>
-                                                                        <select id="editSelectedProduct"
-                                                                                class="form-control" name="product"
-                                                                                data-search="true"
-                                                                                data-silent-initial-value-set="true">
-                                                                            <option value=""
-                                                                                    disabled>@lang('translate.select')</option>
-
-                                                                            @foreach($products as $product)
-                                                                                <option value="{{ $product->id }}" {{ $single->product == $product->id ? 'selected' : '' }}>{{ $product->name }}</option>
-                                                                            @endforeach
-                                                                        </select>
-                                                                    </div>
-                                                                    <script type="text/javascript">
-                                                                        VirtualSelect.init({
-                                                                            ele: '#editSelectedProduct'
-                                                                        });
-                                                                    </script>
-                                                                </div>
 
                                                                 {{-- edit name --}}
                                                                 <div class="col-12">
@@ -267,7 +204,6 @@
             $('.typeBtn').on('click', function () {
                 let id = $(this).attr('data-id');
                 let ad = JSON.parse($(this).attr('data-'));
-                let selectedProduct = ad.product;
 
                 $('#editSelectedProduct').on('change', function () {
                     let selectedValue = $(this).val();
@@ -277,7 +213,6 @@
                 $('#name').val(ad.name);
 
                 url = '{{ asset('') }}' + 'admin/ads/' + id
-                $('#selectedProduct').val(selectedProduct);
 
                 $('#updateForm').attr('action', url);
             });

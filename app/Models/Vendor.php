@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\AppHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -39,7 +40,21 @@ class Vendor extends Authenticatable
 
     protected $dates = ['deleted_at'];
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            $user->username = strtolower(AppHelper::generateUsername(Vendor::class, $user->name));
+        });
+    }
+
     // relationships
+
+    public function _admin (): BelongsTo
+    {
+        return $this->belongsTo(Admin::class, 'added_by');
+    }
 
     public function _city (): BelongsTo
     {

@@ -16,9 +16,9 @@ return new class extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('image');
-            $table->foreignIdFor(Product::class, 'product');
             $table->boolean('active')->default(1);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

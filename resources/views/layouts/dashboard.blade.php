@@ -22,7 +22,6 @@
                         </div>
                     </div>
                 @endif
-                @include('includes.alerts')
                 @yield('content')
             </div>
         </div>

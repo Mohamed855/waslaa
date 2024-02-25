@@ -26,6 +26,7 @@ return new class extends Migration
             $table->text('deliveryNote')->nullable();
             $table->enum('status', ['ordered', 'accepted', 'canceled'])->default('ordered');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

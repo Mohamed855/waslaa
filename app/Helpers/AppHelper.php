@@ -130,4 +130,20 @@ class AppHelper
 
         return ProductFilterResource::collection($filteredData);
     }
+
+
+    public static function generateUsername($model, $name): array|string|null
+    {
+        $username = preg_replace('/[^A-Za-z0-9]/', '', $name);
+
+        $admin = $model::withTrashed()->where('username', $username)->first();
+
+        $i = 1;
+        while ($admin) {
+            $username .= $i;
+            $admin = $model::withTrashed()->where('username', $username)->first();
+            $i++;
+        }
+        return $username;
+    }
 }

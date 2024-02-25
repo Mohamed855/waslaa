@@ -17,11 +17,12 @@ class BaseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    protected function indexBase($table, $view, $vars = []): View|RedirectResponse
+    protected function indexBase($table, $view, $vars = [], $with = []): View|RedirectResponse
     {
-        $data = $this->$table()->paginate(10);
+        $data = $this->$table()->with($with)->paginate(10);
+        $nameOnLang = Helper::getColumnOnLang('name');
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
-        return view($view, compact('data'))->with($vars);
+        return view($view, compact(['data', 'nameOnLang']))->with($vars);
     }
 
     /**
@@ -74,7 +75,8 @@ class BaseController extends Controller
     public function showBase($table, $view, string $id, $vars = [], $with = []): View
     {
         $selected = $this->$table()->with($with)->findOrFail($id);
-        return view($view, compact('selected'))->with($vars);
+        $nameOnLang = Helper::getColumnOnLang('name');
+        return view($view, compact(['selected', 'nameOnLang']))->with($vars);
     }
 
     /**
@@ -106,6 +108,10 @@ class BaseController extends Controller
 
             $data = $request->only($storedData);
 
+            if ($data['username']) {
+                $data['username'] = strtolower($data['username']);
+            }
+
             if ($request['avatar']) {
                 if ($selected['avatar'] != null) {
                     Storage::delete('public/images/' . $folder . '/' . $selected['avatar']);
@@ -122,6 +128,10 @@ class BaseController extends Controller
                 $imageName = time() . '.' . $data['image']->extension();
                 $data['image']->storeAs('public/images/' . $folder, $imageName);
                 $data['image'] = $imageName;
+            }
+
+            if ($request['password']) {
+                $data['password'] = $request['password'];
             }
 
             $selected->update($data);

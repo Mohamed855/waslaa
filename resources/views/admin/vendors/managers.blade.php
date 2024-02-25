@@ -110,6 +110,7 @@
                 <tr>
                     <th>@lang('translate.avatar')</th>
                     <th>@lang('translate.name')</th>
+                    <th>@lang('translate.username')</th>
                     <th>@lang('translate.email')</th>
                     <th>@lang('translate.phone')</th>
                     <th>@lang('translate.active')</th>
@@ -126,6 +127,8 @@
                         </td>
 
                         <td>{{ $single->name }}</td>
+
+                        <td>{{ $single->username }}</td>
 
                         <td>{{ $single->email }}</td>
 
@@ -188,6 +191,19 @@
                                                                 </div>
                                                             </div>
 
+                                                            {{-- edit username --}}
+                                                            <div class="col-12">
+                                                                <div class="mb-1">
+                                                                    <label class="form-label"
+                                                                           for="username">@lang('translate.username')</label>
+                                                                    <input type="text" id="managerUsername"
+                                                                           class="form-control"
+                                                                           value="{{ $single->username }}"
+                                                                           name="username"
+                                                                           placeholder="@lang('translate.username')"/>
+                                                                </div>
+                                                            </div>
+
                                                             {{-- edit email --}}
                                                             <div class="col-12">
                                                                 <div class="mb-1">
@@ -211,6 +227,17 @@
                                                                            value="{{ $single->phone }}"
                                                                            name="phone"
                                                                            placeholder="@lang('translate.phone')"/>
+                                                                </div>
+                                                            </div>
+
+                                                            {{-- edit password --}}
+                                                            <div class="col-12">
+                                                                <div class="mb-1">
+                                                                    <label class="form-label"
+                                                                           for="password">@lang('translate.password') (@lang('translate.enterPasswordToChange'))</label>
+                                                                    <input type="password"
+                                                                           class="form-control"
+                                                                           name="password" placeholder="@lang('translate.password')"/>
                                                                 </div>
                                                             </div>
 
@@ -268,6 +295,7 @@
             let manager = JSON.parse($(this).attr('data-'));
 
             $('#managerName').val(manager.name);
+            $('#managerUsername').val(manager.username);
             $('#managerEmail').val(manager.email);
             $('#managerPhone').val(manager.phone);
 
