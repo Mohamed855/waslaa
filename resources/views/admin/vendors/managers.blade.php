@@ -274,7 +274,7 @@
                     </tr>
                 @endforeach
                     <tr>
-                        <td colspan="6">
+                        <td colspan="7">
                             <button class="btn btn-link ms-auto" data-bs-toggle="modal" data-bs-target="#AddManager">
                                 <i data-feather="user-plus"></i>
                                 @lang('translate.add') @lang('translate.manager')
