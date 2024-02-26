@@ -119,6 +119,7 @@ return [
     'confirmDelete' => 'Are you sure, you want to delete this record',
     'enterPasswordToChange' => 'Enter new password to change, or let it empty',
     'noSettings' => 'There is no setting',
+    'removeImage' => 'Remove image',
     'actions' => 'Actions',
     'joinedAt' => 'Joined at',
     'createdAt' => 'Created at',

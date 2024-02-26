@@ -120,6 +120,7 @@ return [
     'confirmDelete' => 'هل أنت متأكد من حذف هذا العنصر',
     'enterPasswordToChange' => 'أدخل كلمة مرور جديدة للتغيير أو اتركه فارغاً',
     'noSettings' => 'لا يوجد إعدادات',
+    'removeImage' => 'حذف الصورة',
     'joinedAt' => 'أنضم فى',
     'createdAt' => 'تم إضافته فى',
     'addedBy' => 'أضافه',
