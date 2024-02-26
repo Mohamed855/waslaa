@@ -12,7 +12,7 @@ class Helper
         return $column . '_' . app()->getLocale();
     }
 
-    public static function correctPhoneStyle (String $phone) : String
+    public static function correctPhoneStyle (String $phone): String
     {
         if (Str::startsWith($phone, '01')) {
             $phone = '+2' . $phone;
@@ -22,6 +22,15 @@ class Helper
             $phone = '+' . $phone;
         }
         return $phone;
+    }
+
+    public static function searchOnQuery ($query, $searchable, $keyword)
+    {
+        $query = $query->where($searchable[0], 'like', '%' . trim($keyword) . '%');
+        for ($i = 1; $i < count($searchable); $i++) {
+            $query = $query->orWhere($searchable[$i], 'like', '%' . $keyword . '%');
+        }
+        return $query;
     }
 
     public static function getFullAddress($address): string

@@ -112,6 +112,22 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="text-center">
+                            <p class="card-text font-small-3 mb-0">@lang('translate.transaction')</p>
+                            <h4 class="font-weight-bolder mb-0">{{ $vendor->total_transactions }}</h4>
+                        </div>
+                        <div class="avatar bg-light-success p-50 m-0">
+                            <div class="avatar-content">
+                                <i data-feather="shuffle"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="text-center">
                             <p class="card-text font-small-3 mb-0">@lang('translate.categories')</p>
                             <h4 class="font-weight-bolder mb-0">{{ $vendor->_categories->count() }}</h4>
                         </div>

@@ -32,6 +32,26 @@
                                     </div>
                                 </div>
 
+                                {{-- owner name --}}
+                                <div class="col-md-6 col-sm-12 mb-1">
+                                    <label class="form-label" for="owner_name">@lang('translate.ownerName')</label>
+                                    <div class="input-group input-group-merge">
+                                        <span class="input-group-text"><i data-feather="feather"></i></span>
+                                        <input type="text" class="form-control"
+                                               name="owner_name" placeholder="@lang('translate.ownerName')"/>
+                                    </div>
+                                </div>
+
+                                {{-- phone --}}
+                                <div class="col-md-6 col-sm-12 mb-1">
+                                    <label class="form-label" for="phone">@lang('translate.phone')</label>
+                                    <div class="input-group input-group-merge">
+                                        <span class="input-group-text"><i data-feather='phone'></i></span>
+                                        <input type="text" class="form-control" name="phone"
+                                               placeholder="@lang('translate.phone')"/>
+                                    </div>
+                                </div>
+
                                 {{-- email --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
                                     <label class="form-label" for="email">@lang('translate.email')</label>
@@ -39,16 +59,6 @@
                                         <span class="input-group-text"><i data-feather='at-sign'></i></span>
                                         <input type="email" class="form-control" name="email"
                                                placeholder="email@example.com"/>
-                                    </div>
-                                </div>
-
-                                {{-- Phone --}}
-                                <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="phone">@lang('translate.phone')</label>
-                                    <div class="input-group input-group-merge">
-                                        <span class="input-group-text"><i data-feather='phone'></i></span>
-                                        <input type="text" class="form-control" name="phone"
-                                               placeholder="@lang('translate.phone')"/>
                                     </div>
                                 </div>
 

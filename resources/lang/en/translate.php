@@ -62,6 +62,7 @@ return [
     'cities' => 'Cities',
 
     'name' => 'Name',
+    'ownerName' => 'Owner name',
     'username' => 'Username',
     'enName' => 'English name',
     'arName' => 'Arabic name',
@@ -83,6 +84,7 @@ return [
     'female' => 'Female',
     'address' => 'Address',
     'followers' => 'Followers',
+    'transaction' => 'Transaction',
     'type' => 'Type',
     'quantity' => 'Quantity',
     'price' => 'Price',

@@ -24,7 +24,7 @@ class UsersController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::indexBase($this->table, 'general.users.index', ['_city']);
+        return parent::indexBase($this->table, 'general.users.index', with: ['_city'], searchable: ['name', 'username', 'phone', 'sec_phone']);
     }
 
     /**

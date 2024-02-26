@@ -19,7 +19,7 @@ trait AdminRules {
             'name' => ['required', 'min:5', 'max:60', 'string', function ($attribute, $value, $fail) {
                 $names = explode(' ', $value);
                 if (count($names) < 2)
-                    $fail('You must enter your first and last name at least');
+                    $fail('You must enter first and last name at least');
             }],
             'email' => 'required|email|unique:admins,email|unique:vendors,email|unique:managers,email',
             'phone' => 'required|numeric|unique:users,phone|unique:admins,phone|unique:vendors,phone|unique:managers,phone',
@@ -50,7 +50,7 @@ trait AdminRules {
             'name' => ['required', 'min:5', 'max:60', 'string', function ($attribute, $value, $fail) {
                 $names = explode(' ', $value);
                 if (count($names) < 2)
-                    $fail('You must enter your first and last name at least');
+                    $fail('You must enter first and last name at least');
             }],
             'email' => 'required|email|unique:admins,email|unique:vendors,email|unique:managers,email',
             'phone' => 'required|numeric|unique:users,phone|unique:admins,phone|unique:vendors,phone|unique:managers,phone',
@@ -121,7 +121,7 @@ trait AdminRules {
             'name' => ['required', 'max:60', 'string', function ($attribute, $value, $fail) {
                 $names = explode(' ', $value);
                 if (count($names) < 2)
-                    $fail('You must enter your first and last name at least');
+                    $fail('You must enter first and last name at least');
             }],
             'username' => 'required|unique:admins,username,' . $id,
             'email' => 'required|email|unique:vendors,email|unique:managers,email|unique:admins,email,' . $id,
@@ -134,6 +134,11 @@ trait AdminRules {
     {
         return [
             'name' => 'required|max:60|string',
+            'owner_name' => ['required', 'min:5', 'max:60', 'string', function ($attribute, $value, $fail) {
+                $names = explode(' ', $value);
+                if (count($names) < 2)
+                    $fail('You must enter first and last name at least');
+            }],
             'username' => 'required|unique:vendors,username,' . $id,
             'crn' => 'required|numeric|unique:vendors,crn,' . $id, /*|regex: style of crn', */
             'email' => 'required|email|unique:admins,email|unique:managers,email|unique:vendors,email,' . $id,
@@ -152,7 +157,7 @@ trait AdminRules {
             'name' => ['required', 'max:60', 'string', function ($attribute, $value, $fail) {
                 $names = explode(' ', $value);
                 if (count($names) < 2)
-                    $fail('You must enter your first and last name at least');
+                    $fail('You must enter first and last name at least');
             }],
             'username' => 'required|unique:managers,username,' . $id,
             'email' => 'required|email|unique:admins,email|unique:vendors,email|unique:managers,email,' . $id,

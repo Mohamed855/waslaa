@@ -55,7 +55,7 @@ class InvoicesController extends BaseController
     public function show(string $id): View
     {
         $guard = DashboardHelper::getCurrentGuard();
-        return parent::showBase($this->table, 'admin.invoices.show', $id, ['guard' => $guard]);
+        return parent::showBase($this->table, 'admin.invoices.show', $id, vars: ['guard' => $guard], with: ['_orders']);
     }
 
     /**

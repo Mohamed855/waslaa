@@ -46,7 +46,7 @@
                     <i class="ficon" data-feather="search"></i><span id="notification_number"></span></a>
                 <ul class="dropdown-menu dropdown-menu-media dropdown-menu-end">
                     <form class="p-2">
-                        <input type="text" class="form-control" placeholder="@lang('translate.search')" name="search">
+                        <input type="text" class="form-control" placeholder="@lang('translate.search')" name="keyword" value="{{ isset($_GET['keyword']) ? $_GET['keyword'] : '' }}">
                         <button class="position-absolute end-0 mx-2 px-1 btn btn-link" style="top: 26.5%">
                             <i data-feather="search"></i>
                         </button>

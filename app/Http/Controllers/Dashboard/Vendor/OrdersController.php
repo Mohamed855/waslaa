@@ -55,7 +55,7 @@ class OrdersController extends BaseController
     public function show(string $id): View
     {
         $guard = DashboardHelper::getCurrentGuard();
-        return parent::showBase($this->table, 'general.orders.show', $id, ['guard' => $guard]);
+        return parent::showBase($this->table, 'general.orders.show', $id, vars: ['guard' => $guard]);
     }
 
     /**

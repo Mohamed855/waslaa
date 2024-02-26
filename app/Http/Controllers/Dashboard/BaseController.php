@@ -17,10 +17,14 @@ class BaseController extends Controller
     /**
      * Display a listing of the resource.
      */
-    protected function indexBase($table, $view, $vars = [], $with = []): View|RedirectResponse
+    protected function indexBase($table, $view, $vars = [], $with = [], $searchable = []): View|RedirectResponse
     {
-        $data = $this->$table()->with($with)->paginate(10);
+        $data = $this->$table()->with($with);
         $nameOnLang = Helper::getColumnOnLang('name');
+        if(isset($_GET['keyword']) && count($searchable) > 0) {
+            $data = Helper::searchOnQuery($data, $searchable, $_GET['keyword']);
+        }
+        $data = $data->paginate(10);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
         return view($view, compact(['data', 'nameOnLang']))->with($vars);
     }

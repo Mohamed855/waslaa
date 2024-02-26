@@ -25,7 +25,7 @@ class NotificationsController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::indexBase($this->table, 'admin.notifications.index');
+        return parent::indexBase($this->table, 'admin.notifications.index', searchable: ['name_en', 'name_ar']);
     }
 
     /**

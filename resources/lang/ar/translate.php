@@ -62,6 +62,7 @@ return [
     'cities' => 'المدن',
 
     'name' => 'الاسم',
+    'ownerName' => 'اسم المالك',
     'username' => 'اسم المستخدم',
     'enName' => 'الاسم بالإنجليزية',
     'arName' => 'الاسم بالعربية',
@@ -83,6 +84,7 @@ return [
     'female' => 'أنثى',
     'address' => 'العنوان',
     'followers' => 'المتابعين',
+    'transaction' => 'التحويلات',
     'type' => 'النوع',
     'quantity' => 'الكمية',
     'price' => 'السعر',

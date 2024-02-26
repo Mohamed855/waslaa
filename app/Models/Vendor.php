@@ -45,7 +45,7 @@ class Vendor extends Authenticatable
         parent::boot();
 
         static::creating(function ($user) {
-            $user->username = strtolower(AppHelper::generateUsername(Vendor::class, $user->name));
+            $user->username = strtolower(AppHelper::generateUsername(Vendor::class, $user->owner_name));
         });
     }
 
@@ -86,4 +86,17 @@ class Vendor extends Authenticatable
         return $this->belongsToMany(User::class, 'favorites', 'favorite_id', 'user');
     }
 
+    public function _invoices (): HasMany
+    {
+        return $this->hasMany(Invoice::class, 'vendor');
+    }
+
+    public function getTotalTransactionsAttribute()
+    {
+        $totalOrders = 0;
+        foreach ($this->_invoices as $invoice) {
+            $totalOrders += $invoice->_orders()->withTrashed()->count();
+        }
+        return $totalOrders;
+    }
 }

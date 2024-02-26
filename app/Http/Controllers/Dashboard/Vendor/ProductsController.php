@@ -25,7 +25,7 @@ class ProductsController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::indexBase($this->table, 'admin.products.index');
+        return parent::indexBase($this->table, 'admin.products.index', searchable: ['name_en', 'name_ar']);
     }
 
     /**

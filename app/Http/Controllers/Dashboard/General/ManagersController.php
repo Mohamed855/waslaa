@@ -25,7 +25,7 @@ class ManagersController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::indexBase($this->table, 'admin.managers.index');
+        return parent::indexBase($this->table, 'admin.managers.index', searchable: ['name', 'username', 'email', 'phone']);
     }
 
     /**

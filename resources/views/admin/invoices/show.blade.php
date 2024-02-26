@@ -108,9 +108,8 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($selected['orders'] as $single)
+                        @foreach($selected['_orders'] as $single)
                             <tr>
-
                                 <td>{{ $single['name'] }}</td>
                                 <td>{{ $single['type'] }}</td>
                                 <td>{{ $single['quantity'] }}</td>

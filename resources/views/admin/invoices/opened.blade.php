@@ -19,7 +19,7 @@
                         @foreach ($data as $single)
                             <tr>
                                 <td>{{ $single->_vendor->name }}</td>
-                                <td>{{ $single->start }}</td>
+                                <td>{{ date_format($single->start, 'd-m-Y') }}</td>
                                 <td>{{ count($single->_orders) }}</td>
                                 <td>{{ $single->total_price }} @lang('translate.pound')</td>
                                 <td style="min-width: 320px">

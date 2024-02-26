@@ -25,7 +25,7 @@ class ADsController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::indexBase($this->table, 'admin.main.ads');
+        return parent::indexBase($this->table, 'admin.main.ads', searchable: ['name']);
     }
 
     /**

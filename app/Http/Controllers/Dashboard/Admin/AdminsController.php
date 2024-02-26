@@ -25,7 +25,7 @@ class AdminsController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::indexBase($this->table, 'admin.admins.index');
+        return parent::indexBase($this->table, 'admin.admins.index', searchable: ['name', 'username', 'email', 'phone']);
     }
 
     /**

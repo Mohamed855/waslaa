@@ -79,6 +79,28 @@
                                                 </div>
                                             </div>
 
+                                            {{-- crn --}}
+                                            <div class="col-md-6 col-sm-12 mb-1">
+                                                <label class="form-label" for="crn">@lang('translate.crn')</label>
+                                                <div class="input-group input-group-merge">
+                                                    <span class="input-group-text"><i data-feather="hash"></i></span>
+                                                    <input type="text" id="text" class="form-control"
+                                                           value="{{ $selected['crn'] }}"
+                                                           name="crn" placeholder="@lang('translate.crn')"/>
+                                                </div>
+                                            </div>
+
+                                            {{-- owner name --}}
+                                            <div class="col-md-6 col-sm-12 mb-1">
+                                                <label class="form-label" for="owner_name">@lang('translate.ownerName')</label>
+                                                <div class="input-group input-group-merge">
+                                                    <span class="input-group-text"><i data-feather="feather"></i></span>
+                                                    <input type="text" class="form-control"
+                                                           value="{{ $selected['owner_name'] }}"
+                                                           name="owner_name" placeholder="@lang('translate.ownerName')"/>
+                                                </div>
+                                            </div>
+
                                             {{-- username --}}
                                             <div class="col-md-6 col-sm-12 mb-1">
                                                 <label class="form-label" for="username">@lang('translate.username')</label>
@@ -90,14 +112,14 @@
                                                 </div>
                                             </div>
 
-                                            {{-- crn --}}
+                                            {{-- phone --}}
                                             <div class="col-md-6 col-sm-12 mb-1">
-                                                <label class="form-label" for="crn">@lang('translate.crn')</label>
+                                                <label class="form-label" for="phone">@lang('translate.phone')</label>
                                                 <div class="input-group input-group-merge">
-                                                    <span class="input-group-text"><i data-feather="hash"></i></span>
-                                                    <input type="text" id="text" class="form-control"
-                                                           value="{{ $selected['crn'] }}"
-                                                           name="crn" placeholder="@lang('translate.crn')"/>
+                                                    <span class="input-group-text"><i data-feather='phone'></i></span>
+                                                    <input type="text" id="Phone" class="form-control" name="phone"
+                                                           value="{{ $selected['phone'] }}"
+                                                           placeholder="@lang('translate.phone')"/>
                                                 </div>
                                             </div>
 
@@ -112,14 +134,16 @@
                                                 </div>
                                             </div>
 
-                                            {{-- Phone --}}
+                                            {{-- priority --}}
                                             <div class="col-md-6 col-sm-12 mb-1">
-                                                <label class="form-label" for="phone">@lang('translate.phone')</label>
+                                                <label class="form-label" for="priority">@lang('translate.priority')</label>
                                                 <div class="input-group input-group-merge">
-                                                    <span class="input-group-text"><i data-feather='phone'></i></span>
-                                                    <input type="text" id="Phone" class="form-control" name="phone"
-                                                           value="{{ $selected['phone'] }}"
-                                                           placeholder="@lang('translate.phone')"/>
+                                                    <span class="input-group-text"><i data-feather='dollar-sign'></i></span>
+                                                    <select class="form-control" name="priority">
+                                                        <option value="1" {{ $selected->priority == 1 ? 'selected' : '' }}>@lang('translate.high')</option>
+                                                        <option value="2" {{ $selected->priority == 2 ? 'selected' : '' }}>@lang('translate.medium')</option>
+                                                        <option value="3" {{ $selected->priority == 3 ? 'selected' : '' }}>@lang('translate.low')</option>
+                                                    </select>
                                                 </div>
                                             </div>
 
@@ -164,19 +188,6 @@
                                                     <span class="input-group-text"><i data-feather='dollar-sign'></i></span>
                                                     <input type="text" class="form-control" value="{{ $selected->delivery_cost }}"
                                                            name="delivery_cost" placeholder="@lang('translate.deliveryCost')"/>
-                                                </div>
-                                            </div>
-
-                                            {{-- priority --}}
-                                            <div class="col-md-6 col-sm-12 mb-1">
-                                                <label class="form-label" for="priority">@lang('translate.priority')</label>
-                                                <div class="input-group input-group-merge">
-                                                    <span class="input-group-text"><i data-feather='dollar-sign'></i></span>
-                                                    <select class="form-control" name="priority">
-                                                        <option value="1" {{ $selected->priority == 1 ? 'selected' : '' }}>@lang('translate.high')</option>
-                                                        <option value="2" {{ $selected->priority == 2 ? 'selected' : '' }}>@lang('translate.medium')</option>
-                                                        <option value="3" {{ $selected->priority == 3 ? 'selected' : '' }}>@lang('translate.low')</option>
-                                                    </select>
                                                 </div>
                                             </div>
 
