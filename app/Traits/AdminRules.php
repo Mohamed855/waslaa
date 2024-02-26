@@ -33,6 +33,11 @@ trait AdminRules {
         return [
             'added_by' => 'required|exists:admins,id,active,1',
             'name' => 'required|max:60|string',
+            'owner_name' => ['required', 'min:5', 'max:60', 'string', function ($attribute, $value, $fail) {
+                $names = explode(' ', $value);
+                if (count($names) < 2)
+                    $fail('You must enter first and last name at least');
+            }],
             'crn' => 'required|numeric|unique:vendors,crn', /*|regex: style of crn', */
             'email' => 'required|email|unique:admins,email|unique:vendors,email|unique:managers,email',
             'phone' => 'required|numeric|unique:users,phone|unique:admins,phone|unique:vendors,phone|unique:managers,phone',

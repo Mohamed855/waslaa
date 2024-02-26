@@ -62,7 +62,6 @@
                             </div>
                         </form>
 
-
                         @if($selected->image != null)
                             <form class="col-12 col-md-1 mt-1" action="{{ route('image.remove', ['table' => 'notification', 'id' => $selected->id]) }}"
                                   method="POST">
