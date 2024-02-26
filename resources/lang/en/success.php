@@ -28,4 +28,5 @@ return [
     'unSetPrimary' => 'Primary has unsetted successfully',
     'avatarUpdated' => 'Profile picture has been updated',
     'avatarRemoved' => 'Profile picture has been removed',
+    'imageRemoved' => 'Image has been removed',
 ];

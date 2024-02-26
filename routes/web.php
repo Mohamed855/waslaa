@@ -77,6 +77,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
         Route::post('primary/toggle/{id}', [ActionsController::class, 'togglePrimary'])->name('primary.toggle');
         Route::post('{table}/activation/toggle/{id}', [ActionsController::class, 'toggleActive'])->name('activation.toggle');
+        Route::post('{table}/image/remove/{id}', [ActionsController::class, 'removeImage'])->name('image.remove');
 
         Route::get('logout', [LoginController::class, 'logout'])->name('signOut');
         Route::post('end-session', [LoginController::class, 'endSession'])->name('endSession');

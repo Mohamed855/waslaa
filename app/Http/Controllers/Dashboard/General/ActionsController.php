@@ -154,6 +154,24 @@ class ActionsController extends Controller
         }
     }
 
+    public function removeImage ($table, $id): RedirectResponse
+    {
+        try {
+            $selected = $this->$table()->find($id);
+            if ($selected['image'] != null) {
+                Storage::delete('public/' . $selected['image']);
+                $selected->update(['image' => null]);
+            }
+            if ($selected['avatar'] != null) {
+                Storage::delete('public/' . $selected['avatar']);
+                $selected->update(['avatar' => null]);
+            }
+            return back()->with('success', __('success.imageRemoved'));
+        } catch (Exception) {
+            return back()->with('error', __('error.somethingWentWrong'));
+        }
+    }
+
     public function updateSettings(Request $request)
     {
         //
