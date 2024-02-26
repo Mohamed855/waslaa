@@ -62,7 +62,7 @@
                         <p class="card-text font-small-3 mb-0">@lang('translate.active')</p>
                         <h4 class="font-weight-bolder mb-0">{{ $activeUsersCount }}</h4>
                     </div>
-                    <div class="avatar bg-light-primary p-50 m-0">
+                    <div class="avatar bg-light-warning p-50 m-0">
                         <div class="avatar-content">
                             <i data-feather="users"></i>
                         </div>
@@ -76,7 +76,7 @@
             <h4>{{ $vendor->name }}</h4>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-4 col-6">
                 <div class="card">
                     <div class="card-header">
                         <div class="text-center">
@@ -92,7 +92,23 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-4 col-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="text-center">
+                            <p class="card-text font-small-3 mb-0">@lang('translate.users')</p>
+                            <h4 class="font-weight-bolder mb-0">{{ $vendor->_users->count() }}</h4>
+                        </div>
+                        <div class="avatar bg-light-warning p-50 m-0">
+                            <div class="avatar-content">
+                                <i data-feather="users"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-6">
                 <div class="card">
                     <div class="card-header">
                         <div class="text-center">
@@ -114,11 +130,11 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-4 col-6">
                 <div class="card">
                     <div class="card-header">
                         <div class="text-center">
-                            <p class="card-text font-small-3 mb-0">@lang('translate.subcategories')</p>
+                            <p class="card-text font-small-2 mb-0">@lang('translate.subcategories')</p>
                             <h4 class="font-weight-bolder mb-0">{{ $vendor->_subcategories->count() }}</h4>
                         </div>
                         <div class="avatar bg-light-danger p-50 m-0">
@@ -130,7 +146,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-4 col-6">
                 <div class="card">
                     <div class="card-header">
                         <div class="text-center">

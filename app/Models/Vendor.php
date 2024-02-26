@@ -66,6 +66,11 @@ class Vendor extends Authenticatable
         return $this->hasMany(Manager::class, 'added_by');
     }
 
+    public function _users (): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'vendor_users', 'vendor', 'user');
+    }
+
     public function _categories (): BelongsToMany
     {
         return $this->belongsToMany(Category::class, 'vendor_categories', 'vendor', 'category');

@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard\Admin\CategoriesController;
 use App\Http\Controllers\Dashboard\Admin\CitiesController;
 use App\Http\Controllers\Dashboard\Admin\CountriesController;
 use App\Http\Controllers\Dashboard\Admin\InvoicesController;
+use App\Http\Controllers\Dashboard\Admin\NotificationsController;
 use App\Http\Controllers\Dashboard\Admin\SubcategoriesController;
 use App\Http\Controllers\Dashboard\Admin\VendorsController;
 use App\Http\Controllers\Dashboard\Auth\LoginController;
@@ -85,6 +86,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::group(['prefix' => 'admin', 'middleware' => 'guard:admin'], function () {
         Route::get('/', [GeneralController::class, 'adminOverview'])->name('admin.overview');
         Route::resource('ads', ADsController::class)->except(['create', 'edit', 'show']);
+        Route::resource('notifications', NotificationsController::class)->except(['show']);
         Route::resource('admins', AdminsController::class)->except(['show']);
         Route::resource('vendors', VendorsController::class)->except(['edit']);
         Route::resource('categories', CategoriesController::class)->except(['create', 'edit', 'show']);

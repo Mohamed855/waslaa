@@ -30,6 +30,12 @@
                     @lang('translate.ads')
                 </a>
             </li>
+            <li class=" nav-item {{ request()->routeIs('notifications.index') || request()->routeIs('notifications.create') || request()->routeIs('notifications.edit') ? 'active':'' }}">
+                <a class="nav-link d-flex align-items-center" href="{{ route('notifications.index') }}">
+                    <i data-feather="bell"></i>
+                    @lang('translate.notifications')
+                </a>
+            </li>
             <li class=" nav-item {{ request()->routeIs('admins.index') || request()->routeIs('admins.create') || request()->routeIs('admins.edit') ? 'active':'' }}">
                 <a class="nav-link d-flex align-items-center" href="{{ route('admins.index') }}">
                     <i data-feather="user"></i>
@@ -55,22 +61,28 @@
                 </a>
             </li>
 
+            @php
+                $orderStatus = $invoiceStatus = '';
+                if(request()->routeIs('orders.show')) $orderStatus = $selected->status;
+                if(request()->routeIs('invoices.show')) $invoiceStatus = $selected->status;
+            @endphp
+
             <li class="navigation-header">
                 <span style='font-size: 16px;'>@lang('translate.orders')</span>
             </li>
-            <li class=" nav-item {{ request()->routeIs('ordered') ? 'active':'' }}">
+            <li class=" nav-item {{ request()->routeIs('ordered') || $orderStatus === 'ordered' ? 'active':'' }}">
                 <a class="nav-link d-flex align-items-center" href="{{ route('ordered') }}">
                     <i data-feather="list"></i>
                     @lang('translate.ordered')
                 </a>
             </li>
-            <li class=" nav-item {{ request()->routeIs('accepted') ? 'active':'' }}">
+            <li class=" nav-item {{ request()->routeIs('accepted') || $orderStatus === 'accepted' ? 'active':'' }}">
                 <a class="nav-link d-flex align-items-center" href="{{ route('accepted') }}">
                     <i data-feather="check"></i>
                     @lang('translate.accepted')
                 </a>
             </li>
-            <li class=" nav-item {{ request()->routeIs('canceled') ? 'active':'' }}">
+            <li class=" nav-item {{ request()->routeIs('canceled') || $orderStatus === 'canceled' ? 'active':'' }}">
                 <a class="nav-link d-flex align-items-center" href="{{ route('canceled') }}">
                     <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                          fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -86,19 +98,19 @@
             <li class="navigation-header">
                 <span style='font-size: 16px;'>@lang('translate.invoices')</span>
             </li>
-            <li class=" nav-item {{ request()->routeIs('opened') ? 'active':'' }}">
+            <li class=" nav-item {{ request()->routeIs('opened') || $invoiceStatus === 'opened' ? 'active':'' }}">
                 <a class="nav-link d-flex align-items-center" href="{{ route('opened') }}">
                     <i data-feather="square"></i>
                     @lang('translate.opened')
                 </a>
             </li>
-            <li class=" nav-item {{ request()->routeIs('closed') ? 'active':'' }}">
+            <li class=" nav-item {{ request()->routeIs('closed') || $invoiceStatus === 'closed' ? 'active':'' }}">
                 <a class="nav-link d-flex align-items-center" href="{{ route('closed') }}">
                     <i data-feather="minus-square"></i>
                     @lang('translate.closed')
                 </a>
             </li>
-            <li class=" nav-item {{ request()->routeIs('collected') ? 'active':'' }}">
+            <li class=" nav-item {{ request()->routeIs('collected') || $invoiceStatus === 'collected' ? 'active':'' }}">
                 <a class="nav-link d-flex align-items-center" href="{{ route('collected') }}">
                     <i data-feather="copy"></i>
                     @lang('translate.collected')
@@ -110,13 +122,14 @@
             </li>
 
             @if(auth('admin')->check())
-                @php($vendors = \App\Models\Vendor::query()->where('active', 1)->get(['id', 'name']))
+                @php($vendors = \App\Models\Vendor::query()->where('active', 1)->get(['id', 'name', 'avatar']))
                 @foreach($vendors as $vendor)
-                        <li class="nav-item {{ request()->routeIs('vendors.show', $vendor->id) ? 'active':'' }}">
-                            <a class="nav-link d-flex align-items-center" href="{{ route('vendors.show', $vendor->id) }}">
-                                {{ ucfirst($vendor->name) }}
-                            </a>
-                        </li>
+                    <li class="nav-item {{ request()->getRequestUri() === str_replace(url('/'), '', route('vendors.show', $vendor->id)) ? 'active' : '' }}">
+                        <a class="nav-link d-flex align-items-center" href="{{ route('vendors.show', $vendor->id) }}">
+                            <img class="avatar avatar-sm me-1" style="width: 25px; height: 25px" src="{{ asset($vendor->avatar ? 'storage/images/vendors/' . $vendor->avatar : 'storage/images/global/profile.jpg') }}"/>
+                            {{ ucfirst($vendor->name) }}
+                        </a>
+                    </li>
                 @endforeach
             @endif
 

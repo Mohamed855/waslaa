@@ -58,7 +58,6 @@
                                     @elseif($single->priority == 2)
                                         @lang('translate.medium')
                                     @else
-                                        $single->priority == 1)
                                         @lang('translate.low')
                                     @endif
                                 </td>

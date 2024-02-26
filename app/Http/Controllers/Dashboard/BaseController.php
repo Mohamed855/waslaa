@@ -51,13 +51,13 @@ class BaseController extends Controller
 
             if ($request['avatar']) {
                 $imageName = time() . '.' . $data['avatar']->extension();
-                $data['avatar']->storeAs('public/images/' . $folder, $imageName);
+                $request['avatar']->storeAs('public/images/' . $folder, $imageName);
                 $data['avatar'] = $imageName;
             }
 
             if ($request['image']) {
                 $imageName = time() . '.' . $data['image']->extension();
-                $data['image']->storeAs('public/images/' . $folder, $imageName);
+                $request['image']->storeAs('public/images/' . $folder, $imageName);
                 $data['image'] = $imageName;
             }
 
@@ -85,8 +85,9 @@ class BaseController extends Controller
     protected function editBase($table, $view, string $id, $vars = []): View
     {
         $selected = $this->$table()->findOrFail($id);
+        $nameOnLang = Helper::getColumnOnLang('name');
         if ($selected['is_primary']) abort(404);
-        return view($view, compact('selected'))->with($vars);
+        return view($view, compact(['selected', 'nameOnLang']))->with($vars);
     }
 
     /**
@@ -108,7 +109,7 @@ class BaseController extends Controller
 
             $data = $request->only($storedData);
 
-            if ($data['username']) {
+            if ($request['username']) {
                 $data['username'] = strtolower($data['username']);
             }
 
@@ -117,7 +118,7 @@ class BaseController extends Controller
                     Storage::delete('public/images/' . $folder . '/' . $selected['avatar']);
                 }
                 $imageName = time() . '.' . $data['avatar']->extension();
-                $data['avatar']->storeAs('public/images/' . $folder, $imageName);
+                $request['avatar']->storeAs('public/images/' . $folder, $imageName);
                 $data['avatar'] = $imageName;
             }
 
@@ -126,7 +127,7 @@ class BaseController extends Controller
                     Storage::delete('public/images/' . $folder . '/' . $selected['image']);
                 }
                 $imageName = time() . '.' . $data['image']->extension();
-                $data['image']->storeAs('public/images/' . $folder, $imageName);
+                $request['image']->storeAs('public/images/' . $folder, $imageName);
                 $data['image'] = $imageName;
             }
 

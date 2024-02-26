@@ -68,6 +68,17 @@ trait AdminRules {
         ];
     }
 
+    protected function notificationRules(): array
+    {
+        return [
+            'name_en' => 'required|max:60|string',
+            'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
+            'body_en' => 'required|max:1000|string',
+            'body_ar' => ['required', 'max:1000', new ArabicRule(), 'string'],
+            'image' => 'nullable|max:20480|image',
+        ];
+    }
+
     protected function createCategoryRules(): array
     {
         return [
@@ -175,14 +186,6 @@ trait AdminRules {
             'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
             'category' => 'required|exists:categories,id,active,1',
             'avatar' => 'nullable|max:20480|image',
-        ];
-    }
-
-    protected function settingsRules(): array
-    {
-        return [
-            'hero' => 'nullable|image',
-            'whoAreWe' => 'required',
         ];
     }
 }

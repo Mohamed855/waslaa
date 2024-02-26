@@ -18,7 +18,7 @@ class GeneralController extends Controller
         $usersCount = $this->user()->count();
         $activeAdminsCount = $this->activeAdmin()->count();
         $activeUsersCount = $this->activeUser()->count();
-        $activeVendors = $this->activeVendor()->with(['_managers', '_categories', '_subcategories' => function ($query) {
+        $activeVendors = $this->activeVendor()->with(['_managers', '_users', '_categories', '_subcategories' => function ($query) {
             $query->with(['_products']);
         }])->get();
         return view('admin.main.overview', compact(['adminsCount', 'vendorsCount', 'usersCount', 'activeAdminsCount', 'activeUsersCount', 'activeVendors']));

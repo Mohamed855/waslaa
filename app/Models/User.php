@@ -67,6 +67,16 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsToMany(Vendor::class, 'favorites', 'user', 'favorite_id');
     }
 
+    public function _vendors (): BelongsToMany
+    {
+        return $this->belongsToMany(Vendor::class, 'vendor_users', 'user', 'vendor');
+    }
+
+    public function getVerifiedAttribute(): bool
+    {
+        return count($this->_vendors) > 0;
+    }
+
     // JWT methods
 
     public function getJWTIdentifier()

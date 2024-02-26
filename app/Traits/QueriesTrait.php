@@ -6,6 +6,7 @@ use App\Models\Address;
 use App\Models\Component;
 use App\Models\Invoice;
 use App\Models\InvoiceOrder;
+use App\Models\Notification;
 use App\Models\OrderProduct;
 use App\Models\ProductComponent;
 use App\Models\ProductType;
@@ -31,6 +32,8 @@ use App\Models\Vendor;
 
 trait QueriesTrait {
     public function ad(): Builder { return Ad::query(); }
+
+    public function notification(): Builder { return Notification::query(); }
 
     public function address(): Builder { return Address::query(); }
 

@@ -1,62 +1,56 @@
 @extends('layouts.dashboard')
-@section('title',  __('translate.edit') . ' ' . __('translate.admin') . ' [ ' . ucfirst($selected->username) . ' ]' )
+@section('title',  __('translate.edit') . ' ' . __('translate.notification') . ' [ ' . ucfirst($selected->$nameOnLang) . ' ]' )
 @section('content')
     <section id="basic-horizontal-layouts">
         <div class="row">
             <div class="col-md-12 col-12 m-auto">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('admins.update', $selected->id) }}"
+                        <form method="POST" action="{{ route('notifications.update', $selected->id) }}"
                               class="form form-vertical" enctype="multipart/form-data">
                             @csrf @method('PUT')
                             <div class="row mb-2">
-                                {{-- name --}}
+                                {{-- add en name --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="name">@lang('translate.name')</label>
+                                    <label class="form-label" for="name_en">@lang('translate.enName')</label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i data-feather="type"></i></span>
-                                        <input type="text" id="text" class="form-control" value="{{ $selected->name }}"
-                                               name="name" placeholder="@lang('translate.name')"/>
+                                        <input type="text" class="form-control" name="name_en" value="{{ $selected->name_en }}"
+                                               placeholder="@lang('translate.enName')"/>
                                     </div>
                                 </div>
 
-                                {{-- username --}}
+                                {{-- add ar name --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="username">@lang('translate.username')</label>
+                                    <label class="form-label" for="name_ar">@lang('translate.arName')</label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i data-feather="type"></i></span>
-                                        <input type="text" id="text" class="form-control" value="{{ $selected->username }}"
-                                               name="username" placeholder="@lang('translate.username')"/>
+                                        <input type="text" class="form-control" name="name_ar" value="{{ $selected->name_ar }}"
+                                               placeholder="@lang('translate.arName')"/>
                                     </div>
                                 </div>
 
-                                {{-- email --}}
+                                {{-- add en body --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="email">@lang('translate.email')</label>
+                                    <label class="form-label" for="body_en">@lang('translate.enBody')</label>
                                     <div class="input-group input-group-merge">
-                                        <span class="input-group-text"><i data-feather='at-sign'></i></span>
-                                        <input type="email" id="email" class="form-control" name="email"
-                                               value="{{ $selected->email }}"
-                                               placeholder="email@example.com"/>
+                                        <textarea class="form-control" name="body_en" placeholder="@lang('translate.enBody')">{{ $selected->body_en }}</textarea>
                                     </div>
                                 </div>
 
-                                {{-- Phone --}}
+                                {{-- add ar body --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="phone">@lang('translate.phone')</label>
+                                    <label class="form-label" for="body_ar">@lang('translate.arBody')</label>
                                     <div class="input-group input-group-merge">
-                                        <span class="input-group-text"><i data-feather='phone'></i></span>
-                                        <input type="text" id="Phone" class="form-control" name="phone"
-                                               value="{{ $selected->phone }}"
-                                               placeholder="@lang('translate.phone')"/>
+                                        <textarea class="form-control" name="body_ar" placeholder="@lang('translate.arBody')">{{ $selected->body_ar }}</textarea>
                                     </div>
                                 </div>
 
-                                {{-- avatar --}}
+                                {{-- image --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="avatar">@lang('translate.avatar')</label>
+                                    <label class="form-label" for="image">@lang('translate.image')</label>
                                     <div class="input-group input-group-merge">
-                                        <input type="file" id="ConfirmNewPassword" class="form-control" name="avatar"/>
+                                        <input type="file" class="form-control" name="image"/>
                                     </div>
                                 </div>
                             </div>

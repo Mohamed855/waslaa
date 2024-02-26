@@ -8,12 +8,12 @@
                     <table id="example" class="table text-center table-bordered" style="width:100%">
                         <thead>
                         <tr>
-                            <th>@lang('translate.user')</th>
                             <th>@lang('translate.vendor')</th>
-                            <th>@lang('translate.address')</th>
                             <th>@lang('translate.phone')</th>
-                            <th>@lang('translate.payMethod')</th>
+                            <th>@lang('translate.user')</th>
+                            <th>@lang('translate.address')</th>
                             <th>@lang('translate.deliveryMethod')</th>
+                            <th>@lang('translate.payMethod')</th>
                             <th>@lang('translate.total')</th>
                             <th>@lang('translate.orderedAt')</th>
                             <th>@lang('translate.actions')</th>
@@ -22,14 +22,12 @@
                         <tbody>
                         @foreach ($data as $single)
                             <tr>
-                                <td>
-                                    {{ $single->_user->username }}
-                                </td>
                                 <td>{{ $single->vendor['name'] }}</td>
-                                <td style="min-width: 320px">{{ $single->address }}</td>
                                 <td>{{ $single->deliveryPhone }}</td>
-                                <td>{{ __('translate.' . $single->payMethod) }}</td>
+                                <td>{{ $single->_user->username }}</td>
+                                <td style="min-width: 320px">{{ $single->address }}</td>
                                 <td>{{ __('translate.' . $single->deliveryMethod) }}</td>
+                                <td>{{ __('translate.' . $single->payMethod) }}</td>
                                 <td>{{ $single->totalCost }} @lang('translate.pound')</td>
                                 <td>{{ date_format($single->created_at, 'd-m-Y h:i a') }}</td>
                                 <td style="min-width: 320px">

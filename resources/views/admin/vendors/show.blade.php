@@ -196,7 +196,7 @@
                                         <div class="row">
                                             <div class="col-12 col-md-1 d-flex">
                                                 <button type="submit" class="btn btn-primary w-100"
-                                                        style="min-width: 180px">@lang('translate.update')</button>
+                                                        style="min-width: 180px">@lang('translate.save')</button>
                                             </div>
                                         </div>
                                     </form>

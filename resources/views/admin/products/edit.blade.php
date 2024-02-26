@@ -57,17 +57,6 @@
                                 </div>
                             </div>
                         </form>
-
-                        @if($selected->image != null)
-                            <form class="col-12 col-md-1 mt-1" action="{{ route('image.remove', $selected->id) }}"
-                                  method="POST">
-                                @csrf
-                                <button class="btn btn-danger w-100" style="min-width: 180px" data-bs-toggle="modal">
-                                    <i data-feather="x"></i>
-                                    @lang('translate.removeImage')
-                                </button>
-                            </form>
-                        @endif
                     </div>
                 </div>
             </div>

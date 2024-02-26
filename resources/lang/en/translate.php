@@ -19,7 +19,8 @@ return [
 
     'en' => 'English',
     'ar' => 'Arabic',
-    'notifications' => 'Notifications',
+    'notifications' => 'Notification',
+    'notification' => 'Notification',
     'seeAllTheNotifications' => 'See all notifications',
 
     'overview' => 'Overview',
@@ -53,6 +54,7 @@ return [
     'opened' => 'Opened',
     'closed' => 'Closed',
     'collected' => 'Collected',
+    'verified' => 'Verified',
     'locations' => 'Locations',
     'country' => 'Country',
     'countries' => 'Countries',
@@ -63,6 +65,8 @@ return [
     'username' => 'Username',
     'enName' => 'English name',
     'arName' => 'Arabic name',
+    'enBody' => 'English body',
+    'arBody' => 'Arabic body',
     'crn' => 'CRN (Commercial Registration No.)',
     'CRN' => 'CRN',
     'email' => 'Email',

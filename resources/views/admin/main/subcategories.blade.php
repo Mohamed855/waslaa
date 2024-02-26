@@ -76,6 +76,7 @@
                                                                for="name_ar">@lang('translate.arName')</label>
                                                         <input type="text"
                                                                class="form-control"
+
                                                                name="name_ar" placeholder="@lang('translate.arName')"/>
                                                     </div>
                                                 </div>
@@ -230,6 +231,7 @@
                                                                                for="name_ar">@lang('translate.arName')</label>
                                                                         <input type="text" id="name"
                                                                                class="form-control"
+
                                                                                value="{{ $single->name_ar }}"
                                                                                name="name_ar"
                                                                                placeholder="@lang('translate.arName')"/>
