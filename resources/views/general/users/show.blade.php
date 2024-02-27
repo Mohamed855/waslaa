@@ -20,9 +20,16 @@
                         <p class="card-text">@lang('translate.secPhone'): {{ $selected->sec_phone ?? '-' }}</p>
                         <p class="card-text">@lang('translate.gender'): {{ $selected->gender }}</p>
                         <p class="card-text">@lang('translate.city'): {{ $selected->_city->$nameOnLang }}</p>
+                        <p class="card-text">@lang('translate.following'): {{ count($selected->_favoriteVendors) }}</p>
+                        <p class="card-text">@lang('translate.userIn'): {{ count($selected->_vendors) }}</p>
+                        <p class="card-text">@lang('translate.complains'): {{ count($selected->_complains) }}</p>
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <section>
+        @include('general.users.complains')
     </section>
 @endsection

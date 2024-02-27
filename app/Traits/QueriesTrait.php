@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use App\Models\Address;
+use App\Models\Complain;
 use App\Models\Component;
 use App\Models\Invoice;
 use App\Models\InvoiceOrder;
@@ -46,6 +47,8 @@ trait QueriesTrait {
     public function city(): Builder { return City::query(); }
 
     public function component(): Builder { return Component::query(); }
+
+    public function complain(): Builder { return Complain::query(); }
 
     public function country(): Builder { return Country::query(); }
 

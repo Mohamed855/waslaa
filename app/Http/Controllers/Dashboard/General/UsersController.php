@@ -32,7 +32,9 @@ class UsersController extends BaseController
      */
     public function show(string $id): View
     {
-        return parent::showBase($this->table, 'general.users.show', $id, with: ['_city']);
+        return parent::showBase($this->table, 'general.users.show', $id, with: ['_city', '_favoriteVendors', '_vendors', '_complains' => function ($query) {
+            $query->with('_vendor');
+        }]);
     }
 
     /**

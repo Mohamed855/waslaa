@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard\Vendor;
+namespace App\Http\Controllers\Dashboard\General;
 
 use App\Helpers\DashboardHelper;
 use App\Http\Controllers\Dashboard\BaseController;

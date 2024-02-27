@@ -72,6 +72,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsToMany(Vendor::class, 'vendor_users', 'user', 'vendor');
     }
 
+    public function _complains (): HasMany
+    {
+        return $this->hasMany(Complain::class,'user');
+    }
+
     public function getVerifiedAttribute(): bool
     {
         return count($this->_vendors) > 0;

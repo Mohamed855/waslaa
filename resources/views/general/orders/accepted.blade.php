@@ -22,9 +22,9 @@
                         <tbody>
                         @foreach ($data as $single)
                             <tr>
-                                <td>{{ $single->vendor['name'] }}</td>
+                                <td><a href="{{ route('vendors.show', $single->vendor['id']) }}">{{ $single->vendor['name'] }}</a></td>
                                 <td>{{ $single->deliveryPhone }}</td>
-                                <td>{{ $single->_user->username }}</td>
+                                <td><a href="{{ route('users.show', $single->_user->id) }}">{{ $single->_user->username }}</a></td>
                                 <td style="min-width: 320px">{{ $single->address }}</td>
                                 <td>{{ __('translate.' . $single->deliveryMethod) }}</td>
                                 <td>{{ __('translate.' . $single->payMethod) }}</td>
