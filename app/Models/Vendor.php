@@ -91,6 +91,16 @@ class Vendor extends Authenticatable
         return $this->hasMany(Invoice::class, 'vendor');
     }
 
+    public function getAllProductIds()
+    {// you need this to check if user add to cart another vendor product
+        $subcategories = $this->subcategories;
+        $productIds = [];
+        foreach ($subcategories as $subcategory) {
+            $productIds = array_merge($productIds, $subcategory->products->pluck('id')->toArray());
+        }
+        return $productIds;
+    }
+
     public function getTotalTransactionsAttribute()
     {
         $totalOrders = 0;

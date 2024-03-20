@@ -14,7 +14,7 @@ trait ProfileRules {
             'phone' => [
                 'required',
                 'regex:/^(010|011|012|015|10|11|12|15|2010|2011|2012|2015|\+2010|\+2011|\+2012|\+2015)[0-9]{8}$/',
-                'unique:users,phone' . auth()->id(),
+                'unique:users,phone,' . auth()->id(),
                 'unique:admins,phone',
                 'unique:vendors,phone',
                 'unique:managers,phone',

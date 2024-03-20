@@ -102,7 +102,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     // Vendor Routes
     Route::group(['prefix' => 'vendor', 'middleware' => 'guard:vendor'], function () {
-        Route::get('/', function () { return view('vendor.main.overview'); })->name('vendor.overview');
+        Route::get('/', [GeneralController::class, 'vendorOverview'])->name('vendor.overview');
     });
 
     // Manager Routes

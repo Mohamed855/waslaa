@@ -24,6 +24,19 @@ class GeneralController extends Controller
         return view('admin.main.overview', compact(['adminsCount', 'vendorsCount', 'usersCount', 'activeAdminsCount', 'activeUsersCount', 'activeVendors']));
     }
 
+    public function vendorOverview(): View
+    {
+        $adminsCount = $this->admin()->count();
+        $vendorsCount = $this->vendor()->count();
+        $usersCount = $this->user()->count();
+        $activeAdminsCount = $this->activeAdmin()->count();
+        $activeUsersCount = $this->activeUser()->count();
+        $activeVendors = $this->activeVendor()->with(['_managers', '_users', '_categories', '_subcategories' => function ($query) {
+            $query->with(['_products']);
+        }])->get();
+        return view('admin.main.overview', compact(['adminsCount', 'vendorsCount', 'usersCount', 'activeAdminsCount', 'activeUsersCount', 'activeVendors']));
+    }
+
     public function settings(): View
     {
         $settings = $this->siteOption()->get();
