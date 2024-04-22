@@ -12,6 +12,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "mcamara/laravel-localization": "^1.8",
+        "spatie/laravel-flash": "*",
         "tymon/jwt-auth": "^2.0",
         "yoeunes/toastr": "^2.3"
     },

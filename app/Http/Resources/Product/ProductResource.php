@@ -23,7 +23,7 @@ class ProductResource extends JsonResource
         return [
             'id' => $this['id'],
             'name' => $this[Helper::getColumnOnLang('name')],
-            'avatar' => $this['avatar'],
+            'avatar' => url('') . ($this['avatar'] ? '/storage/images/products/' . $this['avatar'] : '/storage/images/global/default.jpg'),
             'offer' => $offer,
             'rate' => $this['rate'],
             'isFavorite' => (bool) $isFavorite,

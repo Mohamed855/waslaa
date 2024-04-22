@@ -19,7 +19,7 @@ class ProductFilterResource extends JsonResource
         return [
             'id' => $this['id'],
             'name' => $this['name'],
-            'avatar' => $this['avatar'],
+            'avatar' => url('') . ($this['avatar'] ? '/storage/images/products/' . $this['avatar'] : '/storage/images/global/default.jpg'),
             'offer' => $offer,
             'rate' => $this['rate'],
             'components' => ComponentFilterResource::collection($this['components']),

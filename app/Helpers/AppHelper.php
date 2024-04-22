@@ -102,6 +102,9 @@ class AppHelper
                 ->where('name_en', 'like', '%' . $key . '%')
                 ->orWhere('name_ar', 'like', '%' . $key . '%')->paginate(10),
         };
+        foreach ($output as $result) {
+            $result['avatar'] = url('') . ($result['avatar'] ? '/storage/images/' . $type . '/' . $result['avatar'] : '/storage/images/global/default.jpg');
+        }
         return SearchOutputResource::collection($output);
     }
     public function filterAccordingTo($method, $products, $desc): AnonymousResourceCollection

@@ -18,7 +18,7 @@ class CategoryResource extends JsonResource
         return [
             'id' => $this['id'],
             'name' => $this[Helper::getColumnOnLang('name')],
-            'avatar' => $this['avatar'],
+            'avatar' => url('') . ($this['avatar'] ? '/storage/images/categories/' . $this['avatar'] : '/storage/images/global/default.jpg'),
         ];
     }
 }
