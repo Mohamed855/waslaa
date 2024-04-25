@@ -15,7 +15,7 @@ class City extends Model
 
     protected $dates = ['deleted_at'];
 
-    public function _country () : BelongsTo
+    public function country () : BelongsTo
     {
         return $this->belongsTo(Country::class, 'country');
     }

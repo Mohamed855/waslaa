@@ -42,44 +42,44 @@ class User extends Authenticatable implements JWTSubject
 
     // relationships
 
-    public function _city (): BelongsTo
+    public function city (): BelongsTo
     {
         return $this->belongsTo(City::class, 'city');
     }
 
-    public function _addresses (): HasMany
+    public function addresses (): HasMany
     {
         return $this->hasMany(Address::class, 'user_id');
     }
 
-    public function _cart (): BelongsToMany
+    public function cart (): BelongsToMany
     {
         return $this->belongsToMany(Product::class, 'carts', 'user', 'product')->withPivot('id', 'quantity', 'type');
     }
 
-    public function _favoriteProducts (): BelongsToMany
+    public function favoriteProducts (): BelongsToMany
     {
         return $this->belongsToMany(Product::class, 'favorites', 'user', 'favorite_id');
     }
 
-    public function _favoriteVendors (): BelongsToMany
+    public function favoriteVendors (): BelongsToMany
     {
         return $this->belongsToMany(Vendor::class, 'favorites', 'user', 'favorite_id');
     }
 
-    public function _vendors (): BelongsToMany
+    public function vendors (): BelongsToMany
     {
         return $this->belongsToMany(Vendor::class, 'vendor_users', 'user', 'vendor');
     }
 
-    public function _complains (): HasMany
+    public function complains (): HasMany
     {
         return $this->hasMany(Complain::class,'user');
     }
 
     public function getVerifiedAttribute(): bool
     {
-        return count($this->_vendors) > 0;
+        return count($this->vendors) > 0;
     }
 
     // JWT methods

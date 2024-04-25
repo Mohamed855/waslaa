@@ -18,7 +18,7 @@ class AddressesRecourse extends JsonResource
         return [
             'id' => $this['id'],
             'address' => Helper::getFullAddress($this),
-            'city' => $this['_city'][Helper::getColumnOnLang('name')],
+            'city' => $this['city'][Helper::getColumnOnLang('name')],
             'isMain' => (bool) $this['main'],
         ];
     }

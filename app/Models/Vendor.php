@@ -51,42 +51,42 @@ class Vendor extends Authenticatable
 
     // relationships
 
-    public function _admin (): BelongsTo
+    public function admin (): BelongsTo
     {
         return $this->belongsTo(Admin::class, 'added_by');
     }
 
-    public function _city (): BelongsTo
+    public function city (): BelongsTo
     {
         return $this->belongsTo(City::class, 'city');
     }
 
-    public function _managers (): HasMany
+    public function managers (): HasMany
     {
         return $this->hasMany(Manager::class, 'added_by');
     }
 
-    public function _users (): BelongsToMany
+    public function users (): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'vendor_users', 'vendor', 'user');
     }
 
-    public function _categories (): BelongsToMany
+    public function categories (): BelongsToMany
     {
         return $this->belongsToMany(Category::class, 'vendor_categories', 'vendor', 'category');
     }
 
-    public function _subcategories (): BelongsToMany
+    public function subcategories (): BelongsToMany
     {
         return $this->belongsToMany(Subcategory::class, 'vendor_subcategories', 'vendor', 'subcategory');
     }
 
-    public function _favorites (): BelongsToMany
+    public function favorites (): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'favorites', 'favorite_id', 'user');
     }
 
-    public function _invoices (): HasMany
+    public function invoices (): HasMany
     {
         return $this->hasMany(Invoice::class, 'vendor');
     }
@@ -104,8 +104,8 @@ class Vendor extends Authenticatable
     public function getTotalTransactionsAttribute()
     {
         $totalOrders = 0;
-        foreach ($this->_invoices as $invoice) {
-            $totalOrders += $invoice->_orders()->withTrashed()->count();
+        foreach ($this->invoices as $invoice) {
+            $totalOrders += $invoice->orders()->withTrashed()->count();
         }
         return $totalOrders;
     }

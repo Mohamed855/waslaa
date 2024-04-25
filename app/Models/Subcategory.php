@@ -19,17 +19,17 @@ class Subcategory extends Model
 
     // relationships
 
-    public function _vendors (): BelongsToMany
+    public function vendors (): BelongsToMany
     {
         return $this->belongsToMany(Vendor::class, 'vendor_subcategories', 'subcategory', 'vendor');
     }
 
-    public function _category (): BelongsTo
+    public function category (): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category');
     }
 
-    public function _products (): HasMany
+    public function products (): HasMany
     {
         return $this->hasMany(Product::class, 'subcategory');
     }

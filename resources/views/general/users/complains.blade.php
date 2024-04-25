@@ -18,7 +18,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($selected['_complains'] as $single)
+                @foreach($selected['complains'] as $single)
                     <tr>
                         <td>
                             <div class="avatar avatar-xl">
@@ -30,7 +30,7 @@
 
                         <td>{{ $single->body }}</td>
 
-                        <td>{{ $single->_vendor->name }}</td>
+                        <td>{{ $single->vendor->name }}</td>
                     </tr>
                 @endforeach
                 </tbody>

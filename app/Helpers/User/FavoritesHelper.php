@@ -17,7 +17,7 @@ class FavoritesHelper
             ->join('favorites as fav', 'fav.favorite_id', 'products.id')
             ->where('fav.type', 'product')
             ->where('fav.user', auth()->id())
-            ->with(['_subcategory', '_components', '_types'])
+            ->with(['subcategory', 'components', 'types'])
             ->select(['products.*'])
             ->paginate(10);
         return ProductResource::collection($myFavoriteProducts);
@@ -29,9 +29,9 @@ class FavoritesHelper
             ->join('favorites as fav', 'fav.favorite_id', 'vendors.id')
             ->where('fav.type', 'vendor')
             ->where('fav.user', auth()->id())
-            ->with(['_city' => function ($cityQuery) {
-                $cityQuery->with('_country');
-            }, '_subcategories' => function ($subCategoriesQuery) {
+            ->with(['city' => function ($cityQuery) {
+                $cityQuery->with('country');
+            }, 'subcategories' => function ($subCategoriesQuery) {
                 $subCategoriesQuery->where('active', 1);
             }])->select(['vendors.*'])
             ->paginate(10);

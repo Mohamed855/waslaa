@@ -29,9 +29,9 @@ class VendorResource extends JsonResource
             'deliveryCost' => $this['delivery_cost'],
             'rate' => $this['rate'],
             'isFavorite' => (bool) $isFavorite,
-            'city' => $this['_city'][Helper::getColumnOnLang('name')],
-            'country' => $this['_city']['_country'][Helper::getColumnOnLang('name')],
-            'subcategories' => SubCategoryResource::collection($this['_subcategories']),
+            'city' => $this['city'][Helper::getColumnOnLang('name')],
+            'country' => $this['city']['country'][Helper::getColumnOnLang('name')],
+            'subcategories' => SubCategoryResource::collection($this['subcategories']),
         ];
     }
 }

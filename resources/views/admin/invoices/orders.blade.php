@@ -21,7 +21,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($selected['_orders'] as $single)
+                @foreach($selected['orders'] as $single)
                     <tr>
                         <td>{{ $single['name'] }}</td>
                         <td>{{ $single['type'] }}</td>

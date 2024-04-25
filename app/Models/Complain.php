@@ -17,12 +17,12 @@ class Complain extends Model
 
     // relationships
 
-    public function _vendor (): BelongsTo
+    public function vendor (): BelongsTo
     {
         return $this->belongsTo(Vendor::class,'vendor');
     }
 
-    public function _user (): BelongsTo
+    public function users (): BelongsTo
     {
         return $this->belongsTo(User::class,'user');
     }

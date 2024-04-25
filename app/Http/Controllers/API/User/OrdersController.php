@@ -27,11 +27,9 @@ class OrdersController extends Controller
         $this->orders = new OrdersHelper();
     }
 
-    public function orders (): JsonResponse
+    public function orders ()
     {
-        return $this->returnData('Orders View', [
-            'myOrders' => $this->orders->getOrders(),
-        ]);
+        return $this->orders->getOrders();
     }
 
     public function orderDetails ($id): JsonResponse
@@ -40,7 +38,7 @@ class OrdersController extends Controller
 
         if (!$selectedOrder) $this->returnError('Something went error');
 
-        return $this->returnData('Orders Details View', [
+        return $this->returnData('Orders Details', [
             'OrderDetails' => new OrderDetailsResource($selectedOrder),
         ]);
     }

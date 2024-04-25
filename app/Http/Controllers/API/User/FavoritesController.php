@@ -21,15 +21,12 @@ class FavoritesController extends Controller
         $this->favorites = new FavoritesHelper();
     }
 
-    public function favorites ($type): JsonResponse
+    public function favorites ($type)
     {
         if (! in_array($type, ['product', 'vendor']))
             return $this->returnError('Invalid type');
 
-        $myFavorites = $type == 'product' ? $this->favorites->getFavoriteProducts() : $this->favorites->getFavoriteVendors();
-        return $this->returnData('Favorites View', [
-            'myFavorites' => $myFavorites,
-        ]);
+        return $type == 'product' ? $this->favorites->getFavoriteProducts() : $this->favorites->getFavoriteVendors();
     }
 
     public function toggleFavorite ($type, $id): JsonResponse

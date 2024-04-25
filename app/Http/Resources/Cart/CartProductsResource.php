@@ -25,9 +25,9 @@ class CartProductsResource extends JsonResource
             'avatar' => url('') . ($this['avatar'] ? '/storage/images/products/' . $this['avatar'] : '/storage/images/global/default.jpg'),
             'offer' => $offer,
             // 'rate' => $this['rate'],
-            'components' => ComponentResource::collection($this['_components']),
-            'types' => TypeResource::collection($this['_types']),
-            'selectedType' => new TypeResource($this['_types'][$this['pivot']['type']]),
+            'components' => ComponentResource::collection($this['components']),
+            'types' => TypeResource::collection($this['types']),
+            'selectedType' => new TypeResource($this['types'][$this['pivot']['type']]),
             'quantity' => $this['pivot']['quantity'],
         ];
     }

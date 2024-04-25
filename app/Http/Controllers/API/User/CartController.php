@@ -21,11 +21,11 @@ class CartController extends Controller
 
     public function myCart (): JsonResponse
     {
-        $myCart = $this->user()->find(auth()->id())->load(['_cart' => function ($productQuery) {
-            $productQuery->with(['_types'])->paginate(10);
+        $myCart = $this->user()->find(auth()->id())->load(['cart' => function ($productQuery) {
+            $productQuery->with(['types'])->paginate(10);
         }]);
 
-        return $this->returnData('Cart View', [
+        return $this->returnData('User Cart', [
             'myCart' => new CartResource($myCart),
         ]);
     }
@@ -36,7 +36,7 @@ class CartController extends Controller
             ->where('user_id', auth()->id())->where('main', 1)->first();
         $deliveryPhone = $this->user()->find(auth()->id(), ['delivery_phone']);
 
-        return $this->returnData('Checkout View', [
+        return $this->returnData('User Checkout', [
             'address' => Helper::getFullAddress($mainAddress),
             'deliveryPhone' => $deliveryPhone['delivery_phone'],
         ]);

@@ -12,12 +12,12 @@ class Address extends Model
 
     protected $guarded = [];
 
-    public function _user (): BelongsTo
+    public function users (): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function _city (): BelongsTo
+    public function city (): BelongsTo
     {
         return $this->belongsTo(City::class, 'city');
     }

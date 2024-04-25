@@ -18,8 +18,8 @@ class GeneralController extends Controller
         $usersCount = $this->user()->count();
         $activeAdminsCount = $this->activeAdmin()->count();
         $activeUsersCount = $this->activeUser()->count();
-        $activeVendors = $this->activeVendor()->with(['_managers', '_users', '_categories', '_subcategories' => function ($query) {
-            $query->with(['_products']);
+        $activeVendors = $this->activeVendor()->with(['managers', 'users', 'categories', 'subcategories' => function ($query) {
+            $query->with(['products']);
         }])->get();
         return view('admin.main.overview', compact(['adminsCount', 'vendorsCount', 'usersCount', 'activeAdminsCount', 'activeUsersCount', 'activeVendors']));
     }
@@ -31,8 +31,8 @@ class GeneralController extends Controller
         $usersCount = $this->user()->count();
         $activeAdminsCount = $this->activeAdmin()->count();
         $activeUsersCount = $this->activeUser()->count();
-        $activeVendors = $this->activeVendor()->with(['_managers', '_users', '_categories', '_subcategories' => function ($query) {
-            $query->with(['_products']);
+        $activeVendors = $this->activeVendor()->with(['managers', 'users', 'categories', 'subcategories' => function ($query) {
+            $query->with(['products']);
         }])->get();
         return view('admin.main.overview', compact(['adminsCount', 'vendorsCount', 'usersCount', 'activeAdminsCount', 'activeUsersCount', 'activeVendors']));
     }

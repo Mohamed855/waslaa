@@ -28,7 +28,7 @@ class AddressesController extends Controller
     public function addresses (): JsonResponse
     {
         $myPhone = $this->user()->find(auth()->id(), ['phone', 'sec_phone']);
-        return $this->returnData('Addresses View', [
+        return $this->returnData('User addresses', [
             'myAddresses' => $this->address->getAddresses(),
             'myPhone' => [
                 $myPhone['phone'],

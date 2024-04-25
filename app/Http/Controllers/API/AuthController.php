@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Helpers\Helper;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\User\UserResource;
 use App\Traits\ErrorTrait;
 use App\Traits\QueriesTrait;
 use App\Traits\ResponseTrait;
@@ -53,7 +54,10 @@ class AuthController extends Controller
                 check phone number is the same in the device form application
             */
 
-            return $this->returnData('Your account has created successfully', [ 'token' => $token ]);
+            return $this->returnData('Your account has created successfully', [
+                'user' => new UserResource(auth('api')->user()),
+                'token' => $token
+            ]);
         } catch (Exception $e) {
             return $this->exceptionError($e);
         }
@@ -79,7 +83,10 @@ class AuthController extends Controller
                 $this->currentUser()->update(['remember_token' => $remember_token]);
             */
 
-            return $this->returnData('Logged in successfully', [ 'token' => $token ]);
+            return $this->returnData('Logged in successfully', [
+                'user' => new UserResource(auth('api')->user()),
+                'token' => $token
+            ]);
         } catch (Exception $e) {
             return $this->exceptionError($e);
         }

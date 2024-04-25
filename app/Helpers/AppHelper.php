@@ -39,9 +39,9 @@ class AppHelper
         $targetId = $subCatId ?? $catId;
 
         $vendors = $this->activeVendor()->join($vendorRelationTable . ' as vc', 'vc.vendor', 'vendors.id')
-            ->where('vc.' . $targetColumn, $targetId)->with(['_city' => function ($cityQuery) {
-                $cityQuery->with('_country');
-            }, '_subcategories' => function ($subCategoriesQuery) {
+            ->where('vc.' . $targetColumn, $targetId)->with(['city' => function ($cityQuery) {
+                $cityQuery->with('country');
+            }, 'subcategories' => function ($subCategoriesQuery) {
                 $subCategoriesQuery->where('active', 1);
             }])->orderBy('priority')->paginate(10);
 
@@ -77,14 +77,14 @@ class AppHelper
                 'subcategories.id',
                 'subcategories.' . Helper::getColumnOnLang('name'),
                 'subcategories.avatar',
-            ])->with('_products', function ($productQuery) {
-                $productQuery->where('active', 1)->with('_components', '_types');
+            ])->with('products', function ($productQuery) {
+                $productQuery->where('active', 1)->with('components', 'types');
             })->paginate(10);
         return SubCategoryWithProductResource::collection($subCategoriesWithProduct);
     }
     public function getOfferedProducts (): AnonymousResourceCollection
     {
-        $offeredProducts = $this->offers()->with(['_subcategory', '_components', '_types'])->paginate(10);
+        $offeredProducts = $this->offers()->with(['subcategory', 'components', 'types'])->paginate(10);
         return ProductResource::collection($offeredProducts);
     }
     public function getSearchOutput ($type, $key): AnonymousResourceCollection

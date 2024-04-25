@@ -26,7 +26,7 @@ class VendorsController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::indexBase($this->table, 'admin.vendors.index', with: ['_admin', '_favorites', '_city'], searchable: ['name', 'owner_name', 'username', 'crn', 'email', 'phone']);
+        return parent::indexBase($this->table, 'admin.vendors.index', with: ['admin', 'favorites', 'city'], searchable: ['name', 'owner_name', 'username', 'crn', 'email', 'phone']);
     }
 
     /**
@@ -54,7 +54,7 @@ class VendorsController extends BaseController
     {
         $nameOnLang = Helper::getColumnOnLang('name');
         $cities = $this->activeCity()->get(['id', $nameOnLang . ' as name']);
-        return parent::showBase($this->table, 'admin.vendors.show', $id, vars: ['cities' => $cities], with: ['_favorites', '_city', '_managers' => function($query) {
+        return parent::showBase($this->table, 'admin.vendors.show', $id, vars: ['cities' => $cities], with: ['favorites', 'city', 'managers' => function($query) {
             if(isset($_GET['keyword'])) $query = Helper::searchOnQuery($query, ['name', 'username', 'email', 'phone'], $_GET['keyword']);
             $query->paginate(10);
         }]);

@@ -49,8 +49,8 @@
                                 <td> {{ $single->crn }} </td>
                                 <td> {{ $single->email }} </td>
                                 <td> {{ $single->phone }} </td>
-                                <td> {{ $single->_city->$nameOnLang }} </td>
-                                <td> {{ count($single->_favorites) }} </td>
+                                <td> {{ $single->city->$nameOnLang }} </td>
+                                <td> {{ count($single->favorites) }} </td>
                                 <td> {{ $single->status }} </td>
                                 <td>
                                     @if($single->priority == 1)
@@ -62,7 +62,7 @@
                                     @endif
                                 </td>
                                 <td> {{ $single->rate }} </td>
-                                <td> {{ ucfirst($single->_admin->username) }} </td>
+                                <td> {{ ucfirst($single->admin->username) }} </td>
                                 <td>
                                     <form class="p-0 m-0"
                                           action="{{ route('activation.toggle', ['table' => 'vendor', 'id' => $single->id]) }}"

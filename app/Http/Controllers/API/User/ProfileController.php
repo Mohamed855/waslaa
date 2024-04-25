@@ -21,7 +21,7 @@ class ProfileController extends Controller
 {
     use QueriesTrait, ErrorTrait, ResponseTrait;
     use ProfileRules;
-    
+
     private ProfileHelper $profile;
 
     public function __construct()
@@ -31,11 +31,7 @@ class ProfileController extends Controller
 
     public function profile (): JsonResponse
     {
-        $myProfile = $this->user()->with(['_city' => function ($cityQuery) {
-            $cityQuery->with('_country');
-        }])->find(auth()->id());
-
-        return $this->returnData('Profile View', new UserResource($myProfile));
+        return $this->returnData('User Profile', new UserResource(auth('api')->user()));
     }
 
     public function updateProfile (Request $request): JsonResponse

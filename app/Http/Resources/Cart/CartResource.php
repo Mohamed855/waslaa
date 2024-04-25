@@ -16,7 +16,7 @@ class CartResource extends JsonResource
     {
         return [
             'cartName' => ucfirst($this['name']) . '\'s Cart',
-            'products' => CartProductsResource::collection($this['_cart']),
+            'products' => CartProductsResource::collection($this['cart']),
         ];
     }
 }

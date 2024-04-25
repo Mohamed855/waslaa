@@ -23,12 +23,12 @@ class Order extends Model
 
     // relationships
 
-    public function _user (): BelongsTo
+    public function users (): BelongsTo
     {
         return $this->belongsTo(User::class, 'user');
     }
 
-    public function _invoices (): BelongsToMany
+    public function invoices (): BelongsToMany
     {
         return $this->belongsToMany(Invoice::class, 'invoice_orders', 'order', 'invoice');
     }

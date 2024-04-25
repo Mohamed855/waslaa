@@ -24,8 +24,8 @@ class UserResource extends JsonResource
             'avatar' => url('') . ($this['avatar'] ? '/storage/images/users/' . $this['avatar'] : '/storage/images/global/profile.jpg'),
             'gender' => $this['gender'],
             'lang' => $this['lang'],
-            'city' => $this['_city'][Helper::getColumnOnLang('name')],
-            'country' => $this['_city']['_country'][Helper::getColumnOnLang('name')],
+            'city' => $this['city'][Helper::getColumnOnLang('name')],
+            'country' => $this['city']['country'][Helper::getColumnOnLang('name')],
         ];
     }
 }

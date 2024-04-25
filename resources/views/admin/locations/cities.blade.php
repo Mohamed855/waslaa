@@ -122,7 +122,7 @@
                             <td>{{ $single->$nameOnLang }}</td>
 
                             <td>
-                                {{ $single->_country->$nameOnLang }}
+                                {{ $single->country->$nameOnLang }}
                             </td>
 
                             <td>

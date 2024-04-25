@@ -1,14 +1,18 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
-use App\Http\Controllers\API\AppController;
-use App\Http\Controllers\API\User\AddressesController;
+use App\Http\Controllers\API\App\MainController;
+use App\Http\Controllers\API\App\CountryController;
+use App\Http\Controllers\API\App\VendorController;
+use App\Http\Controllers\API\App\ProductController;
+use App\Http\Controllers\API\App\CategoryController;
 use App\Http\Controllers\API\User\CartController;
-use App\Http\Controllers\API\User\FavoritesController;
+use App\Http\Controllers\API\User\RatesController;
 use App\Http\Controllers\API\User\OrdersController;
 use App\Http\Controllers\API\User\ProfileController;
-use App\Http\Controllers\API\User\RatesController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\User\AddressesController;
+use App\Http\Controllers\API\User\FavoritesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,14 +36,22 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::prefix('app')->middleware('auth.check:api')->group(function () {
-    Route::get('/', [AppController::class, 'mainPage']);
-    Route::get('category/{catId}/{subCatId?}', [AppController::class, 'categoryPage']);
-    Route::get('vendor/{id}', [AppController::class, 'vendorPage']);
-    Route::get('product/{id}', [AppController::class, 'productPage']);
-    Route::get('offers', [AppController::class, 'offersPage']);
-    Route::get('countries', [AppController::class, 'countries']);
-    Route::post('search', [AppController::class, 'search']); // vendors || categories || subcategories || products
-    Route::post('filter', [AppController::class, 'filter']); // offers || rates || price
+    Route::post('search', [MainController::class, 'search']); // vendors || categories || subcategories || products
+    Route::post('filter', [MainController::class, 'filter']); // offers || rates || price
+
+    Route::get('ads', [MainController::class, 'getAds']);
+    Route::get('categories', [MainController::class, 'getCategories']);
+
+    Route::get('sub-categories/{catId}', [CategoryController::class, 'getSubCategories']);
+    Route::get('vendors/{catId}/{subCatId?}', [CategoryController::class, 'getVendors']);
+
+    Route::get('vendor/{id}', [VendorController::class, 'selectedVendor']);
+    Route::get('vendor/{vendorId}', [VendorController::class, 'subCategoriesWithProduct']);
+
+    Route::get('product/{id}', [ProductController::class, 'selectedProduct']);
+    Route::get('offers', [ProductController::class, 'getOffers']);
+
+    Route::get('countries', [CountryController::class, 'getCountries']);
 });
 
 Route::prefix('my')->middleware('auth.guard:api')->group(function () {

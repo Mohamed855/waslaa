@@ -118,7 +118,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($selected['_managers'] as $single)
+                @foreach($selected['managers'] as $single)
                     <tr>
                         <td>
                             <div class="avatar avatar-xl">

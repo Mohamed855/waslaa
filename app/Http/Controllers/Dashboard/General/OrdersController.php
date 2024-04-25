@@ -24,7 +24,7 @@ class OrdersController extends BaseController
      */
     public function ordered(): View|RedirectResponse
     {
-        $data = $this->order()->where('status', 'ordered')->with(['_user'])->paginate(10);
+        $data = $this->order()->where('status', 'ordered')->with(['users'])->paginate(10);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
         return view('general.orders.ordered', compact('data'));
     }
@@ -34,7 +34,7 @@ class OrdersController extends BaseController
      */
     public function accepted(): View|RedirectResponse
     {
-        $data = $this->order()->where('status', 'accepted')->with(['_user'])->paginate(10);
+        $data = $this->order()->where('status', 'accepted')->with(['users'])->paginate(10);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
         return view('general.orders.accepted', compact('data'));
     }
@@ -44,7 +44,7 @@ class OrdersController extends BaseController
      */
     public function canceled(): View|RedirectResponse
     {
-        $data = $this->order()->where('status', 'canceled')->with(['_user'])->paginate(10);
+        $data = $this->order()->where('status', 'canceled')->with(['users'])->paginate(10);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
         return view('general.orders.canceled', compact('data'));
     }

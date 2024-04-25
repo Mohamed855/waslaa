@@ -18,7 +18,7 @@ class CountryResource extends JsonResource
         return [
             'id' => $this['id'],
             'name' => $this[Helper::getColumnOnLang('name')],
-            'cities' => CityResource::collection($this['_cities']),
+            'cities' => CityResource::collection($this['cities']),
         ];
     }
 }

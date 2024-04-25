@@ -24,7 +24,7 @@ class UsersController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::indexBase($this->table, 'general.users.index', with: ['_city'], searchable: ['name', 'username', 'phone', 'sec_phone']);
+        return parent::indexBase($this->table, 'general.users.index', with: ['city'], searchable: ['name', 'username', 'phone', 'sec_phone']);
     }
 
     /**
@@ -32,8 +32,8 @@ class UsersController extends BaseController
      */
     public function show(string $id): View
     {
-        return parent::showBase($this->table, 'general.users.show', $id, with: ['_city', '_favoriteVendors', '_vendors', '_complains' => function ($query) {
-            $query->with('_vendor');
+        return parent::showBase($this->table, 'general.users.show', $id, with: ['city', 'favoriteVendors', 'vendors', 'complains' => function ($query) {
+            $query->with('vendor');
         }]);
     }
 

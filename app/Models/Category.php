@@ -17,7 +17,7 @@ class Category extends Model
 
     // relationships
 
-    public function _vendors (): BelongsToMany
+    public function vendors (): BelongsToMany
     {
         return $this->belongsToMany(Vendor::class, 'vendor_categories', 'category', 'vendor');
     }

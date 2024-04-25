@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', ucfirst($selected->_user->username) . '\'s order')
+@section('title', ucfirst($selected->user->username) . '\'s order')
 @section('content')
     <section id="basic-horizontal-layouts">
         <div class="row">
@@ -10,7 +10,7 @@
                         <p class="card-text">@lang('translate.orderedAt'): {{ date_format($selected->created_at, 'd-m-Y h:i a') }}</p>
                         <p class="card-text">@lang('translate.vendor'): <a href="{{ route('vendors.show', $selected->vendor['id']) }}">{{ $selected->vendor['name'] }}</a></p>
                         <p class="card-text">@lang('translate.phone'): {{ $selected->deliveryPhone }}</p>
-                        <p class="card-text">@lang('translate.user'): <a href="{{ route('users.show', $selected->_user->id) }}">{{ $selected->_user->username }}</a></p>
+                        <p class="card-text">@lang('translate.user'): <a href="{{ route('users.show', $selected->user->id) }}">{{ $selected->user->username }}</a></p>
                         <p class="card-text">@lang('translate.address'): {{ $selected->address }}</p>
                         <p class="card-text">@lang('translate.deliveryMethod'): {{ __('translate.' . $selected->deliveryMethod) }}</p>
                         <p class="card-text">@lang('translate.payMethod'): {{ __('translate.' . $selected->payMethod) }}</p>

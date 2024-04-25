@@ -37,7 +37,7 @@
                                 <td> @lang('translate.' . $single->gender) </td>
 
                                 <td>
-                                    {{ $single->_city->$nameOnLang }}
+                                    {{ $single->city->$nameOnLang }}
                                 </td>
 
                                 <td>

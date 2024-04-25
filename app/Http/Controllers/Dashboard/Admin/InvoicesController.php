@@ -24,7 +24,7 @@ class InvoicesController extends BaseController
      */
     public function opened(): View|RedirectResponse
     {
-        $data = $this->invoice()->where('status', 'opened')->with(['_vendor'])->paginate(10);
+        $data = $this->invoice()->where('status', 'opened')->with(['vendor'])->paginate(10);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
         return view('admin.invoices.opened', compact('data'));
     }
@@ -34,7 +34,7 @@ class InvoicesController extends BaseController
      */
     public function closed(): View|RedirectResponse
     {
-        $data = $this->invoice()->where('status', 'closed')->with(['_vendor'])->paginate(10);
+        $data = $this->invoice()->where('status', 'closed')->with(['vendor'])->paginate(10);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
         return view('admin.invoices.closed', compact('data'));
     }
@@ -44,7 +44,7 @@ class InvoicesController extends BaseController
      */
     public function collected(): View|RedirectResponse
     {
-        $data = $this->invoice()->where('status', 'collected')->with(['_vendor'])->paginate(10);
+        $data = $this->invoice()->where('status', 'collected')->with(['vendor'])->paginate(10);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
         return view('admin.invoices.collected', compact('data'));
     }
@@ -55,7 +55,7 @@ class InvoicesController extends BaseController
     public function show(string $id): View
     {
         $guard = DashboardHelper::getCurrentGuard();
-        return parent::showBase($this->table, 'admin.invoices.show', $id, vars: ['guard' => $guard], with: ['_orders']);
+        return parent::showBase($this->table, 'admin.invoices.show', $id, vars: ['guard' => $guard], with: ['orders']);
     }
 
     /**

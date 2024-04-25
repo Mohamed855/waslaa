@@ -19,22 +19,22 @@ class Product extends Model
 
     // relationships
 
-    public function _subcategory(): BelongsTo
+    public function subcategory(): BelongsTo
     {
         return $this->belongsTo(Subcategory::class, 'subcategory');
     }
 
-    public function _components () : HasMany
+    public function components () : HasMany
     {
         return $this->hasMany(Component::class, 'product');
     }
 
-    public function _types () : HasMany
+    public function types () : HasMany
     {
         return $this->hasMany(Type::class, 'product');
     }
 
-    public function _favorites (): BelongsToMany
+    public function favorites (): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'favorites', 'favorite_id', 'user');
     }

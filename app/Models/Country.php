@@ -17,7 +17,7 @@ class Country extends Model
 
     // relationships
 
-    public function _cities(): HasMany
+    public function cities(): HasMany
     {
         return $this->hasMany(City::class, 'country');
     }

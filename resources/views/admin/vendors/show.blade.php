@@ -53,8 +53,8 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ ucfirst($selected['name']) }}</h5>
                         <p class="card-text">@lang('translate.createdAt') : {{ date_format($selected['created_at'], 'd-m-Y') }}</p>
-                        <p class="card-text">@lang('translate.city') : {{ $selected['_city'][$nameOnLang] }}</p>
-                        <p class="card-text">@lang('translate.followers') : {{ count($selected['_favorites']) }}</p>
+                        <p class="card-text">@lang('translate.city') : {{ $selected['city'][$nameOnLang] }}</p>
+                        <p class="card-text">@lang('translate.followers') : {{ count($selected['favorites']) }}</p>
                         <div class="d-inline-block">
                             <a href="#managers" class="pe-1">@lang('translate.managers')</a>
                         </div>

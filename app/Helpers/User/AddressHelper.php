@@ -12,7 +12,7 @@ class AddressHelper
 
     public function getAddresses (): AnonymousResourceCollection
     {
-        $myAddress = $this->address()->with('_city')->where('type', 'user')
+        $myAddress = $this->address()->with('city')->where('type', 'user')
             ->where('user_id', auth()->id())->get();
 
         return AddressesRecourse::collection($myAddress);
