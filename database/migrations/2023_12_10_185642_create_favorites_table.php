@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->enum('type', ['vendor', 'product']);
             $table->bigInteger('favorite_id');
-            $table->foreignIdFor(User::class, 'user');
+            $table->foreignIdFor(User::class);
             $table->timestamps();
         });
     }

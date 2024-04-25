@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name_en')->unique();
             $table->string('name_ar')->unique();
-            $table->foreignIdFor(Country::class, 'country');
+            $table->foreignIdFor(Country::class);
             $table->boolean('active')->default(1);
             $table->timestamps();
             $table->softDeletes();

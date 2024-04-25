@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('delivery_phone');
             $table->string('password');
             $table->string('avatar')->nullable();
-            $table->foreignIdFor(City::class, 'city');
+            $table->foreignIdFor(City::class);
             $table->enum('gender', ['male', 'female']);
             $table->enum('lang', ['en', 'ar'])->default('en');
             $table->boolean('active')->default(1);

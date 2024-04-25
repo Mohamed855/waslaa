@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('product_components', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Product::class, 'product');
-            $table->foreignIdFor(Component::class, 'component');
+            $table->foreignIdFor(Product::class);
+            $table->foreignIdFor(Component::class);
             $table->timestamps();
         });
     }

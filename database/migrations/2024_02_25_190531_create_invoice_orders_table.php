@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('invoice_orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Invoice::class, 'invoice')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignIdFor(Order::class, 'order')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(Invoice::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(Order::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

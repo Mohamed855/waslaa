@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('vendor_users', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Vendor::class, 'vendor')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignIdFor(User::class, 'user')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(Vendor::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(User::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('complains', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Vendor::class, 'vendor')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreignIdFor(User::class, 'user')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(Vendor::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(User::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->text('title');
             $table->text('body');
             $table->string('image')->nullable();

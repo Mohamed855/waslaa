@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Vendor::class, 'vendor')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(Vendor::class)->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->date('start');
             $table->date('end')->nullable();
             $table->enum('status', ['opened', 'closed', 'collected'])->default('opened');

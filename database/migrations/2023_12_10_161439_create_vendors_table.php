@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('avatar');
-            $table->foreignIdFor(City::class, 'city');
+            $table->foreignIdFor(City::class);
             $table->enum('status', ['open', 'busy', 'closed'])->default('open');
             $table->enum('lang', ['en', 'ar'])->default('en');
             $table->smallInteger('delivery_time');

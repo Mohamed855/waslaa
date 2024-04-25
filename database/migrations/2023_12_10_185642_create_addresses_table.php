@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->enum('type', ['user', 'vendor']);
             $table->bigInteger('user_id');
-            $table->foreignIdFor(City::class, 'city');
+            $table->foreignIdFor(City::class);
             $table->string('address');
             $table->smallInteger('building')->nullable();
             $table->smallInteger('floor')->nullable();

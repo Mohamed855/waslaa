@@ -21,7 +21,7 @@ return new class extends Migration
             $table->enum('offer_type', ['discount', 'free'])->nullable();
             $table->double('offer_value');
             $table->double('rate')->default(0);
-            $table->foreignIdFor(Subcategory::class, 'subcategory');
+            $table->foreignIdFor(Subcategory::class);
             $table->boolean('active')->default(1);
             $table->timestamps();
             $table->softDeletes();

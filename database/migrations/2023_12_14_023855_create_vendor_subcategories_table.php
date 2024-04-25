@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('vendor_subcategories', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Vendor::class, 'vendor');
-            $table->foreignIdFor(Subcategory::class, 'subcategory');
+            $table->foreignIdFor(Vendor::class);
+            $table->foreignIdFor(Subcategory::class);
             $table->timestamps();
         });
     }

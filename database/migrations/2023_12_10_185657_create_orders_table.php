@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class, 'user');
+            $table->foreignIdFor(User::class);
             $table->json('vendor');
             $table->json('products');
             $table->text('address');
