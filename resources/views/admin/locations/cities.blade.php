@@ -182,7 +182,7 @@
                                                                                     disabled>@lang('translate.select')</option>
 
                                                                             @foreach($countries as $country)
-                                                                                <option value="{{ $country->id }}" {{ $single->country == $country->id ? 'selected' : '' }}>{{ $country->name }}</option>
+                                                                                <option value="{{ $country->id }}" {{ $single->country->id == $country->id ? 'selected' : '' }}>{{ $country->name }}</option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
