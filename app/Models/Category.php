@@ -19,6 +19,6 @@ class Category extends Model
 
     public function vendors (): BelongsToMany
     {
-        return $this->belongsToMany(Vendor::class, 'vendor_categories', 'category', 'vendor');
+        return $this->belongsToMany(Vendor::class, 'vendor_categories');
     }
 }

@@ -17,6 +17,6 @@ class City extends Model
 
     public function country () : BelongsTo
     {
-        return $this->belongsTo(Country::class, 'country');
+        return $this->belongsTo(Country::class);
     }
 }

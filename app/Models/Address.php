@@ -19,7 +19,7 @@ class Address extends Model
 
     public function city (): BelongsTo
     {
-        return $this->belongsTo(City::class, 'city');
+        return $this->belongsTo(City::class);
     }
 
 }

@@ -25,12 +25,12 @@ class Invoice extends Model
 
     public function vendor (): BelongsTo
     {
-        return $this->belongsTo(Vendor::class, 'vendor');
+        return $this->belongsTo(Vendor::class);
     }
 
     public function orders (): BelongsToMany
     {
-        return $this->belongsToMany(Order::class, 'invoice_orders', 'invoice', 'order');
+        return $this->belongsToMany(Order::class, 'invoice_orders');
     }
 
     public function getTotalPriceAttribute()

@@ -58,7 +58,7 @@ class Vendor extends Authenticatable
 
     public function city (): BelongsTo
     {
-        return $this->belongsTo(City::class, 'city');
+        return $this->belongsTo(City::class);
     }
 
     public function managers (): HasMany
@@ -68,27 +68,27 @@ class Vendor extends Authenticatable
 
     public function users (): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'vendor_users', 'vendor', 'user');
+        return $this->belongsToMany(User::class, 'vendor_users');
     }
 
     public function categories (): BelongsToMany
     {
-        return $this->belongsToMany(Category::class, 'vendor_categories', 'vendor', 'category');
+        return $this->belongsToMany(Category::class, 'vendor_categories');
     }
 
     public function subcategories (): BelongsToMany
     {
-        return $this->belongsToMany(Subcategory::class, 'vendor_subcategories', 'vendor', 'subcategory');
+        return $this->belongsToMany(Subcategory::class, 'vendor_subcategories');
     }
 
     public function favorites (): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'favorites', 'favorite_id', 'user');
+        return $this->belongsToMany(User::class, 'favorites', 'favorite_id', 'user_id');
     }
 
     public function invoices (): HasMany
     {
-        return $this->hasMany(Invoice::class, 'vendor');
+        return $this->hasMany(Invoice::class);
     }
 
     public function getAllProductIds()

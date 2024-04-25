@@ -19,11 +19,11 @@ class Complain extends Model
 
     public function vendor (): BelongsTo
     {
-        return $this->belongsTo(Vendor::class,'vendor');
+        return $this->belongsTo(Vendor::class);
     }
 
     public function users (): BelongsTo
     {
-        return $this->belongsTo(User::class,'user');
+        return $this->belongsTo(User::class);
     }
 }

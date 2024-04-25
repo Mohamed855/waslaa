@@ -21,21 +21,21 @@ class Product extends Model
 
     public function subcategory(): BelongsTo
     {
-        return $this->belongsTo(Subcategory::class, 'subcategory');
+        return $this->belongsTo(Subcategory::class);
     }
 
     public function components () : HasMany
     {
-        return $this->hasMany(Component::class, 'product');
+        return $this->hasMany(Component::class);
     }
 
     public function types () : HasMany
     {
-        return $this->hasMany(Type::class, 'product');
+        return $this->hasMany(Type::class);
     }
 
     public function favorites (): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'favorites', 'favorite_id', 'user');
+        return $this->belongsToMany(User::class, 'favorites');
     }
 }
