@@ -59,12 +59,12 @@ class User extends Authenticatable implements JWTSubject
 
     public function favoriteProducts (): BelongsToMany
     {
-        return $this->belongsToMany(Product::class, 'favorites');
+        return $this->belongsToMany(Product::class, 'favorites', 'user_id', 'favorite_id')->where('type', 'product');
     }
 
     public function favoriteVendors (): BelongsToMany
     {
-        return $this->belongsToMany(Vendor::class, 'favorites');
+        return $this->belongsToMany(Vendor::class, 'favorites', 'user_id', 'favorite_id')->where('type', 'vendor');
     }
 
     public function vendors (): BelongsToMany
