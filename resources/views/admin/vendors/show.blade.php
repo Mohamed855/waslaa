@@ -158,7 +158,7 @@
                                                         <option value="" selected disabled>@lang('translate.select')</option>
 
                                                         @foreach($cities as $city)
-                                                            <option value="{{ $city->id }}" {{ $selected->city == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
+                                                            <option value="{{ $city->id }}" {{ $selected->city->id == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
