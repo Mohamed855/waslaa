@@ -200,7 +200,7 @@
                                                                                     disabled>@lang('translate.select')</option>
 
                                                                             @foreach($categories as $category)
-                                                                                <option value="{{ $category->id }}" {{ $single->category == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                                                                <option value="{{ $category->id }}" {{ $single->category->id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
                                                                             @endforeach
                                                                         </select>
                                                                     </div>
