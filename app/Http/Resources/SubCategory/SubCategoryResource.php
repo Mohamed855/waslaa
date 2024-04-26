@@ -19,7 +19,6 @@ class SubCategoryResource extends JsonResource
             'id' => $this['id'],
             'name' => $this[Helper::getColumnOnLang('name')],
             'avatar' => url('') . ($this['avatar'] ? '/storage/images/subcategories/' . $this['avatar'] : '/storage/images/global/default.jpg'),
-            //'paginationDetails' => new PaginationRecourse($this['pagination']),
         ];
     }
 }

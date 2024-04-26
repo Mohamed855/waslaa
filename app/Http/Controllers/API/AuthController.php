@@ -25,11 +25,13 @@ class AuthController extends Controller
     public function signup (Request $request): JsonResponse
     {
         try {
+            $request['phone'] = Helper::correctPhoneStyle($request['phone']);
+
             $validator = Validator::make($request->all(), $this->signUpRules());
             if ($validator->fails())
                 return $this->notValidError($validator);
 
-            $data = $request->only('name', 'phone', 'sec_phone', 'password', 'city', 'gender', 'lang');
+            $data = $request->only('name', 'phone', 'sec_phone', 'password', 'city_id', 'gender', 'lang');
 
             $data['phone'] = Helper::correctPhoneStyle($data['phone']);
             $data['sec_phone'] = $data['sec_phone'] ? Helper::correctPhoneStyle($data['sec_phone']) : null;

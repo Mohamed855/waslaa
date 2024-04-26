@@ -94,6 +94,10 @@ class ProfileController extends Controller
             if (! in_array($userPhone, ['primary', 'secondary']))
                 return $this->returnError('Invalid type');
 
+            if ($userPhone == 'secondary' && auth()->user()['sec_phone'] == null) {
+                $userPhone = 'primary';
+            }
+
             $selectedPhone = match ($userPhone) {
                 'secondary' => auth()->user()['sec_phone'],
                 default => auth()->user()['phone'],
