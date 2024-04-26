@@ -29,16 +29,16 @@ class AppHelper
     }
     public function getSubCategories ($catId): AnonymousResourceCollection
     {
-        $subCategories = $this->activeSubcategory()->where('category', $catId)->paginate(10);
+        $subCategories = $this->activeSubcategory()->where('category_id', $catId)->paginate(10);
         return SubCategoryResource::collection($subCategories);
     }
     public function getVendors ($catId, $subCatId = null): AnonymousResourceCollection
     {
         $vendorRelationTable = $subCatId ? 'vendor_subcategories' : 'vendor_categories';
-        $targetColumn = $subCatId ? 'subcategory' : 'category';
+        $targetColumn = $subCatId ? 'subcategory_id' : 'category_id';
         $targetId = $subCatId ?? $catId;
 
-        $vendors = $this->activeVendor()->join($vendorRelationTable . ' as vc', 'vc.vendor', 'vendors.id')
+        $vendors = $this->activeVendor()->join($vendorRelationTable . ' as vc', 'vc.vendor_id', 'vendors.id')
             ->where('vc.' . $targetColumn, $targetId)->with(['city' => function ($cityQuery) {
                 $cityQuery->with('country');
             }, 'subcategories' => function ($subCategoriesQuery) {
@@ -63,7 +63,7 @@ class AppHelper
         $currUserRate = $this->rates()
             ->where('type', $type)
             ->where('rate_id', $selectedId)
-            ->where('user', auth()->id())
+            ->where('user_id', auth()->id())
             ->first(['rate']);
 
         return $currUserRate['rate'] ?? 0;
@@ -71,8 +71,8 @@ class AppHelper
     public function getSubCategoriesWithProducts ($vendor_id): AnonymousResourceCollection
     {
         $subCategoriesWithProduct = $this->activeSubcategory()
-            ->join('vendor_subcategories as VSC', 'subcategories.id', '=', 'VSC.subcategory')
-            ->where('VSC.vendor', $vendor_id)
+            ->join('vendor_subcategories as VSC', 'subcategories.id', '=', 'VSC.subcategory_id')
+            ->where('VSC.vendor_id', $vendor_id)
             ->select([
                 'subcategories.id',
                 'subcategories.' . Helper::getColumnOnLang('name'),

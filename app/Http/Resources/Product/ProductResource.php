@@ -18,7 +18,7 @@ class ProductResource extends JsonResource
     {
         $offer = $this['offer'] == 1 ? ['type' => $this['offer_type'], 'value' => $this['offer_value']] : null;
         $isFavorite = Favorite::query()->where('type', 'product')->where('favorite_id', $this['id'])
-            ->where('user', auth()->id())->first(['id']);
+            ->where('user_id', auth()->id())->exists();
 
         return [
             'id' => $this['id'],

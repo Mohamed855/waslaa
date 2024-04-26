@@ -16,7 +16,7 @@ class AdResource extends JsonResource
     {
         return [
             'id' => $this['id'],
-            'image' => $this['image'],
+            'image' => url('') . ($this['image'] ? '/storage/images/ads/' . $this['image'] : '/storage/images/global/default.jpg'),
         ];
     }
 }

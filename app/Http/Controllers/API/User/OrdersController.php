@@ -34,7 +34,7 @@ class OrdersController extends Controller
 
     public function orderDetails ($id): JsonResponse
     {
-        $selectedOrder = $this->order()->where('user', auth()->id())->find($id);
+        $selectedOrder = $this->order()->where('user_id', auth()->id())->find($id);
 
         if (!$selectedOrder) $this->returnError('Something went error');
 
@@ -51,7 +51,7 @@ class OrdersController extends Controller
             if ($validator->fails())
                 return $this->notValidError($validator);
 
-            $this->order()->create($orderDetails + ['user' => auth()->id()]);
+            $this->order()->create($orderDetails + ['user_id' => auth()->id()]);
 
             $this->orders->sendNotificationToVendor();
 
@@ -68,7 +68,7 @@ class OrdersController extends Controller
 
             $requiredData = $selectedOrder->only('vendor', 'products', 'address', 'deliveryPhone', 'payMethod', 'deliveryMethod', 'totalCost', 'deliveryNote');
 
-            $this->order()->create($requiredData + ['user' => auth()->id()]);
+            $this->order()->create($requiredData + ['user_id' => auth()->id()]);
 
             $this->orders->sendNotificationToVendor();
 

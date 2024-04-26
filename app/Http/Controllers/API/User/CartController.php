@@ -55,8 +55,8 @@ class CartController extends Controller
 
             foreach ($collection['products'] as $product) {
                 $cartProductExist = $this->cart()
-                    ->where('user', auth()->id())
-                    ->where('product', $product['product'])
+                    ->where('user_id', auth()->id())
+                    ->where('product_id', $product['product_id'])
                     ->where('type', $product['type'])->first();
 
                 if ($cartProductExist) {
@@ -65,7 +65,7 @@ class CartController extends Controller
                     ]); continue;
                 }
 
-                $this->cart()->create($product + ['user' => auth()->id()]);
+                $this->cart()->create($product + ['user_id' => auth()->id()]);
             }
 
             return $this->returnSuccess('Added to cart');
@@ -78,7 +78,7 @@ class CartController extends Controller
     {
         $selectedProduct = $this->cart()->find($id);
 
-        if (!$selectedProduct || $selectedProduct['user'] != auth()->id())
+        if (!$selectedProduct || $selectedProduct['user_id'] != auth()->id())
             return $this->returnError('Something went wrong');
 
         $selectedProduct->delete();

@@ -36,7 +36,7 @@ class CitiesController extends BaseController
      */
     public function store(Request $request): RedirectResponse
     {
-        return parent::storeBase($this->table, $this->folder, $request, ['name_en', 'name_ar', 'country'], $this->cityRules());
+        return parent::storeBase($this->table, $this->folder, $request, ['name_en', 'name_ar', 'country_id'], $this->cityRules());
     }
 
     /**
@@ -44,7 +44,7 @@ class CitiesController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->folder, $request, ['name_en', 'name_ar', 'country'], $this->cityRules(), $id);
+        return parent::updateBase($this->table, $this->folder, $request, ['name_en', 'name_ar', 'country_id'], $this->cityRules(), $id);
     }
 
     /**

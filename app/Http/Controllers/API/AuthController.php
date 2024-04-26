@@ -37,7 +37,7 @@ class AuthController extends Controller
 
             $user = $this->user()->create($data);
 
-            $addressDetails = $request->only('city', 'address', 'building', 'floor', 'flat', 'special_mark');
+            $addressDetails = $request->only('city_id', 'address', 'building', 'floor', 'flat', 'special_mark');
 
             $this->address()->create($addressDetails + [
                     'type' => 'user',

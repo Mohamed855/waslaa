@@ -39,18 +39,17 @@ Route::prefix('app')->middleware('auth.check:api')->group(function () {
     Route::post('search', [MainController::class, 'search']); // vendors || categories || subcategories || products
     Route::post('filter', [MainController::class, 'filter']); // offers || rates || price
 
-    Route::get('ads', [MainController::class, 'getAds']);
-    Route::get('categories', [MainController::class, 'getCategories']);
+    Route::get('main/ads', [MainController::class, 'getAds']);
+    Route::get('main/categories', [MainController::class, 'getCategories']);
 
-    Route::get('sub-categories/{catId}', [CategoryController::class, 'getSubCategories']);
-    Route::get('vendors/{catId}/{subCatId?}', [CategoryController::class, 'getVendors']);
+    Route::get('category/sub-categories/{catId}', [CategoryController::class, 'getSubCategories']);
+    Route::get('category/vendors/{catId}/{subCatId?}', [CategoryController::class, 'getVendors']);
 
     Route::get('vendor/{id}', [VendorController::class, 'selectedVendor']);
-    Route::get('vendor/{vendorId}', [VendorController::class, 'subCategoriesWithProduct']);
+    Route::get('vendor/sub-categories/{vendorId}', [VendorController::class, 'subCategoriesWithProduct']);
 
     Route::get('product/{id}', [ProductController::class, 'selectedProduct']);
     Route::get('offers', [ProductController::class, 'getOffers']);
-
     Route::get('countries', [CountryController::class, 'getCountries']);
 });
 

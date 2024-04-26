@@ -36,7 +36,7 @@ class RatesController extends Controller
             $this->rates()->updateOrCreate([
                 'type' => $type,
                 'rate_id' => $id,
-                'user' => auth()->id(),
+                'user_id' => auth()->id(),
                 'rate' => $request['rate'],
             ]);
 
@@ -56,7 +56,7 @@ class RatesController extends Controller
             if (! in_array($type, ['product', 'vendor']))
                 return $this->returnError('Invalid type');
 
-            $this->rates()->where('type', $type)->where('rate_id', $id)->where('user', auth()->id())->delete();
+            $this->rates()->where('type', $type)->where('rate_id', $id)->where('user_id', auth()->id())->delete();
             $this->rates->updateRateAvg($type, $id);
 
             return $this->returnSuccess('Your rate has been deleted');

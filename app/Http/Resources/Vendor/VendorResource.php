@@ -18,7 +18,7 @@ class VendorResource extends JsonResource
     public function toArray(Request $request): array
     {
         $isFavorite = Favorite::query()->where('type', 'vendor')->where('favorite_id', $this['id'])
-            ->where('user', auth()->id())->first(['id']);
+            ->where('user_id', auth()->id())->exists();
 
         return [
             'id' => $this['id'],

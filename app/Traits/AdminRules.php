@@ -43,7 +43,7 @@ trait AdminRules {
             'phone' => 'required|numeric|unique:users,phone|unique:admins,phone|unique:vendors,phone|unique:managers,phone',
             'password' => 'required|string|min:8|max:16|confirmed' /*|regex:/^(?=.*[A-Z])(?=.*[0-9]).+$/' */,
             'avatar' => 'required|max:20480|image',
-            'city' => 'required|exists:cities,id,active,1',
+            'city_id' => 'required|exists:cities,id,active,1',
             'delivery_time' => 'required|numeric|max:120',
             'delivery_cost' => 'required|numeric|max:100',
         ];
@@ -98,7 +98,7 @@ trait AdminRules {
         return [
             'name_en' => 'required|max:60|string',
             'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
-            'category' => 'required|exists:categories,id,active,1',
+            'category_id' => 'required|exists:categories,id,active,1',
             'avatar' => 'required|max:20480|image',
         ];
     }
@@ -116,7 +116,7 @@ trait AdminRules {
         return [
             'name_en' => 'required|max:60|string',
             'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
-            'country' => 'required|exists:countries,id,active,1',
+            'country_id' => 'required|exists:countries,id,active,1',
         ];
     }
 
@@ -148,7 +148,7 @@ trait AdminRules {
             'crn' => 'required|numeric|unique:vendors,crn,' . $id, /*|regex: style of crn', */
             'email' => 'required|email|unique:admins,email|unique:managers,email|unique:vendors,email,' . $id,
             'phone' => 'required|numeric|unique:admins,phone|unique:users,phone|unique:managers,phone|unique:vendors,phone,' . $id,
-            'city' => 'required|exists:cities,id,active,1',
+            'city_id' => 'required|exists:cities,id,active,1',
             'delivery_time' => 'required|numeric|max:120',
             'delivery_cost' => 'required|numeric||max:100',
             'priority' => 'required|numeric|in:1,2,3',
@@ -194,7 +194,7 @@ trait AdminRules {
         return [
             'name_en' => 'required|max:60|string',
             'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
-            'category' => 'required|exists:categories,id,active,1',
+            'category_id' => 'required|exists:categories,id,active,1',
             'avatar' => 'nullable|max:20480|image',
         ];
     }

@@ -25,7 +25,9 @@ class VendorController extends Controller
 
     public function selectedVendor ($id): JsonResponse
     {
-        $selectedVendor = $this->app->vendor()->find($id);
+        $selectedVendor = $this->app->vendor()->with(['subcategories' => function ($subcategoriesQuery) {
+            $subcategoriesQuery->where('active', 1);
+        }])->findOrFail($id);
 
         return $this->returnData('Selected Vendor', [
             'countOfFavorites' => $this->app->countOfVendorFavorites($id),

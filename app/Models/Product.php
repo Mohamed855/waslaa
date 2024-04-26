@@ -24,14 +24,14 @@ class Product extends Model
         return $this->belongsTo(Subcategory::class);
     }
 
-    public function components () : HasMany
+    public function components () : BelongsToMany
     {
-        return $this->hasMany(Component::class);
+        return $this->belongsToMany(Component::class, 'product_components');
     }
 
-    public function types () : HasMany
+    public function types () : BelongsToMany
     {
-        return $this->hasMany(Type::class);
+        return $this->belongsToMany(Type::class, 'product_types');
     }
 
     public function favorites (): BelongsToMany

@@ -26,7 +26,7 @@ trait AuthRules {
                 'regex:/^(010|011|012|015|10|11|12|15|2010|2011|2012|2015|\+2010|\+2011|\+2012|\+2015)[0-9]{8}$/',
             ],
             'password' => 'required|min:8|max:16|string|confirmed',
-            'city' => 'required|exists:cities,id',
+            'city_id' => 'required|exists:cities,id',
             'address' => 'required|max:200|string',
             'building' => 'required|numeric',
             'floor' => 'required|numeric',

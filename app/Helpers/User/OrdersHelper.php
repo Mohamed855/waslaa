@@ -12,7 +12,7 @@ class OrdersHelper
 
     public function getOrders (): AnonymousResourceCollection
     {
-        $myOrders = $this->order()->where('user', auth()->id())->paginate(10);
+        $myOrders = $this->order()->where('user_id', auth()->id())->paginate(10);
         return OrderResource::collection($myOrders);
     }
 

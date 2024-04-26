@@ -17,7 +17,7 @@ class NotificationResource extends JsonResource
     {
         return [
             'id' => $this['id'],
-            'image' => $this['image'] ?? 'storage/images/global/logo-dark.jpg',
+            'image' => url('') . ($this['image'] ? '/storage/images/notifications/' . $this['image'] : '/storage/images/global/default.jpg'),
             'title' => $this[Helper::getColumnOnLang('name')],
             'body' => $this[Helper::getColumnOnLang('body')],
         ];

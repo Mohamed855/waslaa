@@ -44,7 +44,7 @@ class VendorsController extends BaseController
      */
     public function store(Request $request): RedirectResponse
     {
-        return parent::storeBase($this->table, $this->folder, $request, ['added_by', 'name', 'owner_name', 'crn', 'email', 'phone', 'password', 'city', 'delivery_time', 'delivery_cost', 'avatar'], $this->createVendorRules());
+        return parent::storeBase($this->table, $this->folder, $request, ['added_by', 'name', 'owner_name', 'crn', 'email', 'phone', 'password', 'city_id', 'delivery_time', 'delivery_cost', 'avatar'], $this->createVendorRules());
     }
 
     /**
@@ -65,7 +65,7 @@ class VendorsController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->folder, $request, ['name', 'username', 'owner_name', 'crn', 'email', 'phone', 'city', 'delivery_time', 'delivery_cost', 'priority', 'lang'], $this->updateVendorRules($id), $id);
+        return parent::updateBase($this->table, $this->folder, $request, ['name', 'username', 'owner_name', 'crn', 'email', 'phone', 'city_id', 'delivery_time', 'delivery_cost', 'priority', 'lang'], $this->updateVendorRules($id), $id);
     }
 
     /**

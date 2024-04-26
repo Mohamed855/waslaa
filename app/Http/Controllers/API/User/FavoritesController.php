@@ -43,14 +43,14 @@ class FavoritesController extends Controller
                 $favorite = $this->favoriteVendors();
             }
 
-            $exist = $favorite->where('user', auth()->id())->where('favorite_id', $id)->first();
+            $exist = $favorite->where('user_id', auth()->id())->where('favorite_id', $id)->first();
 
             if ($exist) {
                 $exist->delete();
                 return $this->returnSuccess($selected['name'] . ' removed from favorites');
             }
 
-            $favorite->create([ 'type' => $type, 'favorite_id' => $id, 'user' => auth()->id() ]);
+            $favorite->create([ 'type' => $type, 'favorite_id' => $id, 'user_id' => auth()->id() ]);
 
             return $this->returnSuccess($selected['name'] . ' added to favorites');
         } catch (Exception $e) {
