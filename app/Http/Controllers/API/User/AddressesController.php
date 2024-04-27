@@ -70,6 +70,7 @@ class AddressesController extends Controller
             $mainAddress?->update(['main' => 0]);
 
             $selectedAddress = $this->address()->where('type', 'user')->where('user_id', auth()->id())->find($id);
+            if (! $selectedAddress) return $this->returnError('Invalid ID');
             $selectedAddress?->update(['main' => 1]);
 
             return $this->returnSuccess('Main address has set');
@@ -84,7 +85,7 @@ class AddressesController extends Controller
             $selectedAddress = $this->address()->where('type', 'user')->where('user_id', auth()->id())->find($id);
 
             if (! $selectedAddress) {
-                return $this->returnError('Something went wrong, please try again later');
+                return $this->returnError('Invalid ID');
             } else {
                 if ($selectedAddress['main'] == 1)
                     return $this->returnError('You can\'t delete the main address');

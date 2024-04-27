@@ -40,6 +40,12 @@ class RatesController extends Controller
                 'rate' => $request['rate'],
             ]);
 
+            $selected = $type == 'product' ? $this->product() : $this->vendor();
+            $selected = $selected->where('id', $id);
+            if (! $selected->exists()) {
+                return $this->returnError('Invalid ID');
+            }
+
             $this->rates->updateRateAvg($type, $id);
 
             $successMessage = $type == 'product' ? 'Your rate has been saved' : 'Thank you for rating us';

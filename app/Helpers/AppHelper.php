@@ -32,18 +32,21 @@ class AppHelper
         $subCategories = $this->activeSubcategory()->where('category_id', $catId)->paginate(10);
         return SubCategoryResource::collection($subCategories);
     }
-    public function getVendors ($catId, $subCatId = null): AnonymousResourceCollection
+    public function getVendors ($catId, $subCatId = null)
     {
-        $vendorRelationTable = $subCatId ? 'vendor_subcategories' : 'vendor_categories';
-        $targetColumn = $subCatId ? 'subcategory_id' : 'category_id';
-        $targetId = $subCatId ?? $catId;
+        $vendors = $this->activeVendor()->whereHas('categories', function ($query) use ($catId) {
+            $query->where('category_id', $catId);
+        });
 
-        $vendors = $this->activeVendor()->join($vendorRelationTable . ' as vc', 'vc.vendor_id', 'vendors.id')
-            ->where('vc.' . $targetColumn, $targetId)->with(['city' => function ($cityQuery) {
-                $cityQuery->with('country');
-            }, 'subcategories' => function ($subCategoriesQuery) {
-                $subCategoriesQuery->where('active', 1);
-            }])->orderBy('priority')->paginate(10);
+        if ($subCatId) {
+            $vendors = $vendors->whereHas('subcategories', function ($query) use ($subCatId) {
+                $query->where('subcategory_id', $subCatId);
+            });
+        }
+
+        $vendors = $vendors->with(['subcategories' => function ($subcategoriesQuery) {
+            $subcategoriesQuery->where('active', 1);
+        }])->orderBy('priority')->paginate(10);
 
         return VendorResource::collection($vendors);
     }
@@ -68,17 +71,16 @@ class AppHelper
 
         return $currUserRate['rate'] ?? 0;
     }
-    public function getSubCategoriesWithProducts ($vendor_id): AnonymousResourceCollection
+    public function getSubCategoriesWithProducts ($vendorId): AnonymousResourceCollection
     {
-        $subCategoriesWithProduct = $this->activeSubcategory()
-            ->join('vendor_subcategories as VSC', 'subcategories.id', '=', 'VSC.subcategory_id')
-            ->where('VSC.vendor_id', $vendor_id)
-            ->select([
-                'subcategories.id',
-                'subcategories.' . Helper::getColumnOnLang('name'),
-                'subcategories.avatar',
-            ])->with('products', function ($productQuery) {
-                $productQuery->where('active', 1)->with('components', 'types');
+        $subCategoriesWithProduct = $this->activeSubcategory()->whereHas('vendors', function ($query) use ($vendorId) {
+            $query->where('vendor_id', $vendorId);
+        })->with('products', function ($productQuery) {
+                $productQuery->where('active', 1)->with(['components' => function ($componentsQuery) {
+                    $componentsQuery->where('active', 1);
+                }, 'types' => function ($typesQuery) {
+                    $typesQuery->where('active', 1);
+                }]);
             })->paginate(10);
         return SubCategoryWithProductResource::collection($subCategoriesWithProduct);
     }

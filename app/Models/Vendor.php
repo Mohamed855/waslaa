@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use App\Helpers\AppHelper;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Vendor extends Authenticatable
@@ -83,7 +83,7 @@ class Vendor extends Authenticatable
 
     public function favorites (): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'favorites', 'favorite_id', 'user_id');
+        return $this->belongsToMany(User::class, 'favorites', 'favorite_id', 'user_id')->where(['type' => 'vendor']);
     }
 
     public function invoices (): HasMany

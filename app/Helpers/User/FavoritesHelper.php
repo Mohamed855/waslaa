@@ -13,28 +13,21 @@ class FavoritesHelper
 
     public function getFavoriteProducts (): AnonymousResourceCollection
     {
-        $myFavoriteProducts = $this->activeProduct()
-            ->join('favorites as fav', 'fav.favorite_id', 'products.id')
-            ->where('fav.type', 'product')
-            ->where('fav.user_id', auth()->id())
-            ->with(['subcategory', 'components', 'types'])
-            ->select(['products.*'])
-            ->paginate(10);
+        $myFavoriteProducts = $this->activeProduct()->whereHas('favorites', function ($query)  {
+            $query->where('user_id', auth()->id());
+        })->with(['subcategory', 'components', 'types'])->paginate(10);
         return ProductResource::collection($myFavoriteProducts);
     }
 
     public function getFavoriteVendors (): AnonymousResourceCollection
     {
-        $myFavoriteVendors = $this->activeVendor()
-            ->join('favorites as fav', 'fav.favorite_id', 'vendors.id')
-            ->where('fav.type', 'vendor')
-            ->where('fav.user_id', auth()->id())
-            ->with(['city' => function ($cityQuery) {
+        $myFavoriteVendors = $this->activeVendor()->whereHas('favorites', function ($query)  {
+            $query->where('user_id', auth()->id());
+        })->with(['city' => function ($cityQuery) {
                 $cityQuery->with('country');
             }, 'subcategories' => function ($subCategoriesQuery) {
                 $subCategoriesQuery->where('active', 1);
-            }])->select(['vendors.*'])
-            ->paginate(10);
+            }])->paginate(10);
         return VendorResource::collection($myFavoriteVendors);
     }
 }

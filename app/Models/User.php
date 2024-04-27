@@ -54,17 +54,17 @@ class User extends Authenticatable implements JWTSubject
 
     public function cart (): BelongsToMany
     {
-        return $this->belongsToMany(Product::class, 'carts')->withPivot('id', 'quantity', 'type');
+        return $this->belongsToMany(Product::class, 'carts')->with(['components', 'types'])->withPivot('id', 'quantity', 'type');
     }
 
     public function favoriteProducts (): BelongsToMany
     {
-        return $this->belongsToMany(Product::class, 'favorites', 'user_id', 'favorite_id')->where('type', 'product');
+        return $this->belongsToMany(Product::class, 'favorites', 'user_id', 'favorite_id')->where(['type' => 'product', 'user_id' => auth('api')->id()]);
     }
 
     public function favoriteVendors (): BelongsToMany
     {
-        return $this->belongsToMany(Vendor::class, 'favorites', 'user_id', 'favorite_id')->where('type', 'vendor');
+        return $this->belongsToMany(Vendor::class, 'favorites', 'user_id', 'favorite_id')->where(['type' => 'vendor', 'user_id' => auth('api')->id()]);
     }
 
     public function vendors (): BelongsToMany

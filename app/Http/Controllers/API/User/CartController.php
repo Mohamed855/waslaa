@@ -19,21 +19,18 @@ class CartController extends Controller
     use QueriesTrait, ResponseTrait, ErrorTrait;
     use CartRules;
 
-    public function myCart (): JsonResponse
+    public function myCart ()
     {
-        $myCart = $this->user()->find(auth()->id())->load(['cart' => function ($productQuery) {
-            $productQuery->with(['types'])->paginate(10);
-        }]);
-
-        return $this->returnData('User Cart', [
-            'myCart' => new CartResource($myCart),
-        ]);
+        return CartResource::collection(auth('api')->user()->cart);
     }
 
     public function checkoutPage (): JsonResponse
     {
         $mainAddress = $this->address()->where('type', 'user')
             ->where('user_id', auth()->id())->where('main', 1)->first();
+
+        if (! $mainAddress) return $this->returnError('There is no main address, please set main address first');
+
         $deliveryPhone = $this->user()->find(auth()->id(), ['delivery_phone']);
 
         return $this->returnData('User Checkout', [
@@ -76,10 +73,10 @@ class CartController extends Controller
 
     public function removeFromCart ($id): JsonResponse
     {
-        $selectedProduct = $this->cart()->find($id);
+        $selectedProduct = $this->cart()->where('product_id', $id)->first();
 
         if (!$selectedProduct || $selectedProduct['user_id'] != auth()->id())
-            return $this->returnError('Something went wrong');
+            return $this->returnError('Invalid ID');
 
         $selectedProduct->delete();
 

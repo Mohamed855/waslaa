@@ -36,7 +36,7 @@ class OrdersController extends Controller
     {
         $selectedOrder = $this->order()->where('user_id', auth()->id())->find($id);
 
-        if (!$selectedOrder) $this->returnError('Something went error');
+        if (!$selectedOrder) return $this->returnError('Invalid ID');
 
         return $this->returnData('Orders Details', [
             'OrderDetails' => new OrderDetailsResource($selectedOrder),
@@ -66,6 +66,8 @@ class OrdersController extends Controller
         try {
             $selectedOrder = $this->order()->find($id);
 
+            if (!$selectedOrder) return $this->returnError('Invalid ID');
+
             $requiredData = $selectedOrder->only('vendor', 'products', 'address', 'deliveryPhone', 'payMethod', 'deliveryMethod', 'totalCost', 'deliveryNote');
 
             $this->order()->create($requiredData + ['user_id' => auth()->id()]);
@@ -83,6 +85,8 @@ class OrdersController extends Controller
         try {
             $selectedOrder = $this->order()->find($id);
 
+            if (!$selectedOrder) return $this->returnError('Invalid ID');
+
             if ($selectedOrder['status'] == 'ordered' && $selectedOrder['created_at']->lt(Carbon::now()->subMinutes(3)))
                 return $this->returnError('This order cannot be cancelled, cancellation period has already passed');
 
@@ -98,6 +102,8 @@ class OrdersController extends Controller
     {
         try {
             $selectedOrder = $this->order()->find($id);
+
+            if (!$selectedOrder) return $this->returnError('Invalid ID');
 
             if ($selectedOrder['status'] == 'ordered')
                 return $this->returnError('You can\'t delete undelivered ordered');
