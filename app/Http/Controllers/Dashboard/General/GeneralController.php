@@ -21,7 +21,7 @@ class GeneralController extends Controller
         $activeVendors = $this->activeVendor()->with(['managers', 'users', 'categories', 'subcategories' => function ($query) {
             $query->with(['products']);
         }])->get();
-        return view('admin.main.overview', compact(['adminsCount', 'vendorsCount', 'usersCount', 'activeAdminsCount', 'activeUsersCount', 'activeVendors']));
+        return view('dashboard.main.admin-overview', compact(['adminsCount', 'vendorsCount', 'usersCount', 'activeAdminsCount', 'activeUsersCount', 'activeVendors']));
     }
 
     public function vendorOverview(): View
@@ -34,12 +34,12 @@ class GeneralController extends Controller
         $activeVendors = $this->activeVendor()->with(['managers', 'users', 'categories', 'subcategories' => function ($query) {
             $query->with(['products']);
         }])->get();
-        return view('admin.main.overview', compact(['adminsCount', 'vendorsCount', 'usersCount', 'activeAdminsCount', 'activeUsersCount', 'activeVendors']));
+        return view('dashboard.main.vendor-overview', compact(['adminsCount', 'vendorsCount', 'usersCount', 'activeAdminsCount', 'activeUsersCount', 'activeVendors']));
     }
 
     public function settings(): View
     {
         $settings = $this->siteOption()->get();
-        return view('general.settings', compact(['settings']));
+        return view('dashboard.general.settings', compact(['settings']));
     }
 }

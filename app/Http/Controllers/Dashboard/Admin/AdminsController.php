@@ -25,7 +25,7 @@ class AdminsController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::indexBase($this->table, 'admin.admins.index', searchable: ['name', 'username', 'email', 'phone']);
+        return parent::indexBase($this->table, 'dashboard.admins.index', searchable: ['name', 'username', 'email', 'phone']);
     }
 
     /**
@@ -33,7 +33,7 @@ class AdminsController extends BaseController
      */
     public function create(): View
     {
-        return parent::createBase('admin.admins.create');
+        return parent::createBase('dashboard.admins.create');
     }
 
     /**
@@ -49,7 +49,7 @@ class AdminsController extends BaseController
      */
     public function edit(string $id): View
     {
-        return parent::editBase($this->table, 'admin.admins.edit', $id);
+        return parent::editBase($this->table, 'dashboard.admins.edit', $id);
     }
 
     /**

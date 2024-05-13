@@ -25,7 +25,7 @@ class ProductsController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::indexBase($this->table, 'admin.products.index', searchable: ['name_en', 'name_ar']);
+        return parent::indexBase($this->table, 'dashboard.products.index', searchable: ['name_en', 'name_ar']);
     }
 
     /**
@@ -33,7 +33,7 @@ class ProductsController extends BaseController
      */
     public function create(): View
     {
-        return parent::createBase('admin.products.create');
+        return parent::createBase('dashboard.products.create');
     }
 
     /**
@@ -49,7 +49,7 @@ class ProductsController extends BaseController
      */
     public function show(string $id): View
     {
-        return parent::showBase($this->table, 'admin.products.show', $id);
+        return parent::showBase($this->table, 'dashboard.products.show', $id);
     }
 
     /**
@@ -57,7 +57,7 @@ class ProductsController extends BaseController
      */
     public function edit(string $id): View
     {
-        return parent::editBase($this->table, 'admin.products.edit', $id);
+        return parent::editBase($this->table, 'dashboard.products.edit', $id);
     }
 
     /**

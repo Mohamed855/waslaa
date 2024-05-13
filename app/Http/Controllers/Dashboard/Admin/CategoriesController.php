@@ -25,7 +25,7 @@ class CategoriesController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::indexBase($this->table, 'admin.main.categories', searchable: ['name_en', 'name_ar']);
+        return parent::indexBase($this->table, 'dashboard.main.categories', searchable: ['name_en', 'name_ar']);
     }
 
     /**

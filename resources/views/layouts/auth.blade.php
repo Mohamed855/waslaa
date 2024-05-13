@@ -43,7 +43,7 @@
                 </div>
                 @yield('secondary-action')
             </div>
-            @include('includes.auth-footer')
+            @include('dashboard.partials.auth-footer')
         </div>
     </div>
 @endsection

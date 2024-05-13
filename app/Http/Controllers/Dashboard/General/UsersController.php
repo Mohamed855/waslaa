@@ -24,7 +24,7 @@ class UsersController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::indexBase($this->table, 'general.users.index', with: ['city'], searchable: ['name', 'username', 'phone', 'sec_phone']);
+        return parent::indexBase($this->table, 'dashboard.general.users.index', with: ['city'], searchable: ['name', 'username', 'phone', 'sec_phone']);
     }
 
     /**
@@ -32,7 +32,7 @@ class UsersController extends BaseController
      */
     public function show(string $id): View
     {
-        return parent::showBase($this->table, 'general.users.show', $id, with: ['city', 'favoriteVendors', 'vendors', 'complains' => function ($query) {
+        return parent::showBase($this->table, 'dashboard.general.users.show', $id, with: ['city', 'favoriteVendors', 'vendors', 'complains' => function ($query) {
             $query->with('vendor');
         }]);
     }
@@ -49,6 +49,6 @@ class UsersController extends BaseController
     {
         $guard = DashboardHelper::getCurrentGuard();
         $authUser = auth($guard)->user();
-        return view('general.profile', compact(['guard', 'authUser']));
+        return view('dashboard.general.profile', compact(['guard', 'authUser']));
     }
 }

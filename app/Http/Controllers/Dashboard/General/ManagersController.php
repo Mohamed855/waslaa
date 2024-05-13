@@ -25,7 +25,7 @@ class ManagersController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::indexBase($this->table, 'admin.managers.index', searchable: ['name', 'username', 'email', 'phone']);
+        return parent::indexBase($this->table, 'dashboard.managers.index', searchable: ['name', 'username', 'email', 'phone']);
     }
 
     /**
@@ -33,7 +33,7 @@ class ManagersController extends BaseController
      */
     public function create(): View
     {
-        return parent::createBase('admin.managers.create');
+        return parent::createBase('dashboard.managers.create');
     }
 
     /**

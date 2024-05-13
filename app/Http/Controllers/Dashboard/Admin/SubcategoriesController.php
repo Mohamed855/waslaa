@@ -28,7 +28,7 @@ class SubcategoriesController extends BaseController
     {
         $nameOnLang = Helper::getColumnOnLang('name');
         $categories = $this->activecategory()->get(['id', $nameOnLang . ' as name']);
-        return parent::indexBase($this->table, 'admin.main.subcategories', vars: ['categories' => $categories], with: ['category'], searchable: ['name_en', 'name_ar']);
+        return parent::indexBase($this->table, 'dashboard.main.subcategories', vars: ['categories' => $categories], with: ['category'], searchable: ['name_en', 'name_ar']);
     }
 
     /**

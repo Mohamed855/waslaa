@@ -25,7 +25,7 @@ class NotificationsController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::indexBase($this->table, 'admin.notifications.index', searchable: ['name_en', 'name_ar']);
+        return parent::indexBase($this->table, 'dashboard.notifications.index', searchable: ['name_en', 'name_ar']);
     }
 
     /**
@@ -33,7 +33,7 @@ class NotificationsController extends BaseController
      */
     public function create(): View
     {
-        return parent::createBase('admin.notifications.create');
+        return parent::createBase('dashboard.notifications.create');
     }
 
     /**
@@ -49,7 +49,7 @@ class NotificationsController extends BaseController
      */
     public function edit(string $id): View
     {
-        return parent::editBase($this->table, 'admin.notifications.edit', $id);
+        return parent::editBase($this->table, 'dashboard.notifications.edit', $id);
     }
 
     /**

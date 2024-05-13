@@ -25,7 +25,7 @@ class CountriesController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::indexBase($this->table, 'admin.locations.countries', searchable: ['name_en', 'name_ar']);
+        return parent::indexBase($this->table, 'dashboard.locations.countries', searchable: ['name_en', 'name_ar']);
     }
 
     /**

@@ -26,7 +26,7 @@ class OrdersController extends BaseController
     {
         $data = $this->order()->where('status', 'ordered')->with(['user'])->paginate(10);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
-        return view('general.orders.ordered', compact('data'));
+        return view('dashboard.general.orders.ordered', compact('data'));
     }
 
     /**
@@ -36,7 +36,7 @@ class OrdersController extends BaseController
     {
         $data = $this->order()->where('status', 'accepted')->with(['user'])->paginate(10);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
-        return view('general.orders.accepted', compact('data'));
+        return view('dashboard.general.orders.accepted', compact('data'));
     }
 
     /**
@@ -46,7 +46,7 @@ class OrdersController extends BaseController
     {
         $data = $this->order()->where('status', 'canceled')->with(['user'])->paginate(10);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
-        return view('general.orders.canceled', compact('data'));
+        return view('dashboard.general.orders.canceled', compact('data'));
     }
 
     /**
@@ -55,7 +55,7 @@ class OrdersController extends BaseController
     public function show(string $id): View
     {
         $guard = DashboardHelper::getCurrentGuard();
-        return parent::showBase($this->table, 'general.orders.show', $id, vars: ['guard' => $guard]);
+        return parent::showBase($this->table, 'dashboard.general.orders.show', $id, vars: ['guard' => $guard]);
     }
 
     /**
