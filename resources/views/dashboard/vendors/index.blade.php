@@ -1,4 +1,4 @@
-@extends('layouts.admin-dashboard')
+@extends('layouts.dashboard')
 @section('title', __('translate.vendors'))
 @section('content')
     <section>

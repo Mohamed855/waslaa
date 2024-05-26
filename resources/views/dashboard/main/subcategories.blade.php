@@ -1,4 +1,4 @@
-@extends('layouts.admin-dashboard')
+@extends('layouts.dashboard')
 @section('title', __('translate.subcategories'))
 @section('content')
     <div class="row">
@@ -294,7 +294,7 @@
                 $('#name_en').val(subcategory.name_en);
                 $('#name_ar').val(subcategory.name_ar);
 
-                url = '{{ asset('') }}' + 'admin/subcategories/' + id
+                url = '{{ asset('') }}' + 'subcategories/' + id
                 $('#selectedCategory').val(selectedCategory);
 
                 $('#updateForm').attr('action', url);

@@ -15,6 +15,6 @@ class Type extends Model
 
     public function products () : BelongsToMany
     {
-        return $this->belongsToMany(Product::class, 'product_types');
+        return $this->belongsToMany(Product::class, 'product_types')->withPivot(['price']);
     }
 }

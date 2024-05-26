@@ -1,4 +1,4 @@
-@if (app()->getLocale() == 'ar')
+@if (Illuminate\Support\Facades\App::getLocale() == 'ar')
     <!-- BEGIN: Vendor JS-->
     <script src="{{ asset('/public/../app-assets/vendors/js/vendors.min.js') }}"></script>
     <!-- BEGIN Vendor JS-->
@@ -26,7 +26,7 @@
     <script src="{{ asset('/public/../app-assets/js/scripts/components/components-popovers.js') }}"></script>
 @endif
 
-@if (app()->getLocale() == 'en')
+@if (Illuminate\Support\Facades\App::getLocale() == 'en')
     <!-- BEGIN: Vendor JS-->
     <script src="{{ asset('app-assets/vendors/js/vendors.min.js') }}"></script>
     <!-- BEGIN Vendor JS-->

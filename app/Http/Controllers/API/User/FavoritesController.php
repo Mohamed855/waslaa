@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\API\User;
 
-use App\Helpers\User\FavoritesHelper;
-use App\Http\Controllers\Controller;
+use Exception;
 use App\Traits\ErrorTrait;
 use App\Traits\QueriesTrait;
 use App\Traits\ResponseTrait;
-use Exception;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\App;
+use App\Http\Controllers\Controller;
+use App\Helpers\User\FavoritesHelper;
 
 class FavoritesController extends Controller
 {
@@ -36,7 +37,7 @@ class FavoritesController extends Controller
                 return $this->returnError('Invalid type');
 
             if ($type == 'product') {
-                $selected = $this->activeProduct()->find($id, ['name_' . app()->getLocale() . ' as name']);
+                $selected = $this->activeProduct()->find($id, ['name_' . App::getLocale() . ' as name']);
                 $favorite = $this->favoriteProducts();
             } else {
                 $selected = $this->activeVendor()->find($id, ['name']);

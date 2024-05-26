@@ -42,6 +42,8 @@ return [
     'categories' => 'Categories',
     'subcategory' => 'Subcategory',
     'subcategories' => 'Subcategories',
+    'component' => 'Component',
+    'components' => 'Components',
     'product' => 'Product',
     'products' => 'Products',
     'complain' => 'Complain',

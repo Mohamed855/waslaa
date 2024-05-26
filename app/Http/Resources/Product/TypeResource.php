@@ -19,7 +19,7 @@ class TypeResource extends JsonResource
             'id' => $this['id'],
             'name' => $this[Helper::getColumnOnLang('name')],
             'abbrev' => $this[Helper::getColumnOnLang('abbrev')],
-            'price' => $this['price'],
+            'price' => $this['pivot']['price'],
         ];
     }
 }

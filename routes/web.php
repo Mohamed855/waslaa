@@ -1,25 +1,26 @@
 <?php
 
-use App\Http\Controllers\Dashboard\Admin\AdminsController;
-use App\Http\Controllers\Dashboard\Admin\ADsController;
-use App\Http\Controllers\Dashboard\Admin\CategoriesController;
-use App\Http\Controllers\Dashboard\Admin\CitiesController;
-use App\Http\Controllers\Dashboard\Admin\CountriesController;
-use App\Http\Controllers\Dashboard\Admin\InvoicesController;
-use App\Http\Controllers\Dashboard\Admin\NotificationsController;
-use App\Http\Controllers\Dashboard\Admin\SubcategoriesController;
-use App\Http\Controllers\Dashboard\Admin\VendorsController;
-use App\Http\Controllers\Dashboard\Auth\LoginController;
-use App\Http\Controllers\Dashboard\Auth\Passwords\ForgetPasswordController;
-use App\Http\Controllers\Dashboard\Auth\Passwords\ResetPasswordController;
-use App\Http\Controllers\Dashboard\General\ActionsController;
-use App\Http\Controllers\Dashboard\General\ManagersController;
-use App\Http\Controllers\Dashboard\General\GeneralController;
-use App\Http\Controllers\Dashboard\General\OrdersController;
-use App\Http\Controllers\Dashboard\General\UsersController;
-use App\Http\Controllers\Dashboard\Vendor\ProductsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\Auth\LoginController;
+use App\Http\Controllers\Admin\Dashboard\ADsController;
+use App\Http\Controllers\Admin\Dashboard\UsersController;
+use App\Http\Controllers\Admin\Dashboard\AdminsController;
+use App\Http\Controllers\Admin\Dashboard\CitiesController;
+use App\Http\Controllers\Admin\Dashboard\OrdersController;
+use App\Http\Controllers\Admin\Dashboard\ActionsController;
+use App\Http\Controllers\Admin\Dashboard\GeneralController;
+use App\Http\Controllers\Admin\Dashboard\VendorsController;
+use App\Http\Controllers\Admin\Dashboard\InvoicesController;
+use App\Http\Controllers\Admin\Dashboard\ManagersController;
+use App\Http\Controllers\Admin\Dashboard\ProductsController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use App\Http\Controllers\Admin\Dashboard\CountriesController;
+use App\Http\Controllers\Admin\Dashboard\CategoriesController;
+use App\Http\Controllers\Admin\Dashboard\ComponentsController;
+use App\Http\Controllers\Admin\Dashboard\NotificationsController;
+use App\Http\Controllers\Admin\Dashboard\SubcategoriesController;
+use App\Http\Controllers\Admin\Auth\Passwords\ResetPasswordController;
+use App\Http\Controllers\Admin\Auth\Passwords\ForgetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,16 +55,31 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     // Any Auth User Routes
     Route::group(['middleware' => 'must.auth'], function () {
+        Route::get('profile', [GeneralController::class, 'profile'])->name('profile');
         Route::resource('users', UsersController::class)->except(['create', 'store', 'edit', 'update']);
-        Route::get('profile', [UsersController::class, 'profile'])->name('profile');
+        Route::resource('managers', ManagersController::class)->except(['create', 'edit', 'show']);
+        Route::resource('notifications', NotificationsController::class)->except(['show']);
 
-        Route::resource('managers', ManagersController::class)->except(['edit']);
 
+
+        /*
+
+
+        */
         Route::resource('products', ProductsController::class)->except([]);
+
         Route::resource('orders', OrdersController::class)->except('index', 'create', 'edit');
         Route::get('ordered', [OrdersController::class, 'ordered'])->name('ordered');
         Route::get('accepted', [OrdersController::class, 'accepted'])->name('accepted');
         Route::get('canceled', [OrdersController::class, 'canceled'])->name('canceled');
+
+        Route::resource('invoices', InvoicesController::class)->except('index', 'create', 'edit');
+        Route::get('opened', [InvoicesController::class, 'opened'])->name('opened');
+        Route::get('closed', [InvoicesController::class, 'closed'])->name('closed');
+        Route::get('collected', [InvoicesController::class, 'collected'])->name('collected');
+
+        Route::get('settings', [GeneralController::class, 'settings'])->name('settings');
+        Route::post('settings/update', [GeneralController::class, 'updateSettings'])->name('settings.update');
 
         Route::prefix('{guard}/{id}')->group(function () {
             Route::post('profile/update', [ActionsController::class, 'updateProfile'])->name('profile.update');
@@ -71,9 +87,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::post('avatar/update', [ActionsController::class, 'updateAvatar'])->name('avatar.update');
             Route::post('avatar/remove', [ActionsController::class, 'removeAvatar'])->name('avatar.remove');
         });
-
-        Route::get('settings', [GeneralController::class, 'settings'])->name('settings');
-        Route::post('settings/update', [GeneralController::class, 'updateSettings'])->name('settings.update');
 
         Route::post('primary/toggle/{id}', [ActionsController::class, 'togglePrimary'])->name('primary.toggle');
         Route::post('{table}/activation/toggle/{id}', [ActionsController::class, 'toggleActive'])->name('activation.toggle');
@@ -87,22 +100,18 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::group(['prefix' => 'admin', 'middleware' => 'guard:admin'], function () {
         Route::get('/', [GeneralController::class, 'adminOverview'])->name('admin.overview');
         Route::resource('ads', ADsController::class)->except(['create', 'edit', 'show']);
-        Route::resource('notifications', NotificationsController::class)->except(['show']);
         Route::resource('admins', AdminsController::class)->except(['show']);
         Route::resource('vendors', VendorsController::class)->except(['edit']);
         Route::resource('categories', CategoriesController::class)->except(['create', 'edit', 'show']);
         Route::resource('subcategories', SubcategoriesController::class)->except(['create', 'edit', 'show']);
         Route::resource('countries', CountriesController::class)->except(['create', 'edit', 'show']);
         Route::resource('cities', CitiesController::class)->except(['create', 'edit', 'show']);
-        Route::resource('invoices', InvoicesController::class)->except('index', 'create', 'edit');
-        Route::get('opened', [InvoicesController::class, 'opened'])->name('opened');
-        Route::get('closed', [InvoicesController::class, 'closed'])->name('closed');
-        Route::get('collected', [InvoicesController::class, 'collected'])->name('collected');
     });
 
     // Vendor Routes
     Route::group(['prefix' => 'vendor', 'middleware' => 'guard:vendor'], function () {
         Route::get('/', [GeneralController::class, 'vendorOverview'])->name('vendor.overview');
+        Route::resource('components', ComponentsController::class)->except(['create', 'edit', 'show']);
     });
 
     // Manager Routes

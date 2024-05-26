@@ -175,8 +175,6 @@
                                                           method="POST" enctype="multipart/form-data">
                                                         @csrf @method('PUT')
                                                         <div class="row">
-                                                            <input type="hidden" id="selectedProduct" name="product"
-                                                                   value="">
 
                                                             {{-- edit name --}}
                                                             <div class="col-12">

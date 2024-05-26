@@ -1,0 +1,206 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Helpers\Helper;
+use App\Http\Controllers\Controller;
+use Exception;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+
+class BaseController extends Controller
+{
+    public $nameOnLang;
+    public function __construct() {
+        $this->nameOnLang = Helper::getColumnOnLang('name');
+    }
+
+    /**
+     * Display a listing of the resource.
+     */
+    protected function indexBase($table, $view, $specialRecords = [], $vars = [], $with = [], $searchable = []): View|RedirectResponse
+    {
+        $data = $this->$table()->where($specialRecords)->with($with);
+        if(isset($_GET['keyword']) && count($searchable) > 0) {
+            $data = Helper::searchOnQuery($data, $searchable, $_GET['keyword']);
+        }
+        $data = $data->paginate(10);
+        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
+        return view($view, compact(['data']))->with(['nameOnLang' => $this->nameOnLang] + $vars);
+    }
+
+    /**
+     * Display a listing of the resource with vendors relation.
+     */
+    protected function VendorIndexBase($relation, $view, $vars = [], $with = [], $searchable = []): View|RedirectResponse
+    {
+        $data = auth('vendor')->user()->$relation()->with($with);
+        if(isset($_GET['keyword']) && count($searchable) > 0) {
+            $data = Helper::searchOnQuery($data, $searchable, $_GET['keyword']);
+        }
+        $data = $data->paginate(10);
+        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
+        return view($view, compact(['data']))->with(['nameOnLang' => $this->nameOnLang] + $vars);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    protected function createBase($view, $vars = []): View
+    {
+        return view($view)->with($vars);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    protected function storeBase($table, $folder, Request $request, array $storedData, array $rules): RedirectResponse
+    {
+        try {
+            if ($request['phone']) {
+                $request['phone'] = Helper::correctPhoneStyle($request['phone']);
+            }
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) return back()->with('error', $validator->errors()->first());
+
+            $data = $request->only($storedData);
+
+            if ($request['avatar']) {
+                $imageName = time() . '.' . $data['avatar']->extension();
+                $request['avatar']->storeAs('public/images/' . $folder, $imageName);
+                $data['avatar'] = $imageName;
+            }
+
+            if ($request['image']) {
+                $imageName = time() . '.' . $data['image']->extension();
+                $request['image']->storeAs('public/images/' . $folder, $imageName);
+                $data['image'] = $imageName;
+            }
+
+            $this->$table()->create($data);
+
+            return back()->with('success', __('translate.' . $table) . ' ' . __('success.added'));
+        } catch (Exception) {
+            return back()->with('error', __('error.somethingWentWrong'));
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function showBase($table, $view, string $id, $vars = [], $with = []): View
+    {
+        $selected = $this->$table()->with($with)->findOrFail($id);
+        return view($view, compact(['selected']))->with(['nameOnLang' => $this->nameOnLang] + $vars);
+    }
+
+    /**
+     * Display the specified resource with vendors relation.
+     */
+    public function vendorShowBase($relation, $view, string $id, $vars = [], $with = []): View
+    {
+        $selected = auth('vendor')->user()->$relation()->with($with)->findOrFail($id);
+        return view($view, compact(['selected']))->with(['nameOnLang' => $this->nameOnLang] + $vars);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    protected function editBase($table, $view, string $id, $vars = []): View
+    {
+        $selected = $this->$table()->findOrFail($id);
+        if ($selected['is_primary']) abort(404);
+        return view($view, compact(['selected']))->with(['nameOnLang' => $this->nameOnLang] + $vars);
+    }
+
+    /**
+     * Show the form for editing the specified resource with vendors relation.
+     */
+    public function vendorEditBase($relation, $view, string $id, $vars = []): View
+    {
+        $selected = auth('vendor')->user()->$relation()->findOrFail($id);
+        return view($view, compact(['selected']))->with(['nameOnLang' => $this->nameOnLang] + $vars);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    protected function updateBase($table, $folder, Request $request, array $storedData, array $rules, string $id): RedirectResponse
+    {
+        try {
+            $selected = $this->$table()->find($id);
+            if (auth('admin')->id() != $id && $selected['is_primary']) back()->with('error', __('error.cannotEditPrimary'));
+
+            if ($request['phone']) {
+                $request['phone'] = Helper::correctPhoneStyle($request['phone']);
+            }
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) return back()->with('error', $validator->errors()->first());
+
+            $data = $request->only($storedData);
+
+            if ($request['username']) {
+                $data['username'] = strtolower($data['username']);
+            }
+
+            if ($request['avatar']) {
+                if ($selected['avatar'] != null) {
+                    Storage::delete('public/images/' . $folder . '/' . $selected['avatar']);
+                }
+                $imageName = time() . '.' . $data['avatar']->extension();
+                $request['avatar']->storeAs('public/images/' . $folder, $imageName);
+                $data['avatar'] = $imageName;
+            }
+
+            if ($request['image']) {
+                if ($selected['image'] != null) {
+                    Storage::delete('public/images/' . $folder . '/' . $selected['image']);
+                }
+                $imageName = time() . '.' . $data['image']->extension();
+                $request['image']->storeAs('public/images/' . $folder, $imageName);
+                $data['image'] = $imageName;
+            }
+
+            if ($request['password']) {
+                $data['password'] = $request['password'];
+            }
+
+            $selected->update($data);
+
+            return back()->with('success', __('translate.' . $table) . ' ' . __('success.updated'));
+        } catch (Exception) {
+            return back()->with('error', __('error.somethingWentWrong'));
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    protected function destroyBase($table, $folder, string $id): RedirectResponse
+    {
+        try {
+            $selected = $this->$table()->find($id);
+            if ($selected['is_primary']) return back()->with('error', __('error.cannotDeletePrimary'));
+
+            if ($selected['avatar'] != null) {
+                Storage::delete('public/images/' . $folder . '/' . $selected['avatar']);
+            }
+
+            if ($selected['image'] != null) {
+                Storage::delete('public/images/' . $folder . '/' . $selected['image']);
+            }
+
+            $selected->delete();
+            return back()->with('success', __('translate.' . $table) . ' ' . __('success.deleted'));
+        } catch (Exception) {
+            return back()->with('error', __('error.somethingWentWrong'));
+        }
+    }
+}

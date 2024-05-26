@@ -23,7 +23,7 @@
         }
     </style>
 
-    @if (app()->getLocale() == 'ar')
+    @if (Illuminate\Support\Facades\App::getLocale() == 'ar')
         <link rel="stylesheet" type="text/css"
             href="{{ asset('/public/../app-assets/vendors/css/vendors-rtl.min.css') }}">
         <link rel="stylesheet" type="text/css"
@@ -65,7 +65,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     @endif
 
-    @if (app()->getLocale() == 'en')
+    @if (Illuminate\Support\Facades\App::getLocale() == 'en')
         <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/vendors.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/charts/apexcharts.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/extensions/toastr.min.css') }}">

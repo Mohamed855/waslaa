@@ -1,4 +1,4 @@
-@extends('layouts.admin-dashboard')
+@extends('layouts.dashboard')
 @section('title', __('translate.categories'))
 @section('content')
     <div class="row">
@@ -230,7 +230,7 @@
 
                 $('#name_en').val(category.name_en);
                 $('#name_ar').val(category.name_ar);
-                url = '{{ asset('') }}' + 'admin/categories/' + id
+                url = '{{ asset('') }}' + 'categories/' + id
                 $('#updateForm').attr('action', url);
             });
         });

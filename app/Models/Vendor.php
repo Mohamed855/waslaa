@@ -86,9 +86,19 @@ class Vendor extends Authenticatable
         return $this->belongsToMany(User::class, 'favorites', 'favorite_id', 'user_id')->where(['type' => 'vendor']);
     }
 
+    public function notifications (): HasMany
+    {
+        return $this->hasMany(Notification::class, 'user_id')->where('type', 'vendor');
+    }
+
     public function invoices (): HasMany
     {
         return $this->hasMany(Invoice::class);
+    }
+
+    public function components (): HasMany
+    {
+        return $this->hasMany(Component::class);
     }
 
     public function getAllProductIds()

@@ -30,7 +30,7 @@ class Product extends Model
 
     public function types () : BelongsToMany
     {
-        return $this->belongsToMany(Type::class, 'product_types');
+        return $this->belongsToMany(Type::class, 'product_types')->withPivot(['price']);
     }
 
     public function favorites (): BelongsToMany

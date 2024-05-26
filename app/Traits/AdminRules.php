@@ -73,7 +73,7 @@ trait AdminRules {
         ];
     }
 
-    protected function notificationRules(): array
+    protected function createNotificationRules(): array
     {
         return [
             'name_en' => 'required|max:60|string',
@@ -81,6 +81,8 @@ trait AdminRules {
             'body_en' => 'required|max:1000|string',
             'body_ar' => ['required', 'max:1000', new ArabicRule(), 'string'],
             'image' => 'nullable|max:20480|image',
+            'type' => 'required|in:admin,vendor',
+            'user_id' => 'required'
         ];
     }
 
@@ -90,6 +92,15 @@ trait AdminRules {
             'name_en' => 'required|max:60|string',
             'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
             'avatar' => 'required|max:20480|image',
+        ];
+    }
+
+    protected function createComponentRules(): array
+    {
+        return [
+            'name_en' => 'required|max:60|string',
+            'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
+            'vendor_id' => 'required|exists:vendors,id,active,1',
         ];
     }
 
@@ -180,12 +191,31 @@ trait AdminRules {
         ];
     }
 
+    protected function updateNotificationRules(): array
+    {
+        return [
+            'name_en' => 'required|max:60|string',
+            'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
+            'body_en' => 'required|max:1000|string',
+            'body_ar' => ['required', 'max:1000', new ArabicRule(), 'string'],
+            'image' => 'nullable|max:20480|image'
+        ];
+    }
+
     protected function updateCategoryRules(): array
     {
         return [
             'name_en' => 'required|max:60|string',
             'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
             'avatar' => 'nullable|max:20480|image',
+        ];
+    }
+
+    protected function updateComponentRules(): array
+    {
+        return [
+            'name_en' => 'required|max:60|string',
+            'name_ar' => ['required', 'max:60', new ArabicRule(), 'string']
         ];
     }
 

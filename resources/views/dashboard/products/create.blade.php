@@ -1,4 +1,4 @@
-@extends('layouts.admin-dashboard')
+@extends('layouts.dashboard')
 @section('title', __('translate.add') . ' ' . __('translate.admin'))
 @section('content')
     <section id="basic-horizontal-layouts">

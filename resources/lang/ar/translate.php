@@ -42,6 +42,8 @@ return [
     'categories' => 'الفئات',
     'subcategory' => 'فئة فرعية',
     'subcategories' => 'الفئات الفرعية',
+    'component' => 'جزء',
+    'components' => 'الأجزاء',
     'product' => 'منتج',
     'products' => 'المنتجات',
     'complain' => 'شكوى',

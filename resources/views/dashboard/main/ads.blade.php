@@ -1,4 +1,4 @@
-@extends('layouts.admin-dashboard')
+@extends('layouts.dashboard')
 @section('title', __('translate.ads'))
 @section('content')
     <div class="row">
@@ -9,7 +9,6 @@
                     @lang('translate.add')
                 </button>
             </div>
-
 
             <!-- Modal -->
             <div class="modal fade modal-secondary text-start" id="AddAd" tabindex="-1"

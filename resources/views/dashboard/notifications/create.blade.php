@@ -1,4 +1,4 @@
-@extends('layouts.admin-dashboard')
+@extends('layouts.dashboard')
 @section('title', __('translate.add') . ' ' . __('translate.notification'))
 @section('content')
     <section id="basic-horizontal-layouts">
@@ -10,6 +10,8 @@
                               enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-2">
+                                <input type="hidden" name="type" value="{{ auth('admin')->check() ? 'admin' : 'vendor' }}"/>
+                                <input type="hidden" name="user_id" value="{{ auth('admin')->check() ? auth('admin')->id() : auth('vendor')->id() }}"/>
                                 {{-- add en name --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
                                     <label class="form-label" for="name_en">@lang('translate.enName')</label>

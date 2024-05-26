@@ -2,14 +2,15 @@
 
 namespace App\Helpers;
 
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\File;
 
 class Helper
 {
     public static function getColumnOnLang(String $column): string
     {
-        return $column . '_' . app()->getLocale();
+        return $column . '_' . App::getLocale();
     }
 
     public static function correctPhoneStyle (String $phone): String
@@ -35,7 +36,7 @@ class Helper
 
     public static function getFullAddress($address): string
     {
-        $isArabic = app()->getLocale() == 'ar';
+        $isArabic = App::getLocale() == 'ar';
 
         $output = $address['address'] ? $address['address'] . ', ' : '';
         $output .= $address['building'] ? ($isArabic ? 'عمارة: ' : 'building: ') . $address['building'] . ', ' : '';
