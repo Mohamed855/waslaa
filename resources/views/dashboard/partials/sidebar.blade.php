@@ -173,9 +173,11 @@
                 @endforeach
             @endif
 
-            <li class="navigation-header">
-                <span style='font-size: 16px;'>@lang('translate.sections')</span>
-            </li>
+            @if (auth('admin')->check() || auth('vendor')->check())
+                <li class="navigation-header">
+                    <span style='font-size: 16px;'>@lang('translate.sections')</span>
+                </li>
+            @endif
 
             @if (auth('admin')->check())
                 <li class="nav-item {{ request()->routeIs('categories.index') ? 'active' : '' }}">
@@ -209,6 +211,12 @@
                     <a class="nav-link d-flex align-items-center" href="{{ route('components.index') }}">
                         <i data-feather="command"></i>
                         @lang('translate.components')
+                    </a>
+                </li>
+                <li class="nav-item {{ request()->routeIs('types.index') ? 'active' : '' }}">
+                    <a class="nav-link d-flex align-items-center" href="{{ route('types.index') }}">
+                        <i data-feather="type"></i>
+                        @lang('translate.types')
                     </a>
                 </li>
             @endif

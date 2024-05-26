@@ -12,7 +12,7 @@
                 <thead>
                 <tr>
                     <th>@lang('translate.name')</th>
-                    <th>@lang('translate.type')</th>
+                    <th>@lang('translate.theType')</th>
                     <th>@lang('translate.quantity')</th>
                     <th>@lang('translate.price')</th>
                     @if($selected->status == 'opened' && $guard != 'admin')

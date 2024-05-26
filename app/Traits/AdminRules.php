@@ -104,6 +104,17 @@ trait AdminRules {
         ];
     }
 
+    protected function createTypeRules(): array
+    {
+        return [
+            'name_en' => 'required|max:60|string',
+            'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
+            'abbrev_en' => 'required|max:3|string',
+            'abbrev_ar' => ['required', 'max:3', new ArabicRule(), 'string'],
+            'vendor_id' => 'required|exists:vendors,id,active,1',
+        ];
+    }
+
     protected function createSubcategoryRules(): array
     {
         return [
@@ -216,6 +227,16 @@ trait AdminRules {
         return [
             'name_en' => 'required|max:60|string',
             'name_ar' => ['required', 'max:60', new ArabicRule(), 'string']
+        ];
+    }
+
+    protected function updateTypeRules(): array
+    {
+        return [
+            'name_en' => 'required|max:60|string',
+            'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
+            'abbrev_en' => 'required|max:3|string',
+            'abbrev_ar' => ['required', 'max:3', new ArabicRule(), 'string'],
         ];
     }
 

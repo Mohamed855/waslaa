@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\LoginController;
 use App\Http\Controllers\Admin\Dashboard\ADsController;
+use App\Http\Controllers\Admin\Dashboard\TypesController;
 use App\Http\Controllers\Admin\Dashboard\UsersController;
 use App\Http\Controllers\Admin\Dashboard\AdminsController;
 use App\Http\Controllers\Admin\Dashboard\CitiesController;
@@ -97,8 +98,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     });
 
     // Admin Routes
-    Route::group(['prefix' => 'admin', 'middleware' => 'guard:admin'], function () {
-        Route::get('/', [GeneralController::class, 'adminOverview'])->name('admin.overview');
+    Route::middleware('guard:admin')->group(function () {
+        Route::get('admin/overview', [GeneralController::class, 'adminOverview'])->name('admin.overview');
         Route::resource('ads', ADsController::class)->except(['create', 'edit', 'show']);
         Route::resource('admins', AdminsController::class)->except(['show']);
         Route::resource('vendors', VendorsController::class)->except(['edit']);
@@ -109,9 +110,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     });
 
     // Vendor Routes
-    Route::group(['prefix' => 'vendor', 'middleware' => 'guard:vendor'], function () {
-        Route::get('/', [GeneralController::class, 'vendorOverview'])->name('vendor.overview');
+    Route::middleware('guard:vendor')->group(function () {
+        Route::get('vendor/overview', [GeneralController::class, 'vendorOverview'])->name('vendor.overview');
         Route::resource('components', ComponentsController::class)->except(['create', 'edit', 'show']);
+        Route::resource('types', TypesController::class)->except(['create', 'edit', 'show']);
     });
 
     // Manager Routes

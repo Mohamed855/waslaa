@@ -101,6 +101,11 @@ class Vendor extends Authenticatable
         return $this->hasMany(Component::class);
     }
 
+    public function types (): HasMany
+    {
+        return $this->hasMany(Type::class);
+    }
+
     public function getAllProductIds()
     {// you need this to check if user add to cart another vendor product
         $subcategories = $this->subcategories;

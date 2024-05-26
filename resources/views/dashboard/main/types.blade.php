@@ -1,17 +1,18 @@
 @extends('layouts.dashboard')
-@section('title', __('translate.ads'))
+@section('title', __('translate.types'))
 @section('content')
     <div class="row">
         <div class="col-xl-12 d-flex">
             <div class="mb-2">
-                <button class="btn btn-success ms-auto" data-bs-toggle="modal" data-bs-target="#AddAd">
+                <button class="btn btn-success ms-auto" data-bs-toggle="modal" data-bs-target="#AddType">
                     <i data-feather="plus"></i>
                     @lang('translate.add')
                 </button>
             </div>
 
+
             <!-- Modal -->
-            <div class="modal fade modal-secondary text-start" id="AddAd" tabindex="-1"
+            <div class="modal fade modal-secondary text-start" id="AddType" tabindex="-1"
                  aria-labelledby="myModalLabel1660"
                  aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -27,32 +28,54 @@
                                 <div class="row">
                                     <div class="col-md-12 col-12">
 
-                                        <form id="adsStore" class="form form-vertical"
-                                              action="{{ route('ads.store') }} "
+                                        <form id="typesStore" class="form form-vertical"
+                                              action="{{ route('types.store') }} "
                                               method="POST" enctype="multipart/form-data">
                                             @csrf
 
                                             <div class="row">
 
-                                                {{-- add name --}}
+                                                {{-- add en name --}}
                                                 <div class="col-12">
                                                     <div class="mb-1">
                                                         <label class="form-label"
-                                                               for="name">@lang('translate.name')</label>
+                                                               for="name_en">@lang('translate.enName')</label>
                                                         <input type="text"
                                                                class="form-control"
-                                                               name="name" placeholder="@lang('translate.name')"/>
+                                                               name="name_en" placeholder="@lang('translate.enName')"/>
                                                     </div>
                                                 </div>
 
-                                                {{-- add image --}}
+                                                {{-- add ar name --}}
                                                 <div class="col-12">
                                                     <div class="mb-1">
                                                         <label class="form-label"
-                                                               for="image">@lang('translate.image')</label>
-                                                        <input type="file"
+                                                               for="name_ar">@lang('translate.arName')</label>
+                                                        <input type="text"
                                                                class="form-control"
-                                                               name="image" placeholder="@lang('translate.image')"/>
+                                                               name="name_ar" placeholder="@lang('translate.arName')"/>
+                                                    </div>
+                                                </div>
+
+                                                {{-- add en abbrev --}}
+                                                <div class="col-12">
+                                                    <div class="mb-1">
+                                                        <label class="form-label"
+                                                               for="abbrev_en">@lang('translate.enAbbrev')</label>
+                                                        <input type="text"
+                                                               class="form-control" maxlength="3"
+                                                               name="abbrev_en" placeholder="@lang('translate.enAbbrev')"/>
+                                                    </div>
+                                                </div>
+
+                                                {{-- add ar abbrev --}}
+                                                <div class="col-12">
+                                                    <div class="mb-1">
+                                                        <label class="form-label"
+                                                               for="abbrev_ar">@lang('translate.arAbbrev')</label>
+                                                        <input type="text"
+                                                               class="form-control" maxlength="3"
+                                                               name="abbrev_ar" placeholder="@lang('translate.arAbbrev')"/>
                                                     </div>
                                                 </div>
 
@@ -85,8 +108,8 @@
                 <table id="example" class="table text-center table-bordered" style="width:100%">
                     <thead>
                     <tr>
-                        <th>@lang('translate.image')</th>
                         <th>@lang('translate.name')</th>
+                        <th>@lang('translate.abbrev')</th>
                         <th>@lang('translate.active')</th>
                         <th>@lang('translate.actions')</th>
                     </tr>
@@ -94,17 +117,12 @@
                     <tbody>
                     @foreach($data as $single)
                         <tr>
-                            <td>
-                                <div class="avatar avatar-xl">
-                                    <img alt="" src="{{ asset('storage/images/ads/' . $single->image) }}"/>
-                                </div>
-                            </td>
-
-                            <td>{{ $single->name }}</td>
+                            <td>{{ $single->$nameOnLang }}</td>
+                            <td>{{ $single->$abbrevOnLang }}</td>
 
                             <td>
                                 <form class="p-0 m-0"
-                                      action="{{ route('activation.toggle', ['table' => 'ad', 'id' => $single->id]) }}"
+                                      action="{{ route('activation.toggle', ['table' => 'type', 'id' => $single->id]) }}"
                                       method="post">
                                     @csrf
                                     <label class="switch">
@@ -117,14 +135,14 @@
 
                             <td style="min-width: 320px">
                                 <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeBtn"
-                                        data-bs-toggle="modal" data-bs-target="#EditAd" data-="{{ $single }}">
+                                        data-bs-toggle="modal" data-bs-target="#EditType" data-="{{ $single }}">
                                     <i data-feather="edit"></i>
                                     @lang('translate.edit')
                                 </button>
-                                @include('dashboard.partials.delete-modal', ['resource' => 'ad', 'resources' => 'ads'])
+                                @include('dashboard.partials.delete-modal', ['resource' => 'type', 'resources' => 'types'])
                             </td>
 
-                            <div class="modal fade modal-secondary text-start" id="EditAd" tabindex="-1"
+                            <div class="modal fade modal-secondary text-start" id="EditType" tabindex="-1"
                                  aria-labelledby="myModalLabel1660" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
@@ -144,28 +162,55 @@
                                                             @csrf @method('PUT')
                                                             <div class="row">
 
-                                                                {{-- edit name --}}
+                                                                {{-- edit en name --}}
                                                                 <div class="col-12">
                                                                     <div class="mb-1">
                                                                         <label class="form-label"
-                                                                               for="name">@lang('translate.name')</label>
-                                                                        <input type="text" id="name"
+                                                                               for="name_en">@lang('translate.enName')</label>
+                                                                        <input type="text" id="name_en"
                                                                                class="form-control"
-                                                                               value="{{ $single->name }}"
-                                                                               name="name"
-                                                                               placeholder="@lang('translate.name')"/>
+                                                                               value="{{ $single->name_en }}"
+                                                                               name="name_en"
+                                                                               placeholder="@lang('translate.enName')"/>
                                                                     </div>
                                                                 </div>
 
-                                                                {{-- edit image --}}
+                                                                {{-- edit ar name --}}
                                                                 <div class="col-12">
                                                                     <div class="mb-1">
                                                                         <label class="form-label"
-                                                                               for="image">@lang('translate.image')</label>
-                                                                        <input type="file" id="image"
+                                                                               for="name_ar">@lang('translate.arName')</label>
+                                                                        <input type="text" id="name_ar"
                                                                                class="form-control"
-                                                                               name="image"
-                                                                               placeholder="@lang('translate.image')"/>
+                                                                               value="{{ $single->name_ar }}"
+                                                                               name="name_ar"
+                                                                               placeholder="@lang('translate.arName')"/>
+                                                                    </div>
+                                                                </div>
+
+                                                                {{-- edit en abbrev --}}
+                                                                <div class="col-12">
+                                                                    <div class="mb-1">
+                                                                        <label class="form-label"
+                                                                               for="abbrev_en">@lang('translate.enAbbrev')</label>
+                                                                        <input type="text" id="abbrev_en"
+                                                                               class="form-control"
+                                                                               value="{{ $single->abbrev_en }}"
+                                                                               name="abbrev_en" maxlength="3"
+                                                                               placeholder="@lang('translate.enAbbrev')"/>
+                                                                    </div>
+                                                                </div>
+
+                                                                {{-- edit ar abbrev --}}
+                                                                <div class="col-12">
+                                                                    <div class="mb-1">
+                                                                        <label class="form-label"
+                                                                               for="abbrev_ar">@lang('translate.arAbbrev')</label>
+                                                                        <input type="text" id="abbrev_ar"
+                                                                               class="form-control"
+                                                                               value="{{ $single->abbrev_ar }}"
+                                                                               name="abbrev_ar" maxlength="3"
+                                                                               placeholder="@lang('translate.arAbbrev')"/>
                                                                     </div>
                                                                 </div>
 
@@ -179,7 +224,6 @@
                                                                 </div>
                                                             </div>
                                                         </form>
-
                                                     </div>
                                                 </div>
                                             </section>
@@ -202,19 +246,14 @@
         $(document).ready(function () {
             $('.typeBtn').on('click', function () {
                 let id = $(this).attr('data-id');
-                let ad = JSON.parse($(this).attr('data-'));
+                let type = JSON.parse($(this).attr('data-'));
 
-                $('#editSelectedProduct').on('change', function () {
-                    let selectedValue = $(this).val();
-                    $('#selectedProduct').val(selectedValue);
-                });
-
-                $('#name').val(ad.name);
-
-                url = '{{ asset('') }}' + 'ads/' + id
-
+                $('#name_en').val(type.name_en);
+                $('#name_ar').val(type.name_ar);
+                url = '{{ asset('') }}' + 'types/' + id
                 $('#updateForm').attr('action', url);
             });
         });
     </script>
 @endsection
+

@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-xl-12 d-flex">
             <div class="mb-2">
-                <button class="btn btn-success ms-auto" data-bs-toggle="modal" data-bs-target="#AddAd">
+                <button class="btn btn-success ms-auto" data-bs-toggle="modal" data-bs-target="#AddCountry">
                     <i data-feather="plus"></i>
                     @lang('translate.add')
                 </button>
@@ -12,7 +12,7 @@
 
 
             <!-- Modal -->
-            <div class="modal fade modal-secondary text-start" id="AddAd" tabindex="-1"
+            <div class="modal fade modal-secondary text-start" id="AddCountry" tabindex="-1"
                  aria-labelledby="myModalLabel1660"
                  aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -111,14 +111,14 @@
 
                             <td style="min-width: 320px">
                                 <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeBtn"
-                                        data-bs-toggle="modal" data-bs-target="#EditAd" data-="{{ $single }}">
+                                        data-bs-toggle="modal" data-bs-target="#EditCountry" data-="{{ $single }}">
                                     <i data-feather="edit"></i>
                                     @lang('translate.edit')
                                 </button>
                                 @include('dashboard.partials.delete-modal', ['resource' => 'country', 'resources' => 'countries'])
                             </td>
 
-                            <div class="modal fade modal-secondary text-start" id="EditAd" tabindex="-1"
+                            <div class="modal fade modal-secondary text-start" id="EditCountry" tabindex="-1"
                                  aria-labelledby="myModalLabel1660" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
@@ -201,7 +201,7 @@
 
                 $('#name_en').val(country.name_en)
                 $('#name_ar').val(country.name_ar);
-                url = '{{ asset('') }}' + 'admin/countries/' + id
+                url = '{{ asset('') }}' + 'countries/' + id
                 $('#updateForm').attr('action', url);
             });
         });

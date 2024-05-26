@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-xl-12 d-flex">
             <div class="mb-2">
-                <button class="btn btn-success ms-auto" data-bs-toggle="modal" data-bs-target="#AddAd">
+                <button class="btn btn-success ms-auto" data-bs-toggle="modal" data-bs-target="#AddComponent">
                     <i data-feather="plus"></i>
                     @lang('translate.add')
                 </button>
@@ -12,7 +12,7 @@
 
 
             <!-- Modal -->
-            <div class="modal fade modal-secondary text-start" id="AddAd" tabindex="-1"
+            <div class="modal fade modal-secondary text-start" id="AddComponent" tabindex="-1"
                  aria-labelledby="myModalLabel1660"
                  aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered">
@@ -54,17 +54,6 @@
                                                         <input type="text"
                                                                class="form-control"
                                                                name="name_ar" placeholder="@lang('translate.arName')"/>
-                                                    </div>
-                                                </div>
-
-                                                {{-- add avatar --}}
-                                                <div class="col-12">
-                                                    <div class="mb-1">
-                                                        <label class="form-label"
-                                                               for="avatar">@lang('translate.avatar')</label>
-                                                        <input type="file"
-                                                               class="form-control"
-                                                               name="avatar" placeholder="@lang('translate.avatar')"/>
                                                     </div>
                                                 </div>
 
@@ -122,14 +111,14 @@
 
                             <td style="min-width: 320px">
                                 <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeBtn"
-                                        data-bs-toggle="modal" data-bs-target="#EditAd" data-="{{ $single }}">
+                                        data-bs-toggle="modal" data-bs-target="#EditComponent" data-="{{ $single }}">
                                     <i data-feather="edit"></i>
                                     @lang('translate.edit')
                                 </button>
                                 @include('dashboard.partials.delete-modal', ['resource' => 'component', 'resources' => 'components'])
                             </td>
 
-                            <div class="modal fade modal-secondary text-start" id="EditAd" tabindex="-1"
+                            <div class="modal fade modal-secondary text-start" id="EditComponent" tabindex="-1"
                                  aria-labelledby="myModalLabel1660" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
@@ -172,18 +161,6 @@
                                                                                value="{{ $single->name_ar }}"
                                                                                name="name_ar"
                                                                                placeholder="@lang('translate.arName')"/>
-                                                                    </div>
-                                                                </div>
-
-                                                                {{-- edit avatar --}}
-                                                                <div class="col-12">
-                                                                    <div class="mb-1">
-                                                                        <label class="form-label"
-                                                                               for="avatar">@lang('translate.avatar')</label>
-                                                                        <input type="file" id="avatar"
-                                                                               class="form-control"
-                                                                               name="avatar"
-                                                                               placeholder="@lang('translate.avatar')"/>
                                                                     </div>
                                                                 </div>
 
