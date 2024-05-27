@@ -56,7 +56,7 @@
                                             <select id="addSelectedCategory" class="form-control" name="category_id">
                                                 <option selected disabled>@lang('translate.select')</option>
                                                 @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    <option value="{{ $category->id }}">{{ $category->$nameOnLang }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

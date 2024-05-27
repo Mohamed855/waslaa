@@ -48,7 +48,7 @@
                                             <select id="editSelectedCategory{{ $single->id }}" class="form-control editSelectedCategory">
                                                 <option selected disabled>@lang('translate.select')</option>
                                                 @foreach($categories as $category)
-                                                    <option value="{{ $category->id }}" {{ $single->category_id == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>
+                                                    <option value="{{ $category->id }}" {{ $single->category_id == $category->id ? 'selected' : '' }}>{{ $category->$nameOnLang }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
