@@ -48,6 +48,7 @@ return [
     'components' => 'الأجزاء',
     'type' => 'نوع',
     'types' => 'الأنواع',
+    'offer' => 'عرض',
     'complain' => 'شكوى',
     'complains' => 'الشكاوى',
     'order' => 'طلب',
@@ -67,6 +68,7 @@ return [
     'city' => 'مدينة',
     'cities' => 'المدن',
 
+    'id' => '#',
     'name' => 'الاسم',
     'ownerName' => 'اسم المالك',
     'username' => 'اسم المستخدم',
@@ -144,6 +146,7 @@ return [
     'invoiceDetails' => 'تفاصيل الفاتورة',
     'following' => 'يتابع',
     'userIn' => 'مُستخدم لدى (بائع)',
+    'notSelected' => 'غير محدد',
 
     'primary' => 'رئيسى',
     'defaultLang' => 'اللغة الافتراضية',

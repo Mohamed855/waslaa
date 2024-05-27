@@ -18,6 +18,7 @@
                     <table id="example" class="table text-center table-bordered" style="width:100%">
                         <thead>
                         <tr>
+                            <th>@lang('translate.id')</th>
                             <th>@lang('translate.avatar')</th>
                             <th>@lang('translate.name')</th>
                             <th>@lang('translate.username')</th>
@@ -33,11 +34,11 @@
                         <tbody>
                         @foreach ($data as $single)
                             <tr>
+                                <td>{{ $loop->iteration }}</td>
                                 {{-- avatar --}}
                                 <td>
                                     <a class="avatar avatar-xl">
-                                        <img alt=""
-                                             src="{{ asset($single->avatar ? 'storage/images/admins/' . $single->avatar : 'storage/images/global/profile.jpg') }}"/>
+                                        <img alt="" src="{{ asset($single->avatar ? 'storage/images/admins/' . $single->avatar : 'storage/images/global/profile.jpg') }}"/>
                                     </a>
                                 </td>
                                 <td> {{ $single->name }} </td>
@@ -46,9 +47,7 @@
                                 <td> {{ $single->phone }} </td>
                                 @if(auth('admin')->user()->is_primary)
                                     <td>
-                                        <form class="p-0 m-0"
-                                              action="{{ route('activation.toggle', ['table' => 'admin', 'id' => $single->id]) }}"
-                                              method="post">
+                                        <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'admin', 'id' => $single->id]) }}" method="post">
                                             @csrf
                                             <label class="switch">
                                                 <input type="checkbox" name="activated" onclick="this.form.submit()"
@@ -58,8 +57,7 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <form class="p-0 m-0" action="{{ route('primary.toggle', $single->id) }}"
-                                              method="post">
+                                        <form class="p-0 m-0" action="{{ route('primary.toggle', $single->id) }}" method="post">
                                             @csrf
                                             <label class="switch">
                                                 <input type="checkbox" name="activated" onclick="this.form.submit()"

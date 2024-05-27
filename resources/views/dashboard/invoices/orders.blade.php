@@ -11,6 +11,7 @@
             <table id="example" class="table text-center table-bopened" style="width:100%">
                 <thead>
                 <tr>
+                    <th>@lang('translate.id')</th>
                     <th>@lang('translate.name')</th>
                     <th>@lang('translate.theType')</th>
                     <th>@lang('translate.quantity')</th>
@@ -23,6 +24,7 @@
                 <tbody>
                 @foreach($selected['orders'] as $single)
                     <tr>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $single['name'] }}</td>
                         <td>{{ $single['type'] }}</td>
                         <td>{{ $single['quantity'] }}</td>

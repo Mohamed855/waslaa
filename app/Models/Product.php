@@ -37,4 +37,11 @@ class Product extends Model
     {
         return $this->belongsToMany(User::class, 'favorites', 'favorite_id', 'user_id')->where('type', 'product');
     }
+
+    public static function vendorProducts ()
+    {
+        return self::whereHas('subcategory.vendors', function ($query) {
+            $query->where('vendor_id', auth('vendor')->id());
+        });
+    }
 }

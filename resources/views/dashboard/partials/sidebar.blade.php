@@ -177,9 +177,6 @@
                 <li class="navigation-header">
                     <span style='font-size: 16px;'>@lang('translate.sections')</span>
                 </li>
-            @endif
-
-            @if (auth('admin')->check())
                 <li class="nav-item {{ request()->routeIs('categories.index') ? 'active' : '' }}">
                     <a class="nav-link d-flex align-items-center" href="{{ route('categories.index') }}">
                         <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -192,15 +189,15 @@
                         @lang('translate.categories')
                     </a>
                 </li>
+            @endif
+
+            @if (auth('vendor')->check())
                 <li class="nav-item {{ request()->routeIs('subcategories.index') ? 'active' : '' }}">
                     <a class="nav-link d-flex align-items-center" href="{{ route('subcategories.index') }}">
                         <i data-feather="book-open"></i>
                         @lang('translate.subcategories')
                     </a>
                 </li>
-            @endif
-
-            @if (auth('vendor')->check())
                 <li class="nav-item {{ request()->routeIs(['products.index', 'products.create', 'products.edit']) ? 'active' : '' }}">
                     <a class="nav-link d-flex align-items-center" href="{{ route('products.index') }}">
                         <i data-feather="shopping-cart"></i>
@@ -222,9 +219,6 @@
             @endif
 
             @if (auth('admin')->check())
-                <li class="navigation-header">
-                    <span style='font-size: 16px;'>@lang('translate.locations')</span>
-                </li>
                 <li class="nav-item {{ request()->routeIs('countries.index') ? 'active' : '' }}">
                     <a class="nav-link d-flex align-items-center" href="{{ route('countries.index') }}">
                         <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

@@ -8,6 +8,7 @@
                     <table id="example" class="table text-center table-bopened" style="width:100%">
                         <thead>
                         <tr>
+                            <th>@lang('translate.id')</th>
                             <th>@lang('translate.vendor')</th>
                             <th>@lang('translate.start')</th>
                             <th>@lang('translate.end')</th>
@@ -19,9 +20,10 @@
                         <tbody>
                         @foreach ($data as $single)
                             <tr>
-                                <td>{{ $single->vendor->name }}</td>
-                                <td>{{ date_format($single->start, 'd-m-Y') }}</td>
-                                <td>{{ date_format($single->end, 'd-m-Y') }}</td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $single->vendor?->name }}</td>
+                                <td>{{ $single->start ? date_format($single->start, 'd-m-Y') : '' }}</td>
+                                <td>{{ $single->end ? date_format($single->end, 'd-m-Y') : '' }}</td>
                                 <td>{{ count($single->orders) }}</td>
                                 <td>{{ $single->total_price }} @lang('translate.pound')</td>
                                 <td>

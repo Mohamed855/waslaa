@@ -58,7 +58,7 @@ class AdminsController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->resource, $request, ['name', 'username', 'email', 'phone' ,'avatar'], $this->updateAdminRules($id), $id);
+        return parent::updateBase($this->table, $this->resource, $request, ['name', 'username', 'email', 'phone', 'avatar'], $this->updateAdminRules($id), $id);
     }
 
     /**

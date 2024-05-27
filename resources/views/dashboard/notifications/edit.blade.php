@@ -6,46 +6,39 @@
             <div class="col-md-12 col-12 m-auto">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('notifications.update', $selected->id) }}"
-                              class="form form-vertical" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('notifications.update', $selected->id) }}" class="form form-vertical" enctype="multipart/form-data">
                             @csrf @method('PUT')
                             <div class="row mb-2">
                                 {{-- add en name --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="name_en">@lang('translate.enName')</label>
+                                    <label class="form-label" for="name_en">@lang('translate.enName') <span class="text-danger">*</span></label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i data-feather="type"></i></span>
-                                        <input type="text" class="form-control" name="name_en" value="{{ $selected->name_en }}"
-                                               placeholder="@lang('translate.enName')"/>
+                                        <input type="text" class="form-control" name="name_en" value="{{ $selected->name_en }}" placeholder="@lang('translate.enName')"/>
                                     </div>
                                 </div>
-
                                 {{-- add ar name --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="name_ar">@lang('translate.arName')</label>
+                                    <label class="form-label" for="name_ar">@lang('translate.arName') <span class="text-danger">*</span></label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i data-feather="type"></i></span>
-                                        <input type="text" class="form-control" name="name_ar" value="{{ $selected->name_ar }}"
-                                               placeholder="@lang('translate.arName')"/>
+                                        <input type="text" class="form-control" name="name_ar" value="{{ $selected->name_ar }}" placeholder="@lang('translate.arName')"/>
                                     </div>
                                 </div>
-
                                 {{-- add en body --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="body_en">@lang('translate.enBody')</label>
+                                    <label class="form-label" for="body_en">@lang('translate.enBody') <span class="text-danger">*</span></label>
                                     <div class="input-group input-group-merge">
                                         <textarea class="form-control" name="body_en" placeholder="@lang('translate.enBody')">{{ $selected->body_en }}</textarea>
                                     </div>
                                 </div>
-
                                 {{-- add ar body --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="body_ar">@lang('translate.arBody')</label>
+                                    <label class="form-label" for="body_ar">@lang('translate.arBody') <span class="text-danger">*</span></label>
                                     <div class="input-group input-group-merge">
                                         <textarea class="form-control" name="body_ar" placeholder="@lang('translate.arBody')">{{ $selected->body_ar }}</textarea>
                                     </div>
                                 </div>
-
                                 {{-- image --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
                                     <label class="form-label" for="image">@lang('translate.image')</label>
@@ -61,10 +54,8 @@
                                 </div>
                             </div>
                         </form>
-
                         @if($selected->image != null)
-                            <form class="col-12 col-md-1 mt-1" action="{{ route('image.remove', ['table' => 'notification', 'id' => $selected->id]) }}"
-                                  method="POST">
+                            <form class="col-12 col-md-1 mt-1" action="{{ route('image.remove', ['table' => 'notification', 'id' => $selected->id]) }}" method="POST">
                                 @csrf
                                 <button class="btn btn-danger w-100" style="min-width: 180px" data-bs-toggle="modal">
                                     <i data-feather="x"></i>

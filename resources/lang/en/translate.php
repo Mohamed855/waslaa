@@ -48,6 +48,7 @@ return [
     'components' => 'Components',
     'type' => 'Type',
     'types' => 'Types',
+    'offer' => 'Offer',
     'complain' => 'Complain',
     'complains' => 'Complains',
     'order' => 'Order',
@@ -67,6 +68,7 @@ return [
     'city' => 'City',
     'cities' => 'Cities',
 
+    'id' => '#',
     'name' => 'Name',
     'ownerName' => 'Owner name',
     'username' => 'Username',
@@ -131,6 +133,7 @@ return [
     'notify' => 'Notify',
     'changePassword' => 'Change password',
     'confirmDelete' => 'Are you sure, you want to delete this record',
+    'confirmRemove' => 'Are you sure, you want to remove this record',
     'enterPasswordToChange' => 'Enter new password to change, or let it empty',
     'noSettings' => 'There is no setting',
     'removeImage' => 'Remove image',
@@ -144,6 +147,7 @@ return [
     'invoiceDetails' => 'Invoice details',
     'following' => 'Following',
     'userIn' => 'User in (vendor)',
+    'notSelected' => 'Not selected',
 
     'primary' => 'Primary',
     'defaultLang' => 'Default language',

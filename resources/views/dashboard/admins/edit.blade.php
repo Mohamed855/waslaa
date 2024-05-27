@@ -6,52 +6,41 @@
             <div class="col-md-12 col-12 m-auto">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('admins.update', $selected->id) }}"
-                              class="form form-vertical" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('admins.update', $selected->id) }}" class="form form-vertical" enctype="multipart/form-data">
                             @csrf @method('PUT')
                             <div class="row mb-2">
                                 {{-- name --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="name">@lang('translate.name')</label>
+                                    <label class="form-label" for="name">@lang('translate.name') <span class="text-danger">*</span></label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i data-feather="type"></i></span>
-                                        <input type="text" id="text" class="form-control" value="{{ $selected->name }}"
-                                               name="name" placeholder="@lang('translate.name')"/>
+                                        <input type="text" id="text" class="form-control" value="{{ $selected->name }}" name="name" placeholder="@lang('translate.name')"/>
                                     </div>
                                 </div>
-
                                 {{-- username --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="username">@lang('translate.username')</label>
+                                    <label class="form-label" for="username">@lang('translate.username') <span class="text-danger">*</span></label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i data-feather="type"></i></span>
-                                        <input type="text" id="text" class="form-control" value="{{ $selected->username }}"
-                                               name="username" placeholder="@lang('translate.username')"/>
+                                        <input type="text" id="text" class="form-control" value="{{ $selected->username }}" name="username" placeholder="@lang('translate.username')"/>
                                     </div>
                                 </div>
-
                                 {{-- email --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="email">@lang('translate.email')</label>
+                                    <label class="form-label" for="email">@lang('translate.email') <span class="text-danger">*</span></label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i data-feather='at-sign'></i></span>
-                                        <input type="email" id="email" class="form-control" name="email"
-                                               value="{{ $selected->email }}"
-                                               placeholder="email@example.com"/>
+                                        <input type="email" id="email" class="form-control" name="email" value="{{ $selected->email }}" placeholder="email@example.com"/>
                                     </div>
                                 </div>
-
                                 {{-- Phone --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="phone">@lang('translate.phone')</label>
+                                    <label class="form-label" for="phone">@lang('translate.phone') <span class="text-danger">*</span></label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i data-feather='phone'></i></span>
-                                        <input type="text" id="Phone" class="form-control" name="phone"
-                                               value="{{ $selected->phone }}"
-                                               placeholder="@lang('translate.phone')"/>
+                                        <input type="text" id="Phone" class="form-control" name="phone" onkeypress="return isNumberKey(event)" value="{{ $selected->phone }}" placeholder="01×××××××××"/>
                                     </div>
                                 </div>
-
                                 {{-- avatar --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
                                     <label class="form-label" for="avatar">@lang('translate.avatar')</label>
@@ -67,10 +56,8 @@
                                 </div>
                             </div>
                         </form>
-
                         @if($selected->avatar != null)
-                            <form class="col-12 col-md-1 mt-1" action="{{ route('image.remove', ['table' => 'admin', 'id' => $selected->id]) }}"
-                                  method="POST">
+                            <form class="col-12 col-md-1 mt-1" action="{{ route('image.remove', ['table' => 'admin', 'id' => $selected->id]) }}" method="POST">
                                 @csrf
                                 <button class="btn btn-danger w-100" style="min-width: 180px" data-bs-toggle="modal">
                                     <i data-feather="x"></i>

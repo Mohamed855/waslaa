@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('avatar');
             $table->boolean('offer')->default(0);
             $table->enum('offer_type', ['discount', 'free'])->nullable();
-            $table->double('offer_value');
+            $table->double('offer_value')->default(0);
             $table->double('rate')->default(0);
             $table->foreignIdFor(Subcategory::class);
             $table->boolean('active')->default(1);

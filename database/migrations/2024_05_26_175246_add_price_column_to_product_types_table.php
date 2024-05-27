@@ -15,7 +15,7 @@ return new class extends Migration
             $table->dropColumn('price');
         });
         Schema::table('product_types', function (Blueprint $table) {
-            $table->double('price')->after('type_id');
+            $table->double('price')->default(0)->after('type_id');
         });
     }
 

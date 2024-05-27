@@ -23,7 +23,7 @@ trait AdminRules {
             }],
             'email' => 'required|email|unique:admins,email|unique:vendors,email|unique:managers,email',
             'phone' => 'required|numeric|unique:users,phone|unique:admins,phone|unique:vendors,phone|unique:managers,phone',
-            'password' => 'required|string|min:8|max:16|confirmed' /*|regex:/^(?=.*[A-Z])(?=.*[0-9]).+$/' */,
+            'password' => 'required|string|min:8|max:16' /*|regex:/^(?=.*[A-Z])(?=.*[0-9]).+$/' */,
             'avatar' => 'nullable|max:20480|image',
         ];
     }
@@ -41,7 +41,7 @@ trait AdminRules {
             'crn' => 'required|numeric|unique:vendors,crn', /*|regex: style of crn', */
             'email' => 'required|email|unique:admins,email|unique:vendors,email|unique:managers,email',
             'phone' => 'required|numeric|unique:users,phone|unique:admins,phone|unique:vendors,phone|unique:managers,phone',
-            'password' => 'required|string|min:8|max:16|confirmed' /*|regex:/^(?=.*[A-Z])(?=.*[0-9]).+$/' */,
+            'password' => 'required|string|min:8|max:16' /*|regex:/^(?=.*[A-Z])(?=.*[0-9]).+$/' */,
             'avatar' => 'required|max:20480|image',
             'city_id' => 'required|exists:cities,id,active,1',
             'delivery_time' => 'required|numeric|max:120',
@@ -95,6 +95,26 @@ trait AdminRules {
         ];
     }
 
+    protected function createSubcategoryRules(): array
+    {
+        return [
+            'name_en' => 'required|max:60|string',
+            'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
+            'category_id' => 'required|exists:categories,id,active,1',
+            'avatar' => 'required|max:20480|image',
+        ];
+    }
+
+    protected function createProductRules(): array
+    {
+        return [
+            'name_en' => 'required|max:60|string',
+            'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
+            'subcategory_id' => 'required|exists:subcategories,id,active,1',
+            'avatar' => 'required|max:20480|image',
+        ];
+    }
+
     protected function createComponentRules(): array
     {
         return [
@@ -112,16 +132,6 @@ trait AdminRules {
             'abbrev_en' => 'required|max:3|string',
             'abbrev_ar' => ['required', 'max:3', new ArabicRule(), 'string'],
             'vendor_id' => 'required|exists:vendors,id,active,1',
-        ];
-    }
-
-    protected function createSubcategoryRules(): array
-    {
-        return [
-            'name_en' => 'required|max:60|string',
-            'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
-            'category_id' => 'required|exists:categories,id,active,1',
-            'avatar' => 'required|max:20480|image',
         ];
     }
 
@@ -153,7 +163,9 @@ trait AdminRules {
             'username' => 'required|unique:admins,username,' . $id,
             'email' => 'required|email|unique:vendors,email|unique:managers,email|unique:admins,email,' . $id,
             'phone' => 'required|numeric|unique:users,phone|unique:vendors,phone|unique:managers,phone|unique:admins,phone,' . $id,
+            'password' => 'nullable|string|min:8|max:16' /*|regex:/^(?=.*[A-Z])(?=.*[0-9]).+$/' */,
             'avatar' => 'nullable|max:20480|image',
+            'lang' => 'nullable|in:en,ar',
         ];
     }
 
@@ -222,6 +234,26 @@ trait AdminRules {
         ];
     }
 
+    protected function updateSubcategoryRules(): array
+    {
+        return [
+            'name_en' => 'required|max:60|string',
+            'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
+            'category_id' => 'required|exists:categories,id,active,1',
+            'avatar' => 'nullable|max:20480|image',
+        ];
+    }
+
+    protected function updateProductRules(): array
+    {
+        return [
+            'name_en' => 'required|max:60|string',
+            'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
+            'subcategory_id' => 'required|exists:subcategories,id,active,1',
+            'avatar' => 'nullable|max:20480|image',
+        ];
+    }
+
     protected function updateComponentRules(): array
     {
         return [
@@ -237,16 +269,6 @@ trait AdminRules {
             'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
             'abbrev_en' => 'required|max:3|string',
             'abbrev_ar' => ['required', 'max:3', new ArabicRule(), 'string'],
-        ];
-    }
-
-    protected function updateSubcategoryRules(): array
-    {
-        return [
-            'name_en' => 'required|max:60|string',
-            'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
-            'category_id' => 'required|exists:categories,id,active,1',
-            'avatar' => 'nullable|max:20480|image',
         ];
     }
 }

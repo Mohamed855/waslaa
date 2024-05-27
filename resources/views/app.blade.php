@@ -63,9 +63,7 @@
         <link rel="stylesheet" type="text/css"
             href="{{ asset('/public/../app-assets/css/plugins/maps/map-leaflet.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
-    @endif
-
-    @if (Illuminate\Support\Facades\App::getLocale() == 'en')
+    @elseif (Illuminate\Support\Facades\App::getLocale() == 'en')
         <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/vendors.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/charts/apexcharts.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/extensions/toastr.min.css') }}">

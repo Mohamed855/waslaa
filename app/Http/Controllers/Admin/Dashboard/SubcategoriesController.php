@@ -27,8 +27,8 @@ class SubcategoriesController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        $categories = $this->activeCategory()->get(['id', $this->nameOnLang . ' as name']);
-        return parent::indexBase($this->table, 'dashboard.main.subcategories', vars: ['categories' => $categories], with: ['category'], searchable: ['name_en', 'name_ar']);
+        $categories = auth('vendor')->user()->categories()->where('active', 1)->get();
+        return parent::VendorIndexBase($this->resource, 'dashboard.subcategories.index', vars: ['categories' => $categories], with: ['category'], searchable: ['name_en', 'name_ar']);
     }
 
     /**
@@ -36,7 +36,11 @@ class SubcategoriesController extends BaseController
      */
     public function store(Request $request): RedirectResponse
     {
-        return parent::storeBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'category_id', 'avatar'], $this->createSubcategoryRules());
+        return parent::storeBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'category_id', 'avatar'], $this->createSubcategoryRules(), [
+            'table' => 'vendor_subcategories',
+            'foreign' => 'subcategory',
+            'related' => 'vendor',
+        ]);
     }
 
     /**
@@ -44,7 +48,11 @@ class SubcategoriesController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'category_id', 'avatar'], $this->updateSubcategoryRules(), $id);
+        return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'category_id', 'avatar'], $this->updateSubcategoryRules(), $id, [
+            'table' => 'vendor_subcategories',
+            'foreign' => 'subcategory',
+            'related' => 'vendor',
+        ]);
     }
 
     /**

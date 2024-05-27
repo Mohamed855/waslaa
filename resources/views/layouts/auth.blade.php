@@ -21,8 +21,7 @@
                                             <div class="d-flex alert alert-success justify-content-center mb-2" role="alert" style="height: 58px; align-items: center;">
                                                 <p>{{ session('success') }}</p>
                                             </div>
-                                        @endif
-                                        @if (session()->has('error'))
+                                        @elseif (session()->has('error'))
                                             <div class="d-flex alert alert-danger justify-content-center mb-2" role="alert" style="height: 58px; align-items: center;">
                                                 <p>{{ session('error') }}</p>
                                             </div>

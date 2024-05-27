@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Dashboard;
 
-use App\Http\Controllers\Admin\BaseController;
+use App\Helpers\Helper;
 use App\Traits\AdminRules;
 use App\Traits\QueriesTrait;
+use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Admin\BaseController;
+use App\Models\Product;
 
 class ProductsController extends BaseController
 {
@@ -26,7 +28,14 @@ class ProductsController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::indexBase($this->table, 'dashboard.products.index', searchable: ['name_en', 'name_ar']);
+        $data = Product::vendorProducts();
+        if(isset($_GET['keyword'])) {
+            $searchable = ['name_en', 'name_ar'];
+            $data = Helper::searchOnQuery($data, $searchable, $_GET['keyword']);
+        }
+        $data = $data->paginate(10);
+        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
+        return view('dashboard.products.index', compact(['data']))->with(['nameOnLang' => $this->nameOnLang]);
     }
 
     /**
@@ -34,7 +43,10 @@ class ProductsController extends BaseController
      */
     public function create(): View
     {
-        return parent::createBase('dashboard.products.create');
+        $categories = auth('vendor')->user()->categories()->where('active', 1)->get();
+        $components = auth('vendor')->user()->components()->where('active', 1)->get();
+        $types = auth('vendor')->user()->types()->where('active', 1)->get();
+        return parent::createBase('dashboard.products.create', vars: ['nameOnLang' => $this->nameOnLang, 'categories' => $categories, 'components' => $components, 'types' => $types]);
     }
 
     /**
@@ -42,7 +54,11 @@ class ProductsController extends BaseController
      */
     public function store(Request $request): RedirectResponse
     {
-        return parent::storeBase($this->table, $this->resource, $request, ['name', 'email', 'phone', 'password', 'avatar'], $this->createProductRules());
+        return parent::storeBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'subcategory_id', 'avatar'], $this->createProductRules(), [
+            'table' => ['product_components', 'product_types'],
+            'foreign' => ['product', 'product'],
+            'related' => ['component', 'type'],
+        ], redirectToIndex: true);
     }
 
     /**
@@ -58,7 +74,10 @@ class ProductsController extends BaseController
      */
     public function edit(string $id): View
     {
-        return parent::editBase($this->table, 'dashboard.products.edit', $id);
+        $categories = auth('vendor')->user()->categories()->where('active', 1)->get();
+        $components = auth('vendor')->user()->components()->where('active', 1)->get();
+        $types = auth('vendor')->user()->types()->where('active', 1)->get();
+        return parent::editBase($this->table, 'dashboard.products.edit', $id, vars: ['nameOnLang' => $this->nameOnLang, 'categories' => $categories, 'components' => $components, 'types' => $types]);
     }
 
     /**
@@ -66,7 +85,11 @@ class ProductsController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->resource, $request, ['name', 'email', 'phone' ,'avatar'], $this->updateProductRules($id), $id);
+        return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'subcategory_id', 'avatar'], $this->updateProductRules(), $id, [
+            'table' => ['product_components', 'product_types'],
+            'foreign' => ['product', 'product'],
+            'related' => ['component', 'type']
+        ], redirectToIndex: true);
     }
 
     /**
@@ -75,5 +98,11 @@ class ProductsController extends BaseController
     public function destroy(string $id): RedirectResponse
     {
         return parent::destroyBase($this->table, $this->resource, $id);
+    }
+
+    public function getCurrVendorSubCategories ($catId)
+    {
+        $subcategories = auth('vendor')->user()->subcategories()->where(['category_id' => $catId, 'active' => 1])->get();
+        return response()->json($subcategories);
     }
 }

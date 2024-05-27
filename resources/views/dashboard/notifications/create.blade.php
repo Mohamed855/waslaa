@@ -6,46 +6,41 @@
             <div class="col-md-12 col-12 m-auto">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('notifications.store') }}" class="form form-vertical"
-                              enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('notifications.store') }}" class="form form-vertical" enctype="multipart/form-data">
                             @csrf
                             <div class="row mb-2">
                                 <input type="hidden" name="type" value="{{ auth('admin')->check() ? 'admin' : 'vendor' }}"/>
                                 <input type="hidden" name="user_id" value="{{ auth('admin')->check() ? auth('admin')->id() : auth('vendor')->id() }}"/>
                                 {{-- add en name --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="name_en">@lang('translate.enName')</label>
+                                    <label class="form-label" for="name_en">@lang('translate.enName') <span class="text-danger">*</span></label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i data-feather="type"></i></span>
                                         <input type="text" class="form-control" name="name_en" placeholder="@lang('translate.enName')"/>
                                     </div>
                                 </div>
-
                                 {{-- add ar name --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="name_ar">@lang('translate.arName')</label>
+                                    <label class="form-label" for="name_ar">@lang('translate.arName') <span class="text-danger">*</span></label>
                                     <div class="input-group input-group-merge">
                                         <span class="input-group-text"><i data-feather="type"></i></span>
                                         <input type="text" class="form-control" name="name_ar" placeholder="@lang('translate.arName')"/>
                                     </div>
                                 </div>
-
                                 {{-- add en body --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="body_en">@lang('translate.enBody')</label>
+                                    <label class="form-label" for="body_en">@lang('translate.enBody') <span class="text-danger">*</span></label>
                                     <div class="input-group input-group-merge">
                                         <textarea class="form-control" name="body_en" placeholder="@lang('translate.enBody')"></textarea>
                                     </div>
                                 </div>
-
                                 {{-- add ar body --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
-                                    <label class="form-label" for="body_ar">@lang('translate.arBody')</label>
+                                    <label class="form-label" for="body_ar">@lang('translate.arBody') <span class="text-danger">*</span></label>
                                     <div class="input-group input-group-merge">
                                         <textarea class="form-control" name="body_ar" placeholder="@lang('translate.arBody')"></textarea>
                                     </div>
                                 </div>
-
                                 {{-- image --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
                                     <label class="form-label" for="image">@lang('translate.image')</label>

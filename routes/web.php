@@ -60,6 +60,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::resource('users', UsersController::class)->except(['create', 'store', 'edit', 'update']);
         Route::resource('managers', ManagersController::class)->except(['create', 'edit', 'show']);
         Route::resource('notifications', NotificationsController::class)->except(['show']);
+        Route::resource('categories', CategoriesController::class)->except(['create', 'edit', 'show']);
 
 
 
@@ -67,7 +68,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
 
         */
-        Route::resource('products', ProductsController::class)->except([]);
 
         Route::resource('orders', OrdersController::class)->except('index', 'create', 'edit');
         Route::get('ordered', [OrdersController::class, 'ordered'])->name('ordered');
@@ -103,8 +103,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::resource('ads', ADsController::class)->except(['create', 'edit', 'show']);
         Route::resource('admins', AdminsController::class)->except(['show']);
         Route::resource('vendors', VendorsController::class)->except(['edit']);
-        Route::resource('categories', CategoriesController::class)->except(['create', 'edit', 'show']);
-        Route::resource('subcategories', SubcategoriesController::class)->except(['create', 'edit', 'show']);
         Route::resource('countries', CountriesController::class)->except(['create', 'edit', 'show']);
         Route::resource('cities', CitiesController::class)->except(['create', 'edit', 'show']);
     });
@@ -112,8 +110,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     // Vendor Routes
     Route::middleware('guard:vendor')->group(function () {
         Route::get('vendor/overview', [GeneralController::class, 'vendorOverview'])->name('vendor.overview');
+        Route::post('vendor-select-category', [CategoriesController::class, 'selectVendorCategory'])->name('selectVendorCategory');
+        Route::delete('vendor-remove-category/{id}', [CategoriesController::class, 'removeVendorCategory'])->name('removeVendorCategory');
+        Route::resource('subcategories', SubcategoriesController::class)->except(['create', 'edit', 'show']);
+        Route::resource('products', ProductsController::class)->except([]);
         Route::resource('components', ComponentsController::class)->except(['create', 'edit', 'show']);
         Route::resource('types', TypesController::class)->except(['create', 'edit', 'show']);
+
+        Route::get('api/subcategories/{catId}', [ProductsController::class, 'getCurrVendorSubCategories']);
     });
 
     // Manager Routes

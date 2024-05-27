@@ -29,7 +29,7 @@ class ManagersController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::VendorIndexBase($this->resource, 'dashboard.main.managers', searchable: ['name', 'username', 'email', 'phone']);
+        return parent::VendorIndexBase($this->resource, 'dashboard.managers.index', searchable: ['name', 'username', 'email', 'phone']);
     }
 
     /**

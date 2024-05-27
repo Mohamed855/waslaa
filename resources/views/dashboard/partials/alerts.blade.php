@@ -6,8 +6,7 @@
                 align-items: center;">
         <p>{{ session('success') }}</p>
     </div>
-@endif
-@if (session()->has('error'))
+@elseif (session()->has('error'))
     <div class="alert alert-danger" role="alert"
          style="display: flex;
                 justify-content: center;

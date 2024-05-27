@@ -8,6 +8,7 @@
                     <table id="example" class="table text-center table-bordered" style="width:100%">
                         <thead>
                         <tr>
+                            <th>@lang('translate.id')</th>
                             <th>@lang('translate.vendor')</th>
                             <th>@lang('translate.phone')</th>
                             <th>@lang('translate.user')</th>
@@ -22,6 +23,7 @@
                         <tbody>
                         @foreach ($data as $single)
                             <tr>
+                                <td>{{ $loop->iteration }}</td>
                                 <td><a href="{{ route('vendors.show', $single->vendor['id']) }}">{{ $single->vendor['name'] }}</a></td>
                                 <td>{{ $single->deliveryPhone }}</td>
                                 <td><a href="{{ route('users.show', $single->user->id) }}">{{ $single->user->username }}</a></td>

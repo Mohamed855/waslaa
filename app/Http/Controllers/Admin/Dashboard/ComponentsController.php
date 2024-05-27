@@ -26,7 +26,7 @@ class ComponentsController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        return parent::vendorIndexBase($this->resource, 'dashboard.main.components', searchable: ['name_en', 'name_ar']);
+        return parent::vendorIndexBase($this->resource, 'dashboard.components.index', searchable: ['name_en', 'name_ar']);
     }
 
     /**

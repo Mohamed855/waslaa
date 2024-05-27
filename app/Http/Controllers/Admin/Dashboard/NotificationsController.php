@@ -49,7 +49,7 @@ class NotificationsController extends BaseController
      */
     public function store(Request $request): RedirectResponse
     {
-        return parent::storeBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'body_en', 'body_ar', 'image', 'type', 'user_id'], $this->createNotificationRules());
+        return parent::storeBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'body_en', 'body_ar', 'image', 'type', 'user_id'], $this->createNotificationRules(), redirectToIndex: true);
     }
 
     /**
@@ -71,7 +71,7 @@ class NotificationsController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'body_en', 'body_ar', 'image'], $this->updateNotificationRules(), $id);
+        return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'body_en', 'body_ar', 'image'], $this->updateNotificationRules(), $id, redirectToIndex: true);
     }
 
     /**

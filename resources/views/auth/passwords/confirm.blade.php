@@ -29,11 +29,12 @@
                                 <div class="p-2">
                                     <form action="{{ route('password.confirm') }}">
                                         @csrf
-                                        <div class="mb-4">
+                                        <div class="mb-4 position-relative">
                                             <label for="password" class="form-label">{{ __('Password') }} <span class="text-danger">*</span></label>
-                                            <input id="password" type="password"
-                                                class="form-control @error('password') is-invalid @enderror" name="password"
-                                                required autocomplete="current-password" placeholder="Enter your password">
+                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" placeholder="Enter your password">
+                                            <button class="btn btn-link position-absolute text-muted password-addon end-0" style="top:15px" type="button" onclick="togglePasswordVisibility()">
+                                                <i id="eyeIcon" data-feather="eye"></i>
+                                            </button>
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>

@@ -29,7 +29,7 @@ class CitiesController extends BaseController
     {
         $nameOnLang = Helper::getColumnOnLang('name');
         $countries = $this->activeCountry()->get(['id', $nameOnLang . ' as name']);
-        return parent::indexBase($this->table, 'dashboard.main.cities', vars: ['countries' => $countries], searchable: ['name_en', 'name_ar',]);
+        return parent::indexBase($this->table, 'dashboard.cities.index', vars: ['countries' => $countries], searchable: ['name_en', 'name_ar',]);
     }
 
     /**

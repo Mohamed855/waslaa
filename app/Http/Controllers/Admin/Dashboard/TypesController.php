@@ -28,7 +28,7 @@ class TypesController extends BaseController
     public function index(): View|RedirectResponse
     {
         $abbrevOnLang = Helper::getColumnOnLang('abbrev');
-        return parent::vendorIndexBase($this->resource, 'dashboard.main.types', vars: ['abbrevOnLang' => $abbrevOnLang], searchable: ['name_en', 'name_ar']);
+        return parent::vendorIndexBase($this->resource, 'dashboard.types.index', vars: ['abbrevOnLang' => $abbrevOnLang], searchable: ['name_en', 'name_ar']);
     }
 
     /**
@@ -36,7 +36,7 @@ class TypesController extends BaseController
      */
     public function store(Request $request): RedirectResponse
     {
-        return parent::storeBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'abbrev_en', 'abbrev_en', 'vendor_id'], $this->createTypeRules());
+        return parent::storeBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'abbrev_en', 'abbrev_ar', 'vendor_id'], $this->createTypeRules());
     }
 
     /**
@@ -44,7 +44,7 @@ class TypesController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'abbrev_en', 'abbrev_en'], $this->updateTypeRules(), $id);
+        return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'abbrev_en', 'abbrev_ar'], $this->updateTypeRules(), $id);
     }
 
     /**

@@ -24,9 +24,7 @@
     <script src="{{ asset('/public/../app-assets/Edits/Edits.js') }}"></script>
     <script src="{{ asset('/public/../app-assets/Edits/Date_ar.js') }}"></script>
     <script src="{{ asset('/public/../app-assets/js/scripts/components/components-popovers.js') }}"></script>
-@endif
-
-@if (Illuminate\Support\Facades\App::getLocale() == 'en')
+@elseif (Illuminate\Support\Facades\App::getLocale() == 'en')
     <!-- BEGIN: Vendor JS-->
     <script src="{{ asset('app-assets/vendors/js/vendors.min.js') }}"></script>
     <!-- BEGIN Vendor JS-->
@@ -149,3 +147,79 @@
     }, 10000);
 </script>
 
+<script>
+    const checkboxes = document.querySelectorAll('.record-checkbox');
+    const deleteSelectedButton = document.getElementById('deleteSelected');
+    const selectedIdsInput = document.getElementById('selectedIds');
+    checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener('change', () => {
+            const selectedCount = document.querySelectorAll('.record-checkbox:checked').length;
+            deleteSelectedButton.disabled = selectedCount === 0;
+        });
+    });
+    checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener('change', () => {
+            const selectedIds = Array.from(checkboxes)
+                .filter((c) => c.checked)
+                .map((c) => c.value);
+            selectedIdsInput.value = selectedIds.join(',');
+            deleteSelectedButton.disabled = selectedIds.length === 0;
+        });
+    });
+
+    ClassicEditor.create(document.querySelector('#editor'))
+        .catch(error => {
+            console.error(error);
+        });
+
+    function togglePasswordVisibility() {
+        const passwordInput = document.getElementById('password');
+        const eyeIcon = document.getElementById('eyeIcon');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeIcon.innerHTML = feather.icons['eye-off'].toSvg();
+        } else {
+            passwordInput.type = 'password';
+            eyeIcon.innerHTML = feather.icons['eye'].toSvg();
+        }
+    }
+
+    function toggleManagerAddPasswordVisibility() {
+        const passwordInput = document.getElementById('managerAddPassword');
+        const eyeIcon = document.getElementById('managerAddEyeIcon');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeIcon.innerHTML = feather.icons['eye-off'].toSvg();
+        } else {
+            passwordInput.type = 'password';
+            eyeIcon.innerHTML = feather.icons['eye'].toSvg();
+        }
+    }
+
+    function toggleManagerEditPasswordVisibility() {
+        const passwordInput = document.getElementById('managerEditPassword');
+        const eyeIcon = document.getElementById('managerEditEyeIcon');
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            eyeIcon.innerHTML = feather.icons['eye-off'].toSvg();
+        } else {
+            passwordInput.type = 'password';
+            eyeIcon.innerHTML = feather.icons['eye'].toSvg();
+        }
+    }
+    function toggleConfirmPasswordVisibility() {
+        const passwordConfirmInput = document.getElementById('password_confirmation');
+        const eyeConfirmIcon = document.getElementById('eyeConfirmIcon');
+        if (passwordConfirmInput.type === 'password') {
+            passwordConfirmInput.type = 'text';
+            eyeConfirmIcon.innerHTML = feather.icons['eye-off'].toSvg();
+        } else {
+            passwordConfirmInput.type = 'password';
+            eyeConfirmIcon.innerHTML = feather.icons['eye'].toSvg();
+        }
+    }
+    function isNumberKey(evt) {
+        const charCode = (evt.which) ? evt.which : evt.keyCode;
+        return !(charCode > 31 && (charCode < 48 || charCode > 57));
+    }
+</script>

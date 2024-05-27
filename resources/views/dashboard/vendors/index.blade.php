@@ -18,6 +18,7 @@
                     <table id="example" class="table text-center table-bordered" style="width:100%">
                         <thead>
                         <tr>
+                            <th>@lang('translate.id')</th>
                             <th>@lang('translate.avatar')</th>
                             <th>@lang('translate.name')</th>
                             <th>@lang('translate.username')</th>
@@ -37,6 +38,7 @@
                         <tbody>
                         @foreach ($data as $single)
                             <tr>
+                                <td>{{ $loop->iteration }}</td>
                                 {{-- avatar --}}
                                 <td>
                                     <a class="avatar avatar-xl">

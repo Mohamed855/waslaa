@@ -18,6 +18,7 @@
                     <table id="example" class="table text-center table-bordered" style="width:100%">
                         <thead>
                         <tr>
+                            <th>@lang('translate.id')</th>
                             <th>@lang('translate.image')</th>
                             <th>@lang('translate.name')</th>
                             <th>@lang('translate.actions')</th>
@@ -26,11 +27,11 @@
                         <tbody>
                         @foreach ($data as $single)
                             <tr>
+                                <td>{{ $loop->iteration }}</td>
                                 {{-- image --}}
                                 <td>
                                     <a class="avatar avatar-xl">
-                                        <img alt=""
-                                             src="{{ asset($single->image ? 'storage/images/notifications/' . $single->image : 'storage/images/global/logo-dark.jpg') }}"/>
+                                        <img alt="" src="{{ asset($single->image ? 'storage/images/notifications/' . $single->image : 'storage/images/global/logo-dark.jpg') }}"/>
                                     </a>
                                 </td>
                                 <td> {{ $single->$nameOnLang }} </td>

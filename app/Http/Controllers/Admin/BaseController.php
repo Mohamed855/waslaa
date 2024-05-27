@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Helpers\Helper;
-use App\Http\Controllers\Controller;
 use Exception;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
+use App\Helpers\Helper;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
@@ -57,10 +58,10 @@ class BaseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    protected function storeBase($table, $folder, Request $request, array $storedData, array $rules): RedirectResponse
+    protected function storeBase($table, $resource, Request $request, array $storedData, array $rules, $manyToMany = [], $redirectToIndex = false): RedirectResponse
     {
-        try {
-            if ($request['phone']) {
+        try{
+            if (isset($request['phone']) && $request['phone'] != null) {
                 $request['phone'] = Helper::correctPhoneStyle($request['phone']);
             }
 
@@ -70,23 +71,47 @@ class BaseController extends Controller
 
             $data = $request->only($storedData);
 
+            if (isset($data['phone']) && $request['phone'] != null) {
+                $data['phone'] = Helper::correctPhoneStyle($request['phone']);
+            }
+
             if ($request['avatar']) {
                 $imageName = time() . '.' . $data['avatar']->extension();
-                $request['avatar']->storeAs('public/images/' . $folder, $imageName);
+                $request['avatar']->storeAs('public/images/' . $resource, $imageName);
                 $data['avatar'] = $imageName;
             }
 
             if ($request['image']) {
                 $imageName = time() . '.' . $data['image']->extension();
-                $request['image']->storeAs('public/images/' . $folder, $imageName);
+                $request['image']->storeAs('public/images/' . $resource, $imageName);
                 $data['image'] = $imageName;
             }
 
-            $this->$table()->create($data);
+            $newEle = $this->$table()->create($data);
 
-            return back()->with('success', __('translate.' . $table) . ' ' . __('success.added'));
-        } catch (Exception) {
-            return back()->with('error', __('error.somethingWentWrong'));
+            if ($manyToMany != []) {
+                if (is_array($manyToMany['table'])) {
+                    for($i = 0; $i < count($manyToMany['table']); $i++) {
+                        foreach (explode(',', $request[$manyToMany['related'][$i]][0]) as $related) {
+                            DB::table($manyToMany['table'][$i])->insert([
+                                $manyToMany['related'][$i] . '_id' => $related,
+                                $manyToMany['foreign'][$i] . '_id' => $newEle['id']
+                            ]);
+                        }
+                    }
+                } else {
+                    foreach (explode(',', $request[$manyToMany['related']][0]) as $related) {
+                        DB::table($manyToMany['table'])->insert([
+                            $manyToMany['related'] . '_id' => $related,
+                            $manyToMany['foreign'] . '_id' => $newEle['id']
+                        ]);
+                    }
+                }
+            }
+            $redirect = $redirectToIndex ? redirect()->route($resource . '.index') : back();
+            return $redirect->with('success', __('translate.' . $table) . ' ' . __('success.added'));
+        } catch (Exception $e) {
+            return back()->with('error', $e->getMessage());
         }
     }
 
@@ -130,14 +155,19 @@ class BaseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    protected function updateBase($table, $folder, Request $request, array $storedData, array $rules, string $id): RedirectResponse
+    protected function updateBase($table, $resource, Request $request, array $storedData, array $rules, string $id, array $manyToMany = [], $redirectToIndex = false): RedirectResponse
     {
+        //dd($request);
         try {
             $selected = $this->$table()->find($id);
             if (auth('admin')->id() != $id && $selected['is_primary']) back()->with('error', __('error.cannotEditPrimary'));
 
-            if ($request['phone']) {
+            if (isset($request['phone']) && $request['phone'] != null) {
                 $request['phone'] = Helper::correctPhoneStyle($request['phone']);
+            }
+
+            if ($request['password']) {
+                $storedData['password'] = $request['password'];
             }
 
             $validator = Validator::make($request->all(), $rules);
@@ -146,25 +176,29 @@ class BaseController extends Controller
 
             $data = $request->only($storedData);
 
+            if (isset($data['phone']) && $request['phone'] != null) {
+                $data['phone'] = Helper::correctPhoneStyle($request['phone']);
+            }
+
             if ($request['username']) {
                 $data['username'] = strtolower($data['username']);
             }
 
             if ($request['avatar']) {
                 if ($selected['avatar'] != null) {
-                    Storage::delete('public/images/' . $folder . '/' . $selected['avatar']);
+                    Storage::delete('public/images/' . $resource . '/' . $selected['avatar']);
                 }
                 $imageName = time() . '.' . $data['avatar']->extension();
-                $request['avatar']->storeAs('public/images/' . $folder, $imageName);
+                $request['avatar']->storeAs('public/images/' . $resource, $imageName);
                 $data['avatar'] = $imageName;
             }
 
             if ($request['image']) {
                 if ($selected['image'] != null) {
-                    Storage::delete('public/images/' . $folder . '/' . $selected['image']);
+                    Storage::delete('public/images/' . $resource . '/' . $selected['image']);
                 }
                 $imageName = time() . '.' . $data['image']->extension();
-                $request['image']->storeAs('public/images/' . $folder, $imageName);
+                $request['image']->storeAs('public/images/' . $resource, $imageName);
                 $data['image'] = $imageName;
             }
 
@@ -174,33 +208,56 @@ class BaseController extends Controller
 
             $selected->update($data);
 
-            return back()->with('success', __('translate.' . $table) . ' ' . __('success.updated'));
-        } catch (Exception) {
-            return back()->with('error', __('error.somethingWentWrong'));
+            if ($manyToMany != []) {
+                if (is_array($manyToMany['table'])) {
+                    for($i = 0; $i < count($manyToMany['table']); $i++) {
+                        DB::table($manyToMany['table'][$i])->where($manyToMany['foreign'][$i] . '_id', $id)->delete();
+                        foreach (explode(',', $request[$manyToMany['related'][$i]][0]) as $related) {
+                            DB::table($manyToMany['table'][$i])->insert([
+                                $manyToMany['related'][$i] . '_id' => $related,
+                                $manyToMany['foreign'][$i] . '_id' => $id
+                            ]);
+                        }
+                    }
+                } else {
+                    DB::table($manyToMany['table'])->where($manyToMany['foreign'] . '_id', $id)->delete();
+                    foreach (explode(',', $request[$manyToMany['related']][0]) as $related) {
+                        DB::table($manyToMany['table'])->insert([
+                            $manyToMany['related'] . '_id' => $related,
+                            $manyToMany['foreign'] . '_id' => $id
+                        ]);
+                    }
+                }
+            }
+
+            $redirect = $redirectToIndex ? redirect()->route($resource . '.index') : back();
+            return $redirect->with('success', __('translate.' . $table) . ' ' . __('success.updated'));
+        } catch (Exception $e) {
+            return back()->with('error', $e->getMessage());
         }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    protected function destroyBase($table, $folder, string $id): RedirectResponse
+    protected function destroyBase($table, $resource, string $id): RedirectResponse
     {
         try {
             $selected = $this->$table()->find($id);
             if ($selected['is_primary']) return back()->with('error', __('error.cannotDeletePrimary'));
 
             if ($selected['avatar'] != null) {
-                Storage::delete('public/images/' . $folder . '/' . $selected['avatar']);
+                Storage::delete('public/images/' . $resource . '/' . $selected['avatar']);
             }
 
             if ($selected['image'] != null) {
-                Storage::delete('public/images/' . $folder . '/' . $selected['image']);
+                Storage::delete('public/images/' . $resource . '/' . $selected['image']);
             }
 
             $selected->delete();
             return back()->with('success', __('translate.' . $table) . ' ' . __('success.deleted'));
-        } catch (Exception) {
-            return back()->with('error', __('error.somethingWentWrong'));
+        } catch (Exception $e) {
+            return back()->with('error', $e->getMessage());
         }
     }
 }

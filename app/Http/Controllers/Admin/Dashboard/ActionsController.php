@@ -27,18 +27,9 @@ class ActionsController extends Controller
 
             if ($validator->fails()) return back()->with('error', $validator->errors()->first());
 
-            $data = $request->only(['name', 'username', 'email', 'phone' ,'image']);
+            $data = $request->only(['name', 'username', 'email', 'phone' ,'lang']);
 
             $data['username'] = strtolower($data['username']);
-
-            if ($request['image']) {
-                if ($selected['image'] != null) {
-                    Storage::delete('public/' . $selected['image']);
-                }
-                $imageName = $data['username'] . '-' . time() . '.' . $data['image']->extension();
-                $data['image']->storeAs('public/images/admins', $imageName);
-                $data['image'] = 'images/admins/' . $imageName;
-            }
 
             $selected->update($data);
             return back()->with('success', __('translate.details') . ' ' . __('success.updated'));
