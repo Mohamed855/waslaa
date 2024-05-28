@@ -12,6 +12,12 @@ class GeneralController extends Controller
 {
     use QueriesTrait, AdminRules;
 
+    public function __construct()
+    {
+        $this->middleware('guard:admin')->only(['adminOverview']);
+        $this->middleware('guard:vendor')->only(['vendorOverview']);
+    }
+
     public function adminOverview(): View
     {
         $adminsCount = $this->admin()->count();

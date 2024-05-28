@@ -58,6 +58,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     // Any Auth User Routes
     Route::group(['middleware' => 'must.auth'], function () {
+        Route::get('admin/overview', [GeneralController::class, 'adminOverview'])->name('admin.overview');
+        Route::get('vendor/overview', [GeneralController::class, 'vendorOverview'])->name('vendor.overview');
+
         Route::get('profile', [GeneralController::class, 'profile'])->name('profile');
 
         Route::resource('users', UsersController::class)->except(['create', 'store', 'edit', 'update']);
@@ -111,7 +114,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     // Admin Routes
     Route::middleware('guard:admin')->group(function () {
-        Route::get('admin/overview', [GeneralController::class, 'adminOverview'])->name('admin.overview');
         Route::resource('ads', ADsController::class)->except(['create', 'edit', 'show']);
         Route::resource('admins', AdminsController::class)->except(['show']);
         Route::resource('vendors', VendorsController::class)->except(['edit']);
@@ -129,7 +131,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     // Vendor Routes
     Route::middleware('guard:vendor')->group(function () {
-        Route::get('vendor/overview', [GeneralController::class, 'vendorOverview'])->name('vendor.overview');
         Route::post('vendor-select-category', [CategoriesController::class, 'selectVendorCategory'])->name('selectVendorCategory');
         Route::delete('vendor-remove-category/{id}', [CategoriesController::class, 'removeVendorCategory'])->name('removeVendorCategory');
         Route::resource('subcategories', SubcategoriesController::class)->except(['create', 'edit', 'show']);
