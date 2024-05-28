@@ -62,6 +62,19 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get('vendor/overview', [GeneralController::class, 'vendorOverview'])->name('vendor.overview');
 
         Route::get('profile', [GeneralController::class, 'profile'])->name('profile');
+        Route::get('settings', [GeneralController::class, 'settings'])->name('settings');
+        Route::post('settings/update', [GeneralController::class, 'updateSettings'])->name('settings.update');
+        Route::post('primary/toggle/{id}', [ActionsController::class, 'togglePrimary'])->name('primary.toggle');
+        Route::post('{table}/activation/toggle/{id}', [ActionsController::class, 'toggleActive'])->name('activation.toggle');
+        Route::post('{table}/image/remove/{id}', [ActionsController::class, 'removeImage'])->name('image.remove');
+        Route::get('logout', [LoginController::class, 'logout'])->name('signOut');
+        Route::post('end-session', [LoginController::class, 'endSession'])->name('endSession');
+        Route::prefix('{guard}/{id}')->group(function () {
+            Route::post('profile/update', [ActionsController::class, 'updateProfile'])->name('profile.update');
+            Route::post('password/change', [ActionsController::class, 'changePassword'])->name('password.change');
+            Route::post('avatar/update', [ActionsController::class, 'updateAvatar'])->name('avatar.update');
+            Route::post('avatar/remove', [ActionsController::class, 'removeAvatar'])->name('avatar.remove');
+        });
 
         Route::resource('users', UsersController::class)->except(['create', 'store', 'edit', 'update']);
         Route::prefix('user/{username}')->group(function () {
@@ -84,7 +97,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::get('/', [OrdersController::class, 'show'])->name('showOrder');
             Route::get('products', [ProductsController::class, 'orderProducts'])->name('orderProducts');
         });
-
         Route::resource('invoices', InvoicesController::class)->except(['index', 'create', 'edit']);
         Route::get('opened', [InvoicesController::class, 'opened'])->name('opened');
         Route::get('closed', [InvoicesController::class, 'closed'])->name('closed');
@@ -93,23 +105,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::get('/', [InvoicesController::class, 'show'])->name('showInvoice');
             Route::get('orders', [OrdersController::class, 'invoiceOrders'])->name('invoiceOrders');
         });
-
-        Route::get('settings', [GeneralController::class, 'settings'])->name('settings');
-        Route::post('settings/update', [GeneralController::class, 'updateSettings'])->name('settings.update');
-
-        Route::prefix('{guard}/{id}')->group(function () {
-            Route::post('profile/update', [ActionsController::class, 'updateProfile'])->name('profile.update');
-            Route::post('password/change', [ActionsController::class, 'changePassword'])->name('password.change');
-            Route::post('avatar/update', [ActionsController::class, 'updateAvatar'])->name('avatar.update');
-            Route::post('avatar/remove', [ActionsController::class, 'removeAvatar'])->name('avatar.remove');
-        });
-
-        Route::post('primary/toggle/{id}', [ActionsController::class, 'togglePrimary'])->name('primary.toggle');
-        Route::post('{table}/activation/toggle/{id}', [ActionsController::class, 'toggleActive'])->name('activation.toggle');
-        Route::post('{table}/image/remove/{id}', [ActionsController::class, 'removeImage'])->name('image.remove');
-
-        Route::get('logout', [LoginController::class, 'logout'])->name('signOut');
-        Route::post('end-session', [LoginController::class, 'endSession'])->name('endSession');
     });
 
     // Admin Routes
@@ -121,6 +116,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::get('/', [VendorsController::class, 'show'])->name('showVendor');
             Route::get('managers', [ManagersController::class, 'vendorManagers'])->name('vendorManagers');
             Route::get('invoices', [InvoicesController::class, 'vendorInvoices'])->name('vendorInvoices');
+            Route::get('orders', [OrdersController::class, 'vendorOrders'])->name('vendorOrders');
+            Route::get('categories', [CategoriesController::class, 'vendorCategories'])->name('vendorCategories');
+            Route::get('subcategories', [SubcategoriesController::class, 'vendorSubcategories'])->name('vendorSubcategories');
+            Route::get('products', [ProductsController::class, 'vendorProducts'])->name('vendorProducts');
+            Route::get('components', [ComponentsController::class, 'vendorComponents'])->name('vendorComponents');
+            Route::get('types', [TypesController::class, 'vendorTypes'])->name('vendorTypes');
             Route::get('addresses', [AddressesController::class, 'vendorAddresses'])->name('vendorAddresses');
             Route::get('complains', [ComplainsController::class, 'vendorComplains'])->name('vendorComplains');
         });

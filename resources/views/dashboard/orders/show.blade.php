@@ -16,8 +16,10 @@
                         <p class="card-text">@lang('translate.payMethod'): {{ __('translate.' . $selected->payMethod) }}</p>
                         <p class="card-text">@lang('translate.deliveryNote'): {{ $selected->deliveryNote }}</p>
                         <p class="card-text">@lang('translate.total'): {{ $selected->totalCost }} @lang('translate.pound')</p>
-                        <div class="d-inline-block">
-                            <a href="{{ route('orderProducts', $selected->id) }}" class="pe-1">@lang('translate.products')</a>
+                        <div class="row">
+                            <div class="d-inline-block pt-1 col-6 col-md-3">
+                                <a href="{{ route('orderProducts', $selected->id) }}" class="pe-1">@lang('translate.products')</a>
+                            </div>
                         </div>
                     </div>
                 </div>

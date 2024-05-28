@@ -24,14 +24,16 @@
                             <p class="card-text">@lang('translate.userIn'): {{ count($selected->vendors) }}</p>
                             <p class="card-text">@lang('translate.complains'): {{ count($selected->complains) }}</p>
                         @endif
-                        <div class="d-inline-block">
-                            <a href="{{ route('userOrders', $selected->username) }}" class="pe-1">@lang('translate.orders')</a>
-                        </div>
-                        <div class="d-inline-block">
-                            <a href="{{ route('userComplains', $selected->username) }}" class="pe-1">@lang('translate.complains')</a>
-                        </div>
-                        <div class="d-inline-block">
-                            <a href="{{ route('userAddresses', $selected->username) }}" class="pe-1">@lang('translate.addresses')</a>
+                        <div class="row">
+                            <div class="d-inline-block pt-1 col-6 col-md-3">
+                                <a href="{{ route('userOrders', $selected->username) }}" class="pe-1">@lang('translate.orders')</a>
+                            </div>
+                            <div class="d-inline-block pt-1 col-6 col-md-3">
+                                <a href="{{ route('userComplains', $selected->username) }}" class="pe-1">@lang('translate.complains')</a>
+                            </div>
+                            <div class="d-inline-block pt-1 col-6 col-md-3">
+                                <a href="{{ route('userAddresses', $selected->username) }}" class="pe-1">@lang('translate.addresses')</a>
+                            </div>
                         </div>
                     </div>
                 </div>

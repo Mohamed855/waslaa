@@ -14,8 +14,10 @@
                         @endif
                         <p class="card-text">@lang('translate.orders'): {{ count($selected->orders) }}</p>
                         <p class="card-text">@lang('translate.total'): {{ $selected->total_price }} @lang('translate.pound')</p>
-                        <div class="d-inline-block">
-                            <a href="{{ route('invoiceOrders', $selected->id) }}" class="pe-1">@lang('translate.orders')</a>
+                        <div class="row">
+                            <div class="d-inline-block pt-1 col-6 col-md-3">
+                                <a href="{{ route('invoiceOrders', $selected->id) }}" class="pe-1">@lang('translate.orders')</a>
+                            </div>
                         </div>
                     </div>
                 </div>
