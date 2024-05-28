@@ -85,7 +85,7 @@ class ProductsController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'subcategory_id', 'avatar'], $this->updateProductRules(), $id, [
+        return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'subcategory_id', 'avatar'], $this->updateProductRules($id), $id, [
             'table' => ['product_components', 'product_types'],
             'foreign' => ['product', 'product'],
             'related' => ['component', 'type']
@@ -98,6 +98,22 @@ class ProductsController extends BaseController
     public function destroy(string $id): RedirectResponse
     {
         return parent::destroyBase($this->table, $this->resource, $id);
+    }
+
+    public function createOffer($id) {
+        return back();
+    }
+
+    public function updateOffer($id) {
+        return back();
+    }
+
+    public function removeOffer($id) {
+        return back();
+    }
+
+    public function updatePrices($id) {
+        return back();
     }
 
     public function getCurrVendorSubCategories ($catId)

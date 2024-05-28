@@ -8,7 +8,7 @@
                     <img src="{{ asset($selected['avatar'] ? 'storage/images/vendors/' . $selected['avatar'] : 'storage/images/global/profile.jpg') }}" class="card-img-top profile-image" alt="profile image">
                     <div class="card-body">
                         <div class="row">
-                            @if($selected['avatar'] == 'default.jpg')
+                            @if ($selected['avatar'] == 'default.jpg')
                                 <form action="{{ route('avatar.update', [ 'guard' => 'vendor', 'id' => $selected['id'] ]) }}" id="avatar_form" method="post" enctype="multipart/form-data" class="cursor-pointer">
                                     @csrf
                                     <label class="btn col-12 btn-success">
@@ -48,6 +48,9 @@
                         <p class="card-text">@lang('translate.followers') : {{ count($selected['favorites']) }}</p>
                         <div class="d-inline-block">
                             <a href="#managers" class="pe-1">@lang('translate.managers')</a>
+                        </div>
+                        <div class="d-inline-block">
+                            <a href="#addresses" class="pe-1">@lang('translate.addresses')</a>
                         </div>
                     </div>
                     <div class="row">
@@ -118,22 +121,31 @@
                                                 </div>
                                             </div>
                                             {{-- select city --}}
-                                            <div class="col-md-6 col-sm-12">
-                                                <div class="mb-1">
-                                                    <label class="form-label" for="city">@lang('translate.city') <span class="text-danger">*</span></label>
-                                                    <select id="editSelectedUser" class="form-control" name="city" data-search="true" data-silent-initial-value-set="true">
-                                                        <option value="" selected disabled>@lang('translate.select')</option>
-                                                        @foreach($cities as $city)
-                                                            <option value="{{ $city->id }}" {{ $selected->city->id == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
+                                            <div class="col-md-6 col-sm-12 mb-1">
+                                                <label class="form-label" for="city">@lang('translate.city') <span class="text-danger">*</span></label>
+                                                <div class="input-group input-group-merge">
+                                                    <span class="input-group-text">
+                                                        <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round" class="feather feather-map-pin">
+                                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                            <circle cx="12" cy="10" r="3"></circle>
+                                                        </svg>
+                                                    </span>
+                                                    <select id="selectedCity" class="form-control">
+                                                        <option selected disabled>@lang('translate.select')</option>
+                                                        @foreach ($cities as $city)
+                                                            <option value="{{ $city->id }}" {{ $selected->city_id == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                                <script type="text/javascript">
-                                                    VirtualSelect.init({
-                                                        ele: '#editSelectedUser'
-                                                    });
-                                                </script>
                                             </div>
+                                            <script type="text/javascript">
+                                                VirtualSelect.init({
+                                                    ele: '#selectedCity',
+                                                    search: true
+                                                });
+                                            </script>
                                             {{-- delivery time --}}
                                             <div class="col-md-6 col-sm-12 mb-1">
                                                 <label class="form-label" for="delivery_time">@lang('translate.deliveryTime') <span class="text-danger">*</span></label>
@@ -210,11 +222,12 @@
             </div>
         </div>
     </section>
-
     <section id="managers">
-        @include('dashboard.vendors.managers')
+        @include('dashboard.vendors.partials.managers')
     </section>
-
+    <section id="addresses">
+        @include('dashboard.vendors.partials.addresses')
+    </section>
     <script>
         document.getElementById('avatar').addEventListener('change', function () {
             document.getElementById('avatar_form').submit();

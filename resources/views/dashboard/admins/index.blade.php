@@ -24,7 +24,7 @@
                             <th>@lang('translate.username')</th>
                             <th>@lang('translate.email')</th>
                             <th>@lang('translate.phone')</th>
-                            @if(auth('admin')->user()->is_primary)
+                            @if (auth('admin')->user()->is_primary)
                                 <th>@lang('translate.active')</th>
                                 <th>@lang('translate.primary')</th>
                             @endif
@@ -45,7 +45,7 @@
                                 <td> {{ $single->username }} </td>
                                 <td> {{ $single->email }} </td>
                                 <td> {{ $single->phone }} </td>
-                                @if(auth('admin')->user()->is_primary)
+                                @if (auth('admin')->user()->is_primary)
                                     <td>
                                         <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'admin', 'id' => $single->id]) }}" method="post">
                                             @csrf
@@ -68,7 +68,7 @@
                                     </td>
                                 @endif
                                 <td style="min-width: 320px">
-                                    @if(!$single->is_primary)
+                                    @if (!$single->is_primary)
                                         <a href="{{ route('admins.edit', $single->id) }}">
                                             <button class="btn btn-primary ms-auto">
                                                 <i data-feather="edit"></i>

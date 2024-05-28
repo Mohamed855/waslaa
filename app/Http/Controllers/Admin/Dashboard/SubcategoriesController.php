@@ -48,7 +48,7 @@ class SubcategoriesController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'category_id', 'avatar'], $this->updateSubcategoryRules(), $id, [
+        return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'category_id', 'avatar'], $this->updateSubcategoryRules($id), $id, [
             'table' => 'vendor_subcategories',
             'foreign' => 'subcategory',
             'related' => 'vendor',

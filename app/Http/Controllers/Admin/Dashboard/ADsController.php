@@ -42,7 +42,7 @@ class ADsController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->resource, $request, ['name', 'image'], $this->updateAdRules(), $id);
+        return parent::updateBase($this->table, $this->resource, $request, ['name', 'image'], $this->updateAdRules($id), $id);
     }
 
     /**

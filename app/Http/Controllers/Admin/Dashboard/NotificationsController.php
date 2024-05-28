@@ -71,7 +71,7 @@ class NotificationsController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'body_en', 'body_ar', 'image'], $this->updateNotificationRules(), $id, redirectToIndex: true);
+        return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'body_en', 'body_ar', 'image'], $this->updateNotificationRules($id), $id, redirectToIndex: true);
     }
 
     /**

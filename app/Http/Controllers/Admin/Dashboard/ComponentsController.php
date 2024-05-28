@@ -42,7 +42,7 @@ class ComponentsController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar'], $this->updateComponentRules(), $id);
+        return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar'], $this->updateComponentRules($id), $id);
     }
 
     /**

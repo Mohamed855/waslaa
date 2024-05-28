@@ -49,7 +49,7 @@ class User extends Authenticatable implements JWTSubject
 
     public function addresses (): HasMany
     {
-        return $this->hasMany(Address::class);
+        return $this->hasMany(Address::class)->where('type', 'user');
     }
 
     public function cart (): BelongsToMany
@@ -75,6 +75,16 @@ class User extends Authenticatable implements JWTSubject
     public function complains (): HasMany
     {
         return $this->hasMany(Complain::class);
+    }
+
+    public function orders (): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function currVendorOrders ()
+    {
+        return $this->orders()->where('vendor->id', auth('vendor')->id());
     }
 
     public function getVerifiedAttribute(): bool

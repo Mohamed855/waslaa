@@ -8,14 +8,14 @@
                         <th>@lang('translate.id')</th>
                         <th>@lang('translate.image')</th>
                         <th>@lang('translate.name')</th>
-                        @if(auth('admin')->user()->is_primary)
+                        @if (auth('admin')->user()->is_primary)
                             <th>@lang('translate.active')</th>
                         @endif
                         <th>@lang('translate.actions')</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $single)
+                    @foreach ($data as $single)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>
@@ -24,7 +24,7 @@
                                 </div>
                             </td>
                             <td>{{ $single->name }}</td>
-                            @if(auth('admin')->user()->is_primary)
+                            @if (auth('admin')->user()->is_primary)
                                 <td>
                                     <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'ad', 'id' => $single->id]) }}" method="post">
                                         @csrf
@@ -40,7 +40,7 @@
                                     <i data-feather="edit"></i>
                                     @lang('translate.edit')
                                 </button>
-                                @if(auth('admin')->user()->is_primary)
+                                @if (auth('admin')->user()->is_primary)
                                     @include('dashboard.partials.delete-modal', ['resource' => 'ad', 'resources' => 'ads'])
                                 @endif
                             </td>

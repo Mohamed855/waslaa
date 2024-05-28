@@ -71,7 +71,7 @@
             </div>
         </div>
     </div>
-    @foreach($activeVendors as $vendor)
+    @foreach ($activeVendors as $vendor)
         <div class="pb-2">
             <h4>{{ $vendor->name }}</h4>
         </div>

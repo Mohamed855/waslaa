@@ -245,15 +245,13 @@ class BaseController extends Controller
         try {
             $selected = $this->$table()->find($id);
             if ($selected['is_primary']) return back()->with('error', __('error.cannotDeletePrimary'));
-
+            if ($selected['main']) return back()->with('error', __('error.cannotDeleteMainAddress'));
             if ($selected['avatar'] != null) {
                 Storage::delete('public/images/' . $resource . '/' . $selected['avatar']);
             }
-
             if ($selected['image'] != null) {
                 Storage::delete('public/images/' . $resource . '/' . $selected['image']);
             }
-
             $selected->delete();
             return back()->with('success', __('translate.' . $table) . ' ' . __('success.deleted'));
         } catch (Exception $e) {

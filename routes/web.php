@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\Dashboard\InvoicesController;
 use App\Http\Controllers\Admin\Dashboard\ManagersController;
 use App\Http\Controllers\Admin\Dashboard\ProductsController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
+use App\Http\Controllers\Admin\Dashboard\AddressesController;
 use App\Http\Controllers\Admin\Dashboard\CountriesController;
 use App\Http\Controllers\Admin\Dashboard\CategoriesController;
 use App\Http\Controllers\Admin\Dashboard\ComponentsController;
@@ -105,6 +106,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::resource('vendors', VendorsController::class)->except(['edit']);
         Route::resource('countries', CountriesController::class)->except(['create', 'edit', 'show']);
         Route::resource('cities', CitiesController::class)->except(['create', 'edit', 'show']);
+        Route::resource('addresses', AddressesController::class)->except(['index', 'create', 'edit', 'show']);
     });
 
     // Vendor Routes
@@ -114,6 +116,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::delete('vendor-remove-category/{id}', [CategoriesController::class, 'removeVendorCategory'])->name('removeVendorCategory');
         Route::resource('subcategories', SubcategoriesController::class)->except(['create', 'edit', 'show']);
         Route::resource('products', ProductsController::class)->except([]);
+        Route::post('products/{id}/create-offer', [ProductsController::class, 'createOffer'])->name('createOffer');
+        Route::post('products/{id}/update-offer', [ProductsController::class, 'updateOffer'])->name('updateOffer');
+        Route::post('products/{id}/remove-offer', [ProductsController::class, 'removeOffer'])->name('removeOffer');
+        Route::post('products/{id}/update-prices', [ProductsController::class, 'updatePrices'])->name('updatePrices');
         Route::resource('components', ComponentsController::class)->except(['create', 'edit', 'show']);
         Route::resource('types', TypesController::class)->except(['create', 'edit', 'show']);
 

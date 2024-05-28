@@ -7,18 +7,18 @@
                     <tr>
                         <th>@lang('translate.id')</th>
                         <th>@lang('translate.name')</th>
-                        @if(auth('vendor')->check())
+                        @if (auth('vendor')->check())
                             <th>@lang('translate.active')</th>
                         @endif
                         <th>@lang('translate.actions')</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($data as $single)
+                    @foreach ($data as $single)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $single->$nameOnLang }}</td>
-                            @if(auth('vendor')->check())
+                            @if (auth('vendor')->check())
                                 <td>
                                     <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'component', 'id' => $single->id]) }}" method="post">
                                         @csrf
@@ -34,7 +34,7 @@
                                     <i data-feather="edit"></i>
                                     @lang('translate.edit')
                                 </button>
-                                @if(auth('vendor')->check())
+                                @if (auth('vendor')->check())
                                     @include('dashboard.partials.delete-modal', ['resource' => 'component', 'resources' => 'components'])
                                 @endif
                             </td>

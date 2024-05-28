@@ -16,13 +16,13 @@
                     <th>@lang('translate.theType')</th>
                     <th>@lang('translate.quantity')</th>
                     <th>@lang('translate.price')</th>
-                    @if($selected->status == 'ordered' && $guard != 'admin')
+                    @if ($selected->status == 'ordered' && $guard != 'admin')
                         <th>@lang('translate.actions')</th>
                     @endif
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($selected['products'] as $single)
+                @foreach ($selected['products'] as $single)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $single['name'] }}</td>
@@ -30,7 +30,7 @@
                         <td>{{ $single['quantity'] }}</td>
                         <td>{{ $single['price'] }}</td>
 
-                        @if($selected->status == 'ordered' && $guard != 'admin')
+                        @if ($selected->status == 'ordered' && $guard != 'admin')
                             <td>
                                 <button type="button" class="btn btn-danger ms-auto" data-bs-toggle="modal" data-bs-target="{{ '#removeModal' . $single->id }}">
                                     <i data-feather="trash-2"></i>

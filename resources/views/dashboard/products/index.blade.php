@@ -22,6 +22,7 @@
                             <th>@lang('translate.avatar')</th>
                             <th>@lang('translate.name')</th>
                             <th>@lang('translate.offer')</th>
+                            <th>@lang('translate.prices')</th>
                             <th>@lang('translate.rate')</th>
                             <th>@lang('translate.category')</th>
                             <th>@lang('translate.subcategory')</th>
@@ -40,7 +41,28 @@
                                     </a>
                                 </td>
                                 <td> {{ $single->$nameOnLang }} </td>
-                                <td> {{ $single->offer . '|' . $single->offer_type . '|' . $single->offer_value }} </td>
+                                <td style="min-width: 180px">
+                                    @if ($single->offer)
+                                        <button class="btn btn-link ms-auto" data-bs-toggle="modal" data-bs-target="#UpdateOffer{{ $single->id }}">
+                                            <i data-feather="edit"></i>
+                                            @lang('translate.update')
+                                        </button>
+                                        @include('dashboard.products.components.update-offer')
+                                    @else
+                                        <button class="btn btn-link text-success ms-auto" data-bs-toggle="modal" data-bs-target="#AddOffer{{ $single->id }}">
+                                            <i data-feather="plus-circle"></i>
+                                            @lang('translate.add')
+                                        </button>
+                                        @include('dashboard.products.components.add-offer')
+                                    @endif
+                                </td>
+                                <td style="min-width: 180px">
+                                    <button class="btn btn-link ms-auto" data-bs-toggle="modal" data-bs-target="#UpdatePrices{{  $single->id }}">
+                                        <i data-feather="edit"></i>
+                                        @lang('translate.update')
+                                    </button>
+                                    @include('dashboard.products.components.update-prices')
+                                </td>
                                 <td><i data-feather="star" style="color: #E5B80B"></i> {{ $single->rate }}</td>
                                 <td> {{ $single->subcategory?->category?->$nameOnLang }} </td>
                                 <td> {{ $single->subcategory?->$nameOnLang }} </td>
@@ -55,7 +77,7 @@
                                     </form>
                                 </td>
                                 <td style="min-width: 320px">
-                                    @if(!$single->is_primary)
+                                    @if (!$single->is_primary)
                                         <a href="{{ route('products.edit', $single->id) }}">
                                             <button class="btn btn-primary ms-auto">
                                                 <i data-feather="edit"></i>

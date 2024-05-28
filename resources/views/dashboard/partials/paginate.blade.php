@@ -1,4 +1,4 @@
-@if($data->total() > 10)
+@if ($data->total() > 10)
     <div class="d-flex justify-content-center py-1">
         <nav aria-label="Page navigation example">
             <ul class="pagination">

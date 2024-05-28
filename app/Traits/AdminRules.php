@@ -73,6 +73,17 @@ trait AdminRules {
         ];
     }
 
+    protected function createAddressRules(): array
+    {
+        return [
+            'type' => 'required|in:vendor',
+            'user_id' => 'required|exists:vendors,id',
+            'city_id' => 'required|exists:cities,id,active,1',
+            'address' => 'required|max:60|string',
+            'main' => 'nullable|in:1',
+        ];
+    }
+
     protected function createNotificationRules(): array
     {
         return [
@@ -206,7 +217,7 @@ trait AdminRules {
         ];
     }
 
-    protected function updateAdRules(): array
+    protected function updateAdRules($id): array
     {
         return [
             'name' => 'required|max:60|string',
@@ -214,7 +225,16 @@ trait AdminRules {
         ];
     }
 
-    protected function updateNotificationRules(): array
+    protected function updateAddressRules($id): array
+    {
+        return [
+            'city_id' => 'required|exists:cities,id,active,1',
+            'address' => 'required|max:60|string',
+            'main' => 'nullable||in:1',
+        ];
+    }
+
+    protected function updateNotificationRules($id): array
     {
         return [
             'name_en' => 'required|max:60|string',
@@ -225,7 +245,7 @@ trait AdminRules {
         ];
     }
 
-    protected function updateCategoryRules(): array
+    protected function updateCategoryRules($id): array
     {
         return [
             'name_en' => 'required|max:60|string',
@@ -234,7 +254,7 @@ trait AdminRules {
         ];
     }
 
-    protected function updateSubcategoryRules(): array
+    protected function updateSubcategoryRules($id): array
     {
         return [
             'name_en' => 'required|max:60|string',
@@ -244,7 +264,7 @@ trait AdminRules {
         ];
     }
 
-    protected function updateProductRules(): array
+    protected function updateProductRules($id): array
     {
         return [
             'name_en' => 'required|max:60|string',
@@ -254,7 +274,7 @@ trait AdminRules {
         ];
     }
 
-    protected function updateComponentRules(): array
+    protected function updateComponentRules($id): array
     {
         return [
             'name_en' => 'required|max:60|string',
@@ -262,7 +282,7 @@ trait AdminRules {
         ];
     }
 
-    protected function updateTypeRules(): array
+    protected function updateTypeRules($id): array
     {
         return [
             'name_en' => 'required|max:60|string',

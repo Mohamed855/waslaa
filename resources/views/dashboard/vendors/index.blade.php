@@ -55,9 +55,9 @@
                                 <td> {{ count($single->favorites) }} </td>
                                 <td> {{ $single->status }} </td>
                                 <td>
-                                    @if($single->priority == 1)
+                                    @if ($single->priority == 1)
                                         @lang('translate.high')
-                                    @elseif($single->priority == 2)
+                                    @elseif ($single->priority == 2)
                                         @lang('translate.medium')
                                     @else
                                         @lang('translate.low')
@@ -78,7 +78,7 @@
                                     </form>
                                 </td>
                                 <td style="min-width: 370px">
-                                    @if(!$single->is_primary)
+                                    @if (!$single->is_primary)
                                         <a href="{{ route('vendors.show', $single->id) }}">
                                             <button class="btn btn-info ms-auto">
                                                 <i data-feather="eye"></i>

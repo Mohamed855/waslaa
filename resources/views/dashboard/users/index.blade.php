@@ -17,7 +17,7 @@
                             <th>@lang('translate.gender')</th>
                             <th>@lang('translate.city')</th>
                             <th>@lang('translate.verified')</th>
-                            @if(auth('admin')->user())
+                            @if (auth('admin')->user())
                                 <th>@lang('translate.active')</th>
                             @endif
                             <th>@lang('translate.actions')</th>
@@ -38,13 +38,11 @@
                                 <td> {{ $single->phone }} </td>
                                 <td> {{ $single->sec_phone ?? '-' }} </td>
                                 <td> @lang('translate.' . $single->gender) </td>
-
                                 <td>
                                     {{ $single->city->$nameOnLang }}
                                 </td>
-
                                 <td>
-                                    @if($single->verified)
+                                    @if ($single->verified)
                                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40" viewBox="0 0 48 48">
                                             <path fill="#c8e6c9" d="M44,24c0,11.045-8.955,20-20,20S4,35.045,4,24S12.955,4,24,4S44,12.955,44,24z"></path><path fill="#4caf50" d="M34.586,14.586l-13.57,13.586l-5.602-5.586l-2.828,2.828l8.434,8.414l16.395-16.414L34.586,14.586z"></path>
                                         </svg>
@@ -54,7 +52,7 @@
                                         </svg>
                                     @endif
                                 </td>
-                                @if(auth('admin')->user())
+                                @if (auth('admin')->user())
                                     <td>
                                         <form class="p-0 m-0"
                                             action="{{ route('activation.toggle', ['table' => 'user', 'id' => $single->id]) }}"
@@ -75,8 +73,8 @@
                                             @lang('translate.show')
                                         </button>
                                     </a>
-                                    @if(auth('admin')->user())
-                                        @if(auth('admin')->user()->is_primary)
+                                    @if (auth('admin')->user())
+                                        @if (auth('admin')->user()->is_primary)
                                             @include('dashboard.partials.delete-modal', ['resource' => 'user', 'resources' => 'users'])
                                         @else
                                             @lang('error.cannotEdit')

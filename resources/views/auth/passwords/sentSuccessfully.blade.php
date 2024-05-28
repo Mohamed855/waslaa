@@ -3,7 +3,7 @@
 @section('title', __('auth.emailSent'))
 
 @section('card-content')
-    @if($success)
+    @if ($success)
         <div class="fs-5">
             <div class="alert alert-borderless alert-success text-center py-2 mx-2" role="alert">
                 {{ $success }}

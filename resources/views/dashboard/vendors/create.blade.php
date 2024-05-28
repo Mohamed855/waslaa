@@ -61,25 +61,31 @@
                                     </div>
                                 </div>
                                 {{-- select city --}}
-                                <div class="col-md-6 col-sm-12">
-                                    <div class="mb-1">
-                                        <label class="form-label" for="city">@lang('translate.city') <span class="text-danger">*</span></label>
-                                        <select id="editSelectedUser"
-                                                class="form-control" name="city"
-                                                data-search="true"
-                                                data-silent-initial-value-set="true">
-                                            <option value="" selected disabled>@lang('translate.select')</option>
-                                            @foreach($cities as $city)
+                                <div class="col-md-6 col-sm-12 mb-1">
+                                    <label class="form-label" for="city">@lang('translate.city') <span class="text-danger">*</span></label>
+                                    <div class="input-group input-group-merge">
+                                        <span class="input-group-text">
+                                            <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="feather feather-map-pin">
+                                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                                <circle cx="12" cy="10" r="3"></circle>
+                                            </svg>
+                                        </span>
+                                        <select id="addSelectedCity" class="form-control" name="city_id">
+                                            <option selected disabled>@lang('translate.select')</option>
+                                            @foreach ($cities as $city)
                                                 <option value="{{ $city->id }}">{{ $city->name }}</option>
                                             @endforeach
                                         </select>
                                     </div>
-                                    <script type="text/javascript">
-                                        VirtualSelect.init({
-                                            ele: '#editSelectedUser'
-                                        });
-                                    </script>
                                 </div>
+                                <script type="text/javascript">
+                                    VirtualSelect.init({
+                                        ele: '#addSelectedCity',
+                                        search: true
+                                    });
+                                </script>
                                 {{-- delivery time --}}
                                 <div class="col-md-6 col-sm-12 mb-1">
                                     <label class="form-label" for="delivery_time">@lang('translate.deliveryTime') <span class="text-danger">*</span></label>

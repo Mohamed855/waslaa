@@ -11,7 +11,7 @@
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper container-xxl p-0">
             <div class="content-body">
-                @if(! (request()->routeIs('users.show') || request()->routeIs('profile') || request()->routeIs('vendors.show')) )
+                @if (! (request()->routeIs('users.show') || request()->routeIs('profile') || request()->routeIs('vendors.show')) )
                     <div class="col-lg-12 col-12">
                         <div class="card card-statistics">
                             <div class="card-header">

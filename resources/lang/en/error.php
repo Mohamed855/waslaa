@@ -39,6 +39,7 @@ return [
     'cannotEdit' => 'Cannot edit or delete primary',
     'cannotEditPrimary' => 'Cannot edit primary',
     'cannotDeletePrimary' => 'Cannot delete primary',
+    'cannotDeleteMainAddress' => 'Cannot delete main address',
     'cannotDeleteActive' => 'Cannot delete active',
 
     'emailRequired' => 'Email is required',

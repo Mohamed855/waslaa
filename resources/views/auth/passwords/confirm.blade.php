@@ -14,11 +14,11 @@
                                 <img src="{{ URL::asset('assets/images/LoginBanner.png') }}" alt="" class="img-fluid">
                             </div>
                             <div class="card-body">
-                                @if(session()->has('error'))
+                                @if (session()->has('error'))
                                     <div class="alert alert-borderless alert-danger text-center mb-2 mx-2" role="alert">
                                         {{ session('error') }}
                                     </div>
-                                @elseif(session()->has('success'))
+                                @elseif (session()->has('success'))
                                     <div class="alert alert-borderless alert-success text-center mb-2 mx-2" role="alert">
                                         {{ session('success') }}
                                     </div>

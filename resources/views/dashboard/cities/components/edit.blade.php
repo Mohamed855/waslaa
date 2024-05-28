@@ -38,7 +38,7 @@
                                             <span class="input-group-text"><i data-feather='map'></i></span>
                                             <select id="editSelectedCountry{{ $single->id }}" class="form-control editSelectedCountry">
                                                 <option selected disabled>@lang('translate.select')</option>
-                                                @foreach($countries as $country)
+                                                @foreach ($countries as $country)
                                                     <option value="{{ $country->id }}" {{ $single->country_id == $country->id ? 'selected' : '' }}>{{ $country->name }}</option>
                                                 @endforeach
                                             </select>
