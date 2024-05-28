@@ -32,7 +32,7 @@
                                 </td>
                             @endif
                             <td style="min-width: 320px">
-                                <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeBtn" data-bs-toggle="modal" data-bs-target="#EditType{{ $single->id }}" data-="{{ $single }}">
+                                <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typetypeComponentBtn" data-bs-toggle="modal" data-bs-target="#EditType{{ $single->id }}" data-="{{ $single }}">
                                     <i data-feather="edit"></i>
                                     @lang('translate.edit')
                                 </button>
@@ -52,7 +52,7 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
-        $('.typeBtn').on('click', function () {
+        $('.typetypeComponentBtn').on('click', function () {
             let id = $(this).attr('data-id');
             let type = JSON.parse($(this).attr('data-'));
             $('#enName').val(type.name_en);
@@ -60,7 +60,7 @@
             $('#enAbbrev').val(type.abbrev_en);
             $('#arAbbrev').val(type.abbrev_ar);
             let url = '{{ asset('') }}' + 'types/' + id
-            $('#updateForm' + id).attr('action', url);
+            $('#updateTypeForm' + id).attr('action', url);
         });
     });
 </script>

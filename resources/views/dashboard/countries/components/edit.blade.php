@@ -11,7 +11,7 @@
                 <section id="basic-vertical-layouts">
                     <div class="row">
                         <div class="col-md-12 col-12">
-                            <form id="updateForm{{ $single->id }}" class="form form-vertical" method="POST">
+                            <form id="updateCountryForm{{ $single->id }}" class="form form-vertical" method="POST">
                                 @csrf @method('PUT')
                                 <div class="row">
                                     {{-- edit en name --}}

@@ -31,7 +31,7 @@
                                 </td>
                             @endif
                             <td style="min-width: 320px">
-                                <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeBtn" data-bs-toggle="modal" data-bs-target="#EditCity{{ $single->id }}" data-="{{ $single }}">
+                                <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeCityBtn" data-bs-toggle="modal" data-bs-target="#EditCity{{ $single->id }}" data-="{{ $single }}">
                                     <i data-feather="edit"></i>
                                     @lang('translate.edit')
                                 </button>
@@ -51,7 +51,7 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
-        $('.typeBtn').on('click', function () {
+        $('.typeCityBtn').on('click', function () {
             let id = $(this).attr('data-id');
             let city = JSON.parse($(this).attr('data-'));
             let countryId = $('#countryId' + city.id);
@@ -63,7 +63,7 @@
             $('#enName').val(city.name_en);
             $('#arName').val(city.name_ar);
             let url = '{{ asset('') }}' + 'cities/' + id
-            $('#updateForm' + id).attr('action', url);
+            $('#updateCityForm' + id).attr('action', url);
         });
     });
 </script>
