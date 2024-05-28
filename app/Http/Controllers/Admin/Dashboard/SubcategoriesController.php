@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin\Dashboard;
 
 use App\Helpers\Helper;
-use App\Http\Controllers\Admin\BaseController;
 use App\Traits\AdminRules;
 use App\Traits\QueriesTrait;
+use Illuminate\Http\Request;
+use App\Helpers\DashboardHelper;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Admin\BaseController;
 
 class SubcategoriesController extends BaseController
 {
@@ -20,6 +21,7 @@ class SubcategoriesController extends BaseController
         parent::__construct();
         $this->table = 'subcategory';
         $this->resource = 'subcategories';
+        $this->middleware('guard:vendor')->only('index');
     }
 
     /**
@@ -28,7 +30,21 @@ class SubcategoriesController extends BaseController
     public function index(): View|RedirectResponse
     {
         $categories = auth('vendor')->user()->categories()->where('active', 1)->get();
-        return parent::VendorIndexBase($this->resource, 'dashboard.subcategories.index', vars: ['categories' => $categories], with: ['category'], searchable: ['name_en', 'name_ar']);
+        $vendorId = auth('vendor')->id();
+        return parent::VendorIndexBase($this->resource, 'dashboard.subcategories.index', vars: ['categories' => $categories, 'vendorId' => $vendorId], with: ['category'], searchable: ['name_en', 'name_ar']);
+    }
+
+    /**
+     * Display a listing of the vendors' subcategories.
+     */
+    public function vendorSubcategories(string $username): View|RedirectResponse
+    {
+        $vendor = DashboardHelper::getVendorByUsername($username);
+        $categories = $vendor->categories()->where('active', 1)->get();
+        $vendorId = $vendor->id;
+        $data = DashboardHelper::returnDataOnPagination($vendor->subcategories());
+        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
+        return view('dashboard.subcategories.index', compact(['data', 'categories', 'username', 'vendorId']))->with(['nameOnLang' => $this->nameOnLang]);
     }
 
     /**

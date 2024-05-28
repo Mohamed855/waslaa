@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', __('translate.types'))
+@section('title', __('translate.types') . (isset($username) ? ' [ ' . $username . ' ]' : ''))
 @section('content')
     <div class="row">
         <div class="col-xl-12 d-flex">

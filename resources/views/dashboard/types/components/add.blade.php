@@ -15,7 +15,7 @@
                         <div class="col-md-12 col-12">
                             <form id="typesStore" class="form form-vertical" action="{{ route('types.store') }} " method="POST">
                                 @csrf
-                                <input type="hidden" name="vendor_id" value="{{ auth('vendor')->id() }}"/>
+                                <input type="hidden" name="vendor_id" value="{{ $vendorId }}"/>
                                 <div class="row">
                                     {{-- add en name --}}
                                     <div class="col-12 mb-1">

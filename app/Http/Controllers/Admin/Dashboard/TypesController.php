@@ -3,23 +3,26 @@
 namespace App\Http\Controllers\Admin\Dashboard;
 
 use App\Helpers\Helper;
-use App\Http\Controllers\Admin\BaseController;
 use App\Traits\AdminRules;
 use App\Traits\QueriesTrait;
+use Illuminate\Http\Request;
+use App\Helpers\DashboardHelper;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Admin\BaseController;
 
 class TypesController extends BaseController
 {
     use QueriesTrait, AdminRules;
 
-    private string $table, $resource;
+    private string $table, $resource, $abbrevOnLang;
     public function __construct()
     {
         parent::__construct();
         $this->table = 'type';
         $this->resource = 'types';
+        $this->abbrevOnLang = Helper::getColumnOnLang('abbrev');
+        $this->middleware('guard:vendor')->only('index');
     }
 
     /**
@@ -27,8 +30,19 @@ class TypesController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        $abbrevOnLang = Helper::getColumnOnLang('abbrev');
-        return parent::vendorIndexBase($this->resource, 'dashboard.types.index', vars: ['abbrevOnLang' => $abbrevOnLang], searchable: ['name_en', 'name_ar']);
+        return parent::vendorIndexBase($this->resource, 'dashboard.types.index', vars: ['abbrevOnLang' => $this->abbrevOnLang, 'vendorId' => auth('vendor')->id()], searchable: ['name_en', 'name_ar']);
+    }
+
+    /**
+     * Display a listing of the vendors' types.
+     */
+    public function vendorTypes(string $username): View|RedirectResponse
+    {
+        $vendor = DashboardHelper::getVendorByUsername($username);
+        $vendorId = $vendor->id;
+        $data = DashboardHelper::returnDataOnPagination($vendor->types());
+        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
+        return view('dashboard.types.index', compact(['data', 'username', 'vendorId']))->with(['nameOnLang' => $this->nameOnLang, 'abbrevOnLang' => $this->abbrevOnLang]);
     }
 
     /**

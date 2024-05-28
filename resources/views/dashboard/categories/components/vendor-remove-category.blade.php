@@ -16,7 +16,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">@lang('translate.cancel')</button>
-                <form class="d-inline" action="{{ route('removeVendorCategory', $single->id) }}" method="POST">
+                <form class="d-inline" action="{{ route('removeVendorCategory', ['id' => $single->id, 'vendorId' => $vendorId]) }}" method="POST">
                     @csrf @method('Delete')
                     <button type="submit" class="btn btn-danger">
                         @lang('translate.remove')

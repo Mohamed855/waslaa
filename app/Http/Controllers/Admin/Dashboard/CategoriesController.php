@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Admin\Dashboard;
 
-use App\Http\Controllers\Admin\BaseController;
 use App\Traits\AdminRules;
 use App\Traits\QueriesTrait;
+use Illuminate\Http\Request;
+use App\Helpers\DashboardHelper;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Admin\BaseController;
 
 class CategoriesController extends BaseController
 {
@@ -21,7 +22,6 @@ class CategoriesController extends BaseController
         $this->table = 'category';
         $this->resource = 'categories';
         $this->middleware('guard:admin')->only(['store', 'update', 'destroy']);
-        $this->middleware('guard:vendor')->only(['selectVendorCategory', 'removeVendorCategory']);
     }
 
     /**
@@ -42,6 +42,20 @@ class CategoriesController extends BaseController
     }
 
     /**
+     * Display a listing of the vendors' categories.
+     */
+    public function vendorCategories(string $username): View|RedirectResponse
+    {
+        $vendor = DashboardHelper::getVendorByUsername($username);
+        $vendorId = auth('vendor')->check() ? auth('vendor')->id() : $vendor->id;
+        $categories = $this->activeCategory()->get();
+        $selectedVendorCategories = auth('vendor')->check() ? auth('vendor')->user()->categories() : $vendor->categories();
+        $data = DashboardHelper::returnDataOnPagination($vendor->categories());
+        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
+        return view('dashboard.categories.index', compact(['data', 'categories', 'selectedVendorCategories', 'username']))->with(['nameOnLang' => $this->nameOnLang, 'vendorId' => $vendorId]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request): RedirectResponse
@@ -57,29 +71,30 @@ class CategoriesController extends BaseController
         return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'avatar'], $this->updateCategoryRules($id), $id);
     }
 
+    public function selectVendorCategory(Request $request): RedirectResponse
+    {
+        $vendorId = $request->vendor_id;
+        DB::table('vendor_categories')->where('vendor_id', $vendorId)->delete();
+        foreach (explode(',', $request['categories'][0]) as $category) {
+            DB::table('vendor_categories')->insert([
+                'category_id' => $category,
+                'vendor_id' => $vendorId
+            ]);
+        }
+        return back()->with('success', __('translate.' . $this->table) . ' ' . __('success.added'));
+    }
+
+    public function removeVendorCategory(string $id, $vendorId): RedirectResponse
+    {
+        DB::table('vendor_categories')->where(['vendor_id' => $vendorId, 'category_id' => $id])->delete();
+        return back()->with('success', __('translate.' . $this->table) . ' ' . __('success.removed'));
+    }
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id): RedirectResponse
     {
         return parent::destroyBase($this->table, $this->resource, $id);
-    }
-
-    public function selectVendorCategory(Request $request): RedirectResponse
-    {
-        DB::table('vendor_categories')->where('vendor_id', auth('vendor')->id())->delete();
-        foreach (explode(',', $request['categories'][0]) as $category) {
-            DB::table('vendor_categories')->insert([
-                'category_id' => $category,
-                'vendor_id' => auth('vendor')->id()
-            ]);
-        }
-        return back()->with('success', __('translate.' . $this->table) . ' ' . __('success.added'));
-    }
-
-    public function removeVendorCategory(string $id): RedirectResponse
-    {
-        DB::table('vendor_categories')->where(['vendor_id' => auth('vendor')->id(), 'category_id' => $id])->delete();
-        return back()->with('success', __('translate.' . $this->table) . ' ' . __('success.removed'));
     }
 }

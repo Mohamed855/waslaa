@@ -13,7 +13,7 @@
                         <div class="col-md-12 col-12">
                             <form id="updateSubcategoryForm{{ $single->id }}" class="form form-vertical" method="POST" enctype="multipart/form-data">
                                 @csrf @method('PUT')
-                                <input type="hidden" name="vendor" value="{{ auth('vendor')->check() ? auth('vendor')->id() : '' }}"/>
+                                <input type="hidden" name="vendor" value="{{ $vendorId }}"/>
                                 <input id="categoryId{{ $single->id }}" type="hidden" name="category_id" value=""/>
                                 <div class="row">
                                     {{-- edit en name --}}

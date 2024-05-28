@@ -87,7 +87,13 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::resource('managers', ManagersController::class)->except(['create', 'edit', 'show']);
         Route::resource('notifications', NotificationsController::class)->except(['show']);
         Route::resource('complains', ComplainsController::class)->except(['create', 'edit', 'show']);
+        Route::resource('subcategories', SubcategoriesController::class)->except(['create', 'edit', 'show']);
+        Route::resource('components', ComponentsController::class)->except(['create', 'edit', 'show']);
+        Route::resource('types', TypesController::class)->except(['create', 'edit', 'show']);
+
         Route::resource('categories', CategoriesController::class)->except(['create', 'edit', 'show']);
+        Route::post('vendor-select-category', [CategoriesController::class, 'selectVendorCategory'])->name('selectVendorCategory');
+        Route::delete('vendor-remove-category/{id}/{vendorId}', [CategoriesController::class, 'removeVendorCategory'])->name('removeVendorCategory');
 
         Route::resource('orders', OrdersController::class)->except('index', 'create', 'edit');
         Route::get('ordered', [OrdersController::class, 'ordered'])->name('ordered');
@@ -132,16 +138,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     // Vendor Routes
     Route::middleware('guard:vendor')->group(function () {
-        Route::post('vendor-select-category', [CategoriesController::class, 'selectVendorCategory'])->name('selectVendorCategory');
-        Route::delete('vendor-remove-category/{id}', [CategoriesController::class, 'removeVendorCategory'])->name('removeVendorCategory');
-        Route::resource('subcategories', SubcategoriesController::class)->except(['create', 'edit', 'show']);
+
         Route::resource('products', ProductsController::class)->except([]);
         Route::post('product/{id}/create-offer', [ProductsController::class, 'createOffer'])->name('createOffer');
         Route::post('product/{id}/update-offer', [ProductsController::class, 'updateOffer'])->name('updateOffer');
         Route::post('product/{id}/remove-offer', [ProductsController::class, 'removeOffer'])->name('removeOffer');
         Route::post('product/{id}/update-prices', [ProductsController::class, 'updatePrices'])->name('updatePrices');
-        Route::resource('components', ComponentsController::class)->except(['create', 'edit', 'show']);
-        Route::resource('types', TypesController::class)->except(['create', 'edit', 'show']);
 
         Route::get('api/subcategories/{catId}', [ProductsController::class, 'getCurrVendorSubCategories']);
     });

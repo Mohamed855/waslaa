@@ -36,7 +36,7 @@
                                     <i data-feather="edit"></i>
                                     @lang('translate.edit')
                                 </button>
-                                @if (auth('vendor')->check())
+                                @if (auth('admin')->check() || auth('vendor')->check())
                                     @include('dashboard.partials.delete-modal', ['resource' => 'type', 'resources' => 'types'])
                                 @endif
                             </td>

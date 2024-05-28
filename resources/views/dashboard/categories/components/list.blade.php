@@ -36,16 +36,16 @@
                                 </td>
                             @endif
                             <td style="min-width: 320px">
-                                @if (auth('admin')->check())
+                                @if (auth('admin')->check() && ! request()->routeIs('vendorCategories'))
                                     <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeCategoryBtn" data-bs-toggle="modal" data-bs-target="#EditCategory{{ $single->id }}" data-="{{ $single }}">
                                         <i data-feather="edit"></i>
                                         @lang('translate.edit')
                                     </button>
                                     @include('dashboard.categories.components.edit')
-                                @endif
-                                @if (auth('admin')->check() && auth('admin')->user()->is_primary)
-                                    @include('dashboard.partials.delete-modal', ['resource' => 'category', 'resources' => 'categories'])
-                                @elseif (auth('vendor')->check())
+                                    @if(auth('admin')->user()->is_primary)
+                                        @include('dashboard.partials.delete-modal', ['resource' => 'category', 'resources' => 'categories'])
+                                    @endif
+                                @elseif (auth('vendor')->check() || request()->routeIs('vendorCategories'))
                                     @include('dashboard.categories.components.vendor-remove-category')
                                 @endif
                             </td>

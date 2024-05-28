@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', __('translate.categories'))
+@section('title', __('translate.categories') . (isset($username) ? ' [ ' . $username . ' ]' : ''))
 @section('content')
     <div class="row">
         <div class="col-xl-12 d-flex">
@@ -9,9 +9,9 @@
                     @lang('translate.add')
                 </button>
             </div>
-            @if (auth('admin')->check())
+            @if (auth('admin')->check() && ! request()->routeIs('vendorCategories'))
                 @include('dashboard.categories.components.add')
-            @elseif (auth('vendor')->check())
+            @elseif (auth('vendor')->check() || request()->routeIs('vendorCategories'))
                 @include('dashboard.categories.components.vendor-select-category')
             @endif
         </div>

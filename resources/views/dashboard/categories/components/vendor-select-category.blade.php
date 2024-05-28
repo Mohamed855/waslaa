@@ -15,6 +15,7 @@
                         <div class="col-md-12 col-12">
                             <form id="categoriesStore" class="form form-vertical" action="{{ route('selectVendorCategory') }} " method="POST">
                                 @csrf
+                                <input type="hidden" name="vendor_id" value="{{ $vendorId }}"/>
                                 <div class="row">
                                     {{-- add categories --}}
                                     <div class="col-12 mb-1">
@@ -32,7 +33,7 @@
                                             <select id="selectedCategories" class="form-control" name="categories[]" multiple>
                                                 <option selected disabled>@lang('translate.select')</option>
                                                 @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}" {{ auth('vendor')->user()->categories() && in_array($category->id, auth('vendor')->user()->categories()?->get()->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $category->$nameOnLang }}</option>
+                                                    <option value="{{ $category->id }}" {{ $selectedVendorCategories && in_array($category->id, $selectedVendorCategories->get()->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $category->$nameOnLang }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
