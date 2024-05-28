@@ -39,7 +39,7 @@
                                             <select id="editSelectedCountry{{ $single->id }}" class="form-control editSelectedCountry">
                                                 <option selected disabled>@lang('translate.select')</option>
                                                 @foreach ($countries as $country)
-                                                    <option value="{{ $country->id }}" {{ $single->country_id == $country->id ? 'selected' : '' }}>{{ $country->name }}</option>
+                                                    <option value="{{ $country->id }}" {{ $single->country_id == $country->id ? 'selected' : '' }}>{{ $country->$nameOnLang }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

@@ -6,6 +6,7 @@ use App\Helpers\Helper;
 use App\Traits\AdminRules;
 use App\Traits\QueriesTrait;
 use Illuminate\Http\Request;
+use App\Helpers\DashboardHelper;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Admin\BaseController;
@@ -21,6 +22,29 @@ class AddressesController extends BaseController
         parent::__construct();
         $this->table = 'address';
         $this->resource = 'addresses';
+    }
+
+    /**
+     * Display a listing of the vendors' addresses.
+     */
+    public function userAddresses(string $username): View|RedirectResponse
+    {
+        $user = DashboardHelper::getUserByUsername($username);
+        $data = DashboardHelper::returnDataOnPagination($user->addresses());
+        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
+        return view('dashboard.addresses.index', compact(['data', 'username']))->with(['nameOnLang' => $this->nameOnLang]);
+    }
+
+    /**
+     * Display a listing of the vendors' addresses.
+     */
+    public function vendorAddresses(string $username): View|RedirectResponse
+    {
+        $vendor = DashboardHelper::getVendorByUsername($username);
+        $cities = $this->activeCity()->get();
+        $data = DashboardHelper::returnDataOnPagination($vendor->addresses());
+        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
+        return view('dashboard.addresses.index', compact(['data', 'cities', 'username']))->with(['selectedVendorId' => $vendor->id, 'nameOnLang' => $this->nameOnLang]);
     }
 
     /**

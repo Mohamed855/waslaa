@@ -6,6 +6,7 @@ use App\Helpers\Helper;
 use App\Traits\AdminRules;
 use App\Traits\QueriesTrait;
 use Illuminate\Http\Request;
+use App\Helpers\DashboardHelper;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Admin\BaseController;
@@ -30,6 +31,17 @@ class ManagersController extends BaseController
     public function index(): View|RedirectResponse
     {
         return parent::VendorIndexBase($this->resource, 'dashboard.managers.index', searchable: ['name', 'username', 'email', 'phone']);
+    }
+
+    /**
+     * Display a listing of the vendors' managers.
+     */
+    public function vendorManagers(string $username): View|RedirectResponse
+    {
+        $vendor = DashboardHelper::getVendorByUsername($username);
+        $data = DashboardHelper::returnDataOnPagination($vendor->managers());
+        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
+        return view('dashboard.managers.index', compact(['data', 'username']));
     }
 
     /**

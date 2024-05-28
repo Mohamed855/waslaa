@@ -153,6 +153,8 @@ return [
     'details' => 'التفاصيل',
     'orderDetails' => 'تفاصيل الطلب',
     'invoiceDetails' => 'تفاصيل الفاتورة',
+    'invoiceOrders' => 'طلبات الفاتورة',
+    'orderProducts' => 'منتجات الطلب',
     'following' => 'يتابع',
     'userIn' => 'مُستخدم لدى (بائع)',
     'notSelected' => 'غير محدد',

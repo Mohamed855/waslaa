@@ -14,7 +14,7 @@
                             <form id="updateAddressForm{{ $single->id }}" class="form form-vertical" method="POST">
                                 @csrf @method('PUT')
                                 <input type="hidden" name="type" value="vendor">
-                                <input type="hidden" name="user_id" value="{{ $selected['id'] }}">
+                                <input type="hidden" name="user_id" value="{{ $selectedVendorId }}">
                                 <input id="cityId{{ $single->id }}" type="hidden" name="city_id" value=""/>
                                 <div class="row">
                                     {{-- edit city --}}
@@ -32,7 +32,7 @@
                                             <select id="editSelectedCity{{ $single->id }}" class="form-control editSelectedCity">
                                                 <option selected disabled>@lang('translate.select')</option>
                                                 @foreach ($cities as $city)
-                                                    <option value="{{ $city->id }}" {{ $single->city_id == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
+                                                    <option value="{{ $city->id }}" {{ $single->city_id == $city->id ? 'selected' : '' }}>{{ $city->$nameOnLang }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

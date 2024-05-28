@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Admin\Dashboard;
 
 use App\Helpers\Helper;
-use App\Http\Controllers\Admin\BaseController;
 use App\Traits\AdminRules;
 use App\Traits\QueriesTrait;
+use Illuminate\Http\Request;
+use App\Helpers\DashboardHelper;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Admin\BaseController;
 
 class VendorsController extends BaseController
 {
@@ -35,9 +36,8 @@ class VendorsController extends BaseController
      */
     public function create(): View
     {
-        $nameOnLang = Helper::getColumnOnLang('name');
-        $cities = $this->activeCity()->get(['id', $nameOnLang . ' as name']);
-        return parent::createBase('dashboard.vendors.create', vars: ['cities' => $cities]);
+        $cities = $this->activeCity()->get();
+        return parent::createBase('dashboard.vendors.create', vars: ['cities' => $cities, 'nameOnLang' => $this->nameOnLang]);
     }
 
     /**
@@ -51,14 +51,11 @@ class VendorsController extends BaseController
     /**
      * Display the specified resource.
      */
-    public function show(string $id): View
+    public function show(string $username): View
     {
-        $nameOnLang = Helper::getColumnOnLang('name');
-        $cities = $this->activeCity()->get(['id', $nameOnLang . ' as name']);
-        return parent::showBase($this->table, 'dashboard.vendors.show', $id, vars: ['cities' => $cities], with: ['favorites', 'city', 'managers' => function($query) {
-            if(isset($_GET['keyword'])) $query = Helper::searchOnQuery($query, ['name', 'username', 'email', 'phone'], $_GET['keyword']);
-            $query->paginate(10);
-        }]);
+        $cities = $this->activeCity()->get();
+        $selected = DashboardHelper::getVendorByUsername($username);
+        return view('dashboard.vendors.show', compact(['selected', 'cities']))->with(['nameOnLang' => $this->nameOnLang]);
     }
 
     /**

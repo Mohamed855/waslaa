@@ -25,30 +25,17 @@
                             <p class="card-text">@lang('translate.complains'): {{ count($selected->complains) }}</p>
                         @endif
                         <div class="d-inline-block">
-                            <a href="#orders" class="pe-1">@lang('translate.orders')</a>
+                            <a href="{{ route('userOrders', $selected->username) }}" class="pe-1">@lang('translate.orders')</a>
                         </div>
                         <div class="d-inline-block">
-                            <a href="#addresses" class="pe-1">@lang('translate.addresses')</a>
+                            <a href="{{ route('userComplains', $selected->username) }}" class="pe-1">@lang('translate.complains')</a>
                         </div>
-                        @if (auth('admin')->user())
-                            <div class="d-inline-block">
-                                <a href="#complains" class="pe-1">@lang('translate.complains')</a>
-                            </div>
-                        @endif
+                        <div class="d-inline-block">
+                            <a href="{{ route('userAddresses', $selected->username) }}" class="pe-1">@lang('translate.addresses')</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section id="orders">
-        @include('dashboard.users.partials.orders')
-    </section>
-    <section id="addresses">
-        @include('dashboard.users.partials.addresses')
-    </section>
-    @if (auth('admin')->user())
-        <section id="complains">
-            @include('dashboard.users.partials.complains')
-        </section>
-    @endif
 @endsection

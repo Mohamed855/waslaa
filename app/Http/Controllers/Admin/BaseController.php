@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\DashboardHelper;
 use Exception;
 use App\Helpers\Helper;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class BaseController extends Controller
         if(isset($_GET['keyword']) && count($searchable) > 0) {
             $data = Helper::searchOnQuery($data, $searchable, $_GET['keyword']);
         }
-        $data = $data->paginate(10);
+        $data = DashboardHelper::returnDataOnPagination($data);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
         return view($view, compact(['data']))->with(['nameOnLang' => $this->nameOnLang] + $vars);
     }
@@ -42,7 +43,7 @@ class BaseController extends Controller
         if(isset($_GET['keyword']) && count($searchable) > 0) {
             $data = Helper::searchOnQuery($data, $searchable, $_GET['keyword']);
         }
-        $data = $data->paginate(10);
+        $data = DashboardHelper::returnDataOnPagination($data);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
         return view($view, compact(['data']))->with(['nameOnLang' => $this->nameOnLang] + $vars);
     }

@@ -27,9 +27,8 @@ class CitiesController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        $nameOnLang = Helper::getColumnOnLang('name');
-        $countries = $this->activeCountry()->get(['id', $nameOnLang . ' as name']);
-        return parent::indexBase($this->table, 'dashboard.cities.index', vars: ['countries' => $countries], searchable: ['name_en', 'name_ar',]);
+        $countries = $this->activeCountry()->get();
+        return parent::indexBase($this->table, 'dashboard.cities.index', vars: ['countries' => $countries, 'nameOnLang' => $this->nameOnLang], searchable: ['name_en', 'name_ar',]);
     }
 
     /**

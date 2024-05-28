@@ -48,6 +48,28 @@
                 </li>
             @endif
 
+            @if (auth('admin')->check() || auth('vendor')->check())
+                <li class="nav-item {{ request()->routeIs('complains.index') ? 'active' : '' }}">
+                    <a class="nav-link d-flex align-items-center" href="{{ route('complains.index') }}">
+                        <i data-feather="file"></i>
+                        @lang('translate.complains')
+                    </a>
+                </li>
+            @endif
+
+            @if (auth('admin')->check() || auth('vendor')->check())
+                <li class="nav-item {{ request()->routeIs('settings') ? 'active' : '' }}">
+                    <a class="nav-link d-flex align-items-center" href="{{ route('settings') }}">
+                        <i data-feather="settings"></i>
+                        @lang('translate.settings')
+                    </a>
+                </li>
+            @endif
+
+            <li class="navigation-header">
+                <span style='font-size: 16px;'>@lang('translate.users')</span>
+            </li>
+
             @if (auth('admin')->check())
                 <li class="nav-item {{ request()->routeIs(['admins.index', 'admins.create', 'admins.edit']) ? 'active' : '' }}">
                     <a class="nav-link d-flex align-items-center" href="{{ route('admins.index') }}">
@@ -58,7 +80,7 @@
             @endif
 
             @if (auth('admin')->check() || auth('vendor')->check())
-                <li class="nav-item {{ request()->routeIs(['users.index', 'users.show']) ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs(['users.index', 'showUser']) ? 'active' : '' }}">
                     <a class="nav-link d-flex align-items-center" href="{{ route('users.index') }}">
                         <i data-feather="users"></i>
                         @lang('translate.users')
@@ -85,21 +107,12 @@
             @endif
 
             @if (auth('admin')->check() || auth('vendor')->check())
-                <li class="nav-item {{ request()->routeIs('settings') ? 'active' : '' }}">
-                    <a class="nav-link d-flex align-items-center" href="{{ route('settings') }}">
-                        <i data-feather="settings"></i>
-                        @lang('translate.settings')
-                    </a>
-                </li>
-            @endif
-
-            @if (auth('admin')->check() || auth('vendor')->check())
                 @php
                     $orderStatus = $invoiceStatus = '';
-                    if (request()->routeIs('orders.show')) {
+                    if (request()->routeIs('showOrder')) {
                         $orderStatus = $selected->status;
                     }
-                    if (request()->routeIs('invoices.show')) {
+                    if (request()->routeIs('showInvoice')) {
                         $invoiceStatus = $selected->status;
                     }
                 @endphp
@@ -160,11 +173,11 @@
                 <li class="navigation-header">
                     <span style='font-size: 16px;'>@lang('translate.vendors')</span>
                 </li>
-                @foreach (\App\Models\Vendor::query()->where('active', 1)->get(['id', 'name', 'avatar']) as $vendor)
+                @foreach (\App\Models\Vendor::query()->where('active', 1)->get(['id', 'name', 'username', 'avatar']) as $vendor)
                     <li
-                        class="nav-item {{ request()->getRequestUri() === str_replace(url('/'), '', route('vendors.show', $vendor->id)) ? 'active' : '' }}">
+                        class="nav-item {{ request()->getRequestUri() === str_replace(url('/'), '', route('showVendor', $vendor->username)) ? 'active' : '' }}">
                         <a class="nav-link d-flex align-items-center"
-                            href="{{ route('vendors.show', $vendor->id) }}">
+                            href="{{ route('showVendor', $vendor->username) }}">
                             <img class="avatar avatar-sm me-1" style="width: 25px; height: 25px"
                                 src="{{ asset($vendor->avatar ? 'storage/images/vendors/' . $vendor->avatar : 'storage/images/global/profile.jpg') }}" />
                             {{ ucfirst($vendor->name) }}

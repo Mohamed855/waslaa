@@ -153,6 +153,8 @@ return [
     'details' => 'Details',
     'orderDetails' => 'Order details',
     'invoiceDetails' => 'Invoice details',
+    'invoiceOrders' => 'Invoice orders',
+    'orderProducts' => 'Order products',
     'following' => 'Following',
     'userIn' => 'User in (vendor)',
     'notSelected' => 'Not selected',

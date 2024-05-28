@@ -79,7 +79,7 @@
                                 </td>
                                 <td style="min-width: 370px">
                                     @if (!$single->is_primary)
-                                        <a href="{{ route('vendors.show', $single->id) }}">
+                                        <a href="{{ route('showVendor', $single->username) }}">
                                             <button class="btn btn-info ms-auto">
                                                 <i data-feather="eye"></i>
                                                 @lang('translate.show')

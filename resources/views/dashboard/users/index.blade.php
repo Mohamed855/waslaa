@@ -67,7 +67,7 @@
                                     </td>
                                 @endif
                                 <td style="min-width: 320px">
-                                    <a href="{{ route('users.show', $single->id) }}">
+                                    <a href="{{ route('showUser', $single->username) }}">
                                         <button class="btn btn-info ms-auto">
                                             <i data-feather="eye"></i>
                                             @lang('translate.show')

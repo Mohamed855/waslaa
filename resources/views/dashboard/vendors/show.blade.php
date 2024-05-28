@@ -47,10 +47,13 @@
                         <p class="card-text">@lang('translate.city') : {{ $selected['city'][$nameOnLang] }}</p>
                         <p class="card-text">@lang('translate.followers') : {{ count($selected['favorites']) }}</p>
                         <div class="d-inline-block">
-                            <a href="#managers" class="pe-1">@lang('translate.managers')</a>
+                            <a href="{{ route('vendorManagers', $selected->username) }}" class="pe-1">@lang('translate.managers')</a>
                         </div>
                         <div class="d-inline-block">
-                            <a href="#addresses" class="pe-1">@lang('translate.addresses')</a>
+                            <a href="{{ route('vendorComplains', $selected->username) }}" class="pe-1">@lang('translate.complains')</a>
+                        </div>
+                        <div class="d-inline-block">
+                            <a href="{{ route('vendorAddresses', $selected->username) }}" class="pe-1">@lang('translate.addresses')</a>
                         </div>
                     </div>
                     <div class="row">
@@ -135,7 +138,7 @@
                                                     <select id="selectedCity" class="form-control">
                                                         <option selected disabled>@lang('translate.select')</option>
                                                         @foreach ($cities as $city)
-                                                            <option value="{{ $city->id }}" {{ $selected->city_id == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
+                                                            <option value="{{ $city->id }}" {{ $selected->city_id == $city->id ? 'selected' : '' }}>{{ $city->$nameOnLang }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -221,12 +224,6 @@
                 </div>
             </div>
         </div>
-    </section>
-    <section id="managers">
-        @include('dashboard.vendors.partials.managers')
-    </section>
-    <section id="addresses">
-        @include('dashboard.vendors.partials.addresses')
     </section>
     <script>
         document.getElementById('avatar').addEventListener('change', function () {

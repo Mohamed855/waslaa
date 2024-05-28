@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Admin\Dashboard;
 
 use App\Helpers\Helper;
+use App\Models\Product;
 use App\Traits\AdminRules;
 use App\Traits\QueriesTrait;
 use Illuminate\Http\Request;
+use App\Helpers\DashboardHelper;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Admin\BaseController;
-use App\Models\Product;
 
 class ProductsController extends BaseController
 {
@@ -33,9 +34,18 @@ class ProductsController extends BaseController
             $searchable = ['name_en', 'name_ar'];
             $data = Helper::searchOnQuery($data, $searchable, $_GET['keyword']);
         }
-        $data = $data->paginate(10);
+        $data = DashboardHelper::returnDataOnPagination($data);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
         return view('dashboard.products.index', compact(['data']))->with(['nameOnLang' => $this->nameOnLang]);
+    }
+
+    /**
+     * Display a listing of the orders' products.
+     */
+    public function orderProducts(string $id): View|RedirectResponse
+    {
+        $order = $this->order()->findOrFail($id);
+        return view('dashboard.products.index', compact(['order']))->with(['data' => $order->products]);
     }
 
     /**

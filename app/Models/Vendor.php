@@ -97,6 +97,11 @@ class Vendor extends Authenticatable
         return $this->hasMany(Notification::class, 'user_id')->where('type', 'vendor');
     }
 
+    public function orders ()
+    {
+        return Order::query()->where('vendor->id', auth('vendor')->id());
+    }
+
     public function invoices (): HasMany
     {
         return $this->hasMany(Invoice::class);
@@ -110,6 +115,11 @@ class Vendor extends Authenticatable
     public function types (): HasMany
     {
         return $this->hasMany(Type::class);
+    }
+
+    public function complains (): HasMany
+    {
+        return $this->hasMany(Complain::class);
     }
 
     public function getAllProductIds()

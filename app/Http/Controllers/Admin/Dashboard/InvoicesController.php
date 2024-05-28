@@ -21,13 +21,23 @@ class InvoicesController extends BaseController
     }
 
     /**
+     * Display a listing of invoices.
+     */
+    public function index($status): View|RedirectResponse
+    {
+        $data = auth('admin')->check() ? $this->invoice() : auth('vendor')->user()->invoices();
+        $data = $data->where('status', $status)->with(['vendor']);
+        $data = DashboardHelper::returnDataOnPagination($data);
+        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
+        return view('dashboard.invoices.index', compact(['data', 'status']));
+    }
+
+    /**
      * Display a listing of the opened invoices.
      */
     public function opened(): View|RedirectResponse
     {
-        $data = $this->invoice()->where('status', 'opened')->with(['vendor'])->paginate(10);
-        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
-        return view('dashboard.invoices.opened', compact('data'));
+        return $this->index('opened');
     }
 
     /**
@@ -35,9 +45,7 @@ class InvoicesController extends BaseController
      */
     public function closed(): View|RedirectResponse
     {
-        $data = $this->invoice()->where('status', 'closed')->with(['vendor'])->paginate(10);
-        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
-        return view('dashboard.invoices.closed', compact('data'));
+        return $this->index('closed');
     }
 
     /**
@@ -45,9 +53,7 @@ class InvoicesController extends BaseController
      */
     public function collected(): View|RedirectResponse
     {
-        $data = $this->invoice()->where('status', 'collected')->with(['vendor'])->paginate(10);
-        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
-        return view('dashboard.invoices.collected', compact('data'));
+        return $this->index('collected');
     }
 
     /**
@@ -55,8 +61,7 @@ class InvoicesController extends BaseController
      */
     public function show(string $id): View
     {
-        $guard = DashboardHelper::getCurrentGuard();
-        return parent::showBase($this->table, 'dashboard.invoices.show', $id, vars: ['guard' => $guard], with: ['orders']);
+        return parent::showBase($this->table, 'dashboard.invoices.show', $id);
     }
 
     /**

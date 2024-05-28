@@ -32,7 +32,7 @@
                                             <select id="selectedCategories" class="form-control" name="categories[]" multiple>
                                                 <option selected disabled>@lang('translate.select')</option>
                                                 @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}" {{ auth('vendor')->user()->categories() && in_array($category->id, auth('vendor')->user()->categories()?->get()->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $category->name }}</option>
+                                                    <option value="{{ $category->id }}" {{ auth('vendor')->user()->categories() && in_array($category->id, auth('vendor')->user()->categories()?->get()->pluck('id')->toArray()) ? 'selected' : '' }}>{{ $category->$nameOnLang }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

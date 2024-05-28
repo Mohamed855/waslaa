@@ -73,6 +73,17 @@ trait AdminRules {
         ];
     }
 
+    protected function createComplainRules(): array
+    {
+        return [
+            'title' => 'required|max:60|string',
+            'body' => 'required|max:1000|string',
+            'image' => 'required|max:20480|image',
+            'vendor_id' => 'required|exists:vendors,id,active,1',
+            'user_id' => 'required|exists:users,id',
+        ];
+    }
+
     protected function createAddressRules(): array
     {
         return [
@@ -222,6 +233,16 @@ trait AdminRules {
         return [
             'name' => 'required|max:60|string',
             'image' => 'nullable|max:20480|image',
+        ];
+    }
+
+    protected function updateComplainRules($id): array
+    {
+        return [
+            'title' => 'required|max:60|string',
+            'body' => 'required|max:1000|string',
+            'image' => 'nullable|max:20480|image',
+            'user_id' => 'required|exists:users,id',
         ];
     }
 

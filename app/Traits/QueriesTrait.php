@@ -64,8 +64,6 @@ trait QueriesTrait {
 
     public function invoice(): Builder { return Invoice::query(); }
 
-    public function invoiceOrders(): Builder { return InvoiceOrder::query(); }
-
     public function product(): Builder { return Product::query(); }
 
     public function offers(): Builder { return $this->activeProduct()->where('offer', 1); }

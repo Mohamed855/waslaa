@@ -18,7 +18,7 @@
                                 method="POST">
                                 @csrf
                                 <input type="hidden" name="type" value="vendor">
-                                <input type="hidden" name="user_id" value="{{ $selected['id'] }}">
+                                <input type="hidden" name="user_id" value="{{ $selectedVendorId }}">
                                 <div class="row">
                                     {{-- add city --}}
                                     <div class="col-12 mb-1">
@@ -36,7 +36,7 @@
                                             <select id="addSelectedCity" class="form-control" name="city_id">
                                                 <option selected disabled>@lang('translate.select')</option>
                                                 @foreach ($cities as $city)
-                                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                                    <option value="{{ $city->id }}">{{ $city->$nameOnLang }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

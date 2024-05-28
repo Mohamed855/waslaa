@@ -27,7 +27,7 @@ class GeneralController extends Controller
 
     public function vendorOverview(): View
     {
-        $currVendor = $this->vendor()->where('id', auth('vendor')->id())->with(['managers', 'users', 'categories', 'subcategories' => function ($query) {
+        $currVendor = auth('vendor')->user()->with(['managers', 'users', 'categories', 'subcategories' => function ($query) {
             $query->with(['products']);
         }])->first();
         return view('dashboard.general.vendor-overview', compact(['currVendor']));

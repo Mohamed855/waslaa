@@ -47,7 +47,7 @@
                                             <select id="addSelectedCountry" class="form-control" name="country_id">
                                                 <option selected disabled>@lang('translate.select')</option>
                                                 @foreach ($countries as $country)
-                                                    <option value="{{ $country->id }}">{{ $country->name }}</option>
+                                                    <option value="{{ $country->id }}">{{ $country->$nameOnLang }}</option>
                                                 @endforeach
                                             </select>
                                         </div>

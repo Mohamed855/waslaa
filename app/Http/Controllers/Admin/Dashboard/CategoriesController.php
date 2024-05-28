@@ -29,8 +29,8 @@ class CategoriesController extends BaseController
      */
     public function index(): View|RedirectResponse
     {
-        $categories = $this->activeCategory()->get(['id', $this->nameOnLang . ' as name']);
-        $vars = ['categories' => $categories];
+        $categories = $this->activeCategory()->get();
+        $vars = ['categories' => $categories, 'nameOnLang' => $this->nameOnLang];
         $categoryIndexView = 'dashboard.categories.index';
         $searchable = ['name_en', 'name_ar'];
 

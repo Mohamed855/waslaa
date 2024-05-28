@@ -1,0 +1,18 @@
+@extends('layouts.dashboard')
+@section('title', __('translate.complains') . (isset($username) ? ' [ ' . $username . ' ]' : ''))
+@section('content')
+    @if (auth('vendor')->check())
+        <div class="row">
+            <div class="col-xl-12 d-flex">
+                <div class="mb-2">
+                    <button class="btn btn-success ms-auto" data-bs-toggle="modal" data-bs-target="#AddComplain">
+                        <i data-feather="plus"></i>
+                        @lang('translate.add')
+                    </button>
+                </div>
+                @include('dashboard.complains.components.add')
+            </div>
+        </div>
+    @endif
+    @include('dashboard.complains.components.list')
+@endsection

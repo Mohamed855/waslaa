@@ -40,18 +40,10 @@ class UsersController extends BaseController
     /**
      * Display the specified resource.
      */
-    public function show(string $id): View
+    public function show(string $username): View
     {
-        $singleUserView = 'dashboard.users.show';
-        $with = ['city', 'favoriteVendors', 'vendors', 'complains' => function ($query) {
-            $query->with('vendor');
-        }];
-
-        if (auth('admin')->check()) {
-            return parent::showBase($this->table, $singleUserView, $id, with: $with);
-        } else {
-            return parent::vendorShowBase('users', $singleUserView, $id, with: $with);
-        }
+        $selected = DashboardHelper::getUserByUsername($username);
+        return view('dashboard.users.show', compact(['selected']))->with(['nameOnLang' => $this->nameOnLang]);
     }
 
     /**
