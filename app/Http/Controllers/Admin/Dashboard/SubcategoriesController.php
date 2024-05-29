@@ -52,11 +52,7 @@ class SubcategoriesController extends BaseController
      */
     public function store(Request $request): RedirectResponse
     {
-        return parent::storeBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'category_id', 'avatar'], $this->createSubcategoryRules(), [
-            'table' => 'vendor_subcategories',
-            'foreign' => 'subcategory',
-            'related' => 'vendor',
-        ]);
+        return parent::storeBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'category_id', 'vendor_id', 'avatar'], $this->createSubcategoryRules());
     }
 
     /**
@@ -64,11 +60,7 @@ class SubcategoriesController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'category_id', 'avatar'], $this->updateSubcategoryRules($id), $id, [
-            'table' => 'vendor_subcategories',
-            'foreign' => 'subcategory',
-            'related' => 'vendor',
-        ]);
+        return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'category_id', 'vendor_id', 'avatar'], $this->updateSubcategoryRules($id), $id);
     }
 
     /**

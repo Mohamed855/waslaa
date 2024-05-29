@@ -129,7 +129,7 @@ class Vendor extends Authenticatable
 
     public function products()
     {
-        $subcategoriesIds = $this->subcategories()->pluck('subcategories.id')->toArray();
+        $subcategoriesIds = $this->subcategories()->pluck('id')->toArray();
         return Product::query()->whereIn('subcategory_id', $subcategoriesIds);
     }
 

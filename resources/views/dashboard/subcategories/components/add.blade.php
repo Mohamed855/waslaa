@@ -17,7 +17,7 @@
                             <form id="subcategoriesStore" class="form form-vertical" action="{{ route('subcategories.store') }} "
                                 method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" name="vendor" value="{{ $vendorId }}"/>
+                                <input type="hidden" name="vendor_id" value="{{ $vendorId }}"/>
                                 <div class="row">
                                     {{-- add en name --}}
                                     <div class="col-12 mb-1">

@@ -123,6 +123,7 @@ trait AdminRules {
             'name_en' => 'required|max:60|string',
             'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
             'category_id' => 'required|exists:categories,id,active,1',
+            'vendor_id' => 'required|exists:vendors,id,active,1',
             'avatar' => 'required|max:20480|image',
         ];
     }
@@ -281,6 +282,7 @@ trait AdminRules {
             'name_en' => 'required|max:60|string',
             'name_ar' => ['required', 'max:60', new ArabicRule(), 'string'],
             'category_id' => 'required|exists:categories,id,active,1',
+            'vendor_id' => 'required|exists:vendors,id,active,1',
             'avatar' => 'nullable|max:20480|image',
         ];
     }
