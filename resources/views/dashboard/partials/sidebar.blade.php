@@ -225,7 +225,7 @@
                 </li>
                 <li class="nav-item {{ request()->routeIs('types.index') ? 'active' : '' }}">
                     <a class="nav-link d-flex align-items-center" href="{{ route('types.index') }}">
-                        <i data-feather="type"></i>
+                        <i data-feather="radio"></i>
                         @lang('translate.types')
                     </a>
                 </li>

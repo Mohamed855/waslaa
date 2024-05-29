@@ -68,7 +68,7 @@
                 <div class="col-md-6 col-sm-12 mb-1">
                     <label class="form-label" for="type[]">@lang('translate.types') <span class="text-danger">*</span></label>
                     <div class="input-group input-group-merge">
-                        <span class="input-group-text"><i data-feather='type'></i></span>
+                        <span class="input-group-text"><i data-feather='radio'></i></span>
                         <select id="selectedTypes" class="form-control" name="type[]" multiple>
                             <option selected disabled>@lang('translate.select')</option>
                             @foreach ($types as $type)
