@@ -27,7 +27,7 @@
                                 <th>@lang('translate.address')</th>
                                 <th>@lang('translate.deliveryMethod')</th>
                                 <th>@lang('translate.payMethod')</th>
-                                @if (request()->routeIs(['userOrders', 'vendorOrders']))
+                                @if (request()->routeIs(['userOrders', 'vendorOrders', 'invoiceOrders']))
                                     <th>@lang('translate.status')</th>
                                 @endif
                                 <th>@lang('translate.total')</th>
@@ -49,7 +49,7 @@
                                     <td style="min-width: 320px">{{ $single->address }}</td>
                                     <td>{{ __('translate.' . $single->deliveryMethod) }}</td>
                                     <td>{{ __('translate.' . $single->payMethod) }}</td>
-                                    @if (request()->routeIs(['userOrders', 'vendorOrders']))
+                                    @if (request()->routeIs(['userOrders', 'vendorOrders', 'invoiceOrders']))
                                         <td>{{ __('translate.' . $single->status) }}</td>
                                     @endif
                                     <td>{{ $single->totalCost }} @lang('translate.pound')</td>

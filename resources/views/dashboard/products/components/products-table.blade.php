@@ -14,7 +14,9 @@
                     <th>@lang('translate.rate')</th>
                     <th>@lang('translate.category')</th>
                     <th>@lang('translate.subcategory')</th>
-                    <th>@lang('translate.active')</th>
+                    @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
+                        <th>@lang('translate.active')</th>
+                    @endif
                     <th>@lang('translate.actions')</th>
                 </tr>
                 </thead>
@@ -56,17 +58,25 @@
                             <td><i data-feather="star" style="color: #E5B80B"></i> {{ $single->rate }}</td>
                             <td> {{ $single->subcategory?->category?->$nameOnLang }} </td>
                             <td> {{ $single->subcategory?->$nameOnLang }} </td>
-                            <td>
-                                <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'product', 'id' => $single->id]) }}" method="post">
-                                    @csrf
-                                    <label class="switch">
-                                        <input type="checkbox" name="activated" onclick="this.form.submit()"
-                                                {{ $single->active ? 'checked' : '' }}>
-                                        <span class="slider round"></span>
-                                    </label>
-                                </form>
-                            </td>
-                            <td style="min-width: 320px">
+                            @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
+                                <td>
+                                    <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'product', 'id' => $single->id]) }}" method="post">
+                                        @csrf
+                                        <label class="switch">
+                                            <input type="checkbox" name="activated" onclick="this.form.submit()"
+                                                    {{ $single->active ? 'checked' : '' }}>
+                                            <span class="slider round"></span>
+                                        </label>
+                                    </form>
+                                </td>
+                            @endif
+                            <td style="min-width: 370px">
+                                <a href="{{ route('showProduct', $single->id) }}">
+                                    <button class="btn btn-info ms-auto">
+                                        <i data-feather="eye"></i>
+                                        @lang('translate.show')
+                                    </button>
+                                </a>
                                 @if (auth('vendor')->check())
                                     <a href="{{ route('products.edit', $single->id) }}">
                                         <button class="btn btn-primary ms-auto">
@@ -75,7 +85,9 @@
                                         </button>
                                     </a>
                                 @endif
-                                @include('dashboard.partials.delete-modal', ['resource' => 'product', 'resources' => 'products'])
+                                @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
+                                    @include('dashboard.partials.delete-modal', ['resource' => 'product', 'resources' => 'products'])
+                                @endif
                             </td>
                         </tr>
                     @endforeach

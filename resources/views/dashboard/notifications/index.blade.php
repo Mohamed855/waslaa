@@ -42,7 +42,9 @@
                                             @lang('translate.edit')
                                         </button>
                                     </a>
-                                    @include('dashboard.partials.delete-modal', ['resource' => 'notification', 'resources' => 'notifications'])
+                                    @if ((auth('admin')->check() && auth('admin')->user()->is_primary) || auth('vendor')->check())
+                                        @include('dashboard.partials.delete-modal', ['resource' => 'notification', 'resources' => 'notifications'])
+                                    @endif
                                     <button type="button" class="btn btn-warning ms-auto" onclick="notifyUser()" data-bs-toggle="modal">
                                         <i data-feather="bell"></i>
                                         @lang('translate.notify')

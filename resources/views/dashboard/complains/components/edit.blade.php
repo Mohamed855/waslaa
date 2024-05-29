@@ -30,7 +30,7 @@
                                             <textarea class="form-control" id="body" name="body" placeholder="@lang('translate.body')">{{ $single->body }}</textarea>
                                         </div>
                                     </div>
-                                    @if (! request()->routeIs('userComplains'))
+                                    @if (auth('vendor')->check() && request()->routeIs('complains.index'))
                                         {{-- edit user --}}
                                         <div class="col-12 mb-1">
                                             <label class="form-label" for="user">@lang('translate.user') <span class="text-danger">*</span></label>

@@ -88,7 +88,10 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::resource('notifications', NotificationsController::class)->except(['show']);
         Route::resource('complains', ComplainsController::class)->except(['create', 'edit', 'show']);
         Route::resource('subcategories', SubcategoriesController::class)->except(['create', 'edit', 'show']);
-        Route::resource('products', ProductsController::class)->except([]);
+        Route::resource('products', ProductsController::class);
+        Route::prefix('product/{id}')->group(function () {
+            Route::get('/', [ProductsController::class, 'show'])->name('showProduct');
+        });
         Route::resource('components', ComponentsController::class)->except(['create', 'edit', 'show']);
         Route::resource('types', TypesController::class)->except(['create', 'edit', 'show']);
 

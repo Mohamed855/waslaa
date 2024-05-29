@@ -27,8 +27,8 @@
                             @if (auth('admin')->user()->is_primary)
                                 <th>@lang('translate.active')</th>
                                 <th>@lang('translate.primary')</th>
+                                <th>@lang('translate.actions')</th>
                             @endif
-                            <th>@lang('translate.actions')</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -66,20 +66,20 @@
                                             </label>
                                         </form>
                                     </td>
+                                    <td style="min-width: 320px">
+                                        @if (! $single->is_primary)
+                                            <a href="{{ route('admins.edit', $single->id) }}">
+                                                <button class="btn btn-primary ms-auto">
+                                                    <i data-feather="edit"></i>
+                                                    @lang('translate.edit')
+                                                </button>
+                                            </a>
+                                            @include('dashboard.partials.delete-modal', ['resource' => 'admin', 'resources' => 'admins'])
+                                        @else
+                                            @lang('error.cannotEdit')
+                                        @endif
+                                    </td>
                                 @endif
-                                <td style="min-width: 320px">
-                                    @if (!$single->is_primary)
-                                        <a href="{{ route('admins.edit', $single->id) }}">
-                                            <button class="btn btn-primary ms-auto">
-                                                <i data-feather="edit"></i>
-                                                @lang('translate.edit')
-                                            </button>
-                                        </a>
-                                        @include('dashboard.partials.delete-modal', ['resource' => 'admin', 'resources' => 'admins'])
-                                    @else
-                                        @lang('error.cannotEdit')
-                                    @endif
-                                </td>
                             </tr>
                         @endforeach
                         </tbody>

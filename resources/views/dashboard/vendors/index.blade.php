@@ -78,16 +78,14 @@
                                     </form>
                                 </td>
                                 <td style="min-width: 370px">
-                                    @if (!$single->is_primary)
-                                        <a href="{{ route('showVendor', $single->username) }}">
-                                            <button class="btn btn-info ms-auto">
-                                                <i data-feather="eye"></i>
-                                                @lang('translate.show')
-                                            </button>
-                                        </a>
+                                    <a href="{{ route('showVendor', $single->username) }}">
+                                        <button class="btn btn-info ms-auto">
+                                            <i data-feather="eye"></i>
+                                            @lang('translate.show')
+                                        </button>
+                                    </a>
+                                    @if (auth('admin')->check() && auth('admin')->user()->is_primary)
                                         @include('dashboard.partials.delete-modal', ['resource' => 'vendor', 'resources' => 'vendors'])
-                                    @else
-                                        @lang('error.cannotEdit')
                                     @endif
                                 </td>
                             </tr>

@@ -8,7 +8,7 @@
                         <th>@lang('translate.id')</th>
                         <th>@lang('translate.avatar')</th>
                         <th>@lang('translate.name')</th>
-                        @if (auth('admin')->check() && auth('admin')->user()->is_primary && ! request()->routeIs('vendorCategories'))
+                        @if (auth('admin')->check() && auth('admin')->user()->is_primary)
                             <th>@lang('translate.active')</th>
                         @endif
                         <th>@lang('translate.actions')</th>
@@ -24,7 +24,7 @@
                                 </div>
                             </td>
                             <td>{{ $single->$nameOnLang }}</td>
-                            @if (auth('admin')->check() && auth('admin')->user()->is_primary && ! request()->routeIs('vendorCategories'))
+                            @if (auth('admin')->check() && auth('admin')->user()->is_primary)
                                 <td>
                                     <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'category', 'id' => $single->id]) }}" method="post">
                                         @csrf
@@ -36,7 +36,7 @@
                                 </td>
                             @endif
                             <td style="min-width: 320px">
-                                @if (auth('admin')->check() && ! request()->routeIs('vendorCategories'))
+                                @if (auth('admin')->check() && request()->routeIs('categories.index'))
                                     <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeCategoryBtn" data-bs-toggle="modal" data-bs-target="#EditCategory{{ $single->id }}" data-="{{ $single }}">
                                         <i data-feather="edit"></i>
                                         @lang('translate.edit')

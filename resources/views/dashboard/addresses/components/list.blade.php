@@ -37,7 +37,9 @@
                                         <i data-feather="edit"></i>
                                         @lang('translate.edit')
                                     </button>
-                                    @include('dashboard.partials.delete-modal', ['resource' => 'address', 'resources' => 'addresses'])
+                                    @if (auth('admin')->check() && auth('admin')->user()->is_primary)
+                                        @include('dashboard.partials.delete-modal', ['resource' => 'address', 'resources' => 'addresses'])
+                                    @endif
                                 </td>
                                 @include('dashboard.addresses.components.edit')
                             @endif

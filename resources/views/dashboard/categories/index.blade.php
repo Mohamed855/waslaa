@@ -9,7 +9,7 @@
                     @lang('translate.add')
                 </button>
             </div>
-            @if (auth('admin')->check() && ! request()->routeIs('vendorCategories'))
+            @if (auth('admin')->check() && request()->routeIs('categories.index'))
                 @include('dashboard.categories.components.add')
             @elseif (auth('vendor')->check() || request()->routeIs('vendorCategories'))
                 @include('dashboard.categories.components.vendor-select-category')

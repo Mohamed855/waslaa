@@ -19,7 +19,7 @@
                         <p class="card-text">@lang('translate.secPhone'): {{ $selected->sec_phone ?? '-' }}</p>
                         <p class="card-text">@lang('translate.gender'): {{ $selected->gender }}</p>
                         <p class="card-text">@lang('translate.city'): {{ $selected->city->$nameOnLang }}</p>
-                        @if (auth('admin')->user())
+                        @if (auth('admin')->check())
                             <p class="card-text">@lang('translate.following'): {{ count($selected->favoriteVendors) }}</p>
                             <p class="card-text">@lang('translate.userIn'): {{ count($selected->vendors) }}</p>
                             <p class="card-text">@lang('translate.complains'): {{ count($selected->complains) }}</p>

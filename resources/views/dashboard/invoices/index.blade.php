@@ -24,7 +24,7 @@
                                     <th>@lang('translate.end')</th>
                                 @endif
                                 <th>@lang('translate.orders')</th>
-                                @if (request()->routeIs(['userInvoices', 'vendorInvoices']))
+                                @if (request()->routeIs('vendorInvoices'))
                                     <th>@lang('translate.status')</th>
                                 @endif
                                 <th>@lang('translate.total')</th>
@@ -43,7 +43,7 @@
                                     <td>{{ $single->end ? date_format($single->end, 'd-m-Y') : '-' }}</td>
                                     @endif
                                     <td>{{ $single->orders ? count($single->orders) : 0 }}</td>
-                                    @if (request()->routeIs(['userInvoices', 'vendorInvoices']))
+                                    @if (request()->routeIs('vendorInvoices'))
                                         <td>{{ __('translate.' . $single->status) }}</td>
                                     @endif
                                     <td>{{ $single->total_price }} @lang('translate.pound')</td>

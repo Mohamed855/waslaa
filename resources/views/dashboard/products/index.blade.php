@@ -9,7 +9,7 @@
 @section('title', $title . $productDesc)
 @section('content')
     <section>
-        @if (request()->routeIs('products.index'))
+        @if (auth('vendor')->check() && request()->routeIs('products.index'))
             <div class="row d-flex">
                 <div class="col-xl-12 mb-2">
                     <a href="{{ route('products.create') }}">

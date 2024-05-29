@@ -9,7 +9,7 @@
                         <th>@lang('translate.avatar')</th>
                         <th>@lang('translate.name')</th>
                         <th>@lang('translate.category')</th>
-                        @if (auth('vendor')->check() || auth('admin')->check())
+                        @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
                             <th>@lang('translate.active')</th>
                         @endif
                         <th>@lang('translate.actions')</th>
@@ -26,7 +26,7 @@
                             </td>
                             <td>{{ $single->$nameOnLang }}</td>
                             <td>{{ $single->category?->$nameOnLang ?? __('translate.notSelected') }}</td>
-                            @if (auth('vendor')->check() || auth('admin')->check())
+                            @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
                                 <td>
                                     <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'subcategory', 'id' => $single->id]) }}" method="post">                                        @csrf
                                         <label class="switch">
@@ -41,7 +41,7 @@
                                     <i data-feather="edit"></i>
                                     @lang('translate.edit')
                                 </button>
-                                @if (auth('vendor')->check() || auth('admin')->check())
+                                @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
                                     @include('dashboard.partials.delete-modal', ['resource' => 'subcategory', 'resources' => 'subcategories'])
                                 @endif
                             </td>
