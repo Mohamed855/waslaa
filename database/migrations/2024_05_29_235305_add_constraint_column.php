@@ -11,12 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('components', function (Blueprint $table) {
-            $table->foreign('vendor_id')->references('id')->on('vendors')->constrained()->onUpdate('cascade')->onDelete('cascade');
-        });
-        Schema::table('types', function (Blueprint $table) {
-            $table->foreign('vendor_id')->references('id')->on('vendors')->constrained()->onUpdate('cascade')->onDelete('cascade');
-        });
         Schema::table('subcategories', function (Blueprint $table) {
             $table->foreign('vendor_id')->references('id')->on('vendors')->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
