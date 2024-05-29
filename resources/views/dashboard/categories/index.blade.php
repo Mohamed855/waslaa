@@ -10,11 +10,11 @@
                 </button>
             </div>
             @if (auth('admin')->check() && request()->routeIs('categories.index'))
-                @include('dashboard.categories.components.add')
+                @include('dashboard.categories.partials.add')
             @elseif (auth('vendor')->check() || request()->routeIs('vendorCategories'))
-                @include('dashboard.categories.components.vendor-select-category')
+                @include('dashboard.categories.partials.vendor-select-category')
             @endif
         </div>
     </div>
-    @include('dashboard.categories.components.list')
+    @include('dashboard.categories.partials.list')
 @endsection

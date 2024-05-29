@@ -47,7 +47,7 @@
                                         <i data-feather="edit"></i>
                                         @lang('translate.edit')
                                     </button>
-                                    @include('dashboard.complains.components.edit')
+                                    @include('dashboard.complains.partials.edit')
                                     @include('dashboard.partials.delete-modal', ['resource' => 'complain', 'resources' => 'complains'])
                                 </td>
                             @endif

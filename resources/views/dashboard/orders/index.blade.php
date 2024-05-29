@@ -10,6 +10,6 @@
 @section('title', $title . $orderDesc)
 @section('content')
     <section>
-        @include('dashboard.orders.components.list')
+        @include('dashboard.orders.partials.list')
     </section>
 @endsection

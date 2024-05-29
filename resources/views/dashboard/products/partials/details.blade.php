@@ -23,7 +23,7 @@
     @if (auth('vendor')->check())
         <div class="row">
             <div class="col-md-12 col-12 m-auto">
-                @include('dashboard.products.components.edit')
+                @include('dashboard.products.partials.edit')
             </div>
         </div>
     @endif

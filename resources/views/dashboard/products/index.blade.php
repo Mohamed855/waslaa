@@ -22,9 +22,9 @@
             </div>
         @endif
         @if (request()->routeIs(['products.index', 'vendorProducts']))
-            @include('dashboard.products.components.products-list')
+            @include('dashboard.products.partials.products-list')
         @elseif (request()->routeIs('orderProducts'))
-            @include('dashboard.products.components.order-products-list')
+            @include('dashboard.products.partials.order-products-list')
         @endif
     </section>
 @endsection

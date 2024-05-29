@@ -9,8 +9,8 @@
                     @lang('translate.add')
                 </button>
             </div>
-            @include('dashboard.cities.components.add')
+            @include('dashboard.cities.partials.add')
         </div>
     </div>
-    @include('dashboard.cities.components.list')
+    @include('dashboard.cities.partials.list')
 @endsection

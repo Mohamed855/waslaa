@@ -10,9 +10,9 @@
                         @lang('translate.add')
                     </button>
                 </div>
-                @include('dashboard.addresses.components.add')
+                @include('dashboard.addresses.partials.add')
             </div>
         </div>
     @endif
-    @include('dashboard.addresses.components.list')
+    @include('dashboard.addresses.partials.list')
 @endsection

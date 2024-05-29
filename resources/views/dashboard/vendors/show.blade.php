@@ -40,8 +40,8 @@
                 </div>
             </div>
             <div class="col-12 col-md-7 col-lg-8">
-                @include('dashboard.vendors.components.details')
-                @include('dashboard.vendors.components.update-password')
+                @include('dashboard.vendors.partials.details')
+                @include('dashboard.vendors.partials.update-password')
             </div>
         </div>
     </section>

@@ -44,7 +44,7 @@
                                     <i data-feather="edit"></i>
                                     @lang('translate.edit')
                                 </button>
-                                @include('dashboard.managers.components.edit')
+                                @include('dashboard.managers.partials.edit')
                                 @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
                                     @include('dashboard.partials.delete-modal', ['resource' => 'manager', 'resources' => 'managers'])
                                 @endif

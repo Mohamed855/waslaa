@@ -6,9 +6,10 @@
                 <thead>
                     <tr>
                         <th>@lang('translate.id')</th>
-                        <th>@lang('translate.image')</th>
+                        <th>@lang('translate.avatar')</th>
                         <th>@lang('translate.name')</th>
-                        @if (auth('admin')->user()->is_primary)
+                        <th>@lang('translate.category')</th>
+                        @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
                             <th>@lang('translate.active')</th>
                         @endif
                         <th>@lang('translate.actions')</th>
@@ -20,14 +21,14 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>
                                 <div class="avatar avatar-xl">
-                                    <img alt="" src="{{ asset('storage/images/ads/' . $single->image) }}"/>
+                                    <img alt="" src="{{ asset('storage/images/subcategories/' . $single->avatar) }}"/>
                                 </div>
                             </td>
-                            <td>{{ $single->name }}</td>
-                            @if (auth('admin')->user()->is_primary)
+                            <td>{{ $single->$nameOnLang }}</td>
+                            <td>{{ $single->category?->$nameOnLang ?? __('translate.notSelected') }}</td>
+                            @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
                                 <td>
-                                    <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'ad', 'id' => $single->id]) }}" method="post">
-                                        @csrf
+                                    <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'subcategory', 'id' => $single->id]) }}" method="post">                                        @csrf
                                         <label class="switch">
                                             <input type="checkbox" name="activated" onclick="this.form.submit()" {{ $single->active ? 'checked' : '' }}>
                                             <span class="slider round"></span>
@@ -36,13 +37,13 @@
                                 </td>
                             @endif
                             <td style="min-width: 320px">
-                                <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeAdBtn" data-bs-toggle="modal" data-bs-target="#EditAd{{ $single->id }}" data-="{{ $single }}">
+                                <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeSubcategoryBtn" data-bs-toggle="modal" data-bs-target="#EditSubcategory{{ $single->id }}" data-="{{ $single }}">
                                     <i data-feather="edit"></i>
                                     @lang('translate.edit')
                                 </button>
-                                @include('dashboard.ads.components.edit')
-                                @if (auth('admin')->user()->is_primary)
-                                    @include('dashboard.partials.delete-modal', ['resource' => 'ad', 'resources' => 'ads'])
+                                @include('dashboard.subcategories.partials.edit')
+                                @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
+                                    @include('dashboard.partials.delete-modal', ['resource' => 'subcategory', 'resources' => 'subcategories'])
                                 @endif
                             </td>
                         </tr>
@@ -56,12 +57,19 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
-        $('.typeAdBtn').on('click', function () {
+        $('.typeSubcategoryBtn').on('click', function () {
             let id = $(this).attr('data-id');
-            let ad = JSON.parse($(this).attr('data-'));
-            $('#name').val(ad.name);
-            let url = '{{ asset('') }}' + 'ads/' + id
-            $('#updateAdForm' + id).attr('action', url);
+            let subcategory = JSON.parse($(this).attr('data-'));
+            let categoryId = $('#categoryId' + subcategory.id);
+            categoryId.val(subcategory.category_id);
+            $('#editSelectedCategory' + subcategory.id).on('change', function () {
+                let selectedCategoryId = $(this).val();
+                categoryId.val(selectedCategoryId);
+            });
+            $('#enName').val(subcategory.name_en);
+            $('#arName').val(subcategory.name_ar);
+            let url = '{{ asset('') }}' + 'subcategories/' + id
+            $('#updateSubcategoryForm' + id).attr('action', url);
         });
     });
 </script>

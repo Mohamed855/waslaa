@@ -7,7 +7,6 @@
                     <tr>
                         <th>@lang('translate.id')</th>
                         <th>@lang('translate.name')</th>
-                        <th>@lang('translate.country')</th>
                         @if (auth('admin')->user()->is_primary)
                             <th>@lang('translate.active')</th>
                         @endif
@@ -19,10 +18,10 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $single->$nameOnLang }}</td>
-                            <td>{{ $single->country?->$nameOnLang ?? __('translate.notSelected') }}</td>
                             @if (auth('admin')->user()->is_primary)
                                 <td>
-                                    <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'city', 'id' => $single->id]) }}" method="post">                                        @csrf
+                                    <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'country', 'id' => $single->id]) }}" method="post">
+                                        @csrf
                                         <label class="switch">
                                             <input type="checkbox" name="activated" onclick="this.form.submit()" {{ $single->active ? 'checked' : '' }}>
                                             <span class="slider round"></span>
@@ -31,13 +30,13 @@
                                 </td>
                             @endif
                             <td style="min-width: 320px">
-                                <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeCityBtn" data-bs-toggle="modal" data-bs-target="#EditCity{{ $single->id }}" data-="{{ $single }}">
+                                <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeCountryBtn" data-bs-toggle="modal" data-bs-target="#EditCountry{{ $single->id }}" data-="{{ $single }}">
                                     <i data-feather="edit"></i>
                                     @lang('translate.edit')
                                 </button>
-                                @include('dashboard.cities.components.edit')
+                                @include('dashboard.countries.partials.edit')
                                 @if (auth('admin')->user()->is_primary)
-                                    @include('dashboard.partials.delete-modal', ['resource' => 'city', 'resources' => 'cities'])
+                                    @include('dashboard.partials.delete-modal', ['resource' => 'country', 'resources' => 'countries'])
                                 @endif
                             </td>
                         </tr>
@@ -51,19 +50,13 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
-        $('.typeCityBtn').on('click', function () {
+        $('.typeCountryBtn').on('click', function () {
             let id = $(this).attr('data-id');
-            let city = JSON.parse($(this).attr('data-'));
-            let countryId = $('#countryId' + city.id);
-            countryId.val(city.country_id);
-            $('#editSelectedCountry' + city.id).on('change', function () {
-                let selectedCountryId = $(this).val();
-                countryId.val(selectedCountryId);
-            });
-            $('#enName').val(city.name_en);
-            $('#arName').val(city.name_ar);
-            let url = '{{ asset('') }}' + 'cities/' + id
-            $('#updateCityForm' + id).attr('action', url);
+            let country = JSON.parse($(this).attr('data-'));
+            $('#enName').val(country.name_en);
+            $('#arName').val(country.name_ar);
+            let url = '{{ asset('') }}' + 'countries/' + id
+            $('#updateCountryForm' + id).attr('action', url);
         });
     });
 </script>

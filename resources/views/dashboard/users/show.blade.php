@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-7 col-lg-8">
-                @include('dashboard.users.components.details')
+                @include('dashboard.users.partials.details')
             </div>
         </div>
     </section>

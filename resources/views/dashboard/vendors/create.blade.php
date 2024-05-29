@@ -4,7 +4,7 @@
     <section id="basic-horizontal-layouts">
         <div class="row">
             <div class="col-md-12 col-12 m-auto">
-                @include('dashboard.vendors.components.add')
+                @include('dashboard.vendors.partials.add')
             </div>
         </div>
     </section>

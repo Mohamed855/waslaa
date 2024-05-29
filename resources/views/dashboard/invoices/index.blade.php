@@ -9,6 +9,6 @@
 @section('title', __('translate.invoices') . $invoiceDesc)
 @section('content')
     <section>
-        @include('dashboard.invoices.components.list')
+        @include('dashboard.invoices.partials.list')
     </section>
 @endsection

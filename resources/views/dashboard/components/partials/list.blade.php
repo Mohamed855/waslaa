@@ -39,12 +39,12 @@
                                         <i data-feather="edit"></i>
                                         @lang('translate.edit')
                                     </button>
-                                    @include('dashboard.components.components.edit')
+                                    @include('dashboard.components.partials.edit')
                                     @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
                                         @include('dashboard.partials.delete-modal', ['resource' => 'component', 'resources' => 'components'])
                                     @endif
                                 @elseif (request()->routeIs('productComponents'))
-                                    @include('dashboard.components.components.product-remove-component')
+                                    @include('dashboard.components.partials.product-remove-component')
                                 @endif
                             </td>
                         </tr>

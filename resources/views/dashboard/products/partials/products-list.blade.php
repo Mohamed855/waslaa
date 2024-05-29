@@ -37,14 +37,14 @@
                                         <i data-feather="{{ $single->offer ? 'edit' : 'plus-circle' }}"></i>
                                         @lang('translate.' . ( $single->offer ? 'update' : 'add'))
                                     </button>
-                                    @include('dashboard.products.components.update-offer')
+                                    @include('dashboard.products.partials.update-offer')
                                 </td>
                                 <td style="min-width: 180px">
                                     <button class="btn btn-link ms-auto" data-bs-toggle="modal" data-bs-target="#UpdatePrices{{  $single->id }}">
                                         <i data-feather="edit"></i>
                                         @lang('translate.update')
                                     </button>
-                                    @include('dashboard.products.components.update-prices')
+                                    @include('dashboard.products.partials.update-prices')
                                 </td>
                             @endif
                             <td><i data-feather="star" style="color: #E5B80B"></i> {{ $single->rate }}</td>

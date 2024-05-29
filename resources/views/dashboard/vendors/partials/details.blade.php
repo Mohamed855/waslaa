@@ -42,7 +42,7 @@
     </div>
     <div class="row">
         <div class="col-md-12 col-12 m-auto">
-            @include('dashboard.vendors.components.edit')
+            @include('dashboard.vendors.partials.edit')
         </div>
     </div>
 </div>

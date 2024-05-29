@@ -10,11 +10,11 @@
                 </button>
             </div>
             @if (request()->routeIs(['types.index', 'vendorTypes']))
-                @include('dashboard.types.components.add')
+                @include('dashboard.types.partials.add')
             @elseif (request()->routeIs('productTypes'))
-                @include('dashboard.types.components.product-select-type')
+                @include('dashboard.types.partials.product-select-type')
             @endif
         </div>
     </div>
-    @include('dashboard.types.components.list')
+    @include('dashboard.types.partials.list')
 @endsection

@@ -3,7 +3,7 @@
 @section('content')
     <section id="basic-horizontal-layouts">
         <div class="row">
-            @include('dashboard.orders.components.details')
+            @include('dashboard.orders.partials.details')
         </div>
     </section>
 @endsection

@@ -12,6 +12,6 @@
                 </a>
             </div>
         </div>
-        @include('dashboard.vendors.components.list')
+        @include('dashboard.vendors.partials.list')
     </section>
 @endsection

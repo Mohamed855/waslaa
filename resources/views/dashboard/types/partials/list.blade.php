@@ -47,12 +47,12 @@
                                         <i data-feather="edit"></i>
                                         @lang('translate.edit')
                                     </button>
-                                    @include('dashboard.types.components.edit')
+                                    @include('dashboard.types.partials.edit')
                                     @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
                                         @include('dashboard.partials.delete-modal', ['resource' => 'type', 'resources' => 'types'])
                                     @endif
                                 @elseif (request()->routeIs('productTypes'))
-                                    @include('dashboard.types.components.product-remove-type')
+                                    @include('dashboard.types.partials.product-remove-type')
                                 @endif
                             </td>
                         </tr>

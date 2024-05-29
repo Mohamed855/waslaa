@@ -211,7 +211,7 @@
                         @lang('translate.subcategories')
                     </a>
                 </li>
-                <li class="nav-item {{ request()->routeIs(['products.index', 'products.create', 'products.edit']) ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs(['products.index', 'showProduct']) ? 'active' : '' }}">
                     <a class="nav-link d-flex align-items-center" href="{{ route('products.index') }}">
                         <i data-feather="shopping-cart"></i>
                         @lang('translate.products')

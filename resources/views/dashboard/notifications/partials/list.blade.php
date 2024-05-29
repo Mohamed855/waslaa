@@ -27,7 +27,7 @@
                                     <i data-feather="edit"></i>
                                     @lang('translate.edit')
                                 </button>
-                                @include('dashboard.notifications.components.edit')
+                                @include('dashboard.notifications.partials.edit')
                                 @if ((auth('admin')->check() && auth('admin')->user()->is_primary) || auth('vendor')->check())
                                     @include('dashboard.partials.delete-modal', ['resource' => 'notification', 'resources' => 'notifications'])
                                 @endif

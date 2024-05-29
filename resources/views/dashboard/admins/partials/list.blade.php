@@ -59,7 +59,7 @@
                                             <i data-feather="edit"></i>
                                             @lang('translate.edit')
                                         </button>
-                                        @include('dashboard.admins.components.edit')
+                                        @include('dashboard.admins.partials.edit')
                                         @include('dashboard.partials.delete-modal', ['resource' => 'admin', 'resources' => 'admins'])
                                     @else
                                         @lang('error.cannotEdit')
