@@ -86,8 +86,6 @@ trait QueriesTrait {
 
     public function vendorCategory(): Builder { return VendorCategory::query(); }
 
-    public function vendorSubcategory(): Builder { return VendorSubcategory::query(); }
-
     // Active Queries
 
     public function activeAd(): Builder { return $this->ad()->where('active', 1); }

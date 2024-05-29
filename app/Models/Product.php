@@ -35,7 +35,7 @@ class Product extends Model
 
     public function vendor()
     {
-        return $this->belongsTo(Subcategory::class);
+        return $this->subcategory()->vendor();
     }
 
     public function favorites (): BelongsToMany
