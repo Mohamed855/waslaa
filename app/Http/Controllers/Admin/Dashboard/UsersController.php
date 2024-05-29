@@ -38,6 +38,17 @@ class UsersController extends BaseController
     }
 
     /**
+     * Display a listing of the vendors' users.
+     */
+    public function vendorUsers(string $username): View|RedirectResponse
+    {
+        $vendor = DashboardHelper::getVendorByUsername($username);
+        $data = DashboardHelper::returnDataOnPagination($vendor->users());
+        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
+        return view('dashboard.users.index', compact(['data', 'username']))->with(['nameOnLang' => $this->nameOnLang]);
+    }
+
+    /**
      * Display the specified resource.
      */
     public function show(string $username): View

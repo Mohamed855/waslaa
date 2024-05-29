@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', __('translate.users'))
+@section('title', __('translate.users') . (isset($username) ? ' [ ' . $username . ' ]' : ''))
 @section('content')
     <section>
         <div class="card">
@@ -17,7 +17,7 @@
                             <th>@lang('translate.gender')</th>
                             <th>@lang('translate.city')</th>
                             <th>@lang('translate.verified')</th>
-                            @if (auth('admin')->user())
+                            @if (auth('admin')->user() && ! request()->routeIs('vendorUsers'))
                                 <th>@lang('translate.active')</th>
                             @endif
                             <th>@lang('translate.actions')</th>
@@ -52,7 +52,7 @@
                                         </svg>
                                     @endif
                                 </td>
-                                @if (auth('admin')->user())
+                                @if (auth('admin')->user() && ! request()->routeIs('vendorUsers'))
                                     <td>
                                         <form class="p-0 m-0"
                                             action="{{ route('activation.toggle', ['table' => 'user', 'id' => $single->id]) }}"
@@ -73,7 +73,7 @@
                                             @lang('translate.show')
                                         </button>
                                     </a>
-                                    @if (auth('admin')->user())
+                                    @if (auth('admin')->user() && ! request()->routeIs('vendorUsers'))
                                         @if (auth('admin')->user()->is_primary)
                                             @include('dashboard.partials.delete-modal', ['resource' => 'user', 'resources' => 'users'])
                                         @else

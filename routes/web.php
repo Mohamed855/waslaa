@@ -121,6 +121,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::resource('vendors', VendorsController::class)->except(['edit']);
         Route::prefix('vendor/{username}')->group(function () {
             Route::get('/', [VendorsController::class, 'show'])->name('showVendor');
+            Route::get('users', [UsersController::class, 'vendorUsers'])->name('vendorUsers');
             Route::get('managers', [ManagersController::class, 'vendorManagers'])->name('vendorManagers');
             Route::get('invoices', [InvoicesController::class, 'vendorInvoices'])->name('vendorInvoices');
             Route::get('orders', [OrdersController::class, 'vendorOrders'])->name('vendorOrders');

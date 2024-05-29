@@ -48,6 +48,9 @@
                         <p class="card-text">@lang('translate.followers') : {{ count($selected['favorites']) }}</p>
                         <div class="row">
                             <div class="d-inline-block pt-1 col-6 col-md-3">
+                                <a href="{{ route('vendorUsers', $selected->username) }}" class="pe-1">@lang('translate.users')</a>
+                            </div>
+                            <div class="d-inline-block pt-1 col-6 col-md-3">
                                 <a href="{{ route('vendorManagers', $selected->username) }}" class="pe-1">@lang('translate.managers')</a>
                             </div>
                             <div class="d-inline-block pt-1 col-6 col-md-3">
