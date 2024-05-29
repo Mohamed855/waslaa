@@ -25,7 +25,7 @@ class OrdersController extends BaseController
      */
     public function index($status): View|RedirectResponse
     {
-        $data = auth('admin')->check() ? $this->order() : auth('vendor')->user()->orders();
+        $data = auth('admin')->check() ? $this->order() : auth('vendor')->user()->currVendorOrders();
         $data = $data->where('status', $status)->with(['user']);
         $data = DashboardHelper::returnDataOnPagination($data);
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
@@ -63,7 +63,18 @@ class OrdersController extends BaseController
     {
         $user = DashboardHelper::getUserByUsername($username);
         $data = auth('admin')->check() ? $user->orders() : $user->currVendorOrders();
-        $data = DashboardHelper::returnDataOnPagination($data);
+        $data = DashboardHelper::returnDataOnPagination($data->orderBy('status'));
+        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
+        return view('dashboard.orders.index', compact(['data', 'username']));
+    }
+
+    /**
+     * Display a listing of the vendors' orders.
+     */
+    public function vendorOrders(string $username): View|RedirectResponse
+    {
+        $vendor = DashboardHelper::getVendorByUsername($username);
+        $data = DashboardHelper::returnDataOnPagination($vendor->orders($vendor->id)->orderBy('status'));
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
         return view('dashboard.orders.index', compact(['data', 'username']));
     }

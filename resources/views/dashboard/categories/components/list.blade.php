@@ -8,7 +8,7 @@
                         <th>@lang('translate.id')</th>
                         <th>@lang('translate.avatar')</th>
                         <th>@lang('translate.name')</th>
-                        @if (auth('admin')->check() && auth('admin')->user()->is_primary)
+                        @if (auth('admin')->check() && auth('admin')->user()->is_primary && ! request()->routeIs('vendorCategories'))
                             <th>@lang('translate.active')</th>
                         @endif
                         <th>@lang('translate.actions')</th>
@@ -24,7 +24,7 @@
                                 </div>
                             </td>
                             <td>{{ $single->$nameOnLang }}</td>
-                            @if (auth('admin')->check() && auth('admin')->user()->is_primary)
+                            @if (auth('admin')->check() && auth('admin')->user()->is_primary && ! request()->routeIs('vendorCategories'))
                                 <td>
                                     <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'category', 'id' => $single->id]) }}" method="post">
                                         @csrf

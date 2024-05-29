@@ -7,7 +7,7 @@
                     <tr>
                         <th>@lang('translate.id')</th>
                         <th>@lang('translate.name')</th>
-                        @if (auth('vendor')->check())
+                        @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
                             <th>@lang('translate.active')</th>
                         @endif
                         <th>@lang('translate.actions')</th>
@@ -18,7 +18,7 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $single->$nameOnLang }}</td>
-                            @if (auth('vendor')->check())
+                            @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
                                 <td>
                                     <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'component', 'id' => $single->id]) }}" method="post">
                                         @csrf

@@ -97,7 +97,12 @@ class Vendor extends Authenticatable
         return $this->hasMany(Notification::class, 'user_id')->where('type', 'vendor');
     }
 
-    public function orders ()
+    public function orders ($vendorId)
+    {
+        return Order::query()->where('vendor->id', $vendorId);
+    }
+
+    public function currVendorOrders ()
     {
         return Order::query()->where('vendor->id', auth('vendor')->id());
     }

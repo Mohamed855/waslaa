@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', ucfirst($selected['username']) )
+@section('title', ucfirst($selected['username']) . '\'s profile' )
 @section('content')
     <section id="basic-horizontal-layouts">
         <div class="row">
@@ -42,7 +42,7 @@
             <div class="col-12 col--7 col-lg-8">
                 <div class="card p-2">
                     <div class="card-body">
-                        <h5 class="card-title">{{ ucfirst($selected['name']) }}</h5>
+                        <h5 class="card-title">{{ ucfirst($selected['name']) . ' (' . $selected->username . ')' }}</h5>
                         <p class="card-text">@lang('translate.createdAt') : {{ date_format($selected['created_at'], 'd-m-Y') }}</p>
                         <p class="card-text">@lang('translate.city') : {{ $selected['city'][$nameOnLang] }}</p>
                         <p class="card-text">@lang('translate.followers') : {{ count($selected['favorites']) }}</p>

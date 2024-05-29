@@ -37,7 +37,8 @@ class CategoriesController extends BaseController
         if (auth('admin')->check()) {
             return parent::indexBase($this->table, $categoryIndexView, vars: $vars, searchable: $searchable);
         } else {
-            return parent::VendorIndexBase($this->resource, $categoryIndexView, vars: $vars, searchable: $searchable);
+            $vendorVars = ['selectedVendorCategories' => auth('vendor')->user()->categories(), 'vendorId' => auth('vendor')->id()];
+            return parent::VendorIndexBase($this->resource, $categoryIndexView, vars: $vars + $vendorVars, searchable: $searchable);
         }
     }
 

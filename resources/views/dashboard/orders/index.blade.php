@@ -17,7 +17,7 @@
                         <thead>
                             <tr>
                                 <th>@lang('translate.id')</th>
-                                @if (auth('admin')->check() && ! request()->routeIs('invoiceOrders'))
+                                @if (auth('admin')->check() && ! request()->routeIs(['invoiceOrders', 'vendorOrders']))
                                     <th>@lang('translate.vendor')</th>
                                 @endif
                                 <th>@lang('translate.phone')</th>
@@ -27,7 +27,7 @@
                                 <th>@lang('translate.address')</th>
                                 <th>@lang('translate.deliveryMethod')</th>
                                 <th>@lang('translate.payMethod')</th>
-                                @if (request()->routeIs('userOrders'))
+                                @if (request()->routeIs(['userOrders', 'vendorOrders']))
                                     <th>@lang('translate.status')</th>
                                 @endif
                                 <th>@lang('translate.total')</th>
@@ -39,7 +39,7 @@
                             @foreach ($data as $single)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    @if (auth('admin')->check() && ! request()->routeIs('invoiceOrders'))
+                                    @if (auth('admin')->check() && ! request()->routeIs(['invoiceOrders', 'vendorOrders']))
                                         <td><a href="{{-- route('showVendor', $single->vendor->username) --}}">{{ $single->vendor['name'] }}</a></td>
                                     @endif
                                     <td>{{ $single->deliveryPhone }}</td>
@@ -49,7 +49,7 @@
                                     <td style="min-width: 320px">{{ $single->address }}</td>
                                     <td>{{ __('translate.' . $single->deliveryMethod) }}</td>
                                     <td>{{ __('translate.' . $single->payMethod) }}</td>
-                                    @if (request()->routeIs('userOrders'))
+                                    @if (request()->routeIs(['userOrders', 'vendorOrders']))
                                         <td>{{ __('translate.' . $single->status) }}</td>
                                     @endif
                                     <td>{{ $single->totalCost }} @lang('translate.pound')</td>
@@ -61,8 +61,8 @@
                                                 @lang('translate.show')
                                             </button>
                                         </a>
-                                        @if ((isset($status) && $status == 'ordered') || $single->status == 'ordered')
-                                            @if (! request()->routeIs('invoiceOrders'))
+                                        @if (! request()->routeIs('invoiceOrders'))
+                                            @if ((isset($status) && $status == 'ordered') || $single->status == 'ordered')
                                                 <button type="button" class="btn btn-warning ms-auto" onclick="notifyVendor()" data-bs-toggle="modal">
                                                     <i data-feather="bell"></i>
                                                     @lang('translate.notify')

@@ -138,7 +138,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     // Vendor Routes
     Route::middleware('guard:vendor')->group(function () {
-
         Route::resource('products', ProductsController::class)->except([]);
         Route::post('product/{id}/create-offer', [ProductsController::class, 'createOffer'])->name('createOffer');
         Route::post('product/{id}/update-offer', [ProductsController::class, 'updateOffer'])->name('updateOffer');

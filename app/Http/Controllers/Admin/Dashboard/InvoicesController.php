@@ -33,6 +33,17 @@ class InvoicesController extends BaseController
     }
 
     /**
+     * Display a listing of the vendors' invoices.
+     */
+    public function vendorInvoices(string $username): View|RedirectResponse
+    {
+        $vendor = DashboardHelper::getVendorByUsername($username);
+        $data = DashboardHelper::returnDataOnPagination($vendor->invoices()->orderBy('status'));
+        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
+        return view('dashboard.invoices.index', compact(['data', 'username']));
+    }
+
+    /**
      * Display a listing of the opened invoices.
      */
     public function opened(): View|RedirectResponse
