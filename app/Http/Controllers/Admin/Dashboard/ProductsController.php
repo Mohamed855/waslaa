@@ -22,6 +22,7 @@ class ProductsController extends BaseController
         parent::__construct();
         $this->table = 'product';
         $this->resource = 'products';
+        $this->middleware('guard:vendor')->only(['index', 'create', 'store', 'edit', 'update']);
     }
 
     /**
@@ -46,6 +47,17 @@ class ProductsController extends BaseController
     {
         $order = $this->order()->findOrFail($id);
         return view('dashboard.products.index', compact(['order']))->with(['data' => $order->products]);
+    }
+
+    /**
+     * Display a listing of the vendors' products.
+     */
+    public function vendorProducts(string $username): View|RedirectResponse
+    {
+        $vendor = DashboardHelper::getVendorByUsername($username);
+        $data = DashboardHelper::returnDataOnPagination($vendor->products());
+        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
+        return view('dashboard.products.index', compact(['data', 'username']))->with(['nameOnLang' => $this->nameOnLang]);
     }
 
     /**
@@ -111,15 +123,15 @@ class ProductsController extends BaseController
     }
 
     public function createOffer($id) {
-        return back();
+        return back()->with(['success' => 'create offer on product ' . $id]);
     }
 
     public function updateOffer($id) {
-        return back();
+        return back()->with(['success' => 'update offer on product ' . $id]);
     }
 
     public function removeOffer($id) {
-        return back();
+        return back()->with(['success' => 'remove offer from product ' . $id]);
     }
 
     public function updatePrices($id) {

@@ -16,21 +16,7 @@
                             <form id="pricesStore" class="form form-vertical" action="{{ route('updatePrices', $single->id) }} " method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    {{-- add name --}}
-                                    <div class="col-12 mb-1">
-                                        <label class="form-label" for="name">@lang('translate.name') <span class="text-danger">*</span></label>
-                                        <div class="input-group input-group-merge">
-                                            <span class="input-group-text"><i data-feather="type"></i></span>
-                                            <input type="text" class="form-control" name="name" placeholder="@lang('translate.name')"/>
-                                        </div>
-                                    </div>
-                                    {{-- add image --}}
-                                    <div class="col-12 mb-1">
-                                        <label class="form-label" for="image">@lang('translate.image') <span class="text-danger">*</span></label>
-                                        <div class="input-group input-group-merge">
-                                            <input type="file" class="form-control" name="image"/>
-                                        </div>
-                                    </div>
+                                    <p># update prices</p>
                                     <div class="col-12">
                                         <button type="submit" class="btn btn-primary me-1">@lang('translate.save')</button>
                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">@lang('translate.cancel')</button>

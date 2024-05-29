@@ -13,22 +13,33 @@
                 <section id="basic-vertical-layouts">
                     <div class="row">
                         <div class="col-md-12 col-12">
-                            <form id="offerUpdate" class="form form-vertical" action="{{ route('updateOffer', $single->id) }} " method="POST" enctype="multipart/form-data">
+                            <form id="updateOfferForm{{ $single->id }}" class="form form-vertical" method="POST">
                                 @csrf
+                                <input id="editType{{ $single->id }}" type="hidden" name="offer_type" value=""/>
                                 <div class="row">
-                                    {{-- add name --}}
+                                    {{-- edit type --}}
                                     <div class="col-12 mb-1">
-                                        <label class="form-label" for="name">@lang('translate.name') <span class="text-danger">*</span></label>
+                                        <label class="form-label" for="offer_type">@lang('translate.type') <span class="text-danger">*</span></label>
                                         <div class="input-group input-group-merge">
-                                            <span class="input-group-text"><i data-feather="type"></i></span>
-                                            <input type="text" class="form-control" name="name" placeholder="@lang('translate.name')"/>
+                                            <span class="input-group-text"><i data-feather='type'></i></span>
+                                            <select id="editSelectedType{{ $single->id }}" class="form-control editSelectedType">
+                                                <option selected disabled>@lang('translate.select')</option>
+                                                <option value="discount" {{ $single->offer_type == 'discount' ? 'selected' : '' }}>@lang('translate.discount')</option>
+                                                <option value="free" {{ $single->offer_type == 'free' ? 'selected' : '' }}>@lang('translate.percentage')</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    {{-- add image --}}
+                                    <script type="text/javascript">
+                                        VirtualSelect.init({
+                                            ele: '.editSelectedType'
+                                        });
+                                    </script>
+                                    {{-- edit value --}}
                                     <div class="col-12 mb-1">
-                                        <label class="form-label" for="image">@lang('translate.image') <span class="text-danger">*</span></label>
+                                        <label class="form-label" for="offer_value">@lang('translate.value') <span class="text-danger">*</span></label>
                                         <div class="input-group input-group-merge">
-                                            <input type="file" class="form-control" name="image"/>
+                                            <span class="input-group-text"><i data-feather='phone'></i></span>
+                                            <input id="editOfferValue" type="number" class="form-control" name="offer_value" min="0" max="100" onkeypress="return isNumberKey(event)" placeholder="@lang('translate.value')"/>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -39,7 +50,7 @@
                             </form>
                             @if ($single->offer)
                                 <div class="col-12">
-                                    <form class="col-1 mt-1" action="{{ route('removeOffer', $single->id) }}" method="POST">
+                                    <form id="removeOfferForm{{ $single->id }}" class="col-1 mt-1" method="POST">
                                         @csrf
                                         <button class="btn btn-danger" style="min-width: 160px" data-bs-toggle="modal">
                                             <i data-feather="x"></i>

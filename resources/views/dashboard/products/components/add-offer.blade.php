@@ -13,22 +13,33 @@
                 <section id="basic-vertical-layouts">
                     <div class="row">
                         <div class="col-md-12 col-12">
-                            <form id="offerStore" class="form form-vertical" action="{{ route('createOffer', $single->id) }} " method="POST" enctype="multipart/form-data">
+                            <form id="addOfferForm{{ $single->id }}" class="form form-vertical" action="{{ route('createOffer', $single->id) }} " method="POST" enctype="multipart/form-data">
                                 @csrf
+                                <input id="addType{{ $single->id }}" type="hidden" name="offer_type" value=""/>
                                 <div class="row">
-                                    {{-- add name --}}
+                                    {{-- add type --}}
                                     <div class="col-12 mb-1">
-                                        <label class="form-label" for="name">@lang('translate.name') <span class="text-danger">*</span></label>
+                                        <label class="form-label" for="offer_type">@lang('translate.type') <span class="text-danger">*</span></label>
                                         <div class="input-group input-group-merge">
-                                            <span class="input-group-text"><i data-feather="type"></i></span>
-                                            <input type="text" class="form-control" name="name" placeholder="@lang('translate.name')"/>
+                                            <span class="input-group-text"><i data-feather='type'></i></span>
+                                            <select id="addSelectedType{{ $single->id }}" class="form-control addSelectedType" name="offer_type">
+                                                <option selected disabled>@lang('translate.select')</option>
+                                                <option value="discount">@lang('translate.discount')</option>
+                                                <option value="free">@lang('translate.percentage')</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    {{-- add image --}}
+                                    <script type="text/javascript">
+                                        VirtualSelect.init({
+                                            ele: '.addSelectedType'
+                                        });
+                                    </script>
+                                    {{-- add value --}}
                                     <div class="col-12 mb-1">
-                                        <label class="form-label" for="image">@lang('translate.image') <span class="text-danger">*</span></label>
+                                        <label class="form-label" for="offer_value">@lang('translate.value') <span class="text-danger">*</span></label>
                                         <div class="input-group input-group-merge">
-                                            <input type="file" class="form-control" name="image"/>
+                                            <span class="input-group-text"><i data-feather='phone'></i></span>
+                                            <input id="addOfferValue" type="number" class="form-control" name="offer_value" min="0" max="100" onkeypress="return isNumberKey(event)" placeholder="@lang('translate.value')"/>
                                         </div>
                                     </div>
                                     <div class="col-12">

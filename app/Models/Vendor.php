@@ -127,9 +127,15 @@ class Vendor extends Authenticatable
         return $this->hasMany(Complain::class);
     }
 
+    public function products()
+    {
+        $subcategoriesIds = $this->subcategories()->pluck('subcategories.id')->toArray();
+        return Product::query()->whereIn('subcategory_id', $subcategoriesIds);
+    }
+
     public function getAllProductIds()
     {// you need this to check if user add to cart another vendor product
-        $subcategories = $this->subcategories;
+        $subcategories = $this->subcategories();
         $productIds = [];
         foreach ($subcategories as $subcategory) {
             $productIds = array_merge($productIds, $subcategory->products->pluck('id')->toArray());

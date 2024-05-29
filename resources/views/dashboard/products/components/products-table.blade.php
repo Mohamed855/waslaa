@@ -7,8 +7,10 @@
                     <th>@lang('translate.id')</th>
                     <th>@lang('translate.avatar')</th>
                     <th>@lang('translate.name')</th>
-                    <th>@lang('translate.offer')</th>
-                    <th>@lang('translate.prices')</th>
+                    @if (auth('vendor')->check())
+                        <th>@lang('translate.offer')</th>
+                        <th>@lang('translate.prices')</th>
+                    @endif
                     <th>@lang('translate.rate')</th>
                     <th>@lang('translate.category')</th>
                     <th>@lang('translate.subcategory')</th>
@@ -27,28 +29,30 @@
                                 </a>
                             </td>
                             <td> {{ $single->$nameOnLang }} </td>
-                            <td style="min-width: 180px">
-                                @if ($single->offer)
-                                    <button class="btn btn-link ms-auto" data-bs-toggle="modal" data-bs-target="#UpdateOffer{{ $single->id }}">
+                            @if (auth('vendor')->check())
+                                <td style="min-width: 180px">
+                                    @if ($single->offer)
+                                        <button data-id="{{ $single->id }}" class="btn btn-link updateOffer ms-auto" data-bs-toggle="modal" data-bs-target="#UpdateOffer{{ $single->id }}" data-="{{ $single }}">
+                                            <i data-feather="edit"></i>
+                                            @lang('translate.update')
+                                        </button>
+                                        @include('dashboard.products.components.update-offer')
+                                    @else
+                                        <button data-id="{{ $single->id }}" class="btn btn-link text-success addOffer ms-auto" data-bs-toggle="modal" data-bs-target="#AddOffer{{ $single->id }}" data-="{{ $single }}">
+                                            <i data-feather="plus-circle"></i>
+                                            @lang('translate.add')
+                                        </button>
+                                        @include('dashboard.products.components.add-offer')
+                                    @endif
+                                </td>
+                                <td style="min-width: 180px">
+                                    <button class="btn btn-link ms-auto" data-bs-toggle="modal" data-bs-target="#UpdatePrices{{  $single->id }}">
                                         <i data-feather="edit"></i>
                                         @lang('translate.update')
                                     </button>
-                                    @include('dashboard.products.components.update-offer')
-                                @else
-                                    <button class="btn btn-link text-success ms-auto" data-bs-toggle="modal" data-bs-target="#AddOffer{{ $single->id }}">
-                                        <i data-feather="plus-circle"></i>
-                                        @lang('translate.add')
-                                    </button>
-                                    @include('dashboard.products.components.add-offer')
-                                @endif
-                            </td>
-                            <td style="min-width: 180px">
-                                <button class="btn btn-link ms-auto" data-bs-toggle="modal" data-bs-target="#UpdatePrices{{  $single->id }}">
-                                    <i data-feather="edit"></i>
-                                    @lang('translate.update')
-                                </button>
-                                @include('dashboard.products.components.update-prices')
-                            </td>
+                                    @include('dashboard.products.components.update-prices')
+                                </td>
+                            @endif
                             <td><i data-feather="star" style="color: #E5B80B"></i> {{ $single->rate }}</td>
                             <td> {{ $single->subcategory?->category?->$nameOnLang }} </td>
                             <td> {{ $single->subcategory?->$nameOnLang }} </td>
@@ -63,12 +67,14 @@
                                 </form>
                             </td>
                             <td style="min-width: 320px">
-                                <a href="{{ route('products.edit', $single->id) }}">
-                                    <button class="btn btn-primary ms-auto">
-                                        <i data-feather="edit"></i>
-                                        @lang('translate.edit')
-                                    </button>
-                                </a>
+                                @if (auth('vendor')->check())
+                                    <a href="{{ route('products.edit', $single->id) }}">
+                                        <button class="btn btn-primary ms-auto">
+                                            <i data-feather="edit"></i>
+                                            @lang('translate.edit')
+                                        </button>
+                                    </a>
+                                @endif
                                 @include('dashboard.partials.delete-modal', ['resource' => 'product', 'resources' => 'products'])
                             </td>
                         </tr>
@@ -79,3 +85,38 @@
         @include('dashboard.partials.paginate')
     </div>
 </div>
+@if (auth('vendor')->check())
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('.addOffer').on('click', function () {
+                let id = $(this).attr('data-id');
+                let product = JSON.parse($(this).attr('data-'));
+                let type = $('#addType' + product.id);
+                type.val(product.offer_type);
+                $('#addSelectedType' + product.id).on('change', function () {
+                    let selectedType = $(this).val();
+                    type.val(selectedType);
+                });
+                $('#addOfferValue').val(product.offer_value);
+                let url = '{{ asset('') }}' + 'product/' + id + '/create-offer'
+                $('#addOfferForm' + id).attr('action', url);
+            });
+            $('.updateOffer').on('click', function () {
+                let id = $(this).attr('data-id');
+                let product = JSON.parse($(this).attr('data-'));
+                let type = $('#editType' + product.id);
+                type.val(product.offer_type);
+                $('#editSelectedType' + product.id).on('change', function () {
+                    let selectedType = $(this).val();
+                    type.val(selectedType);
+                });
+                $('#editOfferValue').val(product.offer_value);
+                let updateUrl = '{{ asset('') }}' + 'product/' + id + '/update-offer'
+                let removeUrl = '{{ asset('') }}' + 'product/' + id + '/remove-offer'
+                $('#updateOfferForm' + id).attr('action', updateUrl);
+                $('#removeOfferForm' + id).attr('action', removeUrl);
+            });
+        });
+    </script>
+@endif

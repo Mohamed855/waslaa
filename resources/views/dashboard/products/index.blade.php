@@ -1,5 +1,12 @@
 @extends('layouts.dashboard')
-@section('title', request()->routeIs('orderProducts') ? __('translate.orderProducts') : __('translate.products'))
+@php
+    $productDesc = match (true) {
+        isset($username) => ' [ ' . $username . ' ]',
+        default => '',
+    };
+    $title = request()->routeIs('orderProducts') ? __('translate.orderProducts') : __('translate.products');
+@endphp
+@section('title', $title . $productDesc)
 @section('content')
     <section>
         @if (request()->routeIs('products.index'))
@@ -14,7 +21,7 @@
                 </div>
             </div>
         @endif
-        @if (request()->routeIs('products.index'))
+        @if (request()->routeIs(['products.index', 'vendorProducts']))
             @include('dashboard.products.components.products-table')
         @elseif (request()->routeIs('orderProducts'))
             @include('dashboard.products.components.order-products-table')
