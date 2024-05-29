@@ -50,10 +50,6 @@ return new class extends Migration
             $table->foreign('vendor')->references('id')->on('vendors')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('category')->references('id')->on('categories')->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
-        Schema::table('vendor_subcategories', function (Blueprint $table) {
-            $table->foreign('vendor')->references('id')->on('vendors')->constrained()->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('subcategory')->references('id')->on('subcategories')->constrained()->onUpdate('cascade')->onDelete('cascade');
-        });
         Schema::table('product_components', function (Blueprint $table) {
             $table->foreign('product')->references('id')->on('products')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('component')->references('id')->on('components')->constrained()->onUpdate('cascade')->onDelete('cascade');

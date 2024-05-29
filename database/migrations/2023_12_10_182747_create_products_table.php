@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('name_ar');
             $table->string('avatar');
             $table->boolean('offer')->default(0);
-            $table->enum('offer_type', ['discount', 'free'])->nullable();
+            $table->enum('offer_type', ['discount', 'percentage'])->nullable();
             $table->double('offer_value')->default(0);
             $table->double('rate')->default(0);
             $table->foreignIdFor(Subcategory::class);

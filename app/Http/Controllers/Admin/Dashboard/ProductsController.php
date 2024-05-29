@@ -8,6 +8,7 @@ use App\Traits\AdminRules;
 use App\Traits\QueriesTrait;
 use Illuminate\Http\Request;
 use App\Helpers\DashboardHelper;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Admin\BaseController;
@@ -114,28 +115,49 @@ class ProductsController extends BaseController
         ], redirectToIndex: true);
     }
 
+    public function selectProductComponent(Request $request): RedirectResponse
+    {
+        $productId = $request->product_id;
+        DB::table('product_components')->where('product_id', $productId)->delete();
+        foreach (explode(',', $request['components'][0]) as $component) {
+            DB::table('product_components')->insert([
+                'component_id' => $component,
+                'product_id' => $productId
+            ]);
+        }
+        return back()->with('success', __('translate.' . $this->table) . ' ' . __('success.added'));
+    }
+
+    public function removeProductComponent(string $id, $productId): RedirectResponse
+    {
+        DB::table('product_components')->where(['product_id' => $productId, 'component_id' => $id])->delete();
+        return back()->with('success', __('translate.' . $this->table) . ' ' . __('success.removed'));
+    }
+
+    public function updateOffer(Request $request, $id)
+    {
+        $request['offer'] = true;
+        return parent::updateBase($this->table, $this->resource, $request, ['offer', 'offer_type', 'offer_value'], $this->updateOfferRules($id), $id);
+    }
+
+    public function removeOffer($id) {
+        $request = new Request();
+        $request['offer'] = false;
+        $request['offer_type'] = null;
+        $request['offer_value'] = 0;
+        return parent::updateBase($this->table, $this->resource, $request, ['offer', 'offer_type', 'offer_value'], [], $id);
+    }
+
+    public function updatePrices($id) {
+        return back();
+    }
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id): RedirectResponse
     {
         return parent::destroyBase($this->table, $this->resource, $id);
-    }
-
-    public function createOffer($id) {
-        return back()->with(['success' => 'create offer on product ' . $id]);
-    }
-
-    public function updateOffer($id) {
-        return back()->with(['success' => 'update offer on product ' . $id]);
-    }
-
-    public function removeOffer($id) {
-        return back()->with(['success' => 'remove offer from product ' . $id]);
-    }
-
-    public function updatePrices($id) {
-        return back();
     }
 
     public function getCurrVendorSubCategories ($catId)

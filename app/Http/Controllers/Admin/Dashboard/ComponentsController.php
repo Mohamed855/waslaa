@@ -32,14 +32,6 @@ class ComponentsController extends BaseController
     }
 
     /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request): RedirectResponse
-    {
-        return parent::storeBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'vendor_id'], $this->createComponentRules());
-    }
-
-    /**
      * Display a listing of the vendors' components.
      */
     public function vendorComponents(string $username): View|RedirectResponse
@@ -49,6 +41,26 @@ class ComponentsController extends BaseController
         $data = DashboardHelper::returnDataOnPagination($vendor->components());
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
         return view('dashboard.components.index', compact(['data', 'username', 'vendorId']))->with(['nameOnLang' => $this->nameOnLang]);
+    }
+
+    /**
+     * Display a listing of the products' components.
+     */
+    public function productComponents(string $id): View|RedirectResponse
+    {
+        $product = $this->product()->findOrFail($id);
+        $vendor = auth('vendor')->check() ? auth('vendor')->user() : $product->vendor();
+        $data = DashboardHelper::returnDataOnPagination($product->components());
+        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
+        return view('dashboard.components.index', compact(['data']))->with(['components' => $vendor->components(), 'selectedProductComponents' => $product->components(), 'nameOnLang' => $this->nameOnLang, 'productId' => $id]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request): RedirectResponse
+    {
+        return parent::storeBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'vendor_id'], $this->createComponentRules());
     }
 
     /**

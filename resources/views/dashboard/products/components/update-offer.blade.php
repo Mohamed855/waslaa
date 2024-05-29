@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel1660">@lang('translate.update') @lang('translate.offer')</h5>
+                <h5 class="modal-title" id="myModalLabel1660">@lang('translate.' . ( $single->offer ? 'update' : 'add')) @lang('translate.offer')</h5>
                 <button type="button" class="btn btn-flat-light close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true"><i data-feather="x"></i></span>
                 </button>
@@ -15,35 +15,35 @@
                         <div class="col-md-12 col-12">
                             <form id="updateOfferForm{{ $single->id }}" class="form form-vertical" method="POST">
                                 @csrf
-                                <input id="editType{{ $single->id }}" type="hidden" name="offer_type" value=""/>
+                                <input id="updateType{{ $single->id }}" type="hidden" name="offer_type" value=""/>
                                 <div class="row">
-                                    {{-- edit type --}}
+                                    {{-- update type --}}
                                     <div class="col-12 mb-1">
                                         <label class="form-label" for="offer_type">@lang('translate.type') <span class="text-danger">*</span></label>
                                         <div class="input-group input-group-merge">
                                             <span class="input-group-text"><i data-feather='type'></i></span>
-                                            <select id="editSelectedType{{ $single->id }}" class="form-control editSelectedType">
+                                            <select id="updateSelectedType{{ $single->id }}" class="form-control updateSelectedType">
                                                 <option selected disabled>@lang('translate.select')</option>
                                                 <option value="discount" {{ $single->offer_type == 'discount' ? 'selected' : '' }}>@lang('translate.discount')</option>
-                                                <option value="free" {{ $single->offer_type == 'free' ? 'selected' : '' }}>@lang('translate.percentage')</option>
+                                                <option value="percentage" {{ $single->offer_type == 'percentage' ? 'selected' : '' }}>@lang('translate.percentage')</option>
                                             </select>
                                         </div>
                                     </div>
                                     <script type="text/javascript">
                                         VirtualSelect.init({
-                                            ele: '.editSelectedType'
+                                            ele: '.updateSelectedType'
                                         });
                                     </script>
-                                    {{-- edit value --}}
+                                    {{-- update value --}}
                                     <div class="col-12 mb-1">
                                         <label class="form-label" for="offer_value">@lang('translate.value') <span class="text-danger">*</span></label>
                                         <div class="input-group input-group-merge">
                                             <span class="input-group-text"><i data-feather='phone'></i></span>
-                                            <input id="editOfferValue" type="number" class="form-control" name="offer_value" min="0" max="100" onkeypress="return isNumberKey(event)" placeholder="@lang('translate.value')"/>
+                                            <input id="updateOfferValue" type="number" class="form-control" name="offer_value" min="0" max="100" onkeypress="return isNumberKey(event)" placeholder="@lang('translate.value')"/>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button type="submit" class="btn btn-primary me-1">@lang('translate.save')</button>
+                                        <button type="submit" class="btn btn-{{ $single->offer ? 'primary' : 'success' }} me-1">@lang('translate.save')</button>
                                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">@lang('translate.cancel')</button>
                                     </div>
                                 </div>

@@ -295,6 +295,14 @@ trait AdminRules {
         ];
     }
 
+    protected function updateOfferRules($id): array
+    {
+        return [
+            'offer_type' => 'required|in:discount,percentage',
+            'offer_value' => 'required|numeric|min:0|max:100',
+        ];
+    }
+
     protected function updateComponentRules($id): array
     {
         return [

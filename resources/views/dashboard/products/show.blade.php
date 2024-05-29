@@ -36,7 +36,17 @@
                 <div class="card p-2">
                     <div class="card-body">
                         <h5 class="card-title">{{ ucfirst($selected->$nameOnLang) }}</h5>
-                        {{-- content --}}
+                        {{-- <p class="card-text">@lang('translate.createdAt') : {{ date_format($selected['created_at'], 'd-m-Y') }}</p>
+                        <p class="card-text">@lang('translate.city') : {{ $selected['city'][$nameOnLang] }}</p>
+                        <p class="card-text">@lang('translate.followers') : {{ count($selected['favorites']) }}</p> --}}
+                        <div class="row">
+                            <div class="d-inline-block pt-1 col-6 col-md-3">
+                                <a href="{{ route('productComponents', $selected->id) }}" class="pe-1">@lang('translate.components')</a>
+                            </div>
+                            <div class="d-inline-block pt-1 col-6 col-md-3">
+                                <a href="{{ route('productTypes', $selected->id) }}" class="pe-1">@lang('translate.types')</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

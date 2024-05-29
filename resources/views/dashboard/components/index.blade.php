@@ -9,7 +9,11 @@
                     @lang('translate.add')
                 </button>
             </div>
-            @include('dashboard.components.components.add')
+            @if (request()->routeIs(['components.index', 'vendorComponents']))
+                @include('dashboard.components.components.add')
+            @elseif (request()->routeIs('productComponents'))
+                @include('dashboard.components.components.product-select-component')
+            @endif
         </div>
     </div>
     @include('dashboard.components.components.list')

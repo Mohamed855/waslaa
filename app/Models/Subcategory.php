@@ -19,9 +19,9 @@ class Subcategory extends Model
 
     // relationships
 
-    public function vendors (): BelongsToMany
+    public function vendors (): BelongsTo
     {
-        return $this->belongsToMany(Vendor::class, 'vendor_subcategories');
+        return $this->belongsTo(Vendor::class);
     }
 
     public function category (): BelongsTo

@@ -48,12 +48,10 @@ class CategoriesController extends BaseController
     public function vendorCategories(string $username): View|RedirectResponse
     {
         $vendor = DashboardHelper::getVendorByUsername($username);
-        $vendorId = auth('vendor')->check() ? auth('vendor')->id() : $vendor->id;
         $categories = $this->activeCategory()->get();
-        $selectedVendorCategories = auth('vendor')->check() ? auth('vendor')->user()->categories() : $vendor->categories();
         $data = DashboardHelper::returnDataOnPagination($vendor->categories());
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
-        return view('dashboard.categories.index', compact(['data', 'categories', 'selectedVendorCategories', 'username']))->with(['nameOnLang' => $this->nameOnLang, 'vendorId' => $vendorId]);
+        return view('dashboard.categories.index', compact(['data', 'categories', 'username']))->with(['selectedVendorCategories' => $vendor->categories(), 'nameOnLang' => $this->nameOnLang, 'vendorId' => $vendor->id]);
     }
 
     /**

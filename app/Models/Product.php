@@ -33,6 +33,11 @@ class Product extends Model
         return $this->belongsToMany(Type::class, 'product_types')->withPivot(['price']);
     }
 
+    public function vendor()
+    {
+        return $this->belongsTo(Subcategory::class);
+    }
+
     public function favorites (): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'favorites', 'favorite_id', 'user_id')->where('type', 'product');

@@ -82,9 +82,9 @@ class Vendor extends Authenticatable
         return $this->belongsToMany(Category::class, 'vendor_categories');
     }
 
-    public function subcategories (): BelongsToMany
+    public function subcategories (): HasMany
     {
-        return $this->belongsToMany(Subcategory::class, 'vendor_subcategories');
+        return $this->hasMany(Subcategory::class);
     }
 
     public function favorites (): BelongsToMany
