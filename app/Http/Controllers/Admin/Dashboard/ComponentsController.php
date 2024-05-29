@@ -6,6 +6,7 @@ use App\Traits\AdminRules;
 use App\Traits\QueriesTrait;
 use Illuminate\Http\Request;
 use App\Helpers\DashboardHelper;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Admin\BaseController;
@@ -52,7 +53,7 @@ class ComponentsController extends BaseController
         $vendor = auth('vendor')->check() ? auth('vendor')->user() : $product->vendor();
         $data = DashboardHelper::returnDataOnPagination($product->components());
         if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
-        return view('dashboard.components.index', compact(['data']))->with(['components' => $vendor->components(), 'selectedProductComponents' => $product->components(), 'nameOnLang' => $this->nameOnLang, 'productId' => $id]);
+        return view('dashboard.components.index', compact(['data']))->with(['components' => $vendor->components()->get(), 'selectedProductComponents' => $product->components(), 'nameOnLang' => $this->nameOnLang, 'productId' => $id]);
     }
 
     /**
@@ -69,6 +70,25 @@ class ComponentsController extends BaseController
     public function update(Request $request, string $id): RedirectResponse
     {
         return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar'], $this->updateComponentRules($id), $id);
+    }
+
+    public function selectProductComponent(Request $request): RedirectResponse
+    {
+        $productId = $request->product_id;
+        DB::table('product_components')->where('product_id', $productId)->delete();
+        foreach (explode(',', $request['components'][0]) as $component) {
+            DB::table('product_components')->insert([
+                'component_id' => $component,
+                'product_id' => $productId
+            ]);
+        }
+        return back()->with('success', __('translate.' . $this->table) . ' ' . __('success.added'));
+    }
+
+    public function removeProductComponent(string $id, $productId): RedirectResponse
+    {
+        DB::table('product_components')->where(['product_id' => $productId, 'component_id' => $id])->delete();
+        return back()->with('success', __('translate.' . $this->table) . ' ' . __('success.removed'));
     }
 
     /**

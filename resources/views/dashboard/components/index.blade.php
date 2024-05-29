@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', __('translate.components') . (isset($username) ? ' [ ' . $username . ' ]' : ''))
+@section('title', (request()->routeIs('productComponents') ? __('translate.productComponents') : __('translate.components')) . (isset($username) ? ' [ ' . $username . ' ]' : ''))
 @section('content')
     <div class="row">
         <div class="col-xl-12 d-flex">

@@ -10,6 +10,7 @@ use App\Helpers\DashboardHelper;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Admin\BaseController;
+use Illuminate\Support\Facades\DB;
 
 class TypesController extends BaseController
 {
@@ -46,6 +47,18 @@ class TypesController extends BaseController
     }
 
     /**
+     * Display a listing of the products' types.
+     */
+    public function productTypes(string $id): View|RedirectResponse
+    {
+        $product = $this->product()->findOrFail($id);
+        $vendor = auth('vendor')->check() ? auth('vendor')->user() : $product->vendor();
+        $data = DashboardHelper::returnDataOnPagination($product->types());
+        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
+        return view('dashboard.types.index', compact(['data']))->with(['types' => $vendor->types()->get(), 'selectedProductTypes' => $product->types(), 'nameOnLang' => $this->nameOnLang, 'abbrevOnLang' => $this->abbrevOnLang, 'productId' => $id]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request): RedirectResponse
@@ -59,6 +72,25 @@ class TypesController extends BaseController
     public function update(Request $request, string $id): RedirectResponse
     {
         return parent::updateBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'abbrev_en', 'abbrev_ar'], $this->updateTypeRules($id), $id);
+    }
+
+    public function selectProductType(Request $request): RedirectResponse
+    {
+        $productId = $request->product_id;
+        DB::table('product_types')->where('product_id', $productId)->delete();
+        foreach (explode(',', $request['types'][0]) as $type) {
+            DB::table('product_types')->insert([
+                'type_id' => $type,
+                'product_id' => $productId
+            ]);
+        }
+        return back()->with('success', __('translate.' . $this->table) . ' ' . __('success.added'));
+    }
+
+    public function removeProductType(string $id, $productId): RedirectResponse
+    {
+        DB::table('product_types')->where(['product_id' => $productId, 'type_id' => $id])->delete();
+        return back()->with('success', __('translate.' . $this->table) . ' ' . __('success.removed'));
     }
 
     /**

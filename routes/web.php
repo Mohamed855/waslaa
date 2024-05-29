@@ -85,19 +85,23 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         });
 
         Route::resource('managers', ManagersController::class)->except(['create', 'edit', 'show']);
-        Route::resource('notifications', NotificationsController::class)->except(['show']);
+        Route::resource('notifications', NotificationsController::class)->except(['create', 'edit', 'show']);
         Route::resource('complains', ComplainsController::class)->except(['create', 'edit', 'show']);
         Route::resource('subcategories', SubcategoriesController::class)->except(['create', 'edit', 'show']);
-        Route::resource('products', ProductsController::class);
-        Route::post('product-select-component', [ProductsController::class, 'selectProductComponent'])->name('selectProductComponent');
-        Route::delete('product-remove-component/{id}/{productId}', [ProductsController::class, 'removeProductComponent'])->name('removeProductComponent');
+        Route::resource('products', ProductsController::class)->except(['edit']);
         Route::prefix('product/{id}')->group(function () {
             Route::get('/', [ProductsController::class, 'show'])->name('showProduct');
             Route::get('components', [ComponentsController::class, 'productComponents'])->name('productComponents');
             Route::get('types', [TypesController::class, 'productTypes'])->name('productTypes');
         });
+
         Route::resource('components', ComponentsController::class)->except(['create', 'edit', 'show']);
+        Route::post('product-select-component', [ComponentsController::class, 'selectProductComponent'])->name('selectProductComponent');
+        Route::delete('product-remove-component/{id}/{productId}', [ComponentsController::class, 'removeProductComponent'])->name('removeProductComponent');
+
         Route::resource('types', TypesController::class)->except(['create', 'edit', 'show']);
+        Route::post('product-select-type', [TypesController::class, 'selectProductType'])->name('selectProductType');
+        Route::delete('product-remove-type/{id}/{productId}', [TypesController::class, 'removeProductType'])->name('removeProductType');
 
         Route::resource('categories', CategoriesController::class)->except(['create', 'edit', 'show']);
         Route::post('vendor-select-category', [CategoriesController::class, 'selectVendorCategory'])->name('selectVendorCategory');
@@ -124,7 +128,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     // Admin Routes
     Route::middleware('guard:admin')->group(function () {
         Route::resource('ads', ADsController::class)->except(['create', 'edit', 'show']);
-        Route::resource('admins', AdminsController::class)->except(['show']);
+        Route::resource('admins', AdminsController::class)->except(['create', 'edit', 'show']);
         Route::resource('vendors', VendorsController::class)->except(['edit']);
         Route::prefix('vendor/{username}')->group(function () {
             Route::get('/', [VendorsController::class, 'show'])->name('showVendor');

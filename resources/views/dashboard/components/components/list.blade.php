@@ -7,8 +7,10 @@
                     <tr>
                         <th>@lang('translate.id')</th>
                         <th>@lang('translate.name')</th>
-                        @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
-                            <th>@lang('translate.active')</th>
+                        @if (request()->routeIs(['components.index', 'vendorComponents']))
+                            @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
+                                <th>@lang('translate.active')</th>
+                            @endif
                         @endif
                         <th>@lang('translate.actions')</th>
                     </tr>
@@ -18,27 +20,33 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $single->$nameOnLang }}</td>
-                            @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
-                                <td>
-                                    <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'component', 'id' => $single->id]) }}" method="post">
-                                        @csrf
-                                        <label class="switch">
-                                            <input type="checkbox" name="activated" onclick="this.form.submit()" {{ $single->active ? 'checked' : '' }}>
-                                            <span class="slider round"></span>
-                                        </label>
-                                    </form>
-                                </td>
+                            @if (request()->routeIs(['components.index', 'vendorComponents']))
+                                @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
+                                    <td>
+                                        <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'component', 'id' => $single->id]) }}" method="post">
+                                            @csrf
+                                            <label class="switch">
+                                                <input type="checkbox" name="activated" onclick="this.form.submit()" {{ $single->active ? 'checked' : '' }}>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </form>
+                                    </td>
+                                @endif
                             @endif
                             <td style="min-width: 320px">
-                                <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeComponentBtn" data-bs-toggle="modal" data-bs-target="#EditComponent{{ $single->id }}" data-="{{ $single }}">
-                                    <i data-feather="edit"></i>
-                                    @lang('translate.edit')
-                                </button>
-                                @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
-                                    @include('dashboard.partials.delete-modal', ['resource' => 'component', 'resources' => 'components'])
+                                @if (request()->routeIs(['components.index', 'vendorComponents']))
+                                    <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeComponentBtn" data-bs-toggle="modal" data-bs-target="#EditComponent{{ $single->id }}" data-="{{ $single }}">
+                                        <i data-feather="edit"></i>
+                                        @lang('translate.edit')
+                                    </button>
+                                    @include('dashboard.components.components.edit')
+                                    @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
+                                        @include('dashboard.partials.delete-modal', ['resource' => 'component', 'resources' => 'components'])
+                                    @endif
+                                @elseif (request()->routeIs('productComponents'))
+                                    @include('dashboard.components.components.product-remove-component')
                                 @endif
                             </td>
-                            @include('dashboard.components.components.edit')
                         </tr>
                     @endforeach
                 </tbody>

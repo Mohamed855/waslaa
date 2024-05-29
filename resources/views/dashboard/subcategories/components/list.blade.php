@@ -41,11 +41,11 @@
                                     <i data-feather="edit"></i>
                                     @lang('translate.edit')
                                 </button>
+                                @include('dashboard.subcategories.components.edit')
                                 @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
                                     @include('dashboard.partials.delete-modal', ['resource' => 'subcategory', 'resources' => 'subcategories'])
                                 @endif
                             </td>
-                            @include('dashboard.subcategories.components.edit')
                         </tr>
                     @endforeach
                 </tbody>

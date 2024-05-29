@@ -89,18 +89,15 @@ class ProductsController extends BaseController
      */
     public function show(string $id): View
     {
-        return parent::showBase($this->table, 'dashboard.products.show', $id);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id): View
-    {
-        $categories = auth('vendor')->user()->categories()->where('active', 1)->get();
-        $components = auth('vendor')->user()->components()->where('active', 1)->get();
-        $types = auth('vendor')->user()->types()->where('active', 1)->get();
-        return parent::editBase($this->table, 'dashboard.products.edit', $id, vars: ['nameOnLang' => $this->nameOnLang, 'categories' => $categories, 'components' => $components, 'types' => $types]);
+        if (auth('vendor')->check()) {
+            $categories = auth('vendor')->user()->categories()->where('active', 1)->get();
+            $components = auth('vendor')->user()->components()->where('active', 1)->get();
+            $types = auth('vendor')->user()->types()->where('active', 1)->get();
+            $vars = ['nameOnLang' => $this->nameOnLang, 'categories' => $categories, 'components' => $components, 'types' => $types];
+        } else {
+            $vars = [];
+        }
+        return parent::showBase($this->table, 'dashboard.products.show', $id, vars: $vars);
     }
 
     /**
@@ -112,26 +109,7 @@ class ProductsController extends BaseController
             'table' => ['product_components', 'product_types'],
             'foreign' => ['product', 'product'],
             'related' => ['component', 'type']
-        ], redirectToIndex: true);
-    }
-
-    public function selectProductComponent(Request $request): RedirectResponse
-    {
-        $productId = $request->product_id;
-        DB::table('product_components')->where('product_id', $productId)->delete();
-        foreach (explode(',', $request['components'][0]) as $component) {
-            DB::table('product_components')->insert([
-                'component_id' => $component,
-                'product_id' => $productId
-            ]);
-        }
-        return back()->with('success', __('translate.' . $this->table) . ' ' . __('success.added'));
-    }
-
-    public function removeProductComponent(string $id, $productId): RedirectResponse
-    {
-        DB::table('product_components')->where(['product_id' => $productId, 'component_id' => $id])->delete();
-        return back()->with('success', __('translate.' . $this->table) . ' ' . __('success.removed'));
+        ]);
     }
 
     public function updateOffer(Request $request, $id)

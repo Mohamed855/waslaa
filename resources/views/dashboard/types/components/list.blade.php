@@ -8,8 +8,13 @@
                         <th>@lang('translate.id')</th>
                         <th>@lang('translate.name')</th>
                         <th>@lang('translate.abbrev')</th>
-                        @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
-                            <th>@lang('translate.active')</th>
+                        @if (request()->routeIs('productTypes'))
+                            <th>@lang('translate.price')</th>
+                        @endif
+                        @if (request()->routeIs(['types.index', 'vendorTypes']))
+                            @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
+                                <th>@lang('translate.active')</th>
+                            @endif
                         @endif
                         <th>@lang('translate.actions')</th>
                     </tr>
@@ -20,27 +25,36 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $single->$nameOnLang }}</td>
                             <td>{{ $single->$abbrevOnLang }}</td>
-                            @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
-                                <td>
-                                    <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'type', 'id' => $single->id]) }}" method="post">
-                                        @csrf
-                                        <label class="switch">
-                                            <input type="checkbox" name="activated" onclick="this.form.submit()" {{ $single->active ? 'checked' : '' }}>
-                                            <span class="slider round"></span>
-                                        </label>
-                                    </form>
-                                </td>
+                            @if (request()->routeIs('productTypes'))
+                                <td>{{ $single->pivot?->price }}</td>
+                            @endif
+                            @if (request()->routeIs(['types.index', 'vendorTypes']))
+                                @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
+                                    <td>
+                                        <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'type', 'id' => $single->id]) }}" method="post">
+                                            @csrf
+                                            <label class="switch">
+                                                <input type="checkbox" name="activated" onclick="this.form.submit()" {{ $single->active ? 'checked' : '' }}>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </form>
+                                    </td>
+                                @endif
                             @endif
                             <td style="min-width: 320px">
-                                <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typetypeComponentBtn" data-bs-toggle="modal" data-bs-target="#EditType{{ $single->id }}" data-="{{ $single }}">
-                                    <i data-feather="edit"></i>
-                                    @lang('translate.edit')
-                                </button>
-                                @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
-                                    @include('dashboard.partials.delete-modal', ['resource' => 'type', 'resources' => 'types'])
+                                @if (request()->routeIs(['types.index', 'vendorTypes']))
+                                    <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typetypeComponentBtn" data-bs-toggle="modal" data-bs-target="#EditType{{ $single->id }}" data-="{{ $single }}">
+                                        <i data-feather="edit"></i>
+                                        @lang('translate.edit')
+                                    </button>
+                                    @include('dashboard.types.components.edit')
+                                    @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
+                                        @include('dashboard.partials.delete-modal', ['resource' => 'type', 'resources' => 'types'])
+                                    @endif
+                                @elseif (request()->routeIs('productTypes'))
+                                    @include('dashboard.types.components.product-remove-type')
                                 @endif
                             </td>
-                            @include('dashboard.types.components.edit')
                         </tr>
                     @endforeach
                 </tbody>

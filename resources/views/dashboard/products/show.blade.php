@@ -1,9 +1,9 @@
 @extends('layouts.dashboard')
-@section('title', ucfirst($selected->name))
+@section('title', ucfirst($selected->$nameOnLang))
 @section('content')
     <section id="basic-horizontal-layouts">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-12 col-md-5 col-lg-4">
                 <div class="card">
                     <img src="{{ asset($selected->avatar ? 'storage/images/products/' . $selected->avatar : 'storage/images/global/default.jpg') }}" class="card-img-top" alt="profile image">
                     <div class="card-body">
@@ -32,23 +32,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
-                <div class="card p-2">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ ucfirst($selected->$nameOnLang) }}</h5>
-                        {{-- <p class="card-text">@lang('translate.createdAt') : {{ date_format($selected['created_at'], 'd-m-Y') }}</p>
-                        <p class="card-text">@lang('translate.city') : {{ $selected['city'][$nameOnLang] }}</p>
-                        <p class="card-text">@lang('translate.followers') : {{ count($selected['favorites']) }}</p> --}}
-                        <div class="row">
-                            <div class="d-inline-block pt-1 col-6 col-md-3">
-                                <a href="{{ route('productComponents', $selected->id) }}" class="pe-1">@lang('translate.components')</a>
-                            </div>
-                            <div class="d-inline-block pt-1 col-6 col-md-3">
-                                <a href="{{ route('productTypes', $selected->id) }}" class="pe-1">@lang('translate.types')</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="col-12 col-md-7 col-lg-8">
+                @include('dashboard.products.components.details')
             </div>
         </div>
     </section>

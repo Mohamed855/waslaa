@@ -35,11 +35,11 @@
                                     <i data-feather="edit"></i>
                                     @lang('translate.edit')
                                 </button>
+                                @include('dashboard.cities.components.edit')
                                 @if (auth('admin')->user()->is_primary)
                                     @include('dashboard.partials.delete-modal', ['resource' => 'city', 'resources' => 'cities'])
                                 @endif
                             </td>
-                            @include('dashboard.cities.components.edit')
                         </tr>
                     @endforeach
                 </tbody>

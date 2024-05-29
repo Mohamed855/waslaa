@@ -69,14 +69,6 @@
                                         @lang('translate.show')
                                     </button>
                                 </a>
-                                @if (auth('vendor')->check())
-                                    <a href="{{ route('products.edit', $single->id) }}">
-                                        <button class="btn btn-primary ms-auto">
-                                            <i data-feather="edit"></i>
-                                            @lang('translate.edit')
-                                        </button>
-                                    </a>
-                                @endif
                                 @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
                                     @include('dashboard.partials.delete-modal', ['resource' => 'product', 'resources' => 'products'])
                                 @endif

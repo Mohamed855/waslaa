@@ -158,7 +158,10 @@ return [
     'invoiceDetails' => 'Invoice details',
     'invoiceOrders' => 'Invoice orders',
     'orderProducts' => 'Order products',
+    'productComponents' => 'Product components',
+    'productType' => 'Product type',
     'following' => 'Following',
+    'favoriteBy' => 'Favorite by',
     'userIn' => 'User in (vendor)',
     'notSelected' => 'Not selected',
 

@@ -37,33 +37,11 @@ class NotificationsController extends BaseController
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create(): View
-    {
-        return parent::createBase('dashboard.notifications.create');
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request): RedirectResponse
     {
         return parent::storeBase($this->table, $this->resource, $request, ['name_en', 'name_ar', 'body_en', 'body_ar', 'image', 'type', 'user_id'], $this->createNotificationRules(), redirectToIndex: true);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id): View
-    {
-        $editNotificationView = 'dashboard.notifications.edit';
-
-        if (auth('admin')->check()) {
-            return parent::editBase($this->table, $editNotificationView, $id);
-        } else {
-            return parent::vendorEditBase('notifications', $editNotificationView, $id);
-        }
     }
 
     /**

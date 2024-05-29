@@ -40,11 +40,11 @@
                                     <i data-feather="edit"></i>
                                     @lang('translate.edit')
                                 </button>
+                                @include('dashboard.ads.components.edit')
                                 @if (auth('admin')->user()->is_primary)
                                     @include('dashboard.partials.delete-modal', ['resource' => 'ad', 'resources' => 'ads'])
                                 @endif
                             </td>
-                            @include('dashboard.ads.components.edit')
                         </tr>
                     @endforeach
                 </tbody>

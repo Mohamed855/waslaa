@@ -30,27 +30,11 @@ class AdminsController extends BaseController
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create(): View
-    {
-        return parent::createBase('dashboard.admins.create');
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request): RedirectResponse
     {
         return parent::storeBase($this->table, $this->resource, $request, ['name', 'email', 'phone', 'password', 'avatar'], $this->createAdminRules(), redirectToIndex: true);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id): View
-    {
-        return parent::editBase($this->table, 'dashboard.admins.edit', $id);
     }
 
     /**

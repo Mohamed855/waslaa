@@ -35,7 +35,8 @@ class Product extends Model
 
     public function vendor()
     {
-        return $this->subcategory()->vendor();
+        $subcategory = $this->subcategory()->firstOrFail();
+        return $subcategory->vendor()->first();
     }
 
     public function favorites (): BelongsToMany
@@ -45,8 +46,8 @@ class Product extends Model
 
     public static function vendorProducts ()
     {
-        return self::whereHas('subcategory.vendors', function ($query) {
-            $query->where('vendor_id', auth('vendor')->id());
+        return self::whereHas('subcategory.vendor', function ($query) {
+            $query->where('vendors.id', auth('vendor')->id());
         });
     }
 }

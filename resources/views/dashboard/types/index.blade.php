@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
-@section('title', __('translate.types') . (isset($username) ? ' [ ' . $username . ' ]' : ''))
+@section('title', (request()->routeIs('productTypes') ? __('translate.productType') : __('translate.type')) . (isset($username) ? ' [ ' . $username . ' ]' : ''))
 @section('content')
     <div class="row">
         <div class="col-xl-12 d-flex">
@@ -9,7 +9,11 @@
                     @lang('translate.add')
                 </button>
             </div>
-            @include('dashboard.types.components.add')
+            @if (request()->routeIs(['types.index', 'vendorTypes']))
+                @include('dashboard.types.components.add')
+            @elseif (request()->routeIs('productTypes'))
+                @include('dashboard.types.components.product-select-type')
+            @endif
         </div>
     </div>
     @include('dashboard.types.components.list')
