@@ -17,16 +17,23 @@ class AdminsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = Admin::where('email' , 'wasla@owner.com')->first();
+        $user = Admin::where('email' , 'admin@test.com')->first();
         if (!$user){
             try {
                 DB::transaction(static function() {
                     Admin::firstOrCreate([
-                        'id' => 2,
                         'name' => 'Owner',
                         'username' => 'owner',
                         'email' => 'wasla@owner.com',
                         'phone' => '+201220566300',
+                        'password' => 12345678,
+                        'is_primary' => 1
+                    ]);
+                    Admin::firstOrCreate([
+                        'name' => 'Admin',
+                        'username' => 'admin',
+                        'email' => 'admin@test.com',
+                        'phone' => '01025095797',
                         'password' => 12345678,
                         'is_primary' => 1
                     ]);
