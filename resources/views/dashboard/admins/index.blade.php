@@ -10,6 +10,11 @@
                 </button>
             </div>
             @include('dashboard.admins.partials.add')
+            @if(auth('admin')->user()->is_primary)
+                <div class="mx-1 mb-2">
+                        @include('dashboard.partials.delete-selected-modal', ['resource' => 'admin'])
+                </div>
+            @endif
         </div>
     </div>
     @include('dashboard.admins.partials.list')

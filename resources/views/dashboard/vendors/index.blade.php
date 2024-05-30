@@ -11,6 +11,11 @@
                     </button>
                 </a>
             </div>
+            @if(auth('admin')->check() && auth('admin')->user()->is_primary)
+                <div class="mx-1 mb-2">
+                        @include('dashboard.partials.delete-selected-modal', ['resource' => 'vendor'])
+                </div>
+            @endif
         </div>
         @include('dashboard.vendors.partials.list')
     </section>

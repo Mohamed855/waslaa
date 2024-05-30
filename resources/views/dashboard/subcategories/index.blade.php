@@ -10,6 +10,11 @@
                 </button>
             </div>
             @include('dashboard.subcategories.partials.add')
+            @if(auth('vendor')->check() || (request()->routeIs('vendorSubcategories') && auth('admin')->user()->is_primary))
+                <div class="mx-1 mb-2">
+                        @include('dashboard.partials.delete-selected-modal', ['resource' => 'subcategory'])
+                </div>
+            @endif
         </div>
     </div>
     @include('dashboard.subcategories.partials.list')

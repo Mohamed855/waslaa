@@ -8,6 +8,11 @@
                     <i data-feather="plus"></i>
                     @lang('translate.add')
                 </button>
+                @if(request()->routeIs('categories.index') && auth('admin')->check() && auth('admin')->user()->is_primary)
+                    <div class="mx-1 mb-2">
+                            @include('dashboard.partials.delete-selected-modal', ['resource' => 'category'])
+                    </div>
+                @endif
             </div>
             @if (auth('admin')->check() && request()->routeIs('categories.index'))
                 @include('dashboard.categories.partials.add')

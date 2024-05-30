@@ -10,6 +10,11 @@
                 </button>
             </div>
             @include('dashboard.notifications.partials.add')
+            @if(auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
+                <div class="mx-1 mb-2">
+                        @include('dashboard.partials.delete-selected-modal', ['resource' => 'notification'])
+                </div>
+            @endif
         </div>
     </div>
     @include('dashboard.notifications.partials.list')

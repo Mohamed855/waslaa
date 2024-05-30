@@ -8,8 +8,13 @@
                     <i data-feather="plus"></i>
                     @lang('translate.add')
                 </button>
-            </div>
             @include('dashboard.countries.partials.add')
+            @if(auth('admin')->user()->is_primary)
+                <div class="mx-1 mb-2">
+                        @include('dashboard.partials.delete-selected-modal', ['resource' => 'country'])
+                </div>
+            @endif
+            </div>
         </div>
     </div>
     @include('dashboard.countries.partials.list')

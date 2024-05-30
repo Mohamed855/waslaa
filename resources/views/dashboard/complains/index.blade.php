@@ -11,6 +11,9 @@
                     </button>
                 </div>
                 @include('dashboard.complains.partials.add')
+                <div class="mx-1 mb-2">
+                    @include('dashboard.partials.delete-selected-modal', ['resource' => 'complain'])
+                </div>
             </div>
         </div>
     @endif
