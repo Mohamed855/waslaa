@@ -126,8 +126,15 @@ class ProductsController extends BaseController
         return parent::updateBase($this->table, $this->resource, $request, ['offer', 'offer_type', 'offer_value'], [], $id);
     }
 
-    public function updatePrices($id) {
-        return back();
+    public function updatePrices(Request $request, $id) {
+        $types = $request->all();
+        foreach ($types as $inputName => $value) {
+            if (str_starts_with($inputName, 'price')) {
+                $typeId = (int) str_replace('price', '', $inputName);
+                DB::table('product_types')->where(['product_id' => $id, 'type_id' => $typeId])->update(['price' => $value]);
+            }
+        }
+        return back()->with('success', __('translate.prices') . ' ' . __('success.updated'));
     }
 
     /**

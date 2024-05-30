@@ -111,6 +111,8 @@ return [
     'quantity' => 'Quantity',
     'price' => 'Price',
     'prices' => 'Prices',
+    'priceOf' => 'Price of',
+    'updatePrice' => 'Update price',
     'payMethod' => 'Pay method',
     'pound' => 'Egy',
     'deliveryMethod' => 'Delivery method',

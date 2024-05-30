@@ -43,7 +43,7 @@
                             @endif
                             <td style="min-width: 320px">
                                 @if (request()->routeIs(['types.index', 'vendorTypes']))
-                                    <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typetypeComponentBtn" data-bs-toggle="modal" data-bs-target="#EditType{{ $single->id }}" data-="{{ $single }}">
+                                    <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeTypeBtn" data-bs-toggle="modal" data-bs-target="#EditType{{ $single->id }}" data-="{{ $single }}">
                                         <i data-feather="edit"></i>
                                         @lang('translate.edit')
                                     </button>
@@ -52,6 +52,11 @@
                                         @include('dashboard.partials.delete-modal', ['resource' => 'type', 'resources' => 'types'])
                                     @endif
                                 @elseif (request()->routeIs('productTypes'))
+                                    <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto updatePriceBtn" data-bs-toggle="modal" data-bs-target="#updatePrice{{ $single->id }}" data-="{{ $single }}">
+                                        <i data-feather="edit"></i>
+                                        @lang('translate.updatePrice')
+                                    </button>
+                                    @include('dashboard.types.partials.update-price')
                                     @include('dashboard.types.partials.product-remove-type')
                                 @endif
                             </td>
@@ -66,7 +71,7 @@
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function () {
-        $('.typetypeComponentBtn').on('click', function () {
+        $('.typeTypeBtn').on('click', function () {
             let id = $(this).attr('data-id');
             let type = JSON.parse($(this).attr('data-'));
             $('#enName').val(type.name_en);

@@ -6,6 +6,10 @@
         <p class="card-text">@lang('translate.subcategory') : {{ $selected->subcategory?->$nameOnLang }}</p>
         <p class="card-text">@lang('translate.rate') : {{ $selected->rate }}</p>
         <p class="card-text">@lang('translate.favoriteBy') : {{ count($selected->favorites) }}</p>
+        <p class="card-text" style="font-weight: bold">@lang('translate.prices')</p>
+        @foreach ($selected->types as $type)
+            <p class="card-text">{{ $type->$nameOnLang }} : {{ $type->pivot?->price }}</p>
+        @endforeach
         @if ($selected->offer)
             <p class="card-text" style="font-weight: bold">@lang('translate.offer')</p>
             <p class="card-text">@lang('translate.type') : {{ $selected->offer_type }}</p>

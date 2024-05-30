@@ -111,6 +111,8 @@ return [
     'quantity' => 'الكمية',
     'price' => 'السعر',
     'prices' => 'الأسعار',
+    'priceOf' => 'سعر',
+    'updatePrice' => 'تحديث السعر',
     'payMethod' => 'طريقة الدفع',
     'pound' => 'جنيه مصرى',
     'deliveryMethod' => 'طريقة التوصيل',
