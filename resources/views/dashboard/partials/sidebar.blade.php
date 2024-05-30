@@ -109,10 +109,10 @@
             @if (auth('admin')->check() || auth('vendor')->check())
                 @php
                     $orderStatus = $invoiceStatus = '';
-                    if (request()->routeIs('showOrder')) {
+                    if (request()->routeIs('orders.show')) {
                         $orderStatus = $selected->status;
                     }
-                    if (request()->routeIs('showInvoice')) {
+                    if (request()->routeIs('invoices.show')) {
                         $invoiceStatus = $selected->status;
                     }
                 @endphp
@@ -211,7 +211,7 @@
                         @lang('translate.subcategories')
                     </a>
                 </li>
-                <li class="nav-item {{ request()->routeIs(['products.index', 'showProduct']) ? 'active' : '' }}">
+                <li class="nav-item {{ request()->routeIs(['products.index', 'products.show']) ? 'active' : '' }}">
                     <a class="nav-link d-flex align-items-center" href="{{ route('products.index') }}">
                         <i data-feather="shopping-cart"></i>
                         @lang('translate.products')

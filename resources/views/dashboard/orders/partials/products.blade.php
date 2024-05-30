@@ -9,20 +9,20 @@
                     <th>@lang('translate.theType')</th>
                     <th>@lang('translate.quantity')</th>
                     <th>@lang('translate.price')</th>
-                    @if ($order->status == 'ordered' && auth('vendor')->check())
+                    @if ($selected->status == 'ordered' && auth('vendor')->check())
                         <th>@lang('translate.actions')</th>
                     @endif
                 </tr>
                 </thead>
                 <tbody>
-                    @foreach ($data as $single)
+                    @foreach ($selected['products'] as $single)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $single['name'] }}</td>
                             <td>{{ $single['type'] }}</td>
                             <td>{{ $single['quantity'] }}</td>
                             <td>{{ $single['price'] }}</td>
-                            @if ($order->status == 'ordered' && auth('vendor')->check())
+                            @if ($selected->status == 'ordered' && auth('vendor')->check())
                                 <td>
                                     <button type="button" class="btn btn-danger ms-auto" data-bs-toggle="modal" data-bs-target="{{ '#removeModal' . $single['name'] }}">
                                         <i data-feather="trash-2"></i>

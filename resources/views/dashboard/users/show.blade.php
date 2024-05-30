@@ -13,4 +13,8 @@
             </div>
         </div>
     </section>
+    <section id="addresses">
+        <h3 class="py-1">@lang('translate.addresses')</h3>
+        @include('dashboard.users.partials.addresses')
+    </section>
 @endsection

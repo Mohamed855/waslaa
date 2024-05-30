@@ -63,7 +63,7 @@
                                 </td>
                             @endif
                             <td style="min-width: 370px">
-                                <a href="{{ route('showProduct', $single->id) }}">
+                                <a href="{{ route('products.show', $single->id) }}">
                                     <button class="btn btn-warning ms-auto">
                                         <i data-feather="eye"></i>
                                         @lang('translate.show')

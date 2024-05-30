@@ -1,12 +1,5 @@
 @extends('layouts.dashboard')
-@php
-    $productDesc = match (true) {
-        isset($username) => ' [ ' . $username . ' ]',
-        default => '',
-    };
-    $title = request()->routeIs('orderProducts') ? __('translate.orderProducts') : __('translate.products');
-@endphp
-@section('title', $title . $productDesc)
+@section('title', __('translate.products') . (isset($username) ? ' [ ' . $username . ' ]' : ''))
 @section('content')
     <section>
         @if (auth('vendor')->check() && request()->routeIs('products.index'))
@@ -21,10 +14,6 @@
                 </div>
             </div>
         @endif
-        @if (request()->routeIs(['products.index', 'vendorProducts']))
-            @include('dashboard.products.partials.products-list')
-        @elseif (request()->routeIs('orderProducts'))
-            @include('dashboard.products.partials.order-products-list')
-        @endif
+        @include('dashboard.products.partials.list')
     </section>
 @endsection

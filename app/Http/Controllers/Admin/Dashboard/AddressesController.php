@@ -27,17 +27,6 @@ class AddressesController extends BaseController
     /**
      * Display a listing of the vendors' addresses.
      */
-    public function userAddresses(string $username): View|RedirectResponse
-    {
-        $user = DashboardHelper::getUserByUsername($username);
-        $data = DashboardHelper::returnDataOnPagination($user->addresses());
-        if ($data->currentPage() > $data->lastPage()) return redirect($data->url($data->lastPage()));
-        return view('dashboard.addresses.index', compact(['data', 'username']))->with(['nameOnLang' => $this->nameOnLang]);
-    }
-
-    /**
-     * Display a listing of the vendors' addresses.
-     */
     public function vendorAddresses(string $username): View|RedirectResponse
     {
         $vendor = DashboardHelper::getVendorByUsername($username);

@@ -9,14 +9,7 @@
                         <th>@lang('translate.type')</th>
                         <th>@lang('translate.city')</th>
                         <th>@lang('translate.address')</th>
-                        @if (request()->routeIs('userAddresses'))
-                            <th>@lang('translate.building')</th>
-                            <th>@lang('translate.floor')</th>
-                            <th>@lang('translate.flat')</th>
-                            <th>@lang('translate.specialMark')</th>
-                        @elseif (request()->routeIs('vendorAddresses'))
-                            <th>@lang('translate.actions')</th>
-                        @endif
+                        <th>@lang('translate.actions')</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,23 +19,16 @@
                             <td>{{ $single->main ? __('translate.main') : '-' }}</td>
                             <td>{{ $single->city?->$nameOnLang }}</td>
                             <td style="min-width: 320px">{{ $single->address }}</td>
-                            @if (request()->routeIs('userAddresses'))
-                                <td>{{ $single->building }}</td>
-                                <td>{{ $single->floor }}</td>
-                                <td>{{ $single->flat }}</td>
-                                <td>{{ $single->special_mark }}</td>
-                            @elseif (request()->routeIs('vendorAddresses'))
-                                <td style="min-width: 320px">
-                                    <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeAddressBtn" data-bs-toggle="modal" data-bs-target="#EditAddress{{ $single->id }}" data-="{{ $single }}">
-                                        <i data-feather="edit"></i>
-                                        @lang('translate.edit')
-                                    </button>
-                                    @include('dashboard.addresses.partials.edit')
-                                    @if (auth('admin')->check() && auth('admin')->user()->is_primary)
-                                        @include('dashboard.partials.delete-modal', ['resource' => 'address', 'resources' => 'addresses'])
-                                    @endif
-                                </td>
-                            @endif
+                            <td style="min-width: 320px">
+                                <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeAddressBtn" data-bs-toggle="modal" data-bs-target="#EditAddress{{ $single->id }}" data-="{{ $single }}">
+                                    <i data-feather="edit"></i>
+                                    @lang('translate.edit')
+                                </button>
+                                @include('dashboard.addresses.partials.edit')
+                                @if (auth('admin')->check() && auth('admin')->user()->is_primary)
+                                    @include('dashboard.partials.delete-modal', ['resource' => 'address', 'resources' => 'addresses'])
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

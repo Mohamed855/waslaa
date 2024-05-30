@@ -62,13 +62,16 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get('vendor/overview', [GeneralController::class, 'vendorOverview'])->name('vendor.overview');
 
         Route::get('profile', [GeneralController::class, 'profile'])->name('profile');
+        Route::get('logout', [LoginController::class, 'logout'])->name('signOut');
+        Route::post('end-session', [LoginController::class, 'endSession'])->name('endSession');
+
         Route::get('settings', [GeneralController::class, 'settings'])->name('settings');
         Route::post('settings/update', [GeneralController::class, 'updateSettings'])->name('settings.update');
+
         Route::post('primary/toggle/{id}', [ActionsController::class, 'togglePrimary'])->name('primary.toggle');
         Route::post('{table}/activation/toggle/{id}', [ActionsController::class, 'toggleActive'])->name('activation.toggle');
         Route::post('{table}/image/remove/{id}', [ActionsController::class, 'removeImage'])->name('image.remove');
-        Route::get('logout', [LoginController::class, 'logout'])->name('signOut');
-        Route::post('end-session', [LoginController::class, 'endSession'])->name('endSession');
+
         Route::prefix('{guard}/{id}')->group(function () {
             Route::post('profile/update', [ActionsController::class, 'updateProfile'])->name('profile.update');
             Route::post('password/change', [ActionsController::class, 'changePassword'])->name('password.change');
@@ -76,24 +79,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::post('avatar/remove', [ActionsController::class, 'removeAvatar'])->name('avatar.remove');
         });
 
-        Route::resource('users', UsersController::class)->except(['create', 'store', 'edit', 'update']);
-        Route::prefix('user/{username}')->group(function () {
-            Route::get('/', [UsersController::class, 'show'])->name('showUser');
-            Route::get('addresses', [AddressesController::class, 'userAddresses'])->name('userAddresses');
-            Route::get('orders', [OrdersController::class, 'userOrders'])->name('userOrders');
-            Route::get('complains', [ComplainsController::class, 'userComplains'])->name('userComplains');
-        });
-
-        Route::resource('managers', ManagersController::class)->except(['create', 'edit', 'show']);
-        Route::resource('notifications', NotificationsController::class)->except(['create', 'edit', 'show']);
-        Route::resource('complains', ComplainsController::class)->except(['create', 'edit', 'show']);
-        Route::resource('subcategories', SubcategoriesController::class)->except(['create', 'edit', 'show']);
-        Route::resource('products', ProductsController::class)->except(['edit']);
-        Route::prefix('product/{id}')->group(function () {
-            Route::get('/', [ProductsController::class, 'show'])->name('showProduct');
-            Route::get('components', [ComponentsController::class, 'productComponents'])->name('productComponents');
-            Route::get('types', [TypesController::class, 'productTypes'])->name('productTypes');
-        });
+        Route::resource('categories', CategoriesController::class)->except(['create', 'edit', 'show']);
+        Route::post('vendor-select-category', [CategoriesController::class, 'selectVendorCategory'])->name('selectVendorCategory');
+        Route::delete('vendor-remove-category/{id}/{vendorId}', [CategoriesController::class, 'removeVendorCategory'])->name('removeVendorCategory');
 
         Route::resource('components', ComponentsController::class)->except(['create', 'edit', 'show']);
         Route::post('product-select-component', [ComponentsController::class, 'selectProductComponent'])->name('selectProductComponent');
@@ -103,32 +91,38 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::post('product-select-type', [TypesController::class, 'selectProductType'])->name('selectProductType');
         Route::delete('product-remove-type/{id}/{productId}', [TypesController::class, 'removeProductType'])->name('removeProductType');
 
-        Route::resource('categories', CategoriesController::class)->except(['create', 'edit', 'show']);
-        Route::post('vendor-select-category', [CategoriesController::class, 'selectVendorCategory'])->name('selectVendorCategory');
-        Route::delete('vendor-remove-category/{id}/{vendorId}', [CategoriesController::class, 'removeVendorCategory'])->name('removeVendorCategory');
-
         Route::resource('orders', OrdersController::class)->except('index', 'create', 'edit');
         Route::get('ordered', [OrdersController::class, 'ordered'])->name('ordered');
         Route::get('accepted', [OrdersController::class, 'accepted'])->name('accepted');
         Route::get('canceled', [OrdersController::class, 'canceled'])->name('canceled');
-        Route::prefix('order/{id}')->group(function () {
-            Route::get('/', [OrdersController::class, 'show'])->name('showOrder');
-            Route::get('products', [ProductsController::class, 'orderProducts'])->name('orderProducts');
-        });
+
         Route::resource('invoices', InvoicesController::class)->except(['index', 'create', 'edit']);
+        Route::get('invoices/{id}/orders', [OrdersController::class, 'invoiceOrders'])->name('invoiceOrders');
         Route::get('opened', [InvoicesController::class, 'opened'])->name('opened');
         Route::get('closed', [InvoicesController::class, 'closed'])->name('closed');
         Route::get('collected', [InvoicesController::class, 'collected'])->name('collected');
-        Route::prefix('invoice/{id}')->group(function () {
-            Route::get('/', [InvoicesController::class, 'show'])->name('showInvoice');
-            Route::get('orders', [OrdersController::class, 'invoiceOrders'])->name('invoiceOrders');
+
+        Route::resource('products', ProductsController::class)->except(['edit']);
+        Route::prefix('products/{id}')->group(function () {
+            Route::get('components', [ComponentsController::class, 'productComponents'])->name('productComponents');
+            Route::get('types', [TypesController::class, 'productTypes'])->name('productTypes');
         });
+
+        Route::resource('users', UsersController::class)->except(['create', 'store', 'edit', 'update']);
+        Route::prefix('user/{username}')->group(function () {
+            Route::get('/', [UsersController::class, 'show'])->name('showUser');
+            Route::get('orders', [OrdersController::class, 'userOrders'])->name('userOrders');
+            Route::get('complains', [ComplainsController::class, 'userComplains'])->name('userComplains');
+        });
+
+        Route::resource('managers', ManagersController::class)->except(['create', 'edit', 'show']);
+        Route::resource('notifications', NotificationsController::class)->except(['create', 'edit', 'show']);
+        Route::resource('complains', ComplainsController::class)->except(['create', 'edit', 'show']);
+        Route::resource('subcategories', SubcategoriesController::class)->except(['create', 'edit', 'show']);
     });
 
     // Admin Routes
     Route::middleware('guard:admin')->group(function () {
-        Route::resource('ads', ADsController::class)->except(['create', 'edit', 'show']);
-        Route::resource('admins', AdminsController::class)->except(['create', 'edit', 'show']);
         Route::resource('vendors', VendorsController::class)->except(['edit']);
         Route::prefix('vendor/{username}')->group(function () {
             Route::get('/', [VendorsController::class, 'show'])->name('showVendor');
@@ -144,6 +138,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::get('addresses', [AddressesController::class, 'vendorAddresses'])->name('vendorAddresses');
             Route::get('complains', [ComplainsController::class, 'vendorComplains'])->name('vendorComplains');
         });
+
+        Route::resource('ads', ADsController::class)->except(['create', 'edit', 'show']);
+        Route::resource('admins', AdminsController::class)->except(['create', 'edit', 'show']);
         Route::resource('countries', CountriesController::class)->except(['create', 'edit', 'show']);
         Route::resource('cities', CitiesController::class)->except(['create', 'edit', 'show']);
         Route::resource('addresses', AddressesController::class)->except(['index', 'create', 'edit', 'show']);

@@ -37,7 +37,7 @@
                             @endif
                             <td>{{ $single->total_price }} @lang('translate.pound')</td>
                             <td style="min-width: 320px">
-                                <a href="{{ route('showInvoice', $single->id) }}">
+                                <a href="{{ route('invoices.show', $single->id) }}">
                                     <button class="btn btn-info ms-auto">
                                         <i data-feather="eye"></i>
                                         @lang('translate.show')

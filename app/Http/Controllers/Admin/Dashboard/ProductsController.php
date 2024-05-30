@@ -42,15 +42,6 @@ class ProductsController extends BaseController
     }
 
     /**
-     * Display a listing of the orders' products.
-     */
-    public function orderProducts(string $id): View|RedirectResponse
-    {
-        $order = $this->order()->findOrFail($id);
-        return view('dashboard.products.index', compact(['order']))->with(['data' => $order->products]);
-    }
-
-    /**
      * Display a listing of the vendors' products.
      */
     public function vendorProducts(string $username): View|RedirectResponse

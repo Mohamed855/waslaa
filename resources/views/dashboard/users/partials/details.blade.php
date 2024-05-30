@@ -20,7 +20,7 @@
                 <a href="{{ route('userComplains', $selected->username) }}" class="pe-1">@lang('translate.complains')</a>
             </div>
             <div class="d-inline-block pt-1 col-6 col-md-3">
-                <a href="{{ route('userAddresses', $selected->username) }}" class="pe-1">@lang('translate.addresses')</a>
+                <a href="#addresses" class="pe-1">@lang('translate.addresses')</a>
             </div>
         </div>
     </div>

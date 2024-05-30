@@ -43,7 +43,7 @@
                             <td>{{ $single->totalCost }} @lang('translate.pound')</td>
                             <td>{{ date_format($single->created_at, 'd-m-Y h:i a') }}</td>
                             <td style="min-width: 320px">
-                                <a href="{{ route('showOrder', $single->id) }}">
+                                <a href="{{ route('orders.show', $single->id) }}">
                                     <button class="btn btn-info ms-auto">
                                         <i data-feather="eye"></i>
                                         @lang('translate.show')
