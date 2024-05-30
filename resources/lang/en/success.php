@@ -29,4 +29,5 @@ return [
     'avatarUpdated' => 'Profile picture has been updated',
     'avatarRemoved' => 'Profile picture has been removed',
     'imageRemoved' => 'Image has been removed',
+    'selectedRecordsDeleted' => 'Selected records has deleted successfully',
 ];

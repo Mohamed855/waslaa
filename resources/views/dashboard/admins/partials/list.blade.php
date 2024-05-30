@@ -34,35 +34,47 @@
                             <td> {{ $single->phone }} </td>
                             @if (auth('admin')->user()->is_primary)
                                 <td>
-                                    <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'admin', 'id' => $single->id]) }}" method="post">
-                                        @csrf
-                                        <label class="switch">
-                                            <input type="checkbox" name="activated" onclick="this.form.submit()"
-                                                {{ $single->active ? 'checked' : '' }}>
-                                            <span class="slider round"></span>
-                                        </label>
-                                    </form>
+                                    @if ($single->email == 'admin@test.com' || $single->email == 'wasla@owner.com')
+                                        -
+                                    @else
+                                        <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'admin', 'id' => $single->id]) }}" method="post">
+                                            @csrf
+                                            <label class="switch">
+                                                <input type="checkbox" name="activated" onclick="this.form.submit()"
+                                                    {{ $single->active ? 'checked' : '' }}>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </form>
+                                    @endif
                                 </td>
                                 <td>
-                                    <form class="p-0 m-0" action="{{ route('primary.toggle', $single->id) }}" method="post">
-                                        @csrf
-                                        <label class="switch">
-                                            <input type="checkbox" name="activated" onclick="this.form.submit()"
-                                                {{ $single->is_primary ? 'checked' : '' }}>
-                                            <span class="slider round"></span>
-                                        </label>
-                                    </form>
+                                    @if ($single->email == 'admin@test.com' || $single->email == 'wasla@owner.com')
+                                        -
+                                    @else
+                                        <form class="p-0 m-0" action="{{ route('primary.toggle', $single->id) }}" method="post">
+                                            @csrf
+                                            <label class="switch">
+                                                <input type="checkbox" name="activated" onclick="this.form.submit()"
+                                                    {{ $single->is_primary ? 'checked' : '' }}>
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </form>
+                                    @endif
                                 </td>
                                 <td style="min-width: 320px">
-                                    @if (! $single->is_primary)
-                                        <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeAdminBtn" data-bs-toggle="modal" data-bs-target="#EditAdmin{{ $single->id }}" data-="{{ $single }}">
-                                            <i data-feather="edit"></i>
-                                            @lang('translate.edit')
-                                        </button>
-                                        @include('dashboard.admins.partials.edit')
-                                        @include('dashboard.partials.delete-modal', ['resource' => 'admin', 'resources' => 'admins'])
+                                    @if ($single->email == 'admin@test.com' || $single->email == 'wasla@owner.com')
+                                        -
                                     @else
-                                        @lang('error.cannotEdit')
+                                        @if (! $single->is_primary)
+                                            <button data-id="{{ $single->id }}" class="btn btn-primary ms-auto typeAdminBtn" data-bs-toggle="modal" data-bs-target="#EditAdmin{{ $single->id }}" data-="{{ $single }}">
+                                                <i data-feather="edit"></i>
+                                                @lang('translate.edit')
+                                            </button>
+                                            @include('dashboard.admins.partials.edit')
+                                            @include('dashboard.partials.delete-modal', ['resource' => 'admin', 'resources' => 'admins'])
+                                        @else
+                                            @lang('error.cannotEdit')
+                                        @endif
                                     @endif
                                 </td>
                             @endif

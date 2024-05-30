@@ -71,6 +71,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::post('primary/toggle/{id}', [ActionsController::class, 'togglePrimary'])->name('primary.toggle');
         Route::post('{table}/activation/toggle/{id}', [ActionsController::class, 'toggleActive'])->name('activation.toggle');
         Route::post('{table}/image/remove/{id}', [ActionsController::class, 'removeImage'])->name('image.remove');
+        Route::delete('delete/selected', [ActionsController::class, 'deleteSelection'])->name('deleteSelection');
 
         Route::prefix('{guard}/{id}')->group(function () {
             Route::post('profile/update', [ActionsController::class, 'updateProfile'])->name('profile.update');

@@ -42,6 +42,8 @@ class AdminsController extends BaseController
      */
     public function update(Request $request, string $id): RedirectResponse
     {
+        $admin = $this->admin()->find($id);
+        if ($admin->email == 'admin@test.com' || $admin->email == 'wasla@owner.com') return back()->with('error', __('error.cannotUpdateMainAdmin'));
         return parent::updateBase($this->table, $this->resource, $request, ['name', 'username', 'email', 'phone', 'avatar'], $this->updateAdminRules($id), $id, redirectToIndex: true);
     }
 
@@ -50,6 +52,8 @@ class AdminsController extends BaseController
      */
     public function destroy(string $id): RedirectResponse
     {
+        $admin = $this->admin()->find($id);
+        if ($admin->email == 'admin@test.com' || $admin->email == 'wasla@owner.com') return back()->with('error', __('error.cannotDeleteMainAdmin'));
         return parent::destroyBase($this->table, $this->resource, $id);
     }
 }

@@ -39,6 +39,8 @@ return [
     'cannotEdit' => 'لا يمكن حذف أو تعديل مسئول رئيسى',
     'cannotEditPrimary' => 'لا يمكن تعديل مسئول رئيسى',
     'cannotDeletePrimary' => 'لا يمكن حذف مسئول رئيسى',
+    'cannotDeleteMainAdmin' => 'لا يمكن حذف مسئول رئيسى',
+    'cannotUpdateMainAdmin' => 'لا يمكن تعديل مسئول رئيسى',
     'cannotDeleteMainAddress' => 'لا يمكن حذف عنوان رئيسى',
     'cannotDeleteActive' => 'لا يمكن حذف عنصر فعال',
 

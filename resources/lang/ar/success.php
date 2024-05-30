@@ -29,4 +29,5 @@ return [
     'avatarUpdated' => 'تم تحديث الصورة الشخصية بنجاح',
     'avatarRemoved' => 'تم إزالة الصورة الشخصية بنجاح',
     'imageRemoved' => 'تم إزالة الصورة بنجاح',
+    'selectedRecordsDeleted' => 'تم حذف العناصر المحددة بنجاح',
 ];

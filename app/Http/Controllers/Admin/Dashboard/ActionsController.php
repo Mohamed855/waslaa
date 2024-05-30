@@ -163,6 +163,23 @@ class ActionsController extends Controller
         }
     }
 
+    public function deleteSelection (Request $request) {
+        try {
+            $selectedIds = explode(',', $request->input('selected_ids'));
+            $table = $request->input('table');
+            foreach ($selectedIds as $selectedId) {
+                if ($table == 'admin') {
+                    $admin = $this->admin()->find($selectedId);
+                    if ($admin->email == 'admin@test.com' || $admin->email == 'wasla@owner.com') return back()->with('error', __('error.cannotUpdateMainAdmin'));
+                }
+                $this->$table()->where('id', $selectedId)->delete();
+            }
+            return back()->with('success', __('success.selectedRecordsDeleted'));
+        } catch (Exception) {
+            return back()->with('error', __('error.somethingWentWrong'));
+        }
+    }
+
     public function updateSettings(Request $request)
     {
         //

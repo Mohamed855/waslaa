@@ -39,6 +39,8 @@ return [
     'cannotEdit' => 'Cannot edit or delete primary',
     'cannotEditPrimary' => 'Cannot edit primary',
     'cannotDeletePrimary' => 'Cannot delete primary',
+    'cannotDeleteMainAdmin' => 'Cannot delete main admin',
+    'cannotUpdateMainAdmin' => 'Cannot update main admin',
     'cannotDeleteMainAddress' => 'Cannot delete main address',
     'cannotDeleteActive' => 'Cannot delete active',
 
