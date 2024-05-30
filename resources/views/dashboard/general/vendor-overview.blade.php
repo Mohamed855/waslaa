@@ -2,106 +2,29 @@
 @section('title', __('translate.overview'))
 @section('content')
     <div class="row">
-        <div class="col-lg-4 col-6">
-            <div class="card">
-                <div class="card-header">
-                    <div class="text-center">
-                        <p class="card-text font-small-3 mb-0">@lang('translate.managers')</p>
-                        <h4 class="font-weight-bolder mb-0">{{ $currVendor->managers ? $currVendor->managers->count() : 0 }}</h4>
-                    </div>
-                    <div class="avatar bg-light-subtle p-50 m-0">
-                        <div class="avatar-content">
-                            <i data-feather="key"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-6">
-            <div class="card">
-                <div class="card-header">
-                    <div class="text-center">
-                        <p class="card-text font-small-3 mb-0">@lang('translate.users')</p>
-                        <h4 class="font-weight-bolder mb-0">{{ $currVendor->users ? $currVendor->users->count() : 0 }}</h4>
-                    </div>
-                    <div class="avatar bg-light-warning p-50 m-0">
-                        <div class="avatar-content">
-                            <i data-feather="users"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-6">
-            <div class="card">
-                <div class="card-header">
-                    <div class="text-center">
-                        <p class="card-text font-small-3 mb-0">@lang('translate.transaction')</p>
-                        <h4 class="font-weight-bolder mb-0">{{ $currVendor->total_transactions }}</h4>
-                    </div>
-                    <div class="avatar bg-light-success p-50 m-0">
-                        <div class="avatar-content">
-                            <i data-feather="shuffle"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-6">
-            <div class="card">
-                <div class="card-header">
-                    <div class="text-center">
-                        <p class="card-text font-small-3 mb-0">@lang('translate.categories')</p>
-                        <h4 class="font-weight-bolder mb-0">{{ $currVendor->categories ? $currVendor->categories->count() : 0 }}</h4>
-                    </div>
-                    <div class="avatar bg-light-primary p-50 m-0">
-                        <div class="avatar-content">
-                            <svg xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-layers">
-                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                                <polyline points="2 17 12 22 22 17"></polyline>
-                                <polyline points="2 12 12 17 22 12"></polyline>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-6">
-            <div class="card">
-                <div class="card-header">
-                    <div class="text-center">
-                        <p class="card-text font-small-2 mb-0">@lang('translate.subcategories')</p>
-                        <h4 class="font-weight-bolder mb-0">{{ $currVendor->subcategories ? $currVendor->subcategories->count() : 0 }}</h4>
-                    </div>
-                    <div class="avatar bg-light-danger p-50 m-0">
-                        <div class="avatar-content">
-                            <i data-feather="book-open"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-6">
-            <div class="card">
-                <div class="card-header">
-                    <div class="text-center">
-                        <p class="card-text font-small-3 mb-0">@lang('translate.products')</p>
-                        <h4 class="font-weight-bolder mb-0">{{ $currVendor->subcategories && $currVendor->subcategories->count() > 0 ? ($vendor->subcategories->products ? $vendor->subcategories->products->count() : 0) : 0 }}</h4>
-                    </div>
-                    <div class="avatar bg-light-secondary p-50 m-0">
-                        <div class="avatar-content">
-                            <i data-feather="shopping-cart"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <x-vendor-overview-card title="{{ __('translate.managers') }}" icon="key" color="light-secondary" count="{{ $managersCount }}" />
+        <x-vendor-overview-card title="{{ __('translate.users') }}" icon="users" color="light-warning" count="{{ $usersCount }}" />
+        <x-vendor-overview-card title="{{ __('translate.transactions') }}" icon="shuffle" color="light-success" count="{{ auth('vendor')->user()->total_transactions }}" />
+        <x-vendor-overview-card title="{{ __('translate.categories') }}" icon="layers" color="light-primary" count="{{ $categoriesCount }}" />
+        <x-vendor-overview-card title="{{ __('translate.subcategories') }}" icon="book-open" color="light-danger" count="{{ $subcategoriesCount }}" />
+        <x-vendor-overview-card title="{{ __('translate.products') }}" icon="shopping-cart" color="secondary" count="{{ $productsCount }}" />
+        <x-vendor-overview-card title="{{ __('translate.components') }}" icon="command" color="light-info" count="{{ $componentsCount }}" />
+        <x-vendor-overview-card title="{{ __('translate.types') }}" icon="radio" color="subtle" count="{{ $typesCount }}" />
+    </div>
+    <div class="pb-2">
+        <h4>@lang('translate.orders')</h4>
+    </div>
+    <div class="row">
+        <x-vendor-overview-card title="{{ __('translate.ordered') }}" icon="list" color="primary" count="{{ $orders->where('status', 'ordered')->count() }}" />
+        <x-vendor-overview-card title="{{ __('translate.accepted') }}" icon="check" color="success" count="{{ $orders->where('status', 'accepted')->count() }}" />
+        <x-vendor-overview-card title="{{ __('translate.canceled') }}" icon="x-octagon" color="danger" count="{{ $orders->where('status', 'canceled')->count() }}" />
+    </div>
+    <div class="pb-2">
+        <h4>@lang('translate.invoices')</h4>
+    </div>
+    <div class="row">
+        <x-vendor-overview-card title="{{ __('translate.opened') }}" icon="square" color="warning" count="{{ $invoices->where('status', 'opened')->count() }}" />
+        <x-vendor-overview-card title="{{ __('translate.closed') }}" icon="minus-square" color="info" count="{{ $invoices->where('status', 'closed')->count() }}" />
+        <x-vendor-overview-card title="{{ __('translate.canceled') }}" icon="x-square" color="dark" count="{{ $invoices->where('status', 'collected')->count() }}" />
     </div>
 @endsection

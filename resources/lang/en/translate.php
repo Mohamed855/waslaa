@@ -106,7 +106,7 @@ return [
     'specialMark' => 'Special mark',
     'main' => 'Main',
     'followers' => 'Followers',
-    'transaction' => 'Transaction',
+    'transactions' => 'Transactions',
     'theType' => 'Type',
     'quantity' => 'Quantity',
     'price' => 'Price',

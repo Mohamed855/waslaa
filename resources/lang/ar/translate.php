@@ -106,7 +106,7 @@ return [
     'specialMark' => 'علامة مميزة',
     'main' => 'رئيسى',
     'followers' => 'المتابعين',
-    'transaction' => 'التحويلات',
+    'transactions' => 'التحويلات',
     'theType' => 'النوع',
     'quantity' => 'الكمية',
     'price' => 'السعر',

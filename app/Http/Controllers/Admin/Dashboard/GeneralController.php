@@ -25,18 +25,22 @@ class GeneralController extends Controller
         $usersCount = $this->user()->count();
         $activeAdminsCount = $this->activeAdmin()->count();
         $activeUsersCount = $this->activeUser()->count();
-        $activeVendors = $this->activeVendor()->with(['managers', 'users', 'categories', 'subcategories' => function ($query) {
-            $query->with(['products']);
-        }])->get();
+        $activeVendors = $this->activeVendor()->get();
         return view('dashboard.general.admin-overview', compact(['adminsCount', 'vendorsCount', 'usersCount', 'activeAdminsCount', 'activeUsersCount', 'activeVendors']));
     }
 
     public function vendorOverview(): View
     {
-        $currVendor = auth('vendor')->user()->with(['managers', 'users', 'categories', 'subcategories' => function ($query) {
-            $query->with(['products']);
-        }])->first();
-        return view('dashboard.general.vendor-overview', compact(['currVendor']));
+        $managersCount = auth('vendor')->user()->managers()->count();
+        $usersCount = auth('vendor')->user()->users()->count();
+        $categoriesCount = auth('vendor')->user()->categories()->count();
+        $subcategoriesCount = auth('vendor')->user()->subcategories()->count();
+        $productsCount = auth('vendor')->user()->products()->count();
+        $componentsCount = auth('vendor')->user()->components()->count();
+        $typesCount = auth('vendor')->user()->types()->count();
+        $orders = auth('vendor')->user()->currVendorOrders()->get();
+        $invoices = auth('vendor')->user()->invoices()->get();
+        return view('dashboard.general.vendor-overview', compact(['managersCount', 'usersCount', 'categoriesCount', 'subcategoriesCount', 'productsCount', 'componentsCount', 'typesCount', 'orders', 'invoices']));
     }
 
     public function profile(): View
