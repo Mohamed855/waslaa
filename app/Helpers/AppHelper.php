@@ -19,17 +19,17 @@ class AppHelper
 
     public function getADs (): AnonymousResourceCollection
     {
-        $ads = $this->activeAd()->paginate(10);
+        $ads = $this->activeAd()->get();
         return AdResource::collection($ads);
     }
     public function getCategories (): AnonymousResourceCollection
     {
-        $categories = $this->activeCategory()->paginate(10);
+        $categories = $this->activeCategory()->get();
         return CategoryResource::collection($categories);
     }
     public function getSubCategories ($catId): AnonymousResourceCollection
     {
-        $subCategories = $this->activeSubcategory()->where('category_id', $catId)->paginate(10);
+        $subCategories = $this->activeSubcategory()->where('category_id', $catId)->get();
         return SubCategoryResource::collection($subCategories);
     }
     public function getVendors ($catId, $subCatId = null)
@@ -73,15 +73,7 @@ class AppHelper
     }
     public function getSubCategoriesWithProducts ($vendorId): AnonymousResourceCollection
     {
-        $subCategoriesWithProduct = $this->activeSubcategory()->whereHas('vendors', function ($query) use ($vendorId) {
-            $query->where('vendor_id', $vendorId);
-        })->with('products', function ($productQuery) {
-                $productQuery->where('active', 1)->with(['components' => function ($componentsQuery) {
-                    $componentsQuery->where('active', 1);
-                }, 'types' => function ($typesQuery) {
-                    $typesQuery->where('active', 1);
-                }]);
-            })->paginate(10);
+        $subCategoriesWithProduct = $this->activeSubcategory()->where('vendor_id', $vendorId)->with('activeProducts')->paginate(10);
         return SubCategoryWithProductResource::collection($subCategoriesWithProduct);
     }
     public function getOfferedProducts (): AnonymousResourceCollection

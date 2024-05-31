@@ -33,6 +33,16 @@ class Product extends Model
         return $this->belongsToMany(Type::class, 'product_types')->withPivot(['price']);
     }
 
+    public function activeComponents ()
+    {
+        return $this->components()->where('active', 1);
+    }
+
+    public function activeTypes ()
+    {
+        return $this->types()->where('active', 1);
+    }
+
     public function vendor()
     {
         $subcategory = $this->subcategory()->firstOrFail();
