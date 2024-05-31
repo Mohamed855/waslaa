@@ -27,8 +27,8 @@ class ProductResource extends JsonResource
             'offer' => $offer,
             'rate' => $this['rate'],
             'isFavorite' => (bool) $isFavorite,
-            'components' => ComponentResource::collection($this['components']),
-            'types' => TypeResource::collection($this['types']),
+            'components' => ComponentResource::collection($this['activeComponents']),
+            'types' => TypeResource::collection($this['activeTypes']),
         ];
     }
 }

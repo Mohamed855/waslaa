@@ -15,7 +15,7 @@ class FavoritesHelper
     {
         $myFavoriteProducts = $this->activeProduct()->whereHas('favorites', function ($query)  {
             $query->where('user_id', auth()->id());
-        })->with(['subcategory', 'components', 'types'])->paginate(10);
+        })->with(['subcategory', 'activeComponents', 'activeTypes'])->paginate(10);
         return ProductResource::collection($myFavoriteProducts);
     }
 

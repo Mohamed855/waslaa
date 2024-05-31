@@ -36,11 +36,6 @@ class Subcategory extends Model
 
     public function activeProducts ()
     {
-        return $this->products()->where('active', 1)->with([
-            'components' => function ($componentsQuery) {
-                $componentsQuery->where('active', 1);
-            }, 'types' => function ($typesQuery) {
-                $typesQuery->where('active', 1);
-            }]);
+        return $this->products()->where('active', 1)->with(['activeComponents', 'activeTypes']);
     }
 }

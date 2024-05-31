@@ -23,7 +23,7 @@ class ProductController extends Controller
 
     public function selectedProduct ($id): JsonResponse
     {
-        $selectedProduct = $this->app->product()->with(['subcategory', 'components', 'types'])->find($id);
+        $selectedProduct = $this->app->activeProduct()->with(['subcategory', 'activeComponents', 'activeTypes'])->findOrFail($id);
         return $this->returnData('Selected Product', [
             'myRate' => (int) $this->app->getUserRate('product', $id),
             'selectedProduct' => new ProductResource($selectedProduct),

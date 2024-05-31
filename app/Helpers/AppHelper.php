@@ -78,7 +78,7 @@ class AppHelper
     }
     public function getOfferedProducts (): AnonymousResourceCollection
     {
-        $offeredProducts = $this->offers()->with(['subcategory', 'components', 'types'])->paginate(10);
+        $offeredProducts = $this->offers()->with(['subcategory', 'activeComponents', 'activeTypes'])->paginate(10);
         return ProductResource::collection($offeredProducts);
     }
     public function getSearchOutput ($type, $key): AnonymousResourceCollection
