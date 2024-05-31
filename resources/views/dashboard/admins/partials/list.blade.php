@@ -40,10 +40,10 @@
                             <td> {{ $single->phone }} </td>
                             @if (auth('admin')->user()->is_primary)
                                 <td>
-                                    @if ($single->email == 'admin@test.com' || $single->email == 'wasla@owner.com')
+                                    @if ($single->email == 'admin@test.com' || $single->email == 'owner@wasla.com')
                                         -
                                     @else
-                                        <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'admin', 'id' => $single->id]) }}" method="post">
+                                        <form class="p-0 m-0" action="{{ route('toggleActive', ['table' => 'admin', 'id' => $single->id]) }}" method="post">
                                             @csrf
                                             <label class="switch">
                                                 <input type="checkbox" name="activated" onclick="this.form.submit()"
@@ -54,10 +54,10 @@
                                     @endif
                                 </td>
                                 <td>
-                                    @if ($single->email == 'admin@test.com' || $single->email == 'wasla@owner.com')
+                                    @if ($single->email == 'admin@test.com' || $single->email == 'owner@wasla.com')
                                         -
                                     @else
-                                        <form class="p-0 m-0" action="{{ route('primary.toggle', $single->id) }}" method="post">
+                                        <form class="p-0 m-0" action="{{ route('togglePrimary', $single->id) }}" method="post">
                                             @csrf
                                             <label class="switch">
                                                 <input type="checkbox" name="activated" onclick="this.form.submit()"
@@ -68,7 +68,7 @@
                                     @endif
                                 </td>
                                 <td style="min-width: 320px">
-                                    @if ($single->email == 'admin@test.com' || $single->email == 'wasla@owner.com')
+                                    @if ($single->email == 'admin@test.com' || $single->email == 'owner@wasla.com')
                                         -
                                     @else
                                         @if (! $single->is_primary)

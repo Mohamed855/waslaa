@@ -24,7 +24,7 @@ class CheckGuard
         } else {
             $currGuard = DashboardHelper::getCurrentGuard();
             if ($currGuard != 'notAuthorized') {
-                return redirect()->route($currGuard . '.overview');
+                return redirect()->route($currGuard . 'Overview');
             }
             return redirect()->route('signIn');
         }

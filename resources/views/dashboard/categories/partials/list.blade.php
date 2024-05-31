@@ -32,7 +32,7 @@
                             <td>{{ $single->$nameOnLang }}</td>
                             @if (auth('admin')->check() && auth('admin')->user()->is_primary)
                                 <td>
-                                    <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'category', 'id' => $single->id]) }}" method="post">
+                                    <form class="p-0 m-0" action="{{ route('toggleActive', ['table' => 'category', 'id' => $single->id]) }}" method="post">
                                         @csrf
                                         <label class="switch">
                                             <input type="checkbox" name="activated" onclick="this.form.submit()" {{ $single->active ? 'checked' : '' }}>

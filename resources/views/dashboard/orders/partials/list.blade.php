@@ -44,7 +44,7 @@
                             <td>{{ date_format($single->created_at, 'd-m-Y h:i a') }}</td>
                             <td style="min-width: 320px">
                                 <a href="{{ route('orders.show', $single->id) }}">
-                                    <button class="btn btn-info ms-auto">
+                                    <button class="btn btn-warning ms-auto">
                                         <i data-feather="eye"></i>
                                         @lang('translate.show')
                                     </button>
@@ -55,6 +55,24 @@
                                             <i data-feather="bell"></i>
                                             @lang('translate.notify')
                                         </button>
+                                        @if (auth('vendor')->check())
+                                            <div class="mt-1">
+                                                <form class="d-inline" action="{{ route('updateOrderStatus', ['status' => 'accepted', 'id' => $single->id]) }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-success">
+                                                        <i data-feather="check"></i>
+                                                        @lang('translate.accept')
+                                                    </button>
+                                                </form>
+                                                <form class="d-inline" action="{{ route('updateOrderStatus', ['status' => 'canceled', 'id' => $single->id]) }}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i data-feather="x-octagon"></i>
+                                                        @lang('translate.cancel')
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        @endif
                                     @endif
                                 @endif
                             </td>

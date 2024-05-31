@@ -139,6 +139,7 @@ return [
     'search' => 'بحث',
     'update' => 'تحديث',
     'select' => 'أختر',
+    'accept' => 'قبول',
     'cancel' => 'إلغاء',
     'delete' => 'حذف',
     'deleteSelected' => 'حذف المحدد',

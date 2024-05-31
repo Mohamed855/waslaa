@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-body">
-        <form method="POST" action="{{ route('password.change', ['guard' => 'vendor', 'id' => $selected['id']]) }}" class="form form-vertical">
+        <form method="POST" action="{{ route('changePassword', ['guard' => 'vendor', 'id' => $selected['id']]) }}" class="form form-vertical">
             @csrf
             <div class="row mb-2">
                 {{-- new password --}}

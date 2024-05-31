@@ -9,7 +9,7 @@
                     <div class="card-body">
                         <div class="row">
                             @if ($selected['avatar'] == 'default.jpg')
-                                <form action="{{ route('avatar.update', [ 'guard' => 'vendor', 'id' => $selected['id'] ]) }}" id="avatar_form" method="post" enctype="multipart/form-data" class="cursor-pointer">
+                                <form action="{{ route('updateAvatar', [ 'guard' => 'vendor', 'id' => $selected['id'] ]) }}" id="avatar_form" method="post" enctype="multipart/form-data" class="cursor-pointer">
                                     @csrf
                                     <label class="btn col-12 btn-success">
                                         <input type="file" name="avatar" id="avatar" class="d-none" accept=".png,.jpg">
@@ -18,7 +18,7 @@
                                 </form>
                             @else
                                 <div class="row justify-content-between m-auto">
-                                    <form action="{{ route('avatar.update', [ 'guard' => 'vendor', 'id' => $selected['id'] ]) }}" id="avatar_form" method="post" enctype="multipart/form-data" class="d-inline cursor-pointer pb-1 col-12">
+                                    <form action="{{ route('updateAvatar', [ 'guard' => 'vendor', 'id' => $selected['id'] ]) }}" id="avatar_form" method="post" enctype="multipart/form-data" class="d-inline cursor-pointer pb-1 col-12">
                                         @csrf
                                         <label class="btn w-100 btn-primary">
                                             <input type="file" name="avatar" id="avatar" class="d-none" accept=".png,.jpg">
@@ -26,7 +26,7 @@
                                             @lang('translate.edit')
                                         </label>
                                     </form>
-                                    <form action="{{ route('avatar.remove', [ 'guard' => 'vendor', 'id' => $selected['id'] ]) }}" method="post" class="d-inline cursor-pointer col-12">
+                                    <form action="{{ route('removeAvatar', [ 'guard' => 'vendor', 'id' => $selected['id'] ]) }}" method="post" class="d-inline cursor-pointer col-12">
                                         @csrf
                                         <button type="submit" class="btn w-100 btn-danger">
                                             <i data-feather="x"></i>

@@ -34,7 +34,7 @@
                             <td>{{ $single->category?->$nameOnLang ?? __('translate.notSelected') }}</td>
                             @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
                                 <td>
-                                    <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'subcategory', 'id' => $single->id]) }}" method="post">                                        @csrf
+                                    <form class="p-0 m-0" action="{{ route('toggleActive', ['table' => 'subcategory', 'id' => $single->id]) }}" method="post">                                        @csrf
                                         <label class="switch">
                                             <input type="checkbox" name="activated" onclick="this.form.submit()" {{ $single->active ? 'checked' : '' }}>
                                             <span class="slider round"></span>

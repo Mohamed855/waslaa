@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Dashboard;
 
-use App\Helpers\DashboardHelper;
-use App\Http\Controllers\Admin\BaseController;
 use App\Traits\QueriesTrait;
+use Illuminate\Http\Request;
+use App\Helpers\DashboardHelper;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Controllers\Admin\BaseController;
 
 class InvoicesController extends BaseController
 {
@@ -73,6 +74,12 @@ class InvoicesController extends BaseController
     public function show(string $id): View
     {
         return parent::showBase($this->table, 'dashboard.invoices.show', $id);
+    }
+
+    public function updateInvoiceStatus($status, $id) {
+        $request = new Request();
+        $request['status'] = $status;
+        return parent::updateBase($this->table, $this->resource, $request, ['status'], ['status' => 'in:closed,collected'], $id);
     }
 
     /**

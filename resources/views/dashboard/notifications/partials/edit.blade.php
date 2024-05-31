@@ -59,7 +59,7 @@
                             </form>
                             @if ($single->image != null)
                                 <div class="col-12">
-                                    <form class="col-1 mt-1" action="{{ route('image.remove', ['id' => $single->id, 'table' => 'notification']) }}" method="POST">
+                                    <form class="col-1 mt-1" action="{{ route('removeImage', ['id' => $single->id, 'table' => 'notification']) }}" method="POST">
                                         @csrf
                                         <button class="btn btn-danger" style="min-width: 145px" data-bs-toggle="modal">
                                             <i data-feather="x"></i>

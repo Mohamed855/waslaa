@@ -36,13 +36,33 @@
                                 <td>{{ __('translate.' . $single->status) }}</td>
                             @endif
                             <td>{{ $single->total_price }} @lang('translate.pound')</td>
-                            <td style="min-width: 320px">
+                            <td style="min-width: {{ (auth('admin')->check() && $single->status !== 'collected') ? '400px' : '320px' }}">
                                 <a href="{{ route('invoices.show', $single->id) }}">
-                                    <button class="btn btn-info ms-auto">
+                                    <button class="btn btn-warning ms-auto">
                                         <i data-feather="eye"></i>
                                         @lang('translate.show')
                                     </button>
                                 </a>
+                                @if (auth('admin')->check() && $single->status !== 'collected')
+                                    @if ($single->status == 'opened')
+                                        <form class="d-inline" action="{{ route('updateInvoiceStatus', ['status' => 'closed', 'id' => $single->id]) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-info">
+                                                <i data-feather="minus-square"></i>
+                                                @lang('translate.close')
+                                            </button>
+                                        </form>
+                                    @endif
+                                    @if (auth('admin')->user()->is_primary)
+                                        <form class="d-inline" action="{{ route('updateInvoiceStatus', ['status' => 'collected', 'id' => $single->id]) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="btn btn-dark">
+                                                <i data-feather="check-square"></i>
+                                                @lang('translate.collect')
+                                            </button>
+                                        </form>
+                                    @endif
+                                @endif
                             </td>
                         </tr>
                     @endforeach

@@ -30,7 +30,7 @@
                             <td>{{ $single->country?->$nameOnLang ?? __('translate.notSelected') }}</td>
                             @if (auth('admin')->user()->is_primary)
                                 <td>
-                                    <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'city', 'id' => $single->id]) }}" method="post">                                        @csrf
+                                    <form class="p-0 m-0" action="{{ route('toggleActive', ['table' => 'city', 'id' => $single->id]) }}" method="post">                                        @csrf
                                         <label class="switch">
                                             <input type="checkbox" name="activated" onclick="this.form.submit()" {{ $single->active ? 'checked' : '' }}>
                                             <span class="slider round"></span>

@@ -57,7 +57,7 @@
                         @if (auth('admin')->check() && auth('admin')->user()->is_primary)
                             <td>
                                 <form class="p-0 m-0"
-                                    action="{{ route('activation.toggle', ['table' => 'user', 'id' => $single->id]) }}"
+                                    action="{{ route('toggleActive', ['table' => 'user', 'id' => $single->id]) }}"
                                     method="post">
                                     @csrf
                                     <label class="switch">
@@ -70,7 +70,7 @@
                         @endif
                         <td style="min-width: 320px">
                             <a href="{{ route('showUser', $single->username) }}">
-                                <button class="btn btn-info ms-auto">
+                                <button class="btn btn-warning ms-auto">
                                     <i data-feather="eye"></i>
                                     @lang('translate.show')
                                 </button>

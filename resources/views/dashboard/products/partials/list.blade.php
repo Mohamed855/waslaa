@@ -58,7 +58,7 @@
                             <td> {{ $single->subcategory?->$nameOnLang }} </td>
                             @if (auth('vendor')->check() || (auth('admin')->check() && auth('admin')->user()->is_primary))
                                 <td>
-                                    <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'product', 'id' => $single->id]) }}" method="post">
+                                    <form class="p-0 m-0" action="{{ route('toggleActive', ['table' => 'product', 'id' => $single->id]) }}" method="post">
                                         @csrf
                                         <label class="switch">
                                             <input type="checkbox" name="activated" onclick="this.form.submit()"

@@ -170,7 +170,7 @@ class ActionsController extends Controller
             foreach ($selectedIds as $selectedId) {
                 if ($table == 'admin') {
                     $admin = $this->admin()->find($selectedId);
-                    if ($admin->email == 'admin@test.com' || $admin->email == 'wasla@owner.com') return back()->with('error', __('error.cannotDeleteMainAdmin'));
+                    if ($admin->email == 'admin@test.com' || $admin->email == 'owner@wasla.com') return back()->with('error', __('error.cannotDeleteMainAdmin'));
                 }
                 $this->$table()->where('id', $selectedId)->delete();
             }

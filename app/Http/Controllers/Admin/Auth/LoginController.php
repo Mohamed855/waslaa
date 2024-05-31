@@ -51,7 +51,7 @@ class LoginController extends Controller
             }
 
             App::setLocale($authUser['lang']);
-            return redirect()->route($guard . '.overview');
+            return redirect()->route($guard . 'Overview');
 
         } catch (Exception) {
             return back()->with(['error' => __('error.somethingWentWrong')]);

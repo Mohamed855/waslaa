@@ -7,7 +7,7 @@
     <p class="text-muted mb-3">@lang('auth.forgetPassMessage')</p>
 
     <!-- form -->
-    <form method="POST" action="{{ route('password.email') }}">
+    <form method="POST" action="{{ route('sendEmailPassword') }}">
         @csrf
         <div class="mb-3">
             <label for="email" class="form-label">@lang('auth.email')</label>

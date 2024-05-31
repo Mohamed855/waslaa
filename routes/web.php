@@ -48,8 +48,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::post('check-credentials', [LoginController::class, 'checkCredentials'])->name('checkCredentials');
         // Reset Password
         Route::prefix('password')->group(function () {
-            Route::get('request', [ForgetPasswordController::class, 'requestPassword'])->name('password.request');
-            Route::post('email', [ForgetPasswordController::class, 'sendEmailPassword'])->name('password.email');
+            Route::get('request', [ForgetPasswordController::class, 'requestPassword'])->name('requestPassword');
+            Route::post('email', [ForgetPasswordController::class, 'sendEmailPassword'])->name('sendEmailPassword');
             Route::get('reset-sent-successfully', [ForgetPasswordController::class, 'emailSentSuccessfully'])->name('resetEmailSentSuccessfully');
             Route::get('reset', [ResetPasswordController::class, 'resetPassword'])->name('password.reset');
             Route::post('update', [ResetPasswordController::class, 'updatePassword'])->name('password.update');
@@ -58,25 +58,25 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     // Any Auth User Routes
     Route::group(['middleware' => 'must.auth'], function () {
-        Route::get('admin/overview', [GeneralController::class, 'adminOverview'])->name('admin.overview');
-        Route::get('vendor/overview', [GeneralController::class, 'vendorOverview'])->name('vendor.overview');
+        Route::get('admin/overview', [GeneralController::class, 'adminOverview'])->name('adminOverview');
+        Route::get('vendor/overview', [GeneralController::class, 'vendorOverview'])->name('vendorOverview');
 
         Route::get('profile', [GeneralController::class, 'profile'])->name('profile');
         Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
         Route::get('settings', [GeneralController::class, 'settings'])->name('settings');
-        Route::post('settings/update', [GeneralController::class, 'updateSettings'])->name('settings.update');
+        Route::post('update-settings', [GeneralController::class, 'updateSettings'])->name('updateSettings');
 
-        Route::post('primary/toggle/{id}', [ActionsController::class, 'togglePrimary'])->name('primary.toggle');
-        Route::post('{table}/activation/toggle/{id}', [ActionsController::class, 'toggleActive'])->name('activation.toggle');
-        Route::post('{table}/image/remove/{id}', [ActionsController::class, 'removeImage'])->name('image.remove');
+        Route::post('primary/toggle/{id}', [ActionsController::class, 'togglePrimary'])->name('togglePrimary');
+        Route::post('{table}/activation/toggle/{id}', [ActionsController::class, 'toggleActive'])->name('toggleActive');
+        Route::post('{table}/image/remove/{id}', [ActionsController::class, 'removeImage'])->name('removeImage');
         Route::delete('delete/selected', [ActionsController::class, 'deleteSelection'])->name('deleteSelection');
 
         Route::prefix('{guard}/{id}')->group(function () {
-            Route::post('profile/update', [ActionsController::class, 'updateProfile'])->name('profile.update');
-            Route::post('password/change', [ActionsController::class, 'changePassword'])->name('password.change');
-            Route::post('avatar/update', [ActionsController::class, 'updateAvatar'])->name('avatar.update');
-            Route::post('avatar/remove', [ActionsController::class, 'removeAvatar'])->name('avatar.remove');
+            Route::post('update-profile', [ActionsController::class, 'updateProfile'])->name('updateProfile');
+            Route::post('change-password', [ActionsController::class, 'changePassword'])->name('changePassword');
+            Route::post('update-avatar', [ActionsController::class, 'updateAvatar'])->name('updateAvatar');
+            Route::post('remove-avatar', [ActionsController::class, 'removeAvatar'])->name('removeAvatar');
         });
 
         Route::resource('categories', CategoriesController::class)->except(['create', 'edit', 'show']);
@@ -95,12 +95,14 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get('ordered', [OrdersController::class, 'ordered'])->name('ordered');
         Route::get('accepted', [OrdersController::class, 'accepted'])->name('accepted');
         Route::get('canceled', [OrdersController::class, 'canceled'])->name('canceled');
+        Route::post('update-order-status/{status}/{id}', [OrdersController::class, 'updateOrderStatus'])->name('updateOrderStatus');
 
         Route::resource('invoices', InvoicesController::class)->except(['index', 'create', 'edit']);
         Route::get('invoices/{id}/orders', [OrdersController::class, 'invoiceOrders'])->name('invoiceOrders');
         Route::get('opened', [InvoicesController::class, 'opened'])->name('opened');
         Route::get('closed', [InvoicesController::class, 'closed'])->name('closed');
         Route::get('collected', [InvoicesController::class, 'collected'])->name('collected');
+        Route::post('update-invoice-status/{status}/{id}', [InvoicesController::class, 'updateInvoiceStatus'])->name('updateInvoiceStatus');
 
         Route::resource('products', ProductsController::class)->except(['edit']);
         Route::prefix('products/{id}')->group(function () {
@@ -156,7 +158,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
     // Manager Routes
     Route::group(['prefix' => 'manager', 'middleware' => 'guard:manager'], function () {
-        Route::get('/', function () { return view('manager.main.overview'); })->name('manager.overview');
+        Route::get('/', function () { return view('manager.main.overview'); })->name('managerOverview');
     });
 });
 

@@ -36,7 +36,7 @@
                             <td style="direction: ltr;"> {{ $single->phone }} </td>
                             <td>
                                 <form class="p-0 m-0"
-                                    action="{{ route('activation.toggle', ['table' => 'manager', 'id' => $single->id]) }}"
+                                    action="{{ route('toggleActive', ['table' => 'manager', 'id' => $single->id]) }}"
                                     method="post">
                                     @csrf
                                     <label class="switch">

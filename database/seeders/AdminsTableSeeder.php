@@ -24,7 +24,7 @@ class AdminsTableSeeder extends Seeder
                     Admin::firstOrCreate([
                         'name' => 'Owner',
                         'username' => 'owner',
-                        'email' => 'wasla@owner.com',
+                        'email' => 'owner@wasla.com',
                         'phone' => '+201220566300',
                         'password' => 12345678,
                         'is_primary' => 1

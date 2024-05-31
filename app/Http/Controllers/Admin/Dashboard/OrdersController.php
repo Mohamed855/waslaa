@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Dashboard;
 
-use App\Helpers\DashboardHelper;
-use App\Http\Controllers\Admin\BaseController;
 use App\Traits\QueriesTrait;
+use Illuminate\Http\Request;
+use App\Helpers\DashboardHelper;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use App\Http\Controllers\Admin\BaseController;
 
 class OrdersController extends BaseController
 {
@@ -96,6 +97,12 @@ class OrdersController extends BaseController
     public function show(string $id): View
     {
         return parent::showBase($this->table, 'dashboard.orders.show', $id);
+    }
+
+    public function updateOrderStatus($status, $id) {
+        $request = new Request();
+        $request['status'] = $status;
+        return parent::updateBase($this->table, $this->resource, $request, ['status'], ['status' => 'in:accepted,canceled'], $id);
     }
 
     /**

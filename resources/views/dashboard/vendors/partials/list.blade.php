@@ -57,7 +57,7 @@
                         <td> {{ $single->rate }} </td>
                         <td> {{ ucfirst($single->admin->username) }} </td>
                         <td>
-                            <form class="p-0 m-0" action="{{ route('activation.toggle', ['table' => 'vendor', 'id' => $single->id]) }}" method="post">
+                            <form class="p-0 m-0" action="{{ route('toggleActive', ['table' => 'vendor', 'id' => $single->id]) }}" method="post">
                                 @csrf
                                 <label class="switch">
                                     <input type="checkbox" name="activated" onclick="this.form.submit()"
@@ -68,7 +68,7 @@
                         </td>
                         <td style="min-width: 370px">
                             <a href="{{ route('showVendor', $single->username) }}">
-                                <button class="btn btn-info ms-auto">
+                                <button class="btn btn-warning ms-auto">
                                     <i data-feather="eye"></i>
                                     @lang('translate.show')
                                 </button>

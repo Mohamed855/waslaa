@@ -38,7 +38,7 @@
         <div class="row">
             <x-vendor-overview-card title="{{ __('translate.opened') }}" icon="square" color="warning" count="{{ $vendorInvoices->where('status', 'opened')->count() }}" />
             <x-vendor-overview-card title="{{ __('translate.closed') }}" icon="minus-square" color="info" count="{{ $vendorInvoices->where('status', 'closed')->count() }}" />
-            <x-vendor-overview-card title="{{ __('translate.collected') }}" icon="x-square" color="dark" count="{{ $vendorInvoices->where('status', 'collected')->count() }}" />
+            <x-vendor-overview-card title="{{ __('translate.collected') }}" icon="check-square" color="dark" count="{{ $vendorInvoices->where('status', 'collected')->count() }}" />
         </div>
     @endforeach
 @endsection

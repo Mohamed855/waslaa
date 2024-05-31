@@ -10,7 +10,7 @@
                     <div class="card-body">
                         <div class="row">
                             @if ($authUser['avatar'] == null)
-                                <form action="{{ route('avatar.update', ['guard' => $guard, 'id' => auth($guard)->id()]) }}"
+                                <form action="{{ route('updateAvatar', ['guard' => $guard, 'id' => auth($guard)->id()]) }}"
                                     id="avatar_form" method="post" enctype="multipart/form-data" class="cursor-pointer">
                                     @csrf
                                     <label class="btn col-12 btn-success">
@@ -22,7 +22,7 @@
                             @else
                                 <div class="row justify-content-between m-auto">
                                     <form
-                                        action="{{ route('avatar.update', ['guard' => $guard, 'id' => auth($guard)->id()]) }}"
+                                        action="{{ route('updateAvatar', ['guard' => $guard, 'id' => auth($guard)->id()]) }}"
                                         id="avatar_form" method="post" enctype="multipart/form-data"
                                         class="d-inline cursor-pointer pb-1 col-12">
                                         @csrf
@@ -34,7 +34,7 @@
                                         </label>
                                     </form>
                                     <form
-                                        action="{{ route('avatar.remove', ['guard' => $guard, 'id' => auth($guard)->id()]) }}"
+                                        action="{{ route('removeAvatar', ['guard' => $guard, 'id' => auth($guard)->id()]) }}"
                                         method="post" class="d-inline cursor-pointer col-12">
                                         @csrf
                                         <button type="submit" class="btn w-100 btn-danger">
@@ -60,7 +60,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <form method="POST"
-                                        action="{{ route('profile.update', ['guard' => $guard, 'id' => auth($guard)->id()]) }}"
+                                        action="{{ route('updateProfile', ['guard' => $guard, 'id' => auth($guard)->id()]) }}"
                                         class="form form-vertical" enctype="multipart/form-data">
                                         @csrf
                                         <div class="row mb-2">
@@ -130,7 +130,7 @@
                 <div class="card">
                     <div class="card-body">
                         <form method="POST"
-                            action="{{ route('password.change', ['guard' => $guard, 'id' => $authUser['id']]) }}"
+                            action="{{ route('changePassword', ['guard' => $guard, 'id' => $authUser['id']]) }}"
                             class="form form-vertical">
                             @csrf
                             <div class="row mb-2">

@@ -6,7 +6,7 @@
             <div class="col-md-12 col-12 m-auto">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('settings.update') }}" class="form form-vertical"
+                        <form method="POST" action="{{ route('updateSettings') }}" class="form form-vertical"
                             enctype="multipart/form-data">
                             @csrf
                             @foreach ($settings as $setting)
