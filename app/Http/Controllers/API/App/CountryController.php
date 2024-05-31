@@ -5,11 +5,7 @@ namespace App\Http\Controllers\API\App;
 use App\Helpers\AppHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Location\CountryResource;
-use App\Http\Resources\Product\ProductResource;
-use App\Http\Resources\Vendor\VendorResource;
 use App\Traits\ResponseTrait;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class CountryController extends Controller
 {
@@ -23,10 +19,7 @@ class CountryController extends Controller
     }
     public function getCountries()
     {
-        $allCountries = $this->app->activeCountry()->with(['cities' => function ($citiesQuery) {
-            $citiesQuery->where('active', 1);
-        }])->paginate(10);
-
+        $allCountries = $this->app->activeCountry()->with('activeCities')->get();
         return CountryResource::collection($allCountries);
     }
 }

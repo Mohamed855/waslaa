@@ -21,4 +21,9 @@ class Country extends Model
     {
         return $this->hasMany(City::class);
     }
+
+    public function activeCities(): HasMany
+    {
+        return $this->cities()->where('active', 1);
+    }
 }

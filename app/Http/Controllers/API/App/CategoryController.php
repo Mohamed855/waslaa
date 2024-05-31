@@ -4,12 +4,7 @@ namespace App\Http\Controllers\API\App;
 
 use App\Helpers\AppHelper;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Location\CountryResource;
-use App\Http\Resources\Product\ProductResource;
-use App\Http\Resources\Vendor\VendorResource;
 use App\Traits\ResponseTrait;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
