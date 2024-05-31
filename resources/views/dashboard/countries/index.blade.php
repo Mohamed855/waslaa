@@ -9,12 +9,12 @@
                     @lang('translate.add')
                 </button>
             @include('dashboard.countries.partials.add')
+            </div>
             @if(auth('admin')->user()->is_primary)
                 <div class="mx-1 mb-2">
                         @include('dashboard.partials.delete-selected-modal', ['resource' => 'country'])
                 </div>
             @endif
-            </div>
         </div>
     </div>
     @include('dashboard.countries.partials.list')

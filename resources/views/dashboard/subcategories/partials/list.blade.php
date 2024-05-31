@@ -28,9 +28,7 @@
                             @endif
                             <td>{{ $loop->iteration }}</td>
                             <td>
-                                <div class="avatar avatar-xl">
-                                    <img alt="" src="{{ asset('storage/images/subcategories/' . $single->avatar) }}"/>
-                                </div>
+                                @include('dashboard.partials.image-modal', ['id' => $single->id, 'name' => $single->$nameOnLang, 'image' => asset($single->avatar ? 'storage/images/subcategories/' . $single->avatar : 'storage/images/global/logo-dark.jpg')])
                             </td>
                             <td>{{ $single->$nameOnLang }}</td>
                             <td>{{ $single->category?->$nameOnLang ?? __('translate.notSelected') }}</td>

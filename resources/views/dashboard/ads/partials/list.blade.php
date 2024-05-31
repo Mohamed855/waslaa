@@ -27,9 +27,7 @@
                             @endif
                             <td>{{ $loop->iteration }}</td>
                             <td>
-                                <div class="avatar avatar-xl">
-                                    <img alt="" src="{{ asset('storage/images/ads/' . $single->image) }}"/>
-                                </div>
+                                @include('dashboard.partials.image-modal', ['id' => $single->id, 'name' => $single->name, 'image' => asset('storage/images/ads/' . $single->image)])
                             </td>
                             <td>{{ $single->name }}</td>
                             @if (auth('admin')->user()->is_primary)

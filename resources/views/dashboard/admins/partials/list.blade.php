@@ -32,9 +32,7 @@
                             <td>{{ $loop->iteration }}</td>
                             {{-- avatar --}}
                             <td>
-                                <a class="avatar avatar-xl">
-                                    <img alt="" src="{{ asset($single->avatar ? 'storage/images/admins/' . $single->avatar : 'storage/images/global/profile.jpg') }}"/>
-                                </a>
+                                @include('dashboard.partials.image-modal', ['id' => $single->id, 'name' => $single->username, 'image' => asset($single->avatar ? 'storage/images/admins/' . $single->avatar : 'storage/images/global/profile.jpg')])
                             </td>
                             <td> {{ $single->name }} </td>
                             <td> {{ $single->username }} </td>

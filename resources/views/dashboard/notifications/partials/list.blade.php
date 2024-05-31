@@ -25,9 +25,7 @@
                             <td>{{ $loop->iteration }}</td>
                             {{-- image --}}
                             <td>
-                                <a class="avatar avatar-xl">
-                                    <img alt="" src="{{ asset($single->image ? 'storage/images/notifications/' . $single->image : 'storage/images/global/logo-dark.jpg') }}"/>
-                                </a>
+                                @include('dashboard.partials.image-modal', ['id' => $single->id, 'name' => $single->$nameOnLang, 'image' => asset($single->image ? 'storage/images/notifications/' . $single->image : 'storage/images/global/logo-dark.jpg')])
                             </td>
                             <td> {{ $single->$nameOnLang }} </td>
                             <td style="min-width: 320px">

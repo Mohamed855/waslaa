@@ -33,9 +33,7 @@
                             @endif
                             <td>{{ $loop->iteration }}</td>
                             <td>
-                                <div class="avatar avatar-xl">
-                                    <img alt="" src="{{ asset($single->image ? 'storage/images/complains/'. $single->image : 'storage/images/global/logo-dark.jpg') }}"/>
-                                </div>
+                                @include('dashboard.partials.image-modal', ['id' => $single->id, 'name' => $single->title, 'image' => asset($single->image ? 'storage/images/complains/'. $single->image : 'storage/images/global/logo-dark.jpg')])
                             </td>
                             @if (auth('admin')->check() && ! request()->routeIs('vendorComplains'))
                                 <td><a href="{{-- route('showVendor', $single->vendor->username) --}}">{{ $single->vendor['name'] }}</a></td>
