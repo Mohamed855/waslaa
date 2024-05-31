@@ -62,8 +62,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get('vendor/overview', [GeneralController::class, 'vendorOverview'])->name('vendor.overview');
 
         Route::get('profile', [GeneralController::class, 'profile'])->name('profile');
-        Route::get('logout', [LoginController::class, 'logout'])->name('signOut');
-        Route::post('end-session', [LoginController::class, 'endSession'])->name('endSession');
+        Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
         Route::get('settings', [GeneralController::class, 'settings'])->name('settings');
         Route::post('settings/update', [GeneralController::class, 'updateSettings'])->name('settings.update');

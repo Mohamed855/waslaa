@@ -148,6 +148,7 @@ return [
     'changePassword' => 'تغيير كلمة المرور',
     'confirmDelete' => 'هل أنت متأكد من حذف هذا العنصر',
     'confirmDeleteSelected' => 'هل أنت متأكد من حذف العناصر المحددة',
+    'confirmLogout' => 'هل أنت متأكد من تسجيل الخروج',
     'confirmRemove' => 'هل أنت متأكد من إزالة هذا العنصر',
     'enterPasswordToChange' => 'أدخل كلمة مرور جديدة للتغيير أو اتركه فارغاً',
     'noSettings' => 'لا يوجد إعدادات',

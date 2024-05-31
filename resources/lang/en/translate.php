@@ -149,6 +149,7 @@ return [
     'confirmDelete' => 'Are you sure, you want to delete this record',
     'confirmDeleteSelected' => 'Are you sure, you want to delete the selected records',
     'confirmRemove' => 'Are you sure, you want to remove this record',
+    'confirmLogout' => 'Are you sure, you are going to logout',
     'enterPasswordToChange' => 'Enter new password to change, or let it empty',
     'noSettings' => 'There is no setting',
     'removeImage' => 'Remove image',

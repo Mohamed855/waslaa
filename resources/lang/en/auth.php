@@ -18,10 +18,6 @@ return [
 
     'recoverPassword' => 'Recover password',
 
-    'signOut' => 'Logout',
-    'signOutTitle' => 'Are you sure!',
-    'signOutMessage' => 'You are going to logout',
-
     'forgetPass' => 'Forgot your password?',
     'forgetPassMessage' => 'Enter your email address and we\'ll send you an email to reset your password',
 

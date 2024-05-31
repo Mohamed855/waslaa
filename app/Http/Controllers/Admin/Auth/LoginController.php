@@ -58,12 +58,7 @@ class LoginController extends Controller
         }
     }
 
-    public function logout(): View
-    {
-        return view('auth.sign-out');
-    }
-
-    public function endSession(): RedirectResponse
+    public function logout(): RedirectResponse
     {
         try {
             $guard = DashboardHelper::getCurrentGuard();
