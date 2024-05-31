@@ -9,15 +9,15 @@
                     @lang('translate.add')
                 </button>
             </div>
-            @if(request()->routeIs('components.index') || (request()->routeIs('vendorComponents') && auth('admin')->user()->is_primary))
-                <div class="mx-1 mb-2">
-                        @include('dashboard.partials.delete-selected-modal', ['resource' => 'component'])
-                </div>
-            @endif
             @if (request()->routeIs(['components.index', 'vendorComponents']))
                 @include('dashboard.components.partials.add')
             @elseif (request()->routeIs('productComponents'))
                 @include('dashboard.components.partials.product-select-component')
+            @endif
+            @if(request()->routeIs('components.index') || (request()->routeIs('vendorComponents') && auth('admin')->user()->is_primary))
+                <div class="mx-1 mb-2">
+                        @include('dashboard.partials.delete-selected-modal', ['resource' => 'component'])
+                </div>
             @endif
         </div>
     </div>

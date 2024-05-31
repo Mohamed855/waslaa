@@ -5,6 +5,9 @@
             <table id="example" class="table text-center table-bordered" style="width:100%">
                 <thead>
                     <tr>
+                        @if(request()->routeIs('types.index') || (request()->routeIs('vendorTypes') && auth('admin')->user()->is_primary))
+                            <th></th>
+                        @endif
                         <th>@lang('translate.id')</th>
                         <th>@lang('translate.name')</th>
                         <th>@lang('translate.abbrev')</th>
@@ -22,6 +25,11 @@
                 <tbody>
                     @foreach ($data as $single)
                         <tr>
+                            @if(request()->routeIs('types.index') || (request()->routeIs('vendorTypes') && auth('admin')->user()->is_primary))
+                                <td style="width: 5px">
+                                    <input type="checkbox" class="cursor-pointer record-checkbox" value="{{ $single->id }}">
+                                </td>
+                            @endif
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $single->$nameOnLang }}</td>
                             <td>{{ $single->$abbrevOnLang }}</td>

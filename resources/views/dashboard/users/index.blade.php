@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-xl-12 d-flex">
-            @if(auth('admin')->check() && auth('admin')->user()->is_primary)
+            @if(request()->routeIs('users.index') && auth('admin')->check() && auth('admin')->user()->is_primary)
                 <div class="mb-2">
                         @include('dashboard.partials.delete-selected-modal', ['resource' => 'user'])
                 </div>

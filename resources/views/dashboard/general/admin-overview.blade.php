@@ -13,7 +13,7 @@
         <div class="row">
             <x-vendor-overview-card title="{{ __('translate.managers') }}" icon="key" color="light-secondary" count="{{ $vendor->managers()->count() }}" />
             <x-vendor-overview-card title="{{ __('translate.users') }}" icon="users" color="light-warning" count="{{ $vendor->users()->count() }}" />
-            <x-vendor-overview-card title="{{ __('translate.transactions') }}" icon="shuffle" color="light-success" count="{{ $vendor->total_transactions }}" />
+            <x-vendor-overview-card title="{{ __('translate.transactions') }}" icon="trending-up" color="light-success" count="{{ $vendor->total_transactions }}" />
             <x-vendor-overview-card title="{{ __('translate.categories') }}" icon="layers" color="light-primary" count="{{ $vendor->categories()->count() }}" />
             <x-vendor-overview-card title="{{ __('translate.subcategories') }}" icon="book-open" color="light-danger" count="{{ $vendor->subcategories()->count() }}" />
             <x-vendor-overview-card title="{{ __('translate.products') }}" icon="shopping-cart" color="secondary" count="{{ $vendor->products()->count() }}" />
