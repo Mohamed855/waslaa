@@ -36,7 +36,7 @@
                 <a href="{{ route('vendorComplains', $selected->username) }}" class="pe-1">@lang('translate.complains')</a>
             </div>
             <div class="d-inline-block pt-1 col-6 col-md-3">
-                <a href="{{ route('vendorAddresses', $selected->username) }}" class="pe-1">@lang('translate.addresses')</a>
+                <a href="{{ route('vendorBranches', $selected->username) }}" class="pe-1">@lang('translate.branches')</a>
             </div>
         </div>
     </div>

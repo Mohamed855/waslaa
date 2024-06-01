@@ -5,7 +5,7 @@
             <table id="example" class="table text-center table-bordered" style="width:100%">
                 <thead>
                     <tr>
-                        @if(request()->routeIs('vendorAddresses') && auth('admin')->check() && auth('admin')->user()->is_primary)
+                        @if(request()->routeIs('vendorBranches') && auth('admin')->check() && auth('admin')->user()->is_primary)
                             <th></th>
                         @endif
                         <th>@lang('translate.id')</th>
@@ -18,7 +18,7 @@
                 <tbody>
                     @foreach ($data as $single)
                         <tr>
-                            @if(request()->routeIs('vendorAddresses') && auth('admin')->check() && auth('admin')->user()->is_primary)
+                            @if(request()->routeIs('vendorBranches') && auth('admin')->check() && auth('admin')->user()->is_primary)
                                 <td style="width: 5px">
                                     <input type="checkbox" class="cursor-pointer record-checkbox" value="{{ $single->id }}">
                                 </td>

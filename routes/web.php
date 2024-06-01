@@ -137,7 +137,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
             Route::get('products', [ProductsController::class, 'vendorProducts'])->name('vendorProducts');
             Route::get('components', [ComponentsController::class, 'vendorComponents'])->name('vendorComponents');
             Route::get('types', [TypesController::class, 'vendorTypes'])->name('vendorTypes');
-            Route::get('addresses', [AddressesController::class, 'vendorAddresses'])->name('vendorAddresses');
+            Route::get('branches', [AddressesController::class, 'vendorBranches'])->name('vendorBranches');
             Route::get('complains', [ComplainsController::class, 'vendorComplains'])->name('vendorComplains');
         });
 

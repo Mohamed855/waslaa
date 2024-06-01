@@ -27,7 +27,7 @@ class AddressesController extends BaseController
     /**
      * Display a listing of the vendors' addresses.
      */
-    public function vendorAddresses(string $username): View|RedirectResponse
+    public function vendorBranches(string $username): View|RedirectResponse
     {
         $vendor = DashboardHelper::getVendorByUsername($username);
         $cities = $this->activeCity()->get();
@@ -64,15 +64,17 @@ class AddressesController extends BaseController
 
     private function setMain($request) {
         $vendor = $this->vendor()->find($request->user_id);
-        $vendorAddresses = $vendor->addresses;
-        if ($vendorAddresses && count($vendorAddresses) > 0) {
+        $vendorBranches = $vendor->addresses()->get();
+        if ($vendorBranches && count($vendorBranches) > 0) {
             if ($request->main) {
-                foreach ($vendorAddresses as $address) {
+                foreach ($vendorBranches as $address) {
                     if ($address->main) {
                         $address->update(['main' => 0]);
                     }
                 }
                 $request->main = 1;
+            } else {
+                $request->main = 0;
             }
         } else {
             $request->main = 1;

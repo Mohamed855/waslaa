@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
-@section('title', __('translate.addresses') . (isset($username) ? ' [ ' . $username . ' ]' : ''))
+@section('title', (request()->routeIs('vendorBranches') ? __('translate.branches') : __('translate.addresses')) . (isset($username) ? ' [ ' . $username . ' ]' : ''))
 @section('content')
-    @if (request()->routeIs('vendorAddresses'))
+    @if (request()->routeIs('vendorBranches'))
         <div class="row">
             <div class="col-xl-12 d-flex">
                 <div class="mb-2">

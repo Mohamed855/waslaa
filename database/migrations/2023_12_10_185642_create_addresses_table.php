@@ -22,7 +22,7 @@ return new class extends Migration
             $table->smallInteger('floor')->nullable();
             $table->smallInteger('flat')->nullable();
             $table->string('special_mark')->nullable();
-            $table->boolean('main')->default(1);
+            $table->boolean('main')->default(0);
             $table->timestamps();
         });
     }

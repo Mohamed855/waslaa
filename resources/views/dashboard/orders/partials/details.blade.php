@@ -10,10 +10,13 @@
         <p class="card-text">@lang('translate.payMethod'): {{ __('translate.' . $selected->payMethod) }}</p>
         <p class="card-text">@lang('translate.deliveryNote'): {{ $selected->deliveryNote }}</p>
         <p class="card-text">@lang('translate.total'): {{ $selected->totalCost }} @lang('translate.pound')</p>
-        <div class="row">
-            <div class="d-inline-block pt-1 col-6 col-md-3">
-                <a href="#products" class="pe-1">@lang('translate.products')</a>
+        @if (auth('vendor')->check() && $selected->status == 'ordered')
+            <div class="row">
+                <div class="d-inline-block pt-1 col-6 col-md-3">
+                    @include('dashboard.orders.partials.accept-order-modal')
+                    @include('dashboard.orders.partials.cancel-order-modal')
+                </div>
             </div>
-        </div>
+        @endif
     </div>
 </div>

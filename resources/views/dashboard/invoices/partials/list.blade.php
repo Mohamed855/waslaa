@@ -45,22 +45,10 @@
                                 </a>
                                 @if (auth('admin')->check() && $single->status !== 'collected')
                                     @if ($single->status == 'opened')
-                                        <form class="d-inline" action="{{ route('updateInvoiceStatus', ['status' => 'closed', 'id' => $single->id]) }}" method="POST">
-                                            @csrf
-                                            <button type="submit" class="btn btn-info">
-                                                <i data-feather="minus-square"></i>
-                                                @lang('translate.close')
-                                            </button>
-                                        </form>
+                                        @include('dashboard.invoices.partials.close-invoice-modal')
                                     @endif
                                     @if (auth('admin')->user()->is_primary)
-                                        <form class="d-inline" action="{{ route('updateInvoiceStatus', ['status' => 'collected', 'id' => $single->id]) }}" method="POST">
-                                            @csrf
-                                            <button type="submit" class="btn btn-dark">
-                                                <i data-feather="check-square"></i>
-                                                @lang('translate.collect')
-                                            </button>
-                                        </form>
+                                        @include('dashboard.invoices.partials.collect-invoice-modal')
                                     @endif
                                 @endif
                             </td>
