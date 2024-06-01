@@ -76,14 +76,9 @@ class TypesController extends BaseController
 
     public function selectProductType(Request $request): RedirectResponse
     {
+        $relatedIds = explode(',', $request['types'][0]);
         $productId = $request->product_id;
-        DB::table('product_types')->where('product_id', $productId)->delete();
-        foreach (explode(',', $request['types'][0]) as $type) {
-            DB::table('product_types')->insert([
-                'type_id' => $type,
-                'product_id' => $productId
-            ]);
-        }
+        parent::insertManyToManyRecords('product_types', $relatedIds, 'type_id', 'product_id', $productId);
         return back()->with('success', __('translate.' . $this->table) . ' ' . __('success.added'));
     }
 

@@ -93,20 +93,18 @@ class BaseController extends Controller
             if ($manyToMany != []) {
                 if (is_array($manyToMany['table'])) {
                     for($i = 0; $i < count($manyToMany['table']); $i++) {
-                        foreach (explode(',', $request[$manyToMany['related'][$i]][0]) as $related) {
-                            DB::table($manyToMany['table'][$i])->insert([
-                                $manyToMany['related'][$i] . '_id' => $related,
-                                $manyToMany['foreign'][$i] . '_id' => $newEle['id']
-                            ]);
-                        }
+                        $table = $manyToMany['table'][$i];
+                        $relatedIds = explode(',', $request[$manyToMany['related'][$i]][0]);
+                        $relatedColumn = $manyToMany['related'][$i] . '_id';
+                        $foreignColumn = $manyToMany['foreign'][$i] . '_id';
+                        $this->insertManyToManyRecords($table, $relatedIds, $relatedColumn, $foreignColumn, $newEle['id']);
                     }
                 } else {
-                    foreach (explode(',', $request[$manyToMany['related']][0]) as $related) {
-                        DB::table($manyToMany['table'])->insert([
-                            $manyToMany['related'] . '_id' => $related,
-                            $manyToMany['foreign'] . '_id' => $newEle['id']
-                        ]);
-                    }
+                    $table = $manyToMany['table'];
+                    $relatedIds = explode(',', $request[$manyToMany['related']][0]);
+                    $relatedColumn = $manyToMany['related'] . '_id';
+                    $foreignColumn = $manyToMany['foreign'] . '_id';
+                    $this->insertManyToManyRecords($table, $relatedIds, $relatedColumn, $foreignColumn, $newEle['id']);
                 }
             }
             $redirect = $redirectToIndex ? redirect()->route($resource . '.index') : back();
@@ -206,28 +204,22 @@ class BaseController extends Controller
             if ($request['password']) {
                 $data['password'] = $request['password'];
             }
-
             $selected->update($data);
-
             if ($manyToMany != []) {
                 if (is_array($manyToMany['table'])) {
                     for($i = 0; $i < count($manyToMany['table']); $i++) {
-                        DB::table($manyToMany['table'][$i])->where($manyToMany['foreign'][$i] . '_id', $id)->delete();
-                        foreach (explode(',', $request[$manyToMany['related'][$i]][0]) as $related) {
-                            DB::table($manyToMany['table'][$i])->insert([
-                                $manyToMany['related'][$i] . '_id' => $related,
-                                $manyToMany['foreign'][$i] . '_id' => $id
-                            ]);
-                        }
+                        $table = $manyToMany['table'][$i];
+                        $relatedIds = explode(',', $request[$manyToMany['related'][$i]][0]);
+                        $relatedColumn = $manyToMany['related'][$i] . '_id';
+                        $foreignColumn = $manyToMany['foreign'][$i] . '_id';
+                        $this->insertManyToManyRecords($table, $relatedIds, $relatedColumn, $foreignColumn, $id);
                     }
                 } else {
-                    DB::table($manyToMany['table'])->where($manyToMany['foreign'] . '_id', $id)->delete();
-                    foreach (explode(',', $request[$manyToMany['related']][0]) as $related) {
-                        DB::table($manyToMany['table'])->insert([
-                            $manyToMany['related'] . '_id' => $related,
-                            $manyToMany['foreign'] . '_id' => $id
-                        ]);
-                    }
+                    $table = $manyToMany['table'];
+                    $relatedIds = explode(',', $request[$manyToMany['related']][0]);
+                    $relatedColumn = $manyToMany['related'] . '_id';
+                    $foreignColumn = $manyToMany['foreign'] . '_id';
+                    $this->insertManyToManyRecords($table, $relatedIds, $relatedColumn, $foreignColumn, $id);
                 }
             }
 
@@ -257,6 +249,15 @@ class BaseController extends Controller
             return back()->with('success', __('translate.' . $table) . ' ' . __('success.deleted'));
         } catch (Exception $e) {
             return back()->with('error', $e->getMessage());
+        }
+    }
+
+    protected function insertManyToManyRecords ($table, array $relatedIds, $relatedColumn, $foreignColumn, $foreignId) {
+        DB::table($table)->where($foreignColumn, $foreignId)->whereNotIn($relatedColumn, $relatedIds)->delete();
+        foreach ($relatedIds as $relatedId) {
+            if (! DB::table($table)->where([$relatedColumn => $relatedId, $foreignColumn => $foreignId])->exists()) {
+                DB::table($table)->insert([$relatedColumn => $relatedId, $foreignColumn => $foreignId]);
+            }
         }
     }
 }
