@@ -10,7 +10,7 @@ trait ResponseTrait {
         return response()->json([
             'success'  => false,
             'message'  => $message,
-            'data' => '',
+            'data' => null,
         ]);
     }
 
@@ -19,7 +19,7 @@ trait ResponseTrait {
         return response()->json([
             'success'  => true,
             'message'  => $message,
-            'data' => '',
+            'data' => null,
         ]);
     }
 
