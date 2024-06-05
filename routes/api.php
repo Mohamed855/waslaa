@@ -39,6 +39,7 @@ Route::prefix('app')->middleware('auth.check:api')->group(function () {
     Route::post('search', [MainController::class, 'search']); // vendors || categories || subcategories || products
     Route::post('filter', [MainController::class, 'filter']); // offers || rates || price
 
+    Route::get('main', [MainController::class, 'index']);
     Route::get('main/ads', [MainController::class, 'getAds']);
     Route::get('main/categories', [MainController::class, 'getCategories']);
 

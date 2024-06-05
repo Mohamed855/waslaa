@@ -21,6 +21,13 @@ class MainController extends Controller
         $this->app = new AppHelper();
     }
 
+    public function index () {
+        return $this->returnData('Main Page', [
+            'ads' => $this->app->getADs(),
+            'categories' => $this->app->getCategories()
+        ]);
+    }
+
     public function getAds ()
     {
         return $this->app->getADs();
