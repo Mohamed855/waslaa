@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers\API\User;
 
-use App\Helpers\User\AddressHelper;
-use App\Http\Controllers\Controller;
+use stdClass;
+use Exception;
 use App\Traits\ErrorTrait;
 use App\Traits\QueriesTrait;
-use App\Traits\ResponseTrait;
-use App\Traits\Rules\AddressRules;
-use Exception;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use App\Traits\ResponseTrait;
+use Illuminate\Http\JsonResponse;
+use App\Traits\Rules\AddressRules;
+use App\Helpers\User\AddressHelper;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 class AddressesController extends Controller
@@ -28,8 +29,12 @@ class AddressesController extends Controller
     public function addresses (): JsonResponse
     {
         $myPhone = $this->user()->find(auth()->id(), ['phone', 'sec_phone']);
+        $myAddresses = new stdClass();
+        foreach ($this->address->getAddresses() as $key => $value) {
+            $myAddresses->$key = $value;
+        }
         return $this->returnData('User addresses', [
-            'myAddresses' => $this->address->getAddresses(),
+            'myAddresses' => $myAddresses,
             'myPhone' => [
                 'phone' => $myPhone['phone'],
                 'sec_phone' => $myPhone['sec_phone'],
