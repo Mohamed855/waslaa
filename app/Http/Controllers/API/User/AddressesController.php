@@ -31,8 +31,8 @@ class AddressesController extends Controller
         return $this->returnData('User addresses', [
             'myAddresses' => $this->address->getAddresses(),
             'myPhone' => [
-                $myPhone['phone'],
-                $myPhone['sec_phone'],
+                'phone' => $myPhone['phone'],
+                'sec_phone' => $myPhone['sec_phone'],
             ],
         ]);
     }
