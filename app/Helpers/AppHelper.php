@@ -11,11 +11,12 @@ use App\Http\Resources\SubCategory\SubCategoryResource;
 use App\Http\Resources\SubCategory\SubCategoryWithProductResource;
 use App\Http\Resources\Vendor\VendorResource;
 use App\Traits\QueriesTrait;
+use App\Traits\ResponseTrait;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class AppHelper
 {
-    use QueriesTrait;
+    use QueriesTrait, ResponseTrait;
 
     public function getADs (): AnonymousResourceCollection
     {
@@ -48,7 +49,7 @@ class AppHelper
             $subcategoriesQuery->where('active', 1);
         }])->orderBy('priority')->paginate(10);
 
-        return VendorResource::collection($vendors);
+        return $this->returnData('vendors', Helper::getPaginatedData(VendorResource::collection($vendors)));
     }
     public function countOfVendorFavorites ($vendorId): int
     {
@@ -71,17 +72,17 @@ class AppHelper
 
         return $currUserRate['rate'] ?? 0;
     }
-    public function getSubCategoriesWithProducts ($vendorId): AnonymousResourceCollection
+    public function getSubCategoriesWithProducts ($vendorId)
     {
         $subCategoriesWithProduct = $this->activeSubcategory()->where('vendor_id', $vendorId)->with('activeProducts')->paginate(10);
-        return SubCategoryWithProductResource::collection($subCategoriesWithProduct);
+        return $this->returnData('subcategories with products', Helper::getPaginatedData(SubCategoryWithProductResource::collection($subCategoriesWithProduct)));
     }
-    public function getOfferedProducts (): AnonymousResourceCollection
+    public function getOfferedProducts ()
     {
         $offeredProducts = $this->offers()->with(['subcategory', 'activeComponents', 'activeTypes'])->paginate(10);
-        return ProductResource::collection($offeredProducts);
+        return $this->returnData('offered products', Helper::getPaginatedData(ProductResource::collection($offeredProducts)));
     }
-    public function getSearchOutput ($type, $key): AnonymousResourceCollection
+    public function getSearchOutput ($type, $key)
     {
         $output = match ($type) {
             'vendors' => $this->activeVendor()
@@ -99,7 +100,7 @@ class AppHelper
         foreach ($output as $result) {
             $result['avatar'] = url('') . ($result['avatar'] ? '/storage/images/' . $type . '/' . $result['avatar'] : '/storage/images/global/default.jpg');
         }
-        return SearchOutputResource::collection($output);
+        return $this->returnData('search output', Helper::getPaginatedData(SearchOutputResource::collection($output)));
     }
     public function filterAccordingTo($method, $products, $desc): AnonymousResourceCollection
     {

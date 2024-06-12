@@ -58,4 +58,16 @@ class Helper
             File::delete(public_path($image));
         }
     }
+
+    public static function getPaginatedData($data): array
+    {
+        $pageCount = 10;
+        $totalCount = $data->count();
+        return [
+            'pageCount' => $pageCount,
+            'totalCount' => $totalCount,
+            'totalPages' => ceil($totalCount / $pageCount),
+            'data' => $data
+        ];
+    }
 }
