@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('ads', function (Blueprint $table) {
-            $table->foreign('product')->references('id')->on('products')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->constrained()->onUpdate('cascade')->onDelete('cascade');
         });
         Schema::table('users', function (Blueprint $table) {
-            $table->foreign('city')->references('id')->on('cities')->constrained()->onUpdate('cascade')->onDelete('no action');
+            $table->foreign('city_id')->references('id')->on('cities')->constrained()->onUpdate('cascade')->onDelete('no action');
         });
         Schema::table('vendors', function (Blueprint $table) {
             $table->foreign('city')->references('id')->on('cities')->constrained()->onUpdate('cascade')->onDelete('no action');
