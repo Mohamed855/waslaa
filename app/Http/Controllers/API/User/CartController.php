@@ -21,7 +21,7 @@ class CartController extends Controller
 
     public function myCart ()
     {
-        return CartResource::collection(auth('api')->user()->cart);
+        return $this->returnData('My Cart', CartResource::collection(auth('api')->user()->cart));
     }
 
     public function checkoutPage (): JsonResponse
