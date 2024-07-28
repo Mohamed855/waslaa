@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Helpers\AppHelper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -41,5 +42,10 @@ class Manager extends Authenticatable
         static::creating(function ($user) {
             $user->username = strtolower(AppHelper::generateUsername(Manager::class, $user->name));
         });
+    }
+
+    public function vendor (): BelongsTo
+    {
+        return $this->belongsTo(Vendor::class, 'added_by');
     }
 }

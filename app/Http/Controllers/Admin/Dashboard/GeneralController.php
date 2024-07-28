@@ -44,6 +44,19 @@ class GeneralController extends Controller
         return view('dashboard.general.vendor-overview', compact(['managersCount', 'usersCount', 'categoriesCount', 'subcategoriesCount', 'productsCount', 'componentsCount', 'typesCount', 'orders', 'invoices']));
     }
 
+    public function managerOverview(): View
+    {
+        $usersCount = auth('manager')->user()->vendor->users()->count();
+        $categoriesCount = auth('manager')->user()->vendor->categories()->count();
+        $subcategoriesCount = auth('manager')->user()->vendor->subcategories()->count();
+        $productsCount = auth('manager')->user()->vendor->products()->count();
+        $componentsCount = auth('manager')->user()->vendor->components()->count();
+        $typesCount = auth('manager')->user()->vendor->types()->count();
+        $orders = auth('manager')->user()->vendor->currVendorOrders()->get();
+        $invoices = auth('manager')->user()->vendor->invoices()->get();
+        return view('dashboard.general.manager-overview', compact(['usersCount', 'categoriesCount', 'subcategoriesCount', 'productsCount', 'componentsCount', 'typesCount', 'orders', 'invoices']));
+    }
+
     public function profile(): View
     {
         $guard = DashboardHelper::getCurrentGuard();

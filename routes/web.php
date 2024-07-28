@@ -60,6 +60,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::group(['middleware' => 'must.auth'], function () {
         Route::get('admin/overview', [GeneralController::class, 'adminOverview'])->name('adminOverview');
         Route::get('vendor/overview', [GeneralController::class, 'vendorOverview'])->name('vendorOverview');
+        Route::get('manager/overview', [GeneralController::class, 'managerOverview'])->name('managerOverview');
 
         Route::get('profile', [GeneralController::class, 'profile'])->name('profile');
         Route::post('logout', [LoginController::class, 'logout'])->name('logout');
@@ -154,11 +155,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::post('product/{id}/remove-offer', [ProductsController::class, 'removeOffer'])->name('removeOffer');
         Route::post('product/{id}/update-prices', [ProductsController::class, 'updatePrices'])->name('updatePrices');
         Route::get('api/subcategories/{catId}', [ProductsController::class, 'getCurrVendorSubCategories']);
-    });
-
-    // Manager Routes
-    Route::group(['prefix' => 'manager', 'middleware' => 'guard:manager'], function () {
-        Route::get('/', function () { return view('manager.main.overview'); })->name('managerOverview');
     });
 });
 

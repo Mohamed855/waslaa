@@ -1,15 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\App\MainController;
-use App\Http\Controllers\API\App\CountryController;
-use App\Http\Controllers\API\App\VendorController;
-use App\Http\Controllers\API\App\ProductController;
-use App\Http\Controllers\API\App\CategoryController;
 use App\Http\Controllers\API\User\CartController;
+use App\Http\Controllers\API\App\VendorController;
+use App\Http\Controllers\API\GoogleAuthController;
 use App\Http\Controllers\API\User\RatesController;
+use App\Http\Controllers\API\App\CountryController;
+use App\Http\Controllers\API\App\ProductController;
 use App\Http\Controllers\API\User\OrdersController;
+use App\Http\Controllers\API\App\CategoryController;
 use App\Http\Controllers\API\User\ProfileController;
 use App\Http\Controllers\API\User\AddressesController;
 use App\Http\Controllers\API\User\FavoritesController;
@@ -31,6 +33,10 @@ Route::prefix('auth')->group(function () {
     Route::prefix('password')->group(function () {
         Route::post('reset', [AuthController::class, 'reset']);
         Route::post('update', [AuthController::class, 'updatePassword']);
+    });
+    Route::prefix('google')->group(function () {
+        Route::get('/', [GoogleAuthController::class, 'redirect']);
+        Route::get('callback', [GoogleAuthController::class, 'callback']);
     });
     Route::post('logout', [AuthController::class, 'logout'])->middleware('auth.guard:api');
 });
