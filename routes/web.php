@@ -41,6 +41,12 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
     Route::get('/', function () {
         return view('app');
     });
+    Route::get('privacy-policy', function () {
+        return view('global.privacy-policy');
+    });
+    Route::get('terms-of-service', function () {
+        return view('global.terms-of-service');
+    });
 
     // Must be not Auth Routes
     Route::group(['middleware' => 'not.auth'], function () {
