@@ -19,6 +19,10 @@ class VendorController extends Controller
         $this->app = new AppHelper();
     }
 
+    public function index ($vendorId)
+    {
+        return $this->app->getVendorSubCategories($vendorId);
+    }
 
     public function selectedVendor ($id): JsonResponse
     {
@@ -31,10 +35,5 @@ class VendorController extends Controller
             'myRate' => (int) $this->app->getUserRate('vendor', $id),
             'selectedVendor' => new VendorResource($selectedVendor)
         ]);
-    }
-
-    public function subCategoriesWithProduct ($vendorId)
-    {
-        return $this->app->getSubCategoriesWithProducts($vendorId);
     }
 }

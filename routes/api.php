@@ -52,11 +52,13 @@ Route::prefix('app')->middleware('auth.check:api')->group(function () {
     Route::get('category/sub-categories/{catId}', [CategoryController::class, 'getSubCategories']);
     Route::get('category/vendors/{catId}/{subCatId?}', [CategoryController::class, 'getVendors']);
 
+    Route::get('vendor/sub-categories/{vendorId}', [VendorController::class, 'index']);
     Route::get('vendor/{id}', [VendorController::class, 'selectedVendor']);
-    Route::get('vendor/sub-categories/{vendorId}', [VendorController::class, 'subCategoriesWithProduct']);
 
+    Route::get('sub-category/{subcategoryId}/products', [ProductController::class, 'index']);
     Route::get('product/{id}', [ProductController::class, 'selectedProduct']);
     Route::get('offers', [ProductController::class, 'getOffers']);
+
     Route::get('countries', [CountryController::class, 'getCountries']);
 });
 

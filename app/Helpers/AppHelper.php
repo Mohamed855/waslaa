@@ -8,7 +8,6 @@ use App\Http\Resources\Filter\ProductFilterResource;
 use App\Http\Resources\Filter\SearchOutputResource;
 use App\Http\Resources\Product\ProductResource;
 use App\Http\Resources\SubCategory\SubCategoryResource;
-use App\Http\Resources\SubCategory\SubCategoryWithProductResource;
 use App\Http\Resources\Vendor\VendorResource;
 use App\Traits\QueriesTrait;
 use App\Traits\ResponseTrait;
@@ -72,10 +71,15 @@ class AppHelper
 
         return $currUserRate['rate'] ?? 0;
     }
-    public function getSubCategoriesWithProducts ($vendorId)
+    public function getVendorSubCategories ($vendorId)
     {
-        $subCategoriesWithProduct = $this->activeSubcategory()->where('vendor_id', $vendorId)->with('activeProducts')->paginate(10);
-        return $this->returnData('subcategories with products', Helper::getPaginatedData(SubCategoryWithProductResource::collection($subCategoriesWithProduct)));
+        $subCategories = $this->activeSubcategory()->where('vendor_id', $vendorId)->paginate(10);
+        return $this->returnData('vendor subcategories', Helper::getPaginatedData(SubCategoryResource::collection($subCategories)));
+    }
+    public function getSubCategoryProducts ($subcategoryId)
+    {
+        $products = $this->activeProduct()->where('subcategory_id', $subcategoryId)->paginate(10);
+        return $this->returnData('subcategory products', Helper::getPaginatedData(ProductResource::collection($products)));
     }
     public function getOfferedProducts ()
     {

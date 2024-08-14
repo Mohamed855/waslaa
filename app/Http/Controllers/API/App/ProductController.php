@@ -21,6 +21,11 @@ class ProductController extends Controller
         $this->app = new AppHelper();
     }
 
+    public function index ($subcategoryId)
+    {
+        return $this->app->getSubCategoryProducts($subcategoryId);
+    }
+
     public function selectedProduct ($id): JsonResponse
     {
         $selectedProduct = $this->app->activeProduct()->with(['subcategory', 'activeComponents', 'activeTypes'])->findOrFail($id);
