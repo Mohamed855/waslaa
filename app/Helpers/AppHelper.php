@@ -78,7 +78,7 @@ class AppHelper
     }
     public function getSubCategoryProducts ($subcategoryId)
     {
-        $products = $this->activeProduct()->where('subcategory_id', $subcategoryId)->with(['components', 'types'])->paginate(10);
+        $products = $this->activeProduct()->with(['activeComponents', 'activeTypes'])->where('subcategory_id', $subcategoryId)->paginate(10);
         return $this->returnData('subcategory products', Helper::getPaginatedData(ProductResource::collection($products)));
     }
     public function getOfferedProducts ()
